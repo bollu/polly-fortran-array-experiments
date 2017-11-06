@@ -1,0 +1,103 @@
+digraph "Scop Graph for '__m_MOD_inv_so' function" {
+	label="Scop Graph for '__m_MOD_inv_so' function";
+
+	Node0xeef340 [shape=record,label="{entry:\l  %dt_parm.255.i = alloca %struct.__st_parameter_dt, align 8\l  %dt_parm.264.i = alloca %struct.__st_parameter_dt, align 8\l  %dt_parm.222 = alloca %struct.__st_parameter_dt, align 8\l  br label %entry.split\l}"];
+	Node0xeef340 -> Node0xf0ce00;
+	Node0xf0ce00 [shape=record,label="{entry.split:                                      \l  %tmp = load [0 x double]*, [0 x double]** bitcast\l... (%\"struct.array1_real(kind=8).64\"* @__m_MOD_pa5f to [0 x double]**), align 32\l  %tmp1 = load [0 x double]*, [0 x double]** bitcast\l... (%\"struct.array1_real(kind=8).65\"* @__m_MOD_pa5c to [0 x double]**), align 32\l  %tmp2 = load [0 x double]*, [0 x double]** bitcast\l... (%\"struct.array1_real(kind=8).66\"* @__m_MOD_pa4f to [0 x double]**), align 32\l  %tmp3 = load [0 x double]*, [0 x double]** bitcast\l... (%\"struct.array1_real(kind=8).67\"* @__m_MOD_pa4c to [0 x double]**), align 32\l  %tmp4 = load [0 x double]*, [0 x double]** bitcast\l... (%\"struct.array1_real(kind=8).68\"* @__m_MOD_pa3f to [0 x double]**), align 32\l  %tmp5 = load [0 x double]*, [0 x double]** bitcast\l... (%\"struct.array1_real(kind=8).69\"* @__m_MOD_pa3c to [0 x double]**), align 32\l  %tmp6 = load [0 x double]*, [0 x double]** bitcast\l... (%\"struct.array1_real(kind=8).70\"* @__m_MOD_pa2f to [0 x double]**), align 32\l  %tmp7 = load [0 x double]*, [0 x double]** bitcast\l... (%\"struct.array1_real(kind=8).71\"* @__m_MOD_pa2c to [0 x double]**), align 32\l  %tmp8 = load [0 x double]*, [0 x double]** bitcast\l... (%\"struct.array1_real(kind=8).72\"* @__m_MOD_pa1f to [0 x double]**), align 32\l  %tmp9 = load [0 x double]*, [0 x double]** bitcast\l... (%\"struct.array1_real(kind=8).73\"* @__m_MOD_pa1c to [0 x double]**), align 32\l  tail call void @__m_MOD_coe_so_broken(i32* noalias %ldebug, i32* noalias\l... %ki3sc, i32* noalias %ki1sd, i32* noalias %ki1ed, i32* noalias %ki3sd, i32*\l... noalias %ki3ed, i32* noalias %ki1sc, i32* noalias %ki1ec, [0 x double]*\l... noalias %tmp9, [0 x double]* noalias %tmp8, [0 x double]* noalias %tmp7, [0 x\l... double]* noalias %tmp6, [0 x double]* noalias %tmp5, [0 x double]* noalias\l... %tmp4, [0 x double]* noalias %tmp3, [0 x double]* noalias %tmp2, [0 x\l... double]* noalias %tmp1, [0 x double]* noalias %tmp) #2\l  %tmp10 = load i32, i32* %ki3sc, align 4\l  %tmp11 = add i32 %tmp10, 1\l  %tmp12 = load i32, i32* %ki3ec, align 4\l  %tmp13 = icmp sgt i32 %tmp11, %tmp12\l  br i1 %tmp13, label %return, label %\"3.preheader\"\l}"];
+	Node0xf0ce00 -> Node0xe16d80;
+	Node0xf0ce00 -> Node0xe5a2f0;
+	Node0xe16d80 [shape=record,label="{return:                                           \l  ret void\l}"];
+	Node0xe5a2f0 [shape=record,label="{\"3.preheader\":                                    \l  br label %\"3\"\l}"];
+	Node0xe5a2f0 -> Node0xde4010;
+	Node0xde4010 [shape=record,label="{\"3\":                                              \l  %j3.0 = phi i32 [ %tmp11, %\"3.preheader\" ], [ %tmp32, %\"5\" ]\l  %tmp14 = load [0 x double]*, [0 x double]** bitcast\l... (%\"struct.array1_real(kind=8).64\"* @__m_MOD_pa5f to [0 x double]**), align 32\l  %tmp15 = load [0 x double]*, [0 x double]** bitcast\l... (%\"struct.array1_real(kind=8).65\"* @__m_MOD_pa5c to [0 x double]**), align 32\l  %tmp16 = load [0 x double]*, [0 x double]** bitcast\l... (%\"struct.array1_real(kind=8).66\"* @__m_MOD_pa4f to [0 x double]**), align 32\l  %tmp17 = load [0 x double]*, [0 x double]** bitcast\l... (%\"struct.array1_real(kind=8).67\"* @__m_MOD_pa4c to [0 x double]**), align 32\l  %tmp18 = load [0 x double]*, [0 x double]** bitcast\l... (%\"struct.array1_real(kind=8).68\"* @__m_MOD_pa3f to [0 x double]**), align 32\l  %tmp19 = load [0 x double]*, [0 x double]** bitcast\l... (%\"struct.array1_real(kind=8).69\"* @__m_MOD_pa3c to [0 x double]**), align 32\l  %tmp20 = load [0 x double]*, [0 x double]** bitcast\l... (%\"struct.array1_real(kind=8).70\"* @__m_MOD_pa2f to [0 x double]**), align 32\l  %tmp21 = load [0 x double]*, [0 x double]** bitcast\l... (%\"struct.array1_real(kind=8).71\"* @__m_MOD_pa2c to [0 x double]**), align 32\l  %0 = bitcast %struct.__st_parameter_dt* %dt_parm.255.i to i8*\l  call void @llvm.lifetime.start.p0i8(i64 480, i8* %0)\l  %1 = bitcast %struct.__st_parameter_dt* %dt_parm.264.i to i8*\l  call void @llvm.lifetime.start.p0i8(i64 480, i8* %1)\l  %tmp.i = load i32, i32* %ki1sd, align 4, !alias.scope !0, !noalias !3\l  %tmp1.i = sext i32 %tmp.i to i64\l  %tmp2.i = sub nsw i64 0, %tmp1.i\l  %tmp3.i = load i32, i32* %ldebug, align 4, !range !15, !alias.scope !16,\l... !noalias !17\l  %tmp4.i = icmp ne i32 %tmp3.i, 0\l  br i1 %tmp4.i, label %\"3.i\", label %\"4.i\"\l}"];
+	Node0xde4010 -> Node0xe64890;
+	Node0xde4010 -> Node0xed6870;
+	Node0xe64890 [shape=record,label="{\"3.i\":                                            \l  %tmp5.i = getelementptr inbounds %struct.__st_parameter_dt,\l... %struct.__st_parameter_dt* %dt_parm.255.i, i64 0, i32 0, i32 2\l  store i8* getelementptr inbounds ([6 x i8], [6 x i8]* @.cst, i64 0, i64 0),\l... i8** %tmp5.i, align 8, !noalias !18\l  %tmp6.i = getelementptr inbounds %struct.__st_parameter_dt,\l... %struct.__st_parameter_dt* %dt_parm.255.i, i64 0, i32 0, i32 3\l  store i32 281, i32* %tmp6.i, align 8, !noalias !18\l  %tmp7.i = getelementptr inbounds %struct.__st_parameter_dt,\l... %struct.__st_parameter_dt* %dt_parm.255.i, i64 0, i32 0, i32 0\l  store i32 128, i32* %tmp7.i, align 8, !noalias !18\l  %tmp8.i = getelementptr inbounds %struct.__st_parameter_dt,\l... %struct.__st_parameter_dt* %dt_parm.255.i, i64 0, i32 0, i32 1\l  store i32 6, i32* %tmp8.i, align 4, !noalias !18\l  call void @_gfortran_st_write(%struct.__st_parameter_dt* nonnull\l... %dt_parm.255.i) #2, !noalias !18\l  call void @_gfortran_transfer_character_write(%struct.__st_parameter_dt*\l... nonnull %dt_parm.255.i, i8* getelementptr inbounds ([3 x i8], [3 x i8]*\l... @.cst1, i64 0, i64 0), i32 3) #2, !noalias !18\l  call void @_gfortran_st_write_done(%struct.__st_parameter_dt* nonnull\l... %dt_parm.255.i) #2, !noalias !18\l  br label %\"4.i\"\l}"];
+	Node0xe64890 -> Node0xed6870;
+	Node0xed6870 [shape=record,label="{\"4.i\":                                            \l  %tmp9.i = load i32, i32* %ki1sc, align 4, !alias.scope !19, !noalias !20\l  %tmp10.i = load i32, i32* %ki1ec, align 4, !alias.scope !21, !noalias !22\l  %tmp11.i = icmp sgt i32 %tmp9.i, %tmp10.i\l  br i1 %tmp11.i, label %\"7.i\", label %\"5.preheader.i\"\l}"];
+	Node0xed6870 -> Node0xe19ca0;
+	Node0xed6870 -> Node0xee8d00;
+	Node0xe19ca0 [shape=record,label="{\"7.i\":                                            \l  br i1 %tmp4.i, label %\"8.i\", label %__m_MOD_coe_so.exit\l}"];
+	Node0xe19ca0 -> Node0xe69c90;
+	Node0xe19ca0 -> Node0xdd9350;
+	Node0xe69c90 [shape=record,label="{\"8.i\":                                            \l  %tmp32.i = getelementptr inbounds %struct.__st_parameter_dt,\l... %struct.__st_parameter_dt* %dt_parm.264.i, i64 0, i32 0, i32 2\l  store i8* getelementptr inbounds ([6 x i8], [6 x i8]* @.cst, i64 0, i64 0),\l... i8** %tmp32.i, align 8, !noalias !18\l  %tmp33.i = getelementptr inbounds %struct.__st_parameter_dt,\l... %struct.__st_parameter_dt* %dt_parm.264.i, i64 0, i32 0, i32 3\l  store i32 297, i32* %tmp33.i, align 8, !noalias !18\l  %tmp34.i = getelementptr inbounds %struct.__st_parameter_dt,\l... %struct.__st_parameter_dt* %dt_parm.264.i, i64 0, i32 0, i32 0\l  store i32 128, i32* %tmp34.i, align 8, !noalias !18\l  %tmp35.i = getelementptr inbounds %struct.__st_parameter_dt,\l... %struct.__st_parameter_dt* %dt_parm.264.i, i64 0, i32 0, i32 1\l  store i32 6, i32* %tmp35.i, align 4, !noalias !18\l  call void @_gfortran_st_write(%struct.__st_parameter_dt* nonnull\l... %dt_parm.264.i) #2, !noalias !18\l  call void @_gfortran_transfer_character_write(%struct.__st_parameter_dt*\l... nonnull %dt_parm.264.i, i8* getelementptr inbounds ([3 x i8], [3 x i8]*\l... @.cst1, i64 0, i64 0), i32 3) #2, !noalias !18\l  call void @_gfortran_st_write_done(%struct.__st_parameter_dt* nonnull\l... %dt_parm.264.i) #2, !noalias !18\l  br label %__m_MOD_coe_so.exit\l}"];
+	Node0xe69c90 -> Node0xdd9350;
+	Node0xdd9350 [shape=record,label="{__m_MOD_coe_so.exit:                              \l  call void @llvm.lifetime.end.p0i8(i64 480, i8* %0)\l  call void @llvm.lifetime.end.p0i8(i64 480, i8* %1)\l  %tmp24 = load i32, i32* %ldebug, align 4, !range !15\l  %tmp25 = icmp eq i32 %tmp24, 0\l  br i1 %tmp25, label %\"5\", label %\"4\"\l}"];
+	Node0xdd9350 -> Node0xdd89d0;
+	Node0xdd9350 -> Node0xe437c0;
+	Node0xdd89d0 [shape=record,label="{\"5\":                                              \l  %tmp31 = icmp eq i32 %j3.0, %tmp12\l  %tmp32 = add i32 %j3.0, 1\l  br i1 %tmp31, label %return.loopexit, label %\"3\"\l}"];
+	Node0xdd89d0 -> Node0xe71380;
+	Node0xdd89d0 -> Node0xde4010[constraint=false];
+	Node0xe71380 [shape=record,label="{return.loopexit:                                  \l  br label %return\l}"];
+	Node0xe71380 -> Node0xe16d80;
+	Node0xe437c0 [shape=record,label="{\"4\":                                              \l  %tmp26 = getelementptr inbounds %struct.__st_parameter_dt,\l... %struct.__st_parameter_dt* %dt_parm.222, i64 0, i32 0, i32 2\l  store i8* getelementptr inbounds ([6 x i8], [6 x i8]* @.cst, i64 0, i64 0),\l... i8** %tmp26, align 8\l  %tmp27 = getelementptr inbounds %struct.__st_parameter_dt,\l... %struct.__st_parameter_dt* %dt_parm.222, i64 0, i32 0, i32 3\l  store i32 355, i32* %tmp27, align 8\l  %tmp28 = getelementptr inbounds %struct.__st_parameter_dt,\l... %struct.__st_parameter_dt* %dt_parm.222, i64 0, i32 0, i32 0\l  store i32 128, i32* %tmp28, align 8\l  %tmp29 = getelementptr inbounds %struct.__st_parameter_dt,\l... %struct.__st_parameter_dt* %dt_parm.222, i64 0, i32 0, i32 1\l  store i32 6, i32* %tmp29, align 4\l  call void @_gfortran_st_write(%struct.__st_parameter_dt* nonnull\l... %dt_parm.222) #2\l  call void @_gfortran_transfer_character_write(%struct.__st_parameter_dt*\l... nonnull %dt_parm.222, i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.cst1,\l... i64 0, i64 0), i32 3) #2\l  call void @_gfortran_st_write_done(%struct.__st_parameter_dt* nonnull\l... %dt_parm.222) #2\l  br label %\"5\"\l}"];
+	Node0xe437c0 -> Node0xdd89d0;
+	Node0xee8d00 [shape=record,label="{\"5.preheader.i\":                                  \l  br label %\"5.i\"\l}"];
+	Node0xee8d00 -> Node0xe57920;
+	Node0xe57920 [shape=record,label="{\"5.i\":                                            \l  %tmp12.i = phi i32 [ %tmp31.i, %\"5.i\" ], [ %tmp9.i, %\"5.preheader.i\" ]\l  %tmp13.i = sext i32 %tmp12.i to i64\l  %tmp14.i = call i64 @_gfortran_polly_array_index_1(i64 %tmp2.i, i64 1, i64\l... %tmp13.i) #2\l  %tmp15.i = getelementptr [0 x double], [0 x double]* %tmp14, i64 0, i64\l... %tmp14.i\l  store double 0x3F1CD5F9A0000000, double* %tmp15.i, align 8, !alias.scope\l... !23, !noalias !24\l  %tmp17.i = getelementptr [0 x double], [0 x double]* %tmp16, i64 0, i64\l... %tmp14.i\l  store double 0x3FECCCCCC0000000, double* %tmp17.i, align 8, !alias.scope\l... !25, !noalias !26\l  %tmp19.i = getelementptr [0 x double], [0 x double]* %tmp20, i64 0, i64\l... %tmp14.i\l  store double 2.000000e+00, double* %tmp19.i, align 8, !alias.scope !27,\l... !noalias !28\l  %tmp21.i = getelementptr [0 x double], [0 x double]* %tmp18, i64 0, i64\l... %tmp14.i\l  store double 2.000000e+00, double* %tmp21.i, align 8, !alias.scope !29,\l... !noalias !30\l  %tmp23.i = getelementptr [0 x double], [0 x double]* %tmp17, i64 0, i64\l... %tmp14.i\l  store double 0x38A7ED1520000000, double* %tmp23.i, align 8, !alias.scope\l... !31, !noalias !32\l  %tmp25.i = getelementptr [0 x double], [0 x double]* %tmp15, i64 0, i64\l... %tmp14.i\l  store double 0x3F6B5C7CE0000000, double* %tmp25.i, align 8, !alias.scope\l... !33, !noalias !34\l  %tmp27.i = getelementptr [0 x double], [0 x double]* %tmp21, i64 0, i64\l... %tmp14.i\l  store double 1.000000e+00, double* %tmp27.i, align 8, !alias.scope !35,\l... !noalias !36\l  %tmp29.i = getelementptr [0 x double], [0 x double]* %tmp19, i64 0, i64\l... %tmp14.i\l  store double 1.000000e+00, double* %tmp29.i, align 8, !alias.scope !37,\l... !noalias !38\l  %tmp30.i = icmp eq i32 %tmp12.i, %tmp10.i\l  %tmp31.i = add i32 %tmp12.i, 1\l  br i1 %tmp30.i, label %\"7.i.loopexit\", label %\"5.i\"\l}"];
+	Node0xe57920 -> Node0xe201e0;
+	Node0xe57920 -> Node0xe57920[constraint=false];
+	Node0xe201e0 [shape=record,label="{\"7.i.loopexit\":                                   \l  br label %\"7.i\"\l}"];
+	Node0xe201e0 -> Node0xe19ca0;
+	colorscheme = "paired12"
+        subgraph cluster_0xf5bc80 {
+          label = "";
+          style = solid;
+          color = 1
+          subgraph cluster_0xf632a0 {
+            label = "Non affine loop bound '(-1 + (-1 * %tmp10) + %tmp12)' in loop: 3";
+            style = solid;
+            color = 6
+            subgraph cluster_0xf63220 {
+              label = "Call instruction:   call void @_gfortran_st_write(%struct.__st_parameter_dt* nonnull %dt_parm.255.i) #2, !noalias !18";
+              style = solid;
+              color = 5
+              subgraph cluster_0xf631a0 {
+                label = "Call instruction:   call void @_gfortran_st_write(%struct.__st_parameter_dt* nonnull %dt_parm.255.i) #2, !noalias !18";
+                style = solid;
+                color = 7
+                Node0xde4010;
+                Node0xe64890;
+              }
+              subgraph cluster_0xf623c0 {
+                label = "";
+                style = filled;
+                color = 3                subgraph cluster_0xf63120 {
+                  label = "";
+                  style = solid;
+                  color = 9
+                  subgraph cluster_0xf630a0 {
+                    label = "";
+                    style = solid;
+                    color = 11
+                    Node0xe57920;
+                  }
+                  Node0xed6870;
+                  Node0xee8d00;
+                  Node0xe201e0;
+                }
+                subgraph cluster_0xf5be20 {
+                  label = "";
+                  style = solid;
+                  color = 9
+                  Node0xe19ca0;
+                  Node0xe69c90;
+                }
+                subgraph cluster_0xf5bda0 {
+                  label = "";
+                  style = solid;
+                  color = 9
+                  Node0xdd9350;
+                  Node0xe437c0;
+                }
+              }
+              Node0xdd89d0;
+            }
+            Node0xf0ce00;
+            Node0xe5a2f0;
+            Node0xe71380;
+          }
+          Node0xeef340;
+          Node0xe16d80;
+        }
+}

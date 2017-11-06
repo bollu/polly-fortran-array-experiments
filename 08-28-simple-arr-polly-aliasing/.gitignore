@@ -1,0 +1,5 @@
+*.mod
+*.out
+*.ll
+*.o
+*.prof

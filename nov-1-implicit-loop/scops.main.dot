@@ -1,0 +1,15 @@
+digraph "Scop Graph for 'main' function" {
+	label="Scop Graph for 'main' function";
+
+	Node0xab69b0 [shape=record,label="{entry:\l  br label %entry.split\l}"];
+	Node0xab69b0 -> Node0xab3e60;
+	Node0xab3e60 [shape=record,label="{entry.split:                                      \l  tail call void @_gfortran_set_args(i32 %argc, i8** %argv) #3\l  tail call void @_gfortran_set_options(i32 8, i32* getelementptr inbounds ([8\l... x i32], [8 x i32]* @options.16.1624, i64 0, i64 0)) #3\l  tail call void @MAIN__() #0\l  ret i32 0\l}"];
+	colorscheme = "paired12"
+        subgraph cluster_0xacdcf0 {
+          label = "";
+          style = solid;
+          color = 1
+          Node0xab69b0;
+          Node0xab3e60;
+        }
+}

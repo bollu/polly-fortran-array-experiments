@@ -1,0 +1,6 @@
+*out*
+# file that is transferred by out get from greina script
+new-ll-file-RENAME.ll
+program.c
+tags
+*.sw*

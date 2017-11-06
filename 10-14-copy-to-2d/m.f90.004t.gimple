@@ -1,0 +1,195 @@
+main (integer(kind=4) argc, character(kind=1) * * argv)
+{
+  integer(kind=4) D.1620;
+  static integer(kind=4) options.14[8] = {68, 511, 0, 0, 0, 1, 0, 1};
+
+  _gfortran_set_args (argc, argv);
+  _gfortran_set_options (8, &options.14[0]);
+  p ();
+  D.1620 = 0;
+  return D.1620;
+}
+
+
+p ()
+{
+
+}
+
+
+f (struct array2_real(kind=4) & restrict fld, struct array1_real(kind=4) & restrict fld_b, integer(kind=4) & restrict ipend, integer(kind=4) & restrict ib)
+{
+  integer(kind=8) iftmp.15;
+  integer(kind=8) D.1626;
+  integer(kind=8) D.1627;
+  integer(kind=8) D.1628;
+  bit_size_type size.16;
+  <unnamed-unsigned:64> size.17;
+  integer(kind=8) iftmp.18;
+  integer(kind=8) D.1635;
+  integer(kind=8) D.1636;
+  integer(kind=8) D.1637;
+  integer(kind=8) D.1638;
+  integer(kind=8) D.1639;
+  integer(kind=8) D.1640;
+  integer(kind=8) D.1641;
+  bit_size_type size.19;
+  <unnamed-unsigned:64> size.20;
+  void * restrict D.1647;
+  integer(kind=8) D.1648;
+  integer(kind=4) D.1649;
+  integer(kind=8) D.1650;
+  integer(kind=8) D.1651;
+  integer(kind=8) D.1652;
+  integer(kind=8) D.1653;
+  void * restrict D.1654;
+  integer(kind=8) D.1655;
+  integer(kind=4) D.1656;
+  integer(kind=8) D.1657;
+  integer(kind=8) D.1658;
+  integer(kind=8) D.1659;
+  integer(kind=8) D.1660;
+  integer(kind=8) D.1661;
+  integer(kind=8) D.1662;
+  integer(kind=8) D.1663;
+  integer(kind=8) D.1664;
+  integer(kind=8) D.1665;
+  real(kind=4) D.1666;
+  integer(kind=8) ubound.0;
+  integer(kind=8) stride.1;
+  integer(kind=8) ubound.2;
+  integer(kind=8) stride.3;
+  integer(kind=8) offset.4;
+  integer(kind=8) size.5;
+  real(kind=4)[0:D.1606] * restrict fld.0;
+  integer(kind=8) ubound.6;
+  integer(kind=8) stride.7;
+  integer(kind=8) offset.8;
+  integer(kind=8) size.9;
+  real(kind=4)[0:D.1610] * restrict fld_b.0;
+  integer(kind=4) i;
+  integer(kind=4) ip;
+  integer(kind=4) j;
+  integer(kind=8) D.1606;
+  bit_size_type D.1607;
+  <unnamed-unsigned:64> D.1608;
+  integer(kind=8) D.1610;
+  bit_size_type D.1611;
+  <unnamed-unsigned:64> D.1612;
+
+  {
+    integer(kind=8) D.1609;
+
+    D.1609 = fld_b->dim[0].stride;
+    if (D.1609 != 0) goto <D.1623>; else goto <D.1624>;
+    <D.1623>:
+    iftmp.15 = D.1609;
+    goto <D.1625>;
+    <D.1624>:
+    iftmp.15 = 1;
+    <D.1625>:
+    stride.7 = iftmp.15;
+    fld_b.0 = fld_b->data;
+    D.1626 = fld_b->dim[0].ubound;
+    D.1627 = fld_b->dim[0].lbound;
+    D.1628 = D.1626 - D.1627;
+    ubound.6 = D.1628 + 1;
+    size.9 = stride.7 * ubound.6;
+    offset.8 = -stride.7;
+    D.1610 = size.9 + -1;
+    size.16 = (bit_size_type) size.9;
+    D.1611 = size.16 * 32;
+    size.17 = (<unnamed-unsigned:64>) size.9;
+    D.1612 = size.17 * 4;
+  }
+  {
+    integer(kind=8) D.1605;
+
+    D.1605 = fld->dim[0].stride;
+    if (D.1605 != 0) goto <D.1632>; else goto <D.1633>;
+    <D.1632>:
+    iftmp.18 = D.1605;
+    goto <D.1634>;
+    <D.1633>:
+    iftmp.18 = 1;
+    <D.1634>:
+    stride.1 = iftmp.18;
+    fld.0 = fld->data;
+    D.1635 = fld->dim[0].ubound;
+    D.1636 = fld->dim[0].lbound;
+    D.1637 = D.1635 - D.1636;
+    ubound.0 = D.1637 + 1;
+    stride.3 = fld->dim[1].stride;
+    D.1638 = fld->dim[1].ubound;
+    D.1639 = fld->dim[1].lbound;
+    D.1640 = D.1638 - D.1639;
+    ubound.2 = D.1640 + 1;
+    size.5 = stride.3 * ubound.2;
+    D.1641 = -stride.1;
+    offset.4 = D.1641 - stride.3;
+    D.1606 = size.5 + -1;
+    size.19 = (bit_size_type) size.5;
+    D.1607 = size.19 * 32;
+    size.20 = (<unnamed-unsigned:64>) size.5;
+    D.1608 = size.20 * 4;
+  }
+  {
+    integer(kind=4) D.1597;
+
+    D.1597 = *ipend;
+    ip = 1;
+    if (ip <= D.1597) goto <D.1644>; else goto <D.1645>;
+    <D.1644>:
+    <D.1646>:
+    {
+      logical(kind=4) D.1604;
+
+      {
+        integer(kind=8) inc.10;
+
+        D.1647 = mind_ilon.data;
+        D.1648 = (integer(kind=8)) ip;
+        D.1649 = *ib;
+        D.1650 = (integer(kind=8)) D.1649;
+        D.1651 = mind_ilon.dim[1].stride;
+        D.1652 = mind_ilon.offset;
+        D.1653 = _gfortran_polly_array_index_2 (D.1652, D.1651, 1, D.1650, D.1648);
+        i = MEM[(integer(kind=4)[0:] *)D.1647][D.1653];
+      }
+      {
+        integer(kind=8) inc.11;
+
+        D.1654 = mind_jlat.data;
+        D.1655 = (integer(kind=8)) ip;
+        D.1656 = *ib;
+        D.1657 = (integer(kind=8)) D.1656;
+        D.1658 = mind_jlat.dim[1].stride;
+        D.1659 = mind_jlat.offset;
+        D.1660 = _gfortran_polly_array_index_2 (D.1659, D.1658, 1, D.1657, D.1655);
+        j = MEM[(integer(kind=4)[0:] *)D.1654][D.1660];
+      }
+      {
+        integer(kind=8) inc.13;
+        integer(kind=8) inc.12;
+
+        D.1661 = (integer(kind=8)) ip;
+        D.1662 = _gfortran_polly_array_index_1 (offset.8, stride.7, D.1661);
+        D.1663 = (integer(kind=8)) i;
+        D.1664 = (integer(kind=8)) j;
+        D.1665 = _gfortran_polly_array_index_2 (offset.4, stride.3, stride.1, D.1664, D.1663);
+        D.1666 = *fld.0[D.1665];
+        *fld_b.0[D.1662] = D.1666;
+      }
+      L.1:
+      D.1604 = ip == D.1597;
+      ip = ip + 1;
+      if (D.1604 != 0) goto L.2; else goto <D.1667>;
+      <D.1667>:
+    }
+    goto <D.1646>;
+    <D.1645>:
+    L.2:
+  }
+}
+
+

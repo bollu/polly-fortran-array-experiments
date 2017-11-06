@@ -1,0 +1,4973 @@
+; ModuleID = '/users/siddhart/playground/standalone/pp/turbulence_utilities.f90'
+target datalayout = "e-p:64:64:64-S128-i1:8:8-i8:8:8-i16:16:16-i32:32:32-i64:64:64-f16:16:16-f32:32:32-f64:64:64-f128:128:128-v64:64:64-v128:128:128-a0:0:64-s0:64:64-f80:128:128-n8:16:32:64"
+target triple = "x86_64-unknown-linux-gnu"
+
+module asm "\09.ident\09\22GCC: (GNU) 4.6.4 LLVM: 3.3.1\22"
+
+%"struct.array3_real(kind=8)" = type { i8*, i64, i64, [3 x %struct.descriptor_dimension] }
+%struct.descriptor_dimension = type { i64, i64, i64 }
+%struct.array_descriptor3 = type { i8*, i64, i64, [3 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8)" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).0" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).1" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).2" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).3" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).4" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).5" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array3_real(kind=8).6" = type { i8*, i64, i64, [3 x %struct.descriptor_dimension] }
+%struct.array_descriptor2 = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).7" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_integer(kind=4)" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).8" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).9" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array3_real(kind=8).10" = type { i8*, i64, i64, [3 x %struct.descriptor_dimension] }
+
+@__data_turbulence_MOD_d_mom = external global double
+@__data_turbulence_MOD_c_tke = external global double
+@__data_turbulence_MOD_a_mom = external global double
+@__data_turbulence_MOD_c_g = external global double
+@__data_turbulence_MOD_d_0 = external global double
+@__data_turbulence_MOD_a_heat = external global double
+@__data_turbulence_MOD_d_1 = external global double
+@__data_turbulence_MOD_d_2 = external global double
+@__data_turbulence_MOD_d_3 = external global double
+@__data_turbulence_MOD_d_4 = external global double
+@__data_turbulence_MOD_d_heat = external global double
+@__data_turbulence_MOD_d_5 = external global double
+@__data_turbulence_MOD_d_6 = external global double
+@__data_turbulence_MOD_rim = external global double
+@__data_turbulence_MOD_a_3 = external global double
+@__data_turbulence_MOD_a_5 = external global double
+@__data_turbulence_MOD_a_6 = external global double
+@__data_turbulence_MOD_b_1 = external global double
+@__data_turbulence_MOD_b_2 = external global double
+@__data_turbulence_MOD_tet_g = external global double
+@__data_turbulence_MOD_l_hori = external global double
+@__data_turbulence_MOD_tur_len = external global double
+@__data_turbulence_MOD_l_scal = external global double
+@__data_turbulence_MOD_clc_diag = external global double
+@__data_turbulence_MOD_q_crit = external global double
+@__data_turbulence_MOD_c_sea = external global double
+@__data_turbulence_MOD_c_soil = external global double
+@__data_turbulence_MOD_c_lnd = external global double
+@__data_turbulence_MOD_e_surf = external global double
+@__data_turbulence_MOD_pat_len = external global double
+
+; Function Attrs: nounwind uwtable
+define void @__turbulence_utilities_MOD_cloud_diag_scalar(double* noalias %clc, double* noalias %clwc, double* noalias %rdv, double* noalias %o_m_rdv, double* noalias %rvd_m_o, double* noalias %lhocp, double* noalias %t0, double* noalias %b1, double* noalias %b2w, double* noalias %b3, double* noalias %b4w, double* noalias %b234w, double* noalias %b2i, double* noalias %b4i, double* noalias %uc1, double* noalias %uc2, double* noalias %ucl, double* noalias %clc_diag, double* noalias %q_crit, double* noalias %t, double* noalias %qv, double* noalias %qc, double* noalias %p_tot, double* noalias %rcld, double* noalias %ps, i32* noalias %itype_wcld) unnamed_addr #0 {
+entry:
+  %clc_addr = alloca double*, align 8
+  %clwc_addr = alloca double*, align 8
+  %rdv_addr = alloca double*, align 8
+  %o_m_rdv_addr = alloca double*, align 8
+  %rvd_m_o_addr = alloca double*, align 8
+  %lhocp_addr = alloca double*, align 8
+  %t0_addr = alloca double*, align 8
+  %b1_addr = alloca double*, align 8
+  %b2w_addr = alloca double*, align 8
+  %b3_addr = alloca double*, align 8
+  %b4w_addr = alloca double*, align 8
+  %b234w_addr = alloca double*, align 8
+  %b2i_addr = alloca double*, align 8
+  %b4i_addr = alloca double*, align 8
+  %uc1_addr = alloca double*, align 8
+  %uc2_addr = alloca double*, align 8
+  %ucl_addr = alloca double*, align 8
+  %clc_diag_addr = alloca double*, align 8
+  %q_crit_addr = alloca double*, align 8
+  %t_addr = alloca double*, align 8
+  %qv_addr = alloca double*, align 8
+  %qc_addr = alloca double*, align 8
+  %p_tot_addr = alloca double*, align 8
+  %rcld_addr = alloca double*, align 8
+  %ps_addr = alloca double*, align 8
+  %itype_wcld_addr = alloca i32*, align 8
+  %dq = alloca double
+  %gam = alloca double
+  %pres = alloca double
+  %q = alloca double
+  %ql = alloca double
+  %qs = alloca double
+  %qt = alloca double
+  %sig = alloca double
+  %temp = alloca double
+  %tl = alloca double
+  %uc = alloca double
+  %zclc1 = alloca double
+  %zpres = alloca double
+  %zpvap = alloca double
+  %zq_max = alloca double
+  %zqsat = alloca double
+  %zsigma = alloca double
+  %ztemp = alloca double
+  %zpres.2 = alloca double
+  %ztemp.1 = alloca double
+  %zpvap.0 = alloca double
+  %D.1756 = alloca double
+  %D.1755 = alloca double
+  %zqsat.4 = alloca double
+  %ztemp.3 = alloca double
+  %D.1762 = alloca double
+  %D.1761 = alloca double
+  %M.6 = alloca double
+  %D.1759 = alloca double
+  %M.5 = alloca double
+  %D.1765 = alloca double
+  %D.1764 = alloca double
+  %D.1767 = alloca double
+  %M.7 = alloca double
+  %M.9 = alloca double
+  %D.1770 = alloca double
+  %M.8 = alloca double
+  %D.1774 = alloca double
+  %D.1773 = alloca double
+  %"alloca point" = bitcast i32 0 to i32
+  store double* %clc, double** %clc_addr, align 1
+  store double* %clwc, double** %clwc_addr, align 1
+  store double* %rdv, double** %rdv_addr, align 1
+  store double* %o_m_rdv, double** %o_m_rdv_addr, align 1
+  store double* %rvd_m_o, double** %rvd_m_o_addr, align 1
+  store double* %lhocp, double** %lhocp_addr, align 1
+  store double* %t0, double** %t0_addr, align 1
+  store double* %b1, double** %b1_addr, align 1
+  store double* %b2w, double** %b2w_addr, align 1
+  store double* %b3, double** %b3_addr, align 1
+  store double* %b4w, double** %b4w_addr, align 1
+  store double* %b234w, double** %b234w_addr, align 1
+  store double* %b2i, double** %b2i_addr, align 1
+  store double* %b4i, double** %b4i_addr, align 1
+  store double* %uc1, double** %uc1_addr, align 1
+  store double* %uc2, double** %uc2_addr, align 1
+  store double* %ucl, double** %ucl_addr, align 1
+  store double* %clc_diag, double** %clc_diag_addr, align 1
+  store double* %q_crit, double** %q_crit_addr, align 1
+  store double* %t, double** %t_addr, align 1
+  store double* %qv, double** %qv_addr, align 1
+  store double* %qc, double** %qc_addr, align 1
+  store double* %p_tot, double** %p_tot_addr, align 1
+  store double* %rcld, double** %rcld_addr, align 1
+  store double* %ps, double** %ps_addr, align 1
+  store i32* %itype_wcld, i32** %itype_wcld_addr, align 1
+  %0 = load double** %q_crit_addr, align 8
+  %1 = load double** %clc_diag_addr, align 8
+  %2 = load double** %qc_addr, align 8
+  %3 = load double** %qv_addr, align 8
+  %4 = load double** %p_tot_addr, align 8
+  %5 = load double** %t_addr, align 8
+  %6 = load double** %lhocp_addr, align 8
+  %7 = load double** %b1_addr, align 8
+  %8 = load double** %b2w_addr, align 8
+  %9 = load double** %b3_addr, align 8
+  %10 = load double** %b4w_addr, align 8
+  %11 = load double** %rdv_addr, align 8
+  %12 = load double** %o_m_rdv_addr, align 8
+  %13 = load double** %b234w_addr, align 8
+  %14 = load double** %rvd_m_o_addr, align 8
+  %15 = load i32** %itype_wcld_addr, align 8
+  %16 = load double** %ps_addr, align 8
+  %17 = load double** %uc1_addr, align 8
+  %18 = load double** %uc2_addr, align 8
+  %19 = load double** %ucl_addr, align 8
+  %20 = load double** %clc_addr, align 8
+  %21 = load double** %rcld_addr, align 8
+  %22 = load double** %clwc_addr, align 8
+  %"ssa point" = bitcast i32 0 to i32
+  br label %"2"
+
+"2":                                              ; preds = %entry
+  %23 = load double* %0, align 8
+  %24 = load double* %1, align 8
+  %25 = fdiv double 1.000000e+00, %24
+  %26 = fsub double %25, 1.000000e+00
+  %27 = fmul double %23, %26
+  %28 = load double* %2, align 8
+  %29 = load double* %3, align 8
+  %30 = fadd double %29, %28
+  %31 = load double* %4, align 8
+  %32 = load double* %5, align 8
+  %33 = load double* %6, align 8
+  %34 = fmul double %33, %28
+  %35 = fsub double %32, %34
+  %36 = load double* %7, align 8
+  %37 = load double* %8, align 8
+  %38 = load double* %9, align 8
+  %39 = fsub double %35, %38
+  %40 = fmul double %37, %39
+  %41 = load double* %10, align 8
+  %42 = fsub double %35, %41
+  %43 = fdiv double %40, %42
+  %44 = call double @exp(double %43) #1
+  %45 = fmul double %36, %44
+  %46 = load double* %11, align 8
+  %47 = fmul double %46, %45
+  %48 = load double* %12, align 8
+  %49 = fmul double %48, %45
+  %50 = fsub double %31, %49
+  %51 = fdiv double %47, %50
+  %52 = fsub double %30, %51
+  %53 = load double* %10, align 8
+  %54 = fsub double %35, %53
+  %55 = fmul double %54, %54
+  %56 = load double* %6, align 8
+  %57 = load double* %13, align 8
+  %58 = load double* %14, align 8
+  %59 = fmul double %58, %51
+  %60 = fadd double %59, 1.000000e+00
+  %61 = fmul double %57, %60
+  %62 = fmul double %61, %51
+  %63 = fdiv double %62, %55
+  %64 = fmul double %56, %63
+  %65 = fadd double %64, 1.000000e+00
+  %66 = fdiv double 1.000000e+00, %65
+  %67 = load i32* %15, align 4
+  %68 = icmp eq i32 %67, 1
+  br i1 %68, label %"3", label %"10"
+
+"3":                                              ; preds = %"2"
+  %69 = load double* %16, align 8
+  %70 = fdiv double %31, %69
+  %71 = load double* %17, align 8
+  %72 = fmul double %71, %70
+  %73 = fsub double 1.000000e+00, %70
+  %74 = fmul double %72, %73
+  %75 = load double* %18, align 8
+  %76 = fsub double %70, 5.000000e-01
+  %77 = fmul double %75, %76
+  %78 = fadd double %77, 1.000000e+00
+  %79 = fmul double %74, %78
+  %80 = fsub double 9.500000e-01, %79
+  %81 = load double* %1, align 8
+  %82 = fdiv double %30, %51
+  %83 = fsub double %82, %80
+  %84 = load double* %19, align 8
+  %85 = fsub double %84, %80
+  %86 = fdiv double %83, %85
+  %87 = fmul double %81, %86
+  %88 = fcmp olt double %87, 1.000000e+00
+  %toBool = icmp ne i1 %88, false
+  %89 = or i1 %toBool, false
+  %90 = icmp ne i1 %89, false
+  br i1 %90, label %"4", label %"5"
+
+"4":                                              ; preds = %"3"
+  br label %"5"
+
+"5":                                              ; preds = %"4", %"3"
+  %91 = phi double [ %87, %"4" ], [ 1.000000e+00, %"3" ]
+  %92 = fcmp ogt double %91, 0.000000e+00
+  %toBool1 = icmp ne i1 %92, false
+  %93 = or i1 %toBool1, false
+  %94 = icmp ne i1 %93, false
+  br i1 %94, label %"6", label %"7"
+
+"6":                                              ; preds = %"5"
+  br label %"7"
+
+"7":                                              ; preds = %"6", %"5"
+  %95 = phi double [ %91, %"6" ], [ 0.000000e+00, %"5" ]
+  %96 = fmul double %95, %95
+  store double %96, double* %20, align 8
+  %97 = fmul double %51, 5.000000e-03
+  %98 = fcmp ogt double %52, 0.000000e+00
+  %99 = icmp ne i1 %98, false
+  br i1 %99, label %"8", label %"9"
+
+"8":                                              ; preds = %"7"
+  %100 = fsub double 1.000000e+00, %80
+  %101 = load double* %19, align 8
+  %102 = fsub double %101, %80
+  %103 = fdiv double %100, %102
+  %104 = fmul double %103, %103
+  %105 = load double* %1, align 8
+  %106 = fmul double %105, %104
+  %107 = fmul double %66, %52
+  %108 = fsub double %107, %97
+  %109 = load double* %20, align 8
+  %110 = fsub double %109, %106
+  %111 = fmul double %108, %110
+  %112 = fsub double 1.000000e+00, %106
+  %113 = fdiv double %111, %112
+  %114 = fadd double %113, %97
+  br label %"9"
+
+"9":                                              ; preds = %"8", %"7"
+  %115 = phi double [ %114, %"8" ], [ %97, %"7" ]
+  %116 = load double* %20, align 8
+  %117 = fmul double %116, %115
+  br label %"24"
+
+"10":                                             ; preds = %"2"
+  %118 = load i32* %15, align 4
+  %119 = icmp eq i32 %118, 2
+  br i1 %119, label %"11", label %"24"
+
+"11":                                             ; preds = %"10"
+  %120 = load double* %21, align 8
+  %121 = fcmp olt double %120, 1.000000e-03
+  %toBool2 = icmp ne i1 %121, false
+  %122 = or i1 %toBool2, false
+  %123 = icmp ne i1 %122, false
+  br i1 %123, label %"12", label %"13"
+
+"12":                                             ; preds = %"11"
+  br label %"13"
+
+"13":                                             ; preds = %"12", %"11"
+  %124 = phi double [ %120, %"12" ], [ 1.000000e-03, %"11" ]
+  %125 = fcmp ole double %124, 0.000000e+00
+  %126 = icmp ne i1 %125, false
+  br i1 %126, label %"14", label %"15"
+
+"14":                                             ; preds = %"13"
+  %127 = call double @copysign(double 1.000000e+00, double %52) #1
+  %128 = fadd double %127, 1.000000e+00
+  %129 = fmul double %128, 5.000000e-01
+  %130 = call double @fabs(double %129) #1
+  store double %130, double* %20, align 8
+  %131 = load double* %20, align 8
+  %132 = fmul double %131, %66
+  %133 = fmul double %132, %52
+  br label %"24"
+
+"15":                                             ; preds = %"13"
+  %134 = fdiv double %52, %124
+  %135 = load double* %1, align 8
+  %136 = load double* %0, align 8
+  %137 = fdiv double %134, %136
+  %138 = fadd double %137, 1.000000e+00
+  %139 = fmul double %135, %138
+  %140 = fcmp ogt double %139, 0.000000e+00
+  %toBool3 = icmp ne i1 %140, false
+  %141 = or i1 %toBool3, false
+  %142 = icmp ne i1 %141, false
+  br i1 %142, label %"16", label %"17"
+
+"16":                                             ; preds = %"15"
+  br label %"17"
+
+"17":                                             ; preds = %"16", %"15"
+  %143 = phi double [ %139, %"16" ], [ 0.000000e+00, %"15" ]
+  %144 = fcmp olt double %143, 1.000000e+00
+  %toBool4 = icmp ne i1 %144, false
+  %145 = or i1 %toBool4, false
+  %146 = icmp ne i1 %145, false
+  br i1 %146, label %"18", label %"19"
+
+"18":                                             ; preds = %"17"
+  br label %"19"
+
+"19":                                             ; preds = %"18", %"17"
+  %147 = phi double [ %143, %"18" ], [ 1.000000e+00, %"17" ]
+  store double %147, double* %20, align 8
+  %148 = load double* %0, align 8
+  %149 = fsub double -0.000000e+00, %148
+  %150 = fcmp oge double %149, %134
+  %151 = icmp ne i1 %150, false
+  br i1 %151, label %"20", label %"21"
+
+"20":                                             ; preds = %"19"
+  br label %"24"
+
+"21":                                             ; preds = %"19"
+  %152 = fcmp oge double %134, %27
+  %153 = icmp ne i1 %152, false
+  br i1 %153, label %"22", label %"23"
+
+"22":                                             ; preds = %"21"
+  %154 = fmul double %66, %52
+  br label %"24"
+
+"23":                                             ; preds = %"21"
+  %155 = load double* %0, align 8
+  %156 = fadd double %155, %134
+  %157 = load double* %0, align 8
+  %158 = fadd double %157, %27
+  %159 = fdiv double %156, %158
+  %160 = fmul double %159, %159
+  %161 = fmul double %66, %124
+  %162 = fmul double %161, %27
+  %163 = fmul double %162, %160
+  br label %"24"
+
+"24":                                             ; preds = %"23", %"22", %"20", %"14", %"10", %"9"
+  %164 = phi double [ %163, %"23" ], [ %154, %"22" ], [ 0.000000e+00, %"20" ], [ %133, %"14" ], [ %28, %"10" ], [ %117, %"9" ]
+  store double %164, double* %22, align 8
+  br label %return
+
+return:                                           ; preds = %"24"
+  ret void
+}
+
+; Function Attrs: nounwind readnone
+declare double @exp(double) #1
+
+; Function Attrs: nounwind readnone
+declare double @copysign(double, double) #1
+
+declare double @fabs(double)
+
+; Function Attrs: nounwind uwtable
+define void @__turbulence_utilities_MOD_stab_funct_s(double* noalias %sm, double* noalias %sh, double* noalias %fm2, double* noalias %fh2, double* noalias %frc, double* noalias %tvs, double* noalias %tls, double* noalias %d1, double* noalias %d2, double* noalias %d3, double* noalias %d4, double* noalias %d5, double* noalias %d6, double* noalias %c_g) unnamed_addr #0 {
+entry:
+  %sm_addr = alloca double*, align 8
+  %sh_addr = alloca double*, align 8
+  %fm2_addr = alloca double*, align 8
+  %fh2_addr = alloca double*, align 8
+  %frc_addr = alloca double*, align 8
+  %tvs_addr = alloca double*, align 8
+  %tls_addr = alloca double*, align 8
+  %d1_addr = alloca double*, align 8
+  %d2_addr = alloca double*, align 8
+  %d3_addr = alloca double*, align 8
+  %d4_addr = alloca double*, align 8
+  %d5_addr = alloca double*, align 8
+  %d6_addr = alloca double*, align 8
+  %c_g_addr = alloca double*, align 8
+  %a11 = alloca double
+  %a12 = alloca double
+  %a21 = alloca double
+  %a22 = alloca double
+  %a3 = alloca double
+  %a5 = alloca double
+  %a6 = alloca double
+  %be1 = alloca double
+  %be2 = alloca double
+  %fakt = alloca double
+  %gama = alloca double
+  %gh = alloca double
+  %gm = alloca double
+  %val1 = alloca double
+  %val2 = alloca double
+  %"alloca point" = bitcast i32 0 to i32
+  store double* %sm, double** %sm_addr, align 1
+  store double* %sh, double** %sh_addr, align 1
+  store double* %fm2, double** %fm2_addr, align 1
+  store double* %fh2, double** %fh2_addr, align 1
+  store double* %frc, double** %frc_addr, align 1
+  store double* %tvs, double** %tvs_addr, align 1
+  store double* %tls, double** %tls_addr, align 1
+  store double* %d1, double** %d1_addr, align 1
+  store double* %d2, double** %d2_addr, align 1
+  store double* %d3, double** %d3_addr, align 1
+  store double* %d4, double** %d4_addr, align 1
+  store double* %d5, double** %d5_addr, align 1
+  store double* %d6, double** %d6_addr, align 1
+  store double* %c_g, double** %c_g_addr, align 1
+  %0 = load double** %tls_addr, align 8
+  %1 = load double** %frc_addr, align 8
+  %2 = load double** %tvs_addr, align 8
+  %3 = load double** %fh2_addr, align 8
+  %4 = load double** %c_g_addr, align 8
+  %5 = load double** %fm2_addr, align 8
+  %6 = load double** %d1_addr, align 8
+  %7 = load double** %d5_addr, align 8
+  %8 = load double** %d4_addr, align 8
+  %9 = load double** %d6_addr, align 8
+  %10 = load double** %d2_addr, align 8
+  %11 = load double** %d3_addr, align 8
+  %12 = load double** %sh_addr, align 8
+  %13 = load double** %sm_addr, align 8
+  %"ssa point" = bitcast i32 0 to i32
+  br label %"2"
+
+"2":                                              ; preds = %entry
+  %14 = load double* %0, align 8
+  %15 = load double* %1, align 8
+  %16 = fmul double %14, %15
+  %17 = load double* %2, align 8
+  %18 = load double* %2, align 8
+  %19 = fmul double %17, %18
+  %20 = fdiv double %16, %19
+  %21 = load double* %0, align 8
+  %22 = load double* %2, align 8
+  %23 = fdiv double %21, %22
+  %24 = fmul double %23, %23
+  %25 = load double* %3, align 8
+  %26 = fcmp oge double %25, 0.000000e+00
+  %27 = icmp ne i1 %26, false
+  br i1 %27, label %"3", label %"4"
+
+"3":                                              ; preds = %"2"
+  %28 = load double* %4, align 8
+  %29 = fsub double 1.000000e+00, %28
+  %30 = load double* %3, align 8
+  %31 = fmul double %30, %24
+  %32 = load double* %5, align 8
+  %33 = fmul double %32, %24
+  %34 = load double* %6, align 8
+  %35 = load double* %7, align 8
+  %36 = load double* %8, align 8
+  %37 = fsub double %35, %36
+  %38 = fmul double %37, %31
+  %39 = fadd double %34, %38
+  %40 = load double* %8, align 8
+  %41 = fmul double %40, %33
+  %42 = load double* %9, align 8
+  %43 = load double* %8, align 8
+  %44 = fsub double %42, %43
+  %45 = fmul double %44, %31
+  %46 = load double* %10, align 8
+  %47 = load double* %11, align 8
+  %48 = fmul double %47, %31
+  %49 = fadd double %46, %48
+  %50 = load double* %8, align 8
+  %51 = fmul double %50, %33
+  %52 = fadd double %49, %51
+  %53 = fmul double %39, %52
+  %54 = fmul double %41, %45
+  %55 = fsub double %53, %54
+  %56 = fmul double 1.000000e+00, %52
+  %57 = fmul double %29, %41
+  %58 = fsub double %56, %57
+  %59 = fdiv double %58, %55
+  store double %59, double* %12, align 8
+  %60 = fmul double %29, %39
+  %61 = fmul double 1.000000e+00, %45
+  %62 = fsub double %60, %61
+  %63 = fdiv double %62, %55
+  store double %63, double* %13, align 8
+  br label %"5"
+
+"4":                                              ; preds = %"2"
+  %64 = load double* %8, align 8
+  %65 = fmul double %64, %20
+  %66 = fsub double 1.000000e+00, %65
+  %67 = load double* %4, align 8
+  %68 = fsub double %66, %67
+  %69 = load double* %11, align 8
+  %70 = fmul double %69, %20
+  %71 = load double* %10, align 8
+  %72 = fdiv double %70, %71
+  %73 = load double* %7, align 8
+  %74 = fmul double %73, %20
+  %75 = load double* %6, align 8
+  %76 = fdiv double %74, %75
+  %77 = load double* %9, align 8
+  %78 = fmul double %77, %20
+  %79 = load double* %10, align 8
+  %80 = fdiv double %78, %79
+  %81 = load double* %6, align 8
+  %82 = fdiv double %66, %81
+  %83 = load double* %10, align 8
+  %84 = fdiv double %68, %83
+  %85 = load double* %5, align 8
+  %86 = fmul double %85, %84
+  %87 = fsub double %76, %72
+  %88 = fadd double %87, %82
+  %89 = load double* %3, align 8
+  %90 = fmul double %88, %89
+  %91 = fadd double %86, %90
+  %92 = fmul double %82, 2.000000e+00
+  %93 = fdiv double %91, %92
+  %94 = fmul double %93, %93
+  %95 = fadd double %80, %84
+  %96 = load double* %3, align 8
+  %97 = fmul double %95, %96
+  %98 = load double* %5, align 8
+  %99 = fmul double %97, %98
+  %100 = fdiv double %99, %82
+  %101 = fsub double %94, %100
+  %102 = call double @sqrt(double %101) #1
+  %103 = fadd double %102, %93
+  %104 = load double* %3, align 8
+  %105 = load double* %3, align 8
+  %106 = fsub double %103, %105
+  %107 = fdiv double %104, %106
+  %108 = fmul double %76, %107
+  %109 = fsub double %82, %108
+  store double %109, double* %12, align 8
+  %110 = load double* %12, align 8
+  %111 = fmul double %80, %107
+  %112 = fsub double %84, %111
+  %113 = fmul double %110, %112
+  %114 = fsub double %76, %72
+  %115 = fmul double %114, %107
+  %116 = fsub double %82, %115
+  %117 = fdiv double %113, %116
+  store double %117, double* %13, align 8
+  br label %"5"
+
+"5":                                              ; preds = %"4", %"3"
+  br label %return
+
+return:                                           ; preds = %"5"
+  ret void
+}
+
+; Function Attrs: nounwind readnone
+declare double @sqrt(double) #1
+
+; Function Attrs: nounwind uwtable
+define void @__turbulence_utilities_MOD_turb_param(i32* noalias %istart, i32* noalias %iend, i32* noalias %jstart, i32* noalias %jend, double* noalias %grav, double* noalias %cp_d, %"struct.array3_real(kind=8)"* noalias %dd) unnamed_addr #0 {
+entry:
+  %istart_addr = alloca i32*, align 8
+  %iend_addr = alloca i32*, align 8
+  %jstart_addr = alloca i32*, align 8
+  %jend_addr = alloca i32*, align 8
+  %grav_addr = alloca double*, align 8
+  %cp_d_addr = alloca double*, align 8
+  %dd_addr = alloca %"struct.array3_real(kind=8)"*, align 8
+  %ubound.10 = alloca i64
+  %stride.11 = alloca i64
+  %ubound.12 = alloca i64
+  %stride.13 = alloca i64
+  %ubound.14 = alloca i64
+  %stride.15 = alloca i64
+  %offset.16 = alloca i64
+  %size.17 = alloca i64
+  %dd.0 = alloca [0 x double]*
+  %i = alloca i32
+  %j = alloca i32
+  %D.1841 = alloca i64
+  %D.1842 = alloca i64
+  %D.1843 = alloca i64
+  %D.1840 = alloca i64
+  %M.18 = alloca double
+  %D.1831 = alloca i32
+  %j.424 = alloca i32
+  %D.1839 = alloca i32
+  %D.1835 = alloca i32
+  %i.425 = alloca i32
+  %D.1838 = alloca i32
+  %"alloca point" = bitcast i32 0 to i32
+  store i32* %istart, i32** %istart_addr, align 1
+  store i32* %iend, i32** %iend_addr, align 1
+  store i32* %jstart, i32** %jstart_addr, align 1
+  store i32* %jend, i32** %jend_addr, align 1
+  store double* %grav, double** %grav_addr, align 1
+  store double* %cp_d, double** %cp_d_addr, align 1
+  store %"struct.array3_real(kind=8)"* %dd, %"struct.array3_real(kind=8)"** %dd_addr, align 1
+  %0 = load %"struct.array3_real(kind=8)"** %dd_addr, align 8
+  %1 = load double** %grav_addr, align 8
+  %2 = load double** %cp_d_addr, align 8
+  %3 = load i32** %jstart_addr, align 8
+  %4 = load i32** %jend_addr, align 8
+  %5 = load i32** %istart_addr, align 8
+  %6 = load i32** %iend_addr, align 8
+  %"ssa point" = bitcast i32 0 to i32
+  br label %"2"
+
+"2":                                              ; preds = %entry
+  %7 = bitcast %"struct.array3_real(kind=8)"* %0 to %struct.array_descriptor3*
+  %8 = getelementptr inbounds %struct.array_descriptor3* %7, i32 0, i32 3
+  %9 = bitcast [3 x %struct.descriptor_dimension]* %8 to %struct.descriptor_dimension*
+  %10 = getelementptr %struct.descriptor_dimension* %9, i64 0
+  %11 = getelementptr inbounds %struct.descriptor_dimension* %10, i32 0, i32 0
+  %12 = load i64* %11, align 8
+  %13 = icmp ne i64 %12, 0
+  br i1 %13, label %"3", label %"4"
+
+"3":                                              ; preds = %"2"
+  br label %"5"
+
+"4":                                              ; preds = %"2"
+  br label %"5"
+
+"5":                                              ; preds = %"4", %"3"
+  %14 = phi i64 [ 1, %"4" ], [ %12, %"3" ]
+  %15 = bitcast %"struct.array3_real(kind=8)"* %0 to %struct.array_descriptor3*
+  %16 = getelementptr inbounds %struct.array_descriptor3* %15, i32 0, i32 0
+  %17 = load i8** %16, align 8
+  %18 = bitcast i8* %17 to [0 x double]*
+  %19 = bitcast %"struct.array3_real(kind=8)"* %0 to %struct.array_descriptor3*
+  %20 = getelementptr inbounds %struct.array_descriptor3* %19, i32 0, i32 3
+  %21 = bitcast [3 x %struct.descriptor_dimension]* %20 to %struct.descriptor_dimension*
+  %22 = getelementptr %struct.descriptor_dimension* %21, i64 0
+  %23 = getelementptr inbounds %struct.descriptor_dimension* %22, i32 0, i32 2
+  %24 = load i64* %23, align 8
+  %25 = bitcast %"struct.array3_real(kind=8)"* %0 to %struct.array_descriptor3*
+  %26 = getelementptr inbounds %struct.array_descriptor3* %25, i32 0, i32 3
+  %27 = bitcast [3 x %struct.descriptor_dimension]* %26 to %struct.descriptor_dimension*
+  %28 = getelementptr %struct.descriptor_dimension* %27, i64 0
+  %29 = getelementptr inbounds %struct.descriptor_dimension* %28, i32 0, i32 1
+  %30 = load i64* %29, align 8
+  %31 = sub i64 %24, %30
+  %32 = add i64 %31, 1
+  %33 = bitcast %"struct.array3_real(kind=8)"* %0 to %struct.array_descriptor3*
+  %34 = getelementptr inbounds %struct.array_descriptor3* %33, i32 0, i32 3
+  %35 = bitcast [3 x %struct.descriptor_dimension]* %34 to %struct.descriptor_dimension*
+  %36 = getelementptr %struct.descriptor_dimension* %35, i64 1
+  %37 = getelementptr inbounds %struct.descriptor_dimension* %36, i32 0, i32 0
+  %38 = load i64* %37, align 8
+  %39 = bitcast %"struct.array3_real(kind=8)"* %0 to %struct.array_descriptor3*
+  %40 = getelementptr inbounds %struct.array_descriptor3* %39, i32 0, i32 3
+  %41 = bitcast [3 x %struct.descriptor_dimension]* %40 to %struct.descriptor_dimension*
+  %42 = getelementptr %struct.descriptor_dimension* %41, i64 1
+  %43 = getelementptr inbounds %struct.descriptor_dimension* %42, i32 0, i32 2
+  %44 = load i64* %43, align 8
+  %45 = bitcast %"struct.array3_real(kind=8)"* %0 to %struct.array_descriptor3*
+  %46 = getelementptr inbounds %struct.array_descriptor3* %45, i32 0, i32 3
+  %47 = bitcast [3 x %struct.descriptor_dimension]* %46 to %struct.descriptor_dimension*
+  %48 = getelementptr %struct.descriptor_dimension* %47, i64 1
+  %49 = getelementptr inbounds %struct.descriptor_dimension* %48, i32 0, i32 1
+  %50 = load i64* %49, align 8
+  %51 = sub i64 %44, %50
+  %52 = add i64 %51, 1
+  %53 = bitcast %"struct.array3_real(kind=8)"* %0 to %struct.array_descriptor3*
+  %54 = getelementptr inbounds %struct.array_descriptor3* %53, i32 0, i32 3
+  %55 = bitcast [3 x %struct.descriptor_dimension]* %54 to %struct.descriptor_dimension*
+  %56 = getelementptr %struct.descriptor_dimension* %55, i64 2
+  %57 = getelementptr inbounds %struct.descriptor_dimension* %56, i32 0, i32 0
+  %58 = load i64* %57, align 8
+  %59 = bitcast %"struct.array3_real(kind=8)"* %0 to %struct.array_descriptor3*
+  %60 = getelementptr inbounds %struct.array_descriptor3* %59, i32 0, i32 3
+  %61 = bitcast [3 x %struct.descriptor_dimension]* %60 to %struct.descriptor_dimension*
+  %62 = getelementptr %struct.descriptor_dimension* %61, i64 2
+  %63 = getelementptr inbounds %struct.descriptor_dimension* %62, i32 0, i32 2
+  %64 = load i64* %63, align 8
+  %65 = bitcast %"struct.array3_real(kind=8)"* %0 to %struct.array_descriptor3*
+  %66 = getelementptr inbounds %struct.array_descriptor3* %65, i32 0, i32 3
+  %67 = bitcast [3 x %struct.descriptor_dimension]* %66 to %struct.descriptor_dimension*
+  %68 = getelementptr %struct.descriptor_dimension* %67, i64 2
+  %69 = getelementptr inbounds %struct.descriptor_dimension* %68, i32 0, i32 1
+  %70 = load i64* %69, align 8
+  %71 = sub i64 %64, %70
+  %72 = add i64 %71, 1
+  %73 = mul i64 %72, %58
+  %74 = sub i64 0, %14
+  %75 = sub i64 %74, %38
+  %76 = add i64 %73, -1
+  %77 = mul i64 %73, 64
+  %78 = mul i64 %73, 8
+  %79 = load double* @__data_turbulence_MOD_d_mom, align 8
+  %80 = call double @log(double %79) #1
+  %81 = fmul double %80, 0x3FD5555555555555
+  %82 = call double @exp(double %81) #1
+  store double %82, double* @__data_turbulence_MOD_c_tke, align 8
+  %83 = load double* @__data_turbulence_MOD_a_mom, align 8
+  %84 = load double* @__data_turbulence_MOD_c_tke, align 8
+  %85 = fmul double %83, %84
+  %86 = fdiv double 1.000000e+00, %85
+  %87 = fsub double 1.000000e+00, %86
+  %88 = load double* @__data_turbulence_MOD_a_mom, align 8
+  %89 = fmul double %88, 6.000000e+00
+  %90 = load double* @__data_turbulence_MOD_d_mom, align 8
+  %91 = fdiv double %89, %90
+  %92 = fsub double %87, %91
+  store double %92, double* @__data_turbulence_MOD_c_g, align 8
+  %93 = load double* @__data_turbulence_MOD_d_mom, align 8
+  store double %93, double* @__data_turbulence_MOD_d_0, align 8
+  %94 = load double* @__data_turbulence_MOD_a_heat, align 8
+  %95 = fdiv double 1.000000e+00, %94
+  store double %95, double* @__data_turbulence_MOD_d_1, align 8
+  %96 = load double* @__data_turbulence_MOD_a_mom, align 8
+  %97 = fdiv double 1.000000e+00, %96
+  store double %97, double* @__data_turbulence_MOD_d_2, align 8
+  %98 = load double* @__data_turbulence_MOD_a_heat, align 8
+  %99 = fmul double %98, 9.000000e+00
+  store double %99, double* @__data_turbulence_MOD_d_3, align 8
+  %100 = load double* @__data_turbulence_MOD_a_mom, align 8
+  %101 = fmul double %100, 6.000000e+00
+  store double %101, double* @__data_turbulence_MOD_d_4, align 8
+  %102 = load double* @__data_turbulence_MOD_d_heat, align 8
+  %103 = load double* @__data_turbulence_MOD_d_4, align 8
+  %104 = fadd double %102, %103
+  %105 = fmul double %104, 3.000000e+00
+  store double %105, double* @__data_turbulence_MOD_d_5, align 8
+  %106 = load double* @__data_turbulence_MOD_d_4, align 8
+  %107 = fmul double %106, 3.000000e+00
+  %108 = load double* @__data_turbulence_MOD_d_3, align 8
+  %109 = fadd double %107, %108
+  store double %109, double* @__data_turbulence_MOD_d_6, align 8
+  %110 = load double* @__data_turbulence_MOD_d_mom, align 8
+  %111 = load double* @__data_turbulence_MOD_d_4, align 8
+  %112 = fsub double %110, %111
+  %113 = load double* @__data_turbulence_MOD_d_5, align 8
+  %114 = fdiv double %112, %113
+  %115 = fadd double %114, 1.000000e+00
+  %116 = fdiv double 1.000000e+00, %115
+  store double %116, double* @__data_turbulence_MOD_rim, align 8
+  %117 = load double* @__data_turbulence_MOD_d_3, align 8
+  %118 = load double* @__data_turbulence_MOD_d_2, align 8
+  %119 = load double* @__data_turbulence_MOD_d_mom, align 8
+  %120 = fmul double %118, %119
+  %121 = fdiv double %117, %120
+  store double %121, double* @__data_turbulence_MOD_a_3, align 8
+  %122 = load double* @__data_turbulence_MOD_d_5, align 8
+  %123 = load double* @__data_turbulence_MOD_d_1, align 8
+  %124 = load double* @__data_turbulence_MOD_d_mom, align 8
+  %125 = fmul double %123, %124
+  %126 = fdiv double %122, %125
+  store double %126, double* @__data_turbulence_MOD_a_5, align 8
+  %127 = load double* @__data_turbulence_MOD_d_6, align 8
+  %128 = load double* @__data_turbulence_MOD_d_2, align 8
+  %129 = load double* @__data_turbulence_MOD_d_mom, align 8
+  %130 = fmul double %128, %129
+  %131 = fdiv double %127, %130
+  store double %131, double* @__data_turbulence_MOD_a_6, align 8
+  %132 = load double* @__data_turbulence_MOD_d_4, align 8
+  %133 = load double* @__data_turbulence_MOD_d_mom, align 8
+  %134 = fdiv double %132, %133
+  %135 = fsub double 1.000000e+00, %134
+  %136 = load double* @__data_turbulence_MOD_d_1, align 8
+  %137 = fdiv double %135, %136
+  store double %137, double* @__data_turbulence_MOD_b_1, align 8
+  %138 = load double* @__data_turbulence_MOD_d_4, align 8
+  %139 = load double* @__data_turbulence_MOD_d_mom, align 8
+  %140 = fdiv double %138, %139
+  %141 = fsub double 1.000000e+00, %140
+  %142 = load double* @__data_turbulence_MOD_c_g, align 8
+  %143 = fsub double %141, %142
+  %144 = load double* @__data_turbulence_MOD_d_2, align 8
+  %145 = fdiv double %143, %144
+  store double %145, double* @__data_turbulence_MOD_b_2, align 8
+  %146 = load double* %1, align 8
+  %147 = load double* %2, align 8
+  %148 = fdiv double %146, %147
+  store double %148, double* @__data_turbulence_MOD_tet_g, align 8
+  %149 = load double* @__data_turbulence_MOD_l_hori, align 8
+  %150 = load double* @__data_turbulence_MOD_tur_len, align 8
+  %151 = fcmp olt double %150, %149
+  %152 = fcmp uno double %149, %149
+  %toBool = icmp ne i1 %151, false
+  %toBool1 = icmp ne i1 %152, false
+  %153 = or i1 %toBool, %toBool1
+  %154 = icmp ne i1 %153, false
+  br i1 %154, label %"6", label %"7"
+
+"6":                                              ; preds = %"5"
+  %155 = load double* @__data_turbulence_MOD_tur_len, align 8
+  br label %"7"
+
+"7":                                              ; preds = %"6", %"5"
+  %156 = phi double [ %155, %"6" ], [ %149, %"5" ]
+  store double %156, double* @__data_turbulence_MOD_l_scal, align 8
+  %157 = load i32* %3, align 4
+  %158 = load i32* %4, align 4
+  %159 = icmp sle i32 %157, %158
+  br i1 %159, label %"8", label %"13"
+
+"8":                                              ; preds = %"12", %"7"
+  %160 = phi i32 [ %254, %"12" ], [ %157, %"7" ]
+  %161 = load i32* %5, align 4
+  %162 = load i32* %6, align 4
+  %163 = icmp sle i32 %161, %162
+  br i1 %163, label %"9", label %"11"
+
+"9":                                              ; preds = %"10", %"8"
+  %164 = phi i32 [ %251, %"10" ], [ %161, %"8" ]
+  %165 = sext i32 %164 to i64
+  %166 = mul i64 %165, %14
+  %167 = sext i32 %160 to i64
+  %168 = mul i64 %167, %38
+  %169 = add i64 %166, %168
+  %170 = add i64 %169, %75
+  %171 = load double* @__data_turbulence_MOD_d_mom, align 8
+  %172 = bitcast [0 x double]* %18 to double*
+  %173 = getelementptr double* %172, i64 %170
+  store double %171, double* %173, align 8
+  %174 = sext i32 %164 to i64
+  %175 = mul i64 %174, %14
+  %176 = sext i32 %160 to i64
+  %177 = mul i64 %176, %38
+  %178 = add i64 %175, %177
+  %179 = add i64 %178, %58
+  %180 = add i64 %179, %75
+  %181 = load double* @__data_turbulence_MOD_d_1, align 8
+  %182 = bitcast [0 x double]* %18 to double*
+  %183 = getelementptr double* %182, i64 %180
+  store double %181, double* %183, align 8
+  %184 = sext i32 %164 to i64
+  %185 = mul i64 %184, %14
+  %186 = sext i32 %160 to i64
+  %187 = mul i64 %186, %38
+  %188 = add i64 %185, %187
+  %189 = mul i64 %58, 2
+  %190 = add i64 %188, %189
+  %191 = add i64 %190, %75
+  %192 = load double* @__data_turbulence_MOD_d_2, align 8
+  %193 = bitcast [0 x double]* %18 to double*
+  %194 = getelementptr double* %193, i64 %191
+  store double %192, double* %194, align 8
+  %195 = sext i32 %164 to i64
+  %196 = mul i64 %195, %14
+  %197 = sext i32 %160 to i64
+  %198 = mul i64 %197, %38
+  %199 = add i64 %196, %198
+  %200 = mul i64 %58, 3
+  %201 = add i64 %199, %200
+  %202 = add i64 %201, %75
+  %203 = load double* @__data_turbulence_MOD_d_3, align 8
+  %204 = bitcast [0 x double]* %18 to double*
+  %205 = getelementptr double* %204, i64 %202
+  store double %203, double* %205, align 8
+  %206 = sext i32 %164 to i64
+  %207 = mul i64 %206, %14
+  %208 = sext i32 %160 to i64
+  %209 = mul i64 %208, %38
+  %210 = add i64 %207, %209
+  %211 = mul i64 %58, 4
+  %212 = add i64 %210, %211
+  %213 = add i64 %212, %75
+  %214 = load double* @__data_turbulence_MOD_d_4, align 8
+  %215 = bitcast [0 x double]* %18 to double*
+  %216 = getelementptr double* %215, i64 %213
+  store double %214, double* %216, align 8
+  %217 = sext i32 %164 to i64
+  %218 = mul i64 %217, %14
+  %219 = sext i32 %160 to i64
+  %220 = mul i64 %219, %38
+  %221 = add i64 %218, %220
+  %222 = mul i64 %58, 5
+  %223 = add i64 %221, %222
+  %224 = add i64 %223, %75
+  %225 = load double* @__data_turbulence_MOD_d_5, align 8
+  %226 = bitcast [0 x double]* %18 to double*
+  %227 = getelementptr double* %226, i64 %224
+  store double %225, double* %227, align 8
+  %228 = sext i32 %164 to i64
+  %229 = mul i64 %228, %14
+  %230 = sext i32 %160 to i64
+  %231 = mul i64 %230, %38
+  %232 = add i64 %229, %231
+  %233 = mul i64 %58, 6
+  %234 = add i64 %232, %233
+  %235 = add i64 %234, %75
+  %236 = load double* @__data_turbulence_MOD_d_6, align 8
+  %237 = bitcast [0 x double]* %18 to double*
+  %238 = getelementptr double* %237, i64 %235
+  store double %236, double* %238, align 8
+  %239 = sext i32 %164 to i64
+  %240 = mul i64 %239, %14
+  %241 = sext i32 %160 to i64
+  %242 = mul i64 %241, %38
+  %243 = add i64 %240, %242
+  %244 = mul i64 %58, 7
+  %245 = add i64 %243, %244
+  %246 = add i64 %245, %75
+  %247 = load double* @__data_turbulence_MOD_rim, align 8
+  %248 = bitcast [0 x double]* %18 to double*
+  %249 = getelementptr double* %248, i64 %246
+  store double %247, double* %249, align 8
+  %250 = icmp eq i32 %164, %162
+  %251 = add i32 %164, 1
+  %252 = icmp ne i1 %250, false
+  br i1 %252, label %"11", label %"10"
+
+"10":                                             ; preds = %"9"
+  br label %"9"
+
+"11":                                             ; preds = %"9", %"8"
+  %253 = icmp eq i32 %160, %158
+  %254 = add i32 %160, 1
+  %255 = icmp ne i1 %253, false
+  br i1 %255, label %"13", label %"12"
+
+"12":                                             ; preds = %"11"
+  br label %"8"
+
+"13":                                             ; preds = %"11", %"7"
+  br label %return
+
+return:                                           ; preds = %"13"
+  ret void
+}
+
+; Function Attrs: nounwind readnone
+declare double @log(double) #1
+
+; Function Attrs: nounwind uwtable
+define void @__turbulence_utilities_MOD_turb_cloud(i32* noalias %ie, i32* noalias %je, i32* noalias %ke, i32* noalias %ke1, i32* noalias %kcs, i32* noalias %kce, i32* noalias %istart, i32* noalias %iend, i32* noalias %jstart, i32* noalias %jend, i32* noalias %kstart, i32* noalias %kend, [0 x double]* noalias %prs, [0 x double]* noalias %ps, [0 x double]* noalias %rcld, [0 x double]* noalias %t, [0 x double]* noalias %qv, [0 x double]* noalias %qc, [0 x double]* noalias %clc, [0 x double]* noalias %clwc, i32* noalias %itype_wcld, double* noalias %lhocp, double* noalias %uc1, double* noalias %uc2, double* noalias %ucl, double* noalias %rdv, double* noalias %o_m_rdv, double* noalias %rvd_m_o, double* noalias %b1, double* noalias %b2w, double* noalias %b3, double* noalias %b4w, double* noalias %b234w) unnamed_addr #0 {
+entry:
+  %ie_addr = alloca i32*, align 8
+  %je_addr = alloca i32*, align 8
+  %ke_addr = alloca i32*, align 8
+  %ke1_addr = alloca i32*, align 8
+  %kcs_addr = alloca i32*, align 8
+  %kce_addr = alloca i32*, align 8
+  %istart_addr = alloca i32*, align 8
+  %iend_addr = alloca i32*, align 8
+  %jstart_addr = alloca i32*, align 8
+  %jend_addr = alloca i32*, align 8
+  %kstart_addr = alloca i32*, align 8
+  %kend_addr = alloca i32*, align 8
+  %prs_addr = alloca [0 x double]*, align 8
+  %ps_addr = alloca [0 x double]*, align 8
+  %rcld_addr = alloca [0 x double]*, align 8
+  %t_addr = alloca [0 x double]*, align 8
+  %qv_addr = alloca [0 x double]*, align 8
+  %qc_addr = alloca [0 x double]*, align 8
+  %clc_addr = alloca [0 x double]*, align 8
+  %clwc_addr = alloca [0 x double]*, align 8
+  %itype_wcld_addr = alloca i32*, align 8
+  %lhocp_addr = alloca double*, align 8
+  %uc1_addr = alloca double*, align 8
+  %uc2_addr = alloca double*, align 8
+  %ucl_addr = alloca double*, align 8
+  %rdv_addr = alloca double*, align 8
+  %o_m_rdv_addr = alloca double*, align 8
+  %rvd_m_o_addr = alloca double*, align 8
+  %b1_addr = alloca double*, align 8
+  %b2w_addr = alloca double*, align 8
+  %b3_addr = alloca double*, align 8
+  %b4w_addr = alloca double*, align 8
+  %b234w_addr = alloca double*, align 8
+  %ubound.19 = alloca i64
+  %ubound.20 = alloca i64
+  %stride.21 = alloca i64
+  %lbound.22 = alloca i64
+  %ubound.23 = alloca i64
+  %stride.24 = alloca i64
+  %offset.25 = alloca i64
+  %size.26 = alloca i64
+  %ubound.27 = alloca i64
+  %ubound.28 = alloca i64
+  %stride.29 = alloca i64
+  %lbound.30 = alloca i64
+  %ubound.31 = alloca i64
+  %stride.32 = alloca i64
+  %offset.33 = alloca i64
+  %size.34 = alloca i64
+  %dq = alloca double
+  %ubound.35 = alloca i64
+  %ubound.36 = alloca i64
+  %stride.37 = alloca i64
+  %offset.38 = alloca i64
+  %size.39 = alloca i64
+  %gam = alloca [0 x double]*
+  %i = alloca i32
+  %j = alloca i32
+  %k = alloca i32
+  %pres = alloca double
+  %ubound.40 = alloca i64
+  %ubound.41 = alloca i64
+  %stride.42 = alloca i64
+  %ubound.43 = alloca i64
+  %stride.44 = alloca i64
+  %offset.45 = alloca i64
+  %size.46 = alloca i64
+  %ubound.47 = alloca i64
+  %ubound.48 = alloca i64
+  %stride.49 = alloca i64
+  %offset.50 = alloca i64
+  %size.51 = alloca i64
+  %q = alloca double
+  %ubound.52 = alloca i64
+  %ubound.53 = alloca i64
+  %stride.54 = alloca i64
+  %ubound.55 = alloca i64
+  %stride.56 = alloca i64
+  %offset.57 = alloca i64
+  %size.58 = alloca i64
+  %ql = alloca double
+  %ubound.59 = alloca i64
+  %ubound.60 = alloca i64
+  %stride.61 = alloca i64
+  %offset.62 = alloca i64
+  %size.63 = alloca i64
+  %qs = alloca [0 x double]*
+  %ubound.64 = alloca i64
+  %ubound.65 = alloca i64
+  %stride.66 = alloca i64
+  %offset.67 = alloca i64
+  %size.68 = alloca i64
+  %qt = alloca [0 x double]*
+  %ubound.69 = alloca i64
+  %ubound.70 = alloca i64
+  %stride.71 = alloca i64
+  %ubound.72 = alloca i64
+  %stride.73 = alloca i64
+  %offset.74 = alloca i64
+  %size.75 = alloca i64
+  %ubound.76 = alloca i64
+  %ubound.77 = alloca i64
+  %stride.78 = alloca i64
+  %ubound.79 = alloca i64
+  %stride.80 = alloca i64
+  %offset.81 = alloca i64
+  %size.82 = alloca i64
+  %sig = alloca double
+  %ubound.83 = alloca i64
+  %ubound.84 = alloca i64
+  %stride.85 = alloca i64
+  %ubound.86 = alloca i64
+  %stride.87 = alloca i64
+  %offset.88 = alloca i64
+  %size.89 = alloca i64
+  %ubound.90 = alloca i64
+  %ubound.91 = alloca i64
+  %stride.92 = alloca i64
+  %offset.93 = alloca i64
+  %size.94 = alloca i64
+  %tl = alloca [0 x double]*
+  %uc = alloca double
+  %zclc1 = alloca double
+  %zpres = alloca double
+  %zpvap = alloca double
+  %zq_max = alloca double
+  %zqsat = alloca double
+  %zsigma = alloca double
+  %ztemp = alloca double
+  %zx = alloca double
+  %D.2022 = alloca i64
+  %D.2023 = alloca i64
+  %D.2024 = alloca i64
+  %D.2028 = alloca i64
+  %D.2029 = alloca i64
+  %D.2030 = alloca i64
+  %D.2034 = alloca i64
+  %D.2035 = alloca i64
+  %D.2036 = alloca i64
+  %D.2040 = alloca i64
+  %D.2041 = alloca i64
+  %D.2042 = alloca i64
+  %D.2046 = alloca i64
+  %D.2047 = alloca i64
+  %D.2048 = alloca i64
+  %D.2049 = alloca i64
+  %D.2050 = alloca i64
+  %D.2051 = alloca i64
+  %D.2052 = alloca i64
+  %D.2053 = alloca i64
+  %D.2054 = alloca i64
+  %D.2055 = alloca i64
+  %D.2056 = alloca i64
+  %D.2057 = alloca i64
+  %D.2058 = alloca i64
+  %D.2059 = alloca i64
+  %D.2060 = alloca i64
+  %D.2061 = alloca i64
+  %D.2062 = alloca i64
+  %D.2063 = alloca i64
+  %D.2064 = alloca i64
+  %D.2065 = alloca i64
+  %D.2066 = alloca i64
+  %D.2067 = alloca i64
+  %D.2068 = alloca i64
+  %D.2069 = alloca i64
+  %gam.359 = alloca i8*
+  %D.2043 = alloca i64
+  %qs.362 = alloca i8*
+  %D.2037 = alloca i64
+  %qt.365 = alloca i8*
+  %D.2031 = alloca i64
+  %tl.368 = alloca i8*
+  %D.2025 = alloca i64
+  %D.1956 = alloca i32
+  %k.371 = alloca i32
+  %D.2021 = alloca i32
+  %D.1961 = alloca i32
+  %j.372 = alloca i32
+  %D.1969 = alloca i32
+  %D.1965 = alloca i32
+  %i.373 = alloca i32
+  %D.1968 = alloca i32
+  %D.1971 = alloca i32
+  %j.374 = alloca i32
+  %D.1979 = alloca i32
+  %D.1975 = alloca i32
+  %i.375 = alloca i32
+  %D.1978 = alloca i32
+  %D.1981 = alloca i32
+  %j.376 = alloca i32
+  %D.1996 = alloca i32
+  %D.1985 = alloca i32
+  %i.377 = alloca i32
+  %D.1995 = alloca i32
+  %zpres.97 = alloca double
+  %ztemp.96 = alloca double
+  %zpvap.95 = alloca double
+  %D.1994 = alloca double
+  %D.1993 = alloca double
+  %zqsat.99 = alloca double
+  %ztemp.98 = alloca double
+  %D.1998 = alloca i32
+  %j.378 = alloca i32
+  %D.2020 = alloca i32
+  %D.2002 = alloca i32
+  %i.379 = alloca i32
+  %D.2019 = alloca i32
+  %M.101 = alloca double
+  %D.2007 = alloca double
+  %M.100 = alloca double
+  %D.2011 = alloca double
+  %D.2010 = alloca double
+  %D.2013 = alloca double
+  %M.102 = alloca double
+  %M.104 = alloca double
+  %D.2016 = alloca double
+  %M.103 = alloca double
+  %D.2027 = alloca i8*
+  %D.2033 = alloca i8*
+  %D.2039 = alloca i8*
+  %D.2045 = alloca i8*
+  %"alloca point" = bitcast i32 0 to i32
+  store i32* %ie, i32** %ie_addr, align 1
+  store i32* %je, i32** %je_addr, align 1
+  store i32* %ke, i32** %ke_addr, align 1
+  store i32* %ke1, i32** %ke1_addr, align 1
+  store i32* %kcs, i32** %kcs_addr, align 1
+  store i32* %kce, i32** %kce_addr, align 1
+  store i32* %istart, i32** %istart_addr, align 1
+  store i32* %iend, i32** %iend_addr, align 1
+  store i32* %jstart, i32** %jstart_addr, align 1
+  store i32* %jend, i32** %jend_addr, align 1
+  store i32* %kstart, i32** %kstart_addr, align 1
+  store i32* %kend, i32** %kend_addr, align 1
+  store [0 x double]* %prs, [0 x double]** %prs_addr, align 1
+  store [0 x double]* %ps, [0 x double]** %ps_addr, align 1
+  store [0 x double]* %rcld, [0 x double]** %rcld_addr, align 1
+  store [0 x double]* %t, [0 x double]** %t_addr, align 1
+  store [0 x double]* %qv, [0 x double]** %qv_addr, align 1
+  store [0 x double]* %qc, [0 x double]** %qc_addr, align 1
+  store [0 x double]* %clc, [0 x double]** %clc_addr, align 1
+  store [0 x double]* %clwc, [0 x double]** %clwc_addr, align 1
+  store i32* %itype_wcld, i32** %itype_wcld_addr, align 1
+  store double* %lhocp, double** %lhocp_addr, align 1
+  store double* %uc1, double** %uc1_addr, align 1
+  store double* %uc2, double** %uc2_addr, align 1
+  store double* %ucl, double** %ucl_addr, align 1
+  store double* %rdv, double** %rdv_addr, align 1
+  store double* %o_m_rdv, double** %o_m_rdv_addr, align 1
+  store double* %rvd_m_o, double** %rvd_m_o_addr, align 1
+  store double* %b1, double** %b1_addr, align 1
+  store double* %b2w, double** %b2w_addr, align 1
+  store double* %b3, double** %b3_addr, align 1
+  store double* %b4w, double** %b4w_addr, align 1
+  store double* %b234w, double** %b234w_addr, align 1
+  %0 = load [0 x double]** %qc_addr, align 8
+  %1 = load i32** %ie_addr, align 8
+  %2 = load i32** %je_addr, align 8
+  %3 = load i32** %ke_addr, align 8
+  %4 = load i32** %kcs_addr, align 8
+  %5 = load i32** %kce_addr, align 8
+  %6 = load i32** %ke1_addr, align 8
+  %7 = load i32** %kstart_addr, align 8
+  %8 = load i32** %kend_addr, align 8
+  %9 = load i32** %jstart_addr, align 8
+  %10 = load i32** %jend_addr, align 8
+  %11 = load i32** %istart_addr, align 8
+  %12 = load i32** %iend_addr, align 8
+  %13 = load [0 x double]** %qv_addr, align 8
+  %14 = load [0 x double]** %t_addr, align 8
+  %15 = load double** %lhocp_addr, align 8
+  %16 = load double** %b1_addr, align 8
+  %17 = load double** %b2w_addr, align 8
+  %18 = load double** %b3_addr, align 8
+  %19 = load double** %b4w_addr, align 8
+  %20 = load [0 x double]** %prs_addr, align 8
+  %21 = load double** %rdv_addr, align 8
+  %22 = load double** %o_m_rdv_addr, align 8
+  %23 = load double** %b234w_addr, align 8
+  %24 = load double** %rvd_m_o_addr, align 8
+  %25 = load i32** %itype_wcld_addr, align 8
+  %26 = load [0 x double]** %ps_addr, align 8
+  %27 = load double** %uc1_addr, align 8
+  %28 = load double** %uc2_addr, align 8
+  %29 = load double** %ucl_addr, align 8
+  %30 = load [0 x double]** %clc_addr, align 8
+  %31 = load [0 x double]** %clwc_addr, align 8
+  %32 = load [0 x double]** %rcld_addr, align 8
+  %"ssa point" = bitcast i32 0 to i32
+  br label %"2"
+
+"2":                                              ; preds = %entry
+  %33 = icmp ne [0 x double]* %0, null
+  br i1 %33, label %"3", label %"4"
+
+"3":                                              ; preds = %"2"
+  %34 = load i32* %1, align 4
+  %35 = sext i32 %34 to i64
+  %36 = icmp sge i64 %35, 0
+  %37 = select i1 %36, i64 %35, i64 0
+  %38 = load i32* %2, align 4
+  %39 = sext i32 %38 to i64
+  %40 = mul i64 %37, %39
+  %41 = icmp sge i64 %40, 0
+  %42 = select i1 %41, i64 %40, i64 0
+  %43 = load i32* %3, align 4
+  %44 = sext i32 %43 to i64
+  %45 = mul i64 %42, %44
+  %46 = icmp sge i64 %45, 0
+  %47 = select i1 %46, i64 %45, i64 0
+  %48 = add i64 %47, -1
+  %49 = mul i64 %47, 64
+  %50 = mul i64 %47, 8
+  %not = xor i64 %37, -1
+  %51 = sub i64 %not, %42
+  br label %"4"
+
+"4":                                              ; preds = %"3", %"2"
+  %52 = phi i64 [ %37, %"3" ], [ undef, %"2" ]
+  %53 = phi i64 [ %42, %"3" ], [ undef, %"2" ]
+  %54 = phi i64 [ %51, %"3" ], [ undef, %"2" ]
+  %55 = load i32* %1, align 4
+  %56 = sext i32 %55 to i64
+  %57 = icmp sge i64 %56, 0
+  %58 = select i1 %57, i64 %56, i64 0
+  %59 = load i32* %2, align 4
+  %60 = sext i32 %59 to i64
+  %61 = mul i64 %58, %60
+  %62 = icmp sge i64 %61, 0
+  %63 = select i1 %62, i64 %61, i64 0
+  %64 = load i32* %3, align 4
+  %65 = sext i32 %64 to i64
+  %66 = mul i64 %63, %65
+  %67 = icmp sge i64 %66, 0
+  %68 = select i1 %67, i64 %66, i64 0
+  %69 = add i64 %68, -1
+  %70 = mul i64 %68, 64
+  %71 = mul i64 %68, 8
+  %not1 = xor i64 %58, -1
+  %72 = sub i64 %not1, %63
+  %73 = load i32* %1, align 4
+  %74 = sext i32 %73 to i64
+  %75 = icmp sge i64 %74, 0
+  %76 = select i1 %75, i64 %74, i64 0
+  %77 = load i32* %2, align 4
+  %78 = sext i32 %77 to i64
+  %79 = mul i64 %76, %78
+  %80 = icmp sge i64 %79, 0
+  %81 = select i1 %80, i64 %79, i64 0
+  %82 = load i32* %3, align 4
+  %83 = sext i32 %82 to i64
+  %84 = mul i64 %81, %83
+  %85 = icmp sge i64 %84, 0
+  %86 = select i1 %85, i64 %84, i64 0
+  %87 = add i64 %86, -1
+  %88 = mul i64 %86, 64
+  %89 = mul i64 %86, 8
+  %not2 = xor i64 %76, -1
+  %90 = sub i64 %not2, %81
+  %91 = load i32* %1, align 4
+  %92 = sext i32 %91 to i64
+  %93 = icmp sge i64 %92, 0
+  %94 = select i1 %93, i64 %92, i64 0
+  %95 = load i32* %2, align 4
+  %96 = sext i32 %95 to i64
+  %97 = mul i64 %94, %96
+  %98 = icmp sge i64 %97, 0
+  %99 = select i1 %98, i64 %97, i64 0
+  %100 = load i32* %3, align 4
+  %101 = sext i32 %100 to i64
+  %102 = mul i64 %99, %101
+  %103 = icmp sge i64 %102, 0
+  %104 = select i1 %103, i64 %102, i64 0
+  %105 = add i64 %104, -1
+  %106 = mul i64 %104, 64
+  %107 = mul i64 %104, 8
+  %not3 = xor i64 %94, -1
+  %108 = sub i64 %not3, %99
+  %109 = load i32* %1, align 4
+  %110 = sext i32 %109 to i64
+  %111 = icmp sge i64 %110, 0
+  %112 = select i1 %111, i64 %110, i64 0
+  %113 = load i32* %2, align 4
+  %114 = sext i32 %113 to i64
+  %115 = mul i64 %112, %114
+  %116 = icmp sge i64 %115, 0
+  %117 = select i1 %116, i64 %115, i64 0
+  %118 = add i64 %117, -1
+  %119 = mul i64 %117, 64
+  %120 = mul i64 %117, 8
+  %not4 = xor i64 %112, -1
+  %121 = load i32* %1, align 4
+  %122 = sext i32 %121 to i64
+  %123 = icmp sge i64 %122, 0
+  %124 = select i1 %123, i64 %122, i64 0
+  %125 = load i32* %2, align 4
+  %126 = sext i32 %125 to i64
+  %127 = mul i64 %124, %126
+  %128 = icmp sge i64 %127, 0
+  %129 = select i1 %128, i64 %127, i64 0
+  %130 = load i32* %4, align 4
+  %131 = sext i32 %130 to i64
+  %132 = load i32* %5, align 4
+  %133 = sext i32 %132 to i64
+  %134 = sub i64 1, %131
+  %135 = add i64 %134, %133
+  %136 = mul i64 %135, %129
+  %137 = icmp sge i64 %136, 0
+  %138 = select i1 %137, i64 %136, i64 0
+  %139 = add i64 %138, -1
+  %140 = mul i64 %138, 64
+  %141 = mul i64 %138, 8
+  %not5 = xor i64 %124, -1
+  %142 = mul i64 %131, %129
+  %143 = sub i64 %not5, %142
+  %144 = load i32* %1, align 4
+  %145 = sext i32 %144 to i64
+  %146 = icmp sge i64 %145, 0
+  %147 = select i1 %146, i64 %145, i64 0
+  %148 = load i32* %2, align 4
+  %149 = sext i32 %148 to i64
+  %150 = mul i64 %147, %149
+  %151 = icmp sge i64 %150, 0
+  %152 = select i1 %151, i64 %150, i64 0
+  %153 = load i32* %4, align 4
+  %154 = sext i32 %153 to i64
+  %155 = load i32* %5, align 4
+  %156 = sext i32 %155 to i64
+  %157 = sub i64 1, %154
+  %158 = add i64 %157, %156
+  %159 = mul i64 %158, %152
+  %160 = icmp sge i64 %159, 0
+  %161 = select i1 %160, i64 %159, i64 0
+  %162 = add i64 %161, -1
+  %163 = mul i64 %161, 64
+  %164 = mul i64 %161, 8
+  %not6 = xor i64 %147, -1
+  %165 = mul i64 %154, %152
+  %166 = sub i64 %not6, %165
+  %167 = load i32* %1, align 4
+  %168 = sext i32 %167 to i64
+  %169 = icmp sge i64 %168, 0
+  %170 = select i1 %169, i64 %168, i64 0
+  %171 = load i32* %2, align 4
+  %172 = sext i32 %171 to i64
+  %173 = mul i64 %170, %172
+  %174 = icmp sge i64 %173, 0
+  %175 = select i1 %174, i64 %173, i64 0
+  %176 = load i32* %6, align 4
+  %177 = sext i32 %176 to i64
+  %178 = mul i64 %175, %177
+  %179 = icmp sge i64 %178, 0
+  %180 = select i1 %179, i64 %178, i64 0
+  %181 = add i64 %180, -1
+  %182 = mul i64 %180, 64
+  %183 = mul i64 %180, 8
+  %not7 = xor i64 %170, -1
+  %184 = sub i64 %not7, %175
+  %185 = load i32* %1, align 4
+  %186 = sext i32 %185 to i64
+  %187 = icmp sge i64 %186, 0
+  %188 = select i1 %187, i64 %186, i64 0
+  %189 = load i32* %2, align 4
+  %190 = sext i32 %189 to i64
+  %191 = mul i64 %188, %190
+  %192 = icmp sge i64 %191, 0
+  %193 = select i1 %192, i64 %191, i64 0
+  %194 = add i64 %193, -1
+  %195 = mul i64 %193, 64
+  %196 = mul i64 %193, 8
+  %197 = mul i64 %193, 8
+  %198 = icmp uge i64 %197, 1
+  %199 = select i1 %198, i64 %197, i64 1
+  %200 = call noalias i8* @malloc(i64 %199) #2
+  %201 = bitcast i8* %200 to [0 x double]*
+  %not8 = xor i64 %188, -1
+  %202 = load i32* %1, align 4
+  %203 = sext i32 %202 to i64
+  %204 = icmp sge i64 %203, 0
+  %205 = select i1 %204, i64 %203, i64 0
+  %206 = load i32* %2, align 4
+  %207 = sext i32 %206 to i64
+  %208 = mul i64 %205, %207
+  %209 = icmp sge i64 %208, 0
+  %210 = select i1 %209, i64 %208, i64 0
+  %211 = add i64 %210, -1
+  %212 = mul i64 %210, 64
+  %213 = mul i64 %210, 8
+  %214 = mul i64 %210, 8
+  %215 = icmp uge i64 %214, 1
+  %216 = select i1 %215, i64 %214, i64 1
+  %217 = call noalias i8* @malloc(i64 %216) #2
+  %218 = bitcast i8* %217 to [0 x double]*
+  %not9 = xor i64 %205, -1
+  %219 = load i32* %1, align 4
+  %220 = sext i32 %219 to i64
+  %221 = icmp sge i64 %220, 0
+  %222 = select i1 %221, i64 %220, i64 0
+  %223 = load i32* %2, align 4
+  %224 = sext i32 %223 to i64
+  %225 = mul i64 %222, %224
+  %226 = icmp sge i64 %225, 0
+  %227 = select i1 %226, i64 %225, i64 0
+  %228 = add i64 %227, -1
+  %229 = mul i64 %227, 64
+  %230 = mul i64 %227, 8
+  %231 = mul i64 %227, 8
+  %232 = icmp uge i64 %231, 1
+  %233 = select i1 %232, i64 %231, i64 1
+  %234 = call noalias i8* @malloc(i64 %233) #2
+  %235 = bitcast i8* %234 to [0 x double]*
+  %not10 = xor i64 %222, -1
+  %236 = load i32* %1, align 4
+  %237 = sext i32 %236 to i64
+  %238 = icmp sge i64 %237, 0
+  %239 = select i1 %238, i64 %237, i64 0
+  %240 = load i32* %2, align 4
+  %241 = sext i32 %240 to i64
+  %242 = mul i64 %239, %241
+  %243 = icmp sge i64 %242, 0
+  %244 = select i1 %243, i64 %242, i64 0
+  %245 = add i64 %244, -1
+  %246 = mul i64 %244, 64
+  %247 = mul i64 %244, 8
+  %248 = mul i64 %244, 8
+  %249 = icmp uge i64 %248, 1
+  %250 = select i1 %249, i64 %248, i64 1
+  %251 = call noalias i8* @malloc(i64 %250) #2
+  %252 = bitcast i8* %251 to [0 x double]*
+  %not11 = xor i64 %239, -1
+  %253 = load double* @__data_turbulence_MOD_clc_diag, align 8
+  %254 = fdiv double 1.000000e+00, %253
+  %255 = fsub double %254, 1.000000e+00
+  %256 = load double* @__data_turbulence_MOD_q_crit, align 8
+  %257 = fmul double %255, %256
+  %258 = load i32* %7, align 4
+  %259 = load i32* %8, align 4
+  %260 = icmp sle i32 %258, %259
+  br i1 %260, label %"5", label %"54"
+
+"5":                                              ; preds = %"53", %"4"
+  %261 = phi i32 [ %806, %"53" ], [ %258, %"4" ]
+  %262 = icmp ne [0 x double]* %0, null
+  br i1 %262, label %"6", label %"12"
+
+"6":                                              ; preds = %"5"
+  %263 = load i32* %9, align 4
+  %264 = load i32* %10, align 4
+  %265 = icmp sle i32 %263, %264
+  br i1 %265, label %"7", label %"18"
+
+"7":                                              ; preds = %"11", %"6"
+  %266 = phi i32 [ %337, %"11" ], [ %263, %"6" ]
+  %267 = load i32* %11, align 4
+  %268 = load i32* %12, align 4
+  %269 = icmp sle i32 %267, %268
+  br i1 %269, label %"8", label %"10"
+
+"8":                                              ; preds = %"9", %"7"
+  %270 = phi i32 [ %334, %"9" ], [ %267, %"7" ]
+  %271 = sext i32 %270 to i64
+  %272 = sext i32 %266 to i64
+  %273 = mul i64 %272, %222
+  %274 = add i64 %271, %273
+  %275 = add i64 %274, %not10
+  %276 = sext i32 %270 to i64
+  %277 = sext i32 %261 to i64
+  %278 = mul i64 %277, %53
+  %279 = sext i32 %266 to i64
+  %280 = mul i64 %279, %52
+  %281 = add i64 %278, %280
+  %282 = add i64 %276, %281
+  %283 = add i64 %282, %54
+  %284 = bitcast [0 x double]* %0 to double*
+  %285 = getelementptr double* %284, i64 %283
+  %286 = load double* %285, align 8
+  %287 = sext i32 %270 to i64
+  %288 = sext i32 %261 to i64
+  %289 = mul i64 %288, %63
+  %290 = sext i32 %266 to i64
+  %291 = mul i64 %290, %58
+  %292 = add i64 %289, %291
+  %293 = add i64 %287, %292
+  %294 = add i64 %293, %72
+  %295 = bitcast [0 x double]* %13 to double*
+  %296 = getelementptr double* %295, i64 %294
+  %297 = load double* %296, align 8
+  %298 = fadd double %286, %297
+  %299 = bitcast [0 x double]* %235 to double*
+  %300 = getelementptr double* %299, i64 %275
+  store double %298, double* %300, align 8
+  %301 = sext i32 %270 to i64
+  %302 = sext i32 %266 to i64
+  %303 = mul i64 %302, %239
+  %304 = add i64 %301, %303
+  %305 = add i64 %304, %not11
+  %306 = sext i32 %270 to i64
+  %307 = sext i32 %261 to i64
+  %308 = mul i64 %307, %81
+  %309 = sext i32 %266 to i64
+  %310 = mul i64 %309, %76
+  %311 = add i64 %308, %310
+  %312 = add i64 %306, %311
+  %313 = add i64 %312, %90
+  %314 = bitcast [0 x double]* %14 to double*
+  %315 = getelementptr double* %314, i64 %313
+  %316 = load double* %315, align 8
+  %317 = load double* %15, align 8
+  %318 = sext i32 %270 to i64
+  %319 = sext i32 %261 to i64
+  %320 = mul i64 %319, %53
+  %321 = sext i32 %266 to i64
+  %322 = mul i64 %321, %52
+  %323 = add i64 %320, %322
+  %324 = add i64 %318, %323
+  %325 = add i64 %324, %54
+  %326 = bitcast [0 x double]* %0 to double*
+  %327 = getelementptr double* %326, i64 %325
+  %328 = load double* %327, align 8
+  %329 = fmul double %317, %328
+  %330 = fsub double %316, %329
+  %331 = bitcast [0 x double]* %252 to double*
+  %332 = getelementptr double* %331, i64 %305
+  store double %330, double* %332, align 8
+  %333 = icmp eq i32 %270, %268
+  %334 = add i32 %270, 1
+  %335 = icmp ne i1 %333, false
+  br i1 %335, label %"10", label %"9"
+
+"9":                                              ; preds = %"8"
+  br label %"8"
+
+"10":                                             ; preds = %"8", %"7"
+  %336 = icmp eq i32 %266, %264
+  %337 = add i32 %266, 1
+  %338 = icmp ne i1 %336, false
+  br i1 %338, label %"18", label %"11"
+
+"11":                                             ; preds = %"10"
+  br label %"7"
+
+"12":                                             ; preds = %"5"
+  %339 = load i32* %9, align 4
+  %340 = load i32* %10, align 4
+  %341 = icmp sle i32 %339, %340
+  br i1 %341, label %"13", label %"18"
+
+"13":                                             ; preds = %"17", %"12"
+  %342 = phi i32 [ %387, %"17" ], [ %339, %"12" ]
+  %343 = load i32* %11, align 4
+  %344 = load i32* %12, align 4
+  %345 = icmp sle i32 %343, %344
+  br i1 %345, label %"14", label %"16"
+
+"14":                                             ; preds = %"15", %"13"
+  %346 = phi i32 [ %384, %"15" ], [ %343, %"13" ]
+  %347 = sext i32 %346 to i64
+  %348 = sext i32 %342 to i64
+  %349 = mul i64 %348, %222
+  %350 = add i64 %347, %349
+  %351 = add i64 %350, %not10
+  %352 = sext i32 %346 to i64
+  %353 = sext i32 %261 to i64
+  %354 = mul i64 %353, %63
+  %355 = sext i32 %342 to i64
+  %356 = mul i64 %355, %58
+  %357 = add i64 %354, %356
+  %358 = add i64 %352, %357
+  %359 = add i64 %358, %72
+  %360 = bitcast [0 x double]* %13 to double*
+  %361 = getelementptr double* %360, i64 %359
+  %362 = load double* %361, align 8
+  %363 = bitcast [0 x double]* %235 to double*
+  %364 = getelementptr double* %363, i64 %351
+  store double %362, double* %364, align 8
+  %365 = sext i32 %346 to i64
+  %366 = sext i32 %342 to i64
+  %367 = mul i64 %366, %239
+  %368 = add i64 %365, %367
+  %369 = add i64 %368, %not11
+  %370 = sext i32 %346 to i64
+  %371 = sext i32 %261 to i64
+  %372 = mul i64 %371, %81
+  %373 = sext i32 %342 to i64
+  %374 = mul i64 %373, %76
+  %375 = add i64 %372, %374
+  %376 = add i64 %370, %375
+  %377 = add i64 %376, %90
+  %378 = bitcast [0 x double]* %14 to double*
+  %379 = getelementptr double* %378, i64 %377
+  %380 = load double* %379, align 8
+  %381 = bitcast [0 x double]* %252 to double*
+  %382 = getelementptr double* %381, i64 %369
+  store double %380, double* %382, align 8
+  %383 = icmp eq i32 %346, %344
+  %384 = add i32 %346, 1
+  %385 = icmp ne i1 %383, false
+  br i1 %385, label %"16", label %"15"
+
+"15":                                             ; preds = %"14"
+  br label %"14"
+
+"16":                                             ; preds = %"14", %"13"
+  %386 = icmp eq i32 %342, %340
+  %387 = add i32 %342, 1
+  %388 = icmp ne i1 %386, false
+  br i1 %388, label %"18", label %"17"
+
+"17":                                             ; preds = %"16"
+  br label %"13"
+
+"18":                                             ; preds = %"16", %"12", %"10", %"6"
+  %389 = load i32* %9, align 4
+  %390 = load i32* %10, align 4
+  %391 = icmp sle i32 %389, %390
+  br i1 %391, label %"19", label %"24"
+
+"19":                                             ; preds = %"23", %"18"
+  %392 = phi i32 [ %480, %"23" ], [ %389, %"18" ]
+  %393 = load i32* %11, align 4
+  %394 = load i32* %12, align 4
+  %395 = icmp sle i32 %393, %394
+  br i1 %395, label %"20", label %"22"
+
+"20":                                             ; preds = %"21", %"19"
+  %396 = phi i32 [ %477, %"21" ], [ %393, %"19" ]
+  %397 = sext i32 %396 to i64
+  %398 = sext i32 %392 to i64
+  %399 = mul i64 %398, %239
+  %400 = add i64 %397, %399
+  %401 = add i64 %400, %not11
+  %402 = bitcast [0 x double]* %252 to double*
+  %403 = getelementptr double* %402, i64 %401
+  %404 = load double* %403, align 8
+  %405 = load double* %16, align 8
+  %406 = load double* %17, align 8
+  %407 = load double* %18, align 8
+  %408 = fsub double %404, %407
+  %409 = fmul double %406, %408
+  %410 = load double* %19, align 8
+  %411 = fsub double %404, %410
+  %412 = fdiv double %409, %411
+  %413 = call double @exp(double %412) #1
+  %414 = fmul double %405, %413
+  %415 = sext i32 %396 to i64
+  %416 = sext i32 %261 to i64
+  %417 = mul i64 %416, %99
+  %418 = sext i32 %392 to i64
+  %419 = mul i64 %418, %94
+  %420 = add i64 %417, %419
+  %421 = add i64 %415, %420
+  %422 = add i64 %421, %108
+  %423 = bitcast [0 x double]* %20 to double*
+  %424 = getelementptr double* %423, i64 %422
+  %425 = load double* %424, align 8
+  %426 = sext i32 %396 to i64
+  %427 = sext i32 %392 to i64
+  %428 = mul i64 %427, %205
+  %429 = add i64 %426, %428
+  %430 = add i64 %429, %not9
+  %431 = load double* %21, align 8
+  %432 = fmul double %431, %414
+  %433 = load double* %22, align 8
+  %434 = fmul double %433, %414
+  %435 = fsub double %425, %434
+  %436 = fdiv double %432, %435
+  %437 = bitcast [0 x double]* %218 to double*
+  %438 = getelementptr double* %437, i64 %430
+  store double %436, double* %438, align 8
+  %439 = sext i32 %396 to i64
+  %440 = sext i32 %392 to i64
+  %441 = mul i64 %440, %239
+  %442 = add i64 %439, %441
+  %443 = add i64 %442, %not11
+  %444 = bitcast [0 x double]* %252 to double*
+  %445 = getelementptr double* %444, i64 %443
+  %446 = load double* %445, align 8
+  %447 = sext i32 %396 to i64
+  %448 = sext i32 %392 to i64
+  %449 = mul i64 %448, %205
+  %450 = add i64 %447, %449
+  %451 = add i64 %450, %not9
+  %452 = bitcast [0 x double]* %218 to double*
+  %453 = getelementptr double* %452, i64 %451
+  %454 = load double* %453, align 8
+  %455 = load double* %19, align 8
+  %456 = fsub double %446, %455
+  %457 = fmul double %456, %456
+  %458 = sext i32 %396 to i64
+  %459 = sext i32 %392 to i64
+  %460 = mul i64 %459, %188
+  %461 = add i64 %458, %460
+  %462 = add i64 %461, %not8
+  %463 = load double* %15, align 8
+  %464 = load double* %23, align 8
+  %465 = load double* %24, align 8
+  %466 = fmul double %465, %454
+  %467 = fadd double %466, 1.000000e+00
+  %468 = fmul double %464, %467
+  %469 = fmul double %468, %454
+  %470 = fdiv double %469, %457
+  %471 = fmul double %463, %470
+  %472 = fadd double %471, 1.000000e+00
+  %473 = fdiv double 1.000000e+00, %472
+  %474 = bitcast [0 x double]* %201 to double*
+  %475 = getelementptr double* %474, i64 %462
+  store double %473, double* %475, align 8
+  %476 = icmp eq i32 %396, %394
+  %477 = add i32 %396, 1
+  %478 = icmp ne i1 %476, false
+  br i1 %478, label %"22", label %"21"
+
+"21":                                             ; preds = %"20"
+  br label %"20"
+
+"22":                                             ; preds = %"20", %"19"
+  %479 = icmp eq i32 %392, %390
+  %480 = add i32 %392, 1
+  %481 = icmp ne i1 %479, false
+  br i1 %481, label %"24", label %"23"
+
+"23":                                             ; preds = %"22"
+  br label %"19"
+
+"24":                                             ; preds = %"22", %"18"
+  %482 = load i32* %9, align 4
+  %483 = load i32* %10, align 4
+  %484 = icmp sle i32 %482, %483
+  br i1 %484, label %"25", label %"52"
+
+"25":                                             ; preds = %"51", %"24"
+  %485 = phi i32 [ %803, %"51" ], [ %482, %"24" ]
+  %486 = load i32* %11, align 4
+  %487 = load i32* %12, align 4
+  %488 = icmp sle i32 %486, %487
+  br i1 %488, label %"26", label %"50"
+
+"26":                                             ; preds = %"49", %"25"
+  %489 = phi i32 [ %800, %"49" ], [ %486, %"25" ]
+  %490 = sext i32 %489 to i64
+  %491 = sext i32 %261 to i64
+  %492 = mul i64 %491, %99
+  %493 = sext i32 %485 to i64
+  %494 = mul i64 %493, %94
+  %495 = add i64 %492, %494
+  %496 = add i64 %490, %495
+  %497 = add i64 %496, %108
+  %498 = bitcast [0 x double]* %20 to double*
+  %499 = getelementptr double* %498, i64 %497
+  %500 = load double* %499, align 8
+  %501 = sext i32 %489 to i64
+  %502 = sext i32 %485 to i64
+  %503 = mul i64 %502, %222
+  %504 = add i64 %501, %503
+  %505 = add i64 %504, %not10
+  %506 = bitcast [0 x double]* %235 to double*
+  %507 = getelementptr double* %506, i64 %505
+  %508 = load double* %507, align 8
+  %509 = sext i32 %489 to i64
+  %510 = sext i32 %485 to i64
+  %511 = mul i64 %510, %205
+  %512 = add i64 %509, %511
+  %513 = add i64 %512, %not9
+  %514 = bitcast [0 x double]* %218 to double*
+  %515 = getelementptr double* %514, i64 %513
+  %516 = load double* %515, align 8
+  %517 = fsub double %508, %516
+  %518 = load i32* %25, align 4
+  %519 = icmp eq i32 %518, 1
+  br i1 %519, label %"27", label %"34"
+
+"27":                                             ; preds = %"26"
+  %520 = sext i32 %489 to i64
+  %521 = sext i32 %485 to i64
+  %522 = mul i64 %521, %112
+  %523 = add i64 %520, %522
+  %524 = add i64 %523, %not4
+  %525 = bitcast [0 x double]* %26 to double*
+  %526 = getelementptr double* %525, i64 %524
+  %527 = load double* %526, align 8
+  %528 = fdiv double %500, %527
+  %529 = load double* %27, align 8
+  %530 = fmul double %529, %528
+  %531 = fsub double 1.000000e+00, %528
+  %532 = fmul double %530, %531
+  %533 = load double* %28, align 8
+  %534 = fsub double %528, 5.000000e-01
+  %535 = fmul double %533, %534
+  %536 = fadd double %535, 1.000000e+00
+  %537 = fmul double %532, %536
+  %538 = fsub double 9.500000e-01, %537
+  %539 = sext i32 %489 to i64
+  %540 = sext i32 %485 to i64
+  %541 = mul i64 %540, %222
+  %542 = add i64 %539, %541
+  %543 = add i64 %542, %not10
+  %544 = bitcast [0 x double]* %235 to double*
+  %545 = getelementptr double* %544, i64 %543
+  %546 = load double* %545, align 8
+  %547 = sext i32 %489 to i64
+  %548 = sext i32 %485 to i64
+  %549 = mul i64 %548, %205
+  %550 = add i64 %547, %549
+  %551 = add i64 %550, %not9
+  %552 = bitcast [0 x double]* %218 to double*
+  %553 = getelementptr double* %552, i64 %551
+  %554 = load double* %553, align 8
+  %555 = fdiv double %546, %554
+  %556 = fsub double %555, %538
+  %557 = load double* %29, align 8
+  %558 = fsub double %557, %538
+  %559 = fdiv double %556, %558
+  %560 = load double* @__data_turbulence_MOD_clc_diag, align 8
+  %561 = fmul double %560, %559
+  %562 = fmul double %561, %559
+  %563 = fcmp olt double %562, 1.000000e+00
+  %toBool = icmp ne i1 %563, false
+  %564 = or i1 %toBool, false
+  %565 = icmp ne i1 %564, false
+  br i1 %565, label %"28", label %"29"
+
+"28":                                             ; preds = %"27"
+  br label %"29"
+
+"29":                                             ; preds = %"28", %"27"
+  %566 = phi double [ %562, %"28" ], [ 1.000000e+00, %"27" ]
+  %567 = fcmp ogt double %566, 0.000000e+00
+  %toBool12 = icmp ne i1 %567, false
+  %568 = or i1 %toBool12, false
+  %569 = icmp ne i1 %568, false
+  br i1 %569, label %"30", label %"31"
+
+"30":                                             ; preds = %"29"
+  br label %"31"
+
+"31":                                             ; preds = %"30", %"29"
+  %570 = phi double [ %566, %"30" ], [ 0.000000e+00, %"29" ]
+  %571 = sext i32 %489 to i64
+  %572 = sext i32 %261 to i64
+  %573 = mul i64 %572, %129
+  %574 = sext i32 %485 to i64
+  %575 = mul i64 %574, %124
+  %576 = add i64 %573, %575
+  %577 = add i64 %571, %576
+  %578 = add i64 %577, %143
+  %579 = bitcast [0 x double]* %30 to double*
+  %580 = getelementptr double* %579, i64 %578
+  store double %570, double* %580, align 8
+  %581 = sext i32 %489 to i64
+  %582 = sext i32 %485 to i64
+  %583 = mul i64 %582, %205
+  %584 = add i64 %581, %583
+  %585 = add i64 %584, %not9
+  %586 = bitcast [0 x double]* %218 to double*
+  %587 = getelementptr double* %586, i64 %585
+  %588 = load double* %587, align 8
+  %589 = fmul double %588, 5.000000e-03
+  %590 = fcmp ogt double %517, 0.000000e+00
+  %591 = icmp ne i1 %590, false
+  br i1 %591, label %"32", label %"33"
+
+"32":                                             ; preds = %"31"
+  %592 = fsub double 1.000000e+00, %538
+  %593 = load double* %29, align 8
+  %594 = fsub double %593, %538
+  %595 = fdiv double %592, %594
+  %596 = fmul double %595, %595
+  %597 = load double* @__data_turbulence_MOD_clc_diag, align 8
+  %598 = fmul double %597, %596
+  %599 = sext i32 %489 to i64
+  %600 = sext i32 %485 to i64
+  %601 = mul i64 %600, %188
+  %602 = add i64 %599, %601
+  %603 = add i64 %602, %not8
+  %604 = bitcast [0 x double]* %201 to double*
+  %605 = getelementptr double* %604, i64 %603
+  %606 = load double* %605, align 8
+  %607 = fmul double %606, %517
+  %608 = fsub double %607, %589
+  %609 = sext i32 %489 to i64
+  %610 = sext i32 %261 to i64
+  %611 = mul i64 %610, %129
+  %612 = sext i32 %485 to i64
+  %613 = mul i64 %612, %124
+  %614 = add i64 %611, %613
+  %615 = add i64 %609, %614
+  %616 = add i64 %615, %143
+  %617 = bitcast [0 x double]* %30 to double*
+  %618 = getelementptr double* %617, i64 %616
+  %619 = load double* %618, align 8
+  %620 = fsub double %619, %598
+  %621 = fmul double %608, %620
+  %622 = fsub double 1.000000e+00, %598
+  %623 = fdiv double %621, %622
+  %624 = fadd double %623, %589
+  br label %"33"
+
+"33":                                             ; preds = %"32", %"31"
+  %625 = phi double [ %624, %"32" ], [ %589, %"31" ]
+  %626 = sext i32 %489 to i64
+  %627 = sext i32 %261 to i64
+  %628 = mul i64 %627, %152
+  %629 = sext i32 %485 to i64
+  %630 = mul i64 %629, %147
+  %631 = add i64 %628, %630
+  %632 = add i64 %626, %631
+  %633 = add i64 %632, %166
+  %634 = sext i32 %489 to i64
+  %635 = sext i32 %261 to i64
+  %636 = mul i64 %635, %129
+  %637 = sext i32 %485 to i64
+  %638 = mul i64 %637, %124
+  %639 = add i64 %636, %638
+  %640 = add i64 %634, %639
+  %641 = add i64 %640, %143
+  %642 = bitcast [0 x double]* %30 to double*
+  %643 = getelementptr double* %642, i64 %641
+  %644 = load double* %643, align 8
+  %645 = fmul double %644, %625
+  %646 = bitcast [0 x double]* %31 to double*
+  %647 = getelementptr double* %646, i64 %633
+  store double %645, double* %647, align 8
+  br label %"48"
+
+"34":                                             ; preds = %"26"
+  %648 = load i32* %25, align 4
+  %649 = icmp eq i32 %648, 2
+  br i1 %649, label %"35", label %"48"
+
+"35":                                             ; preds = %"34"
+  %650 = sext i32 %489 to i64
+  %651 = sext i32 %261 to i64
+  %652 = mul i64 %651, %175
+  %653 = sext i32 %485 to i64
+  %654 = mul i64 %653, %170
+  %655 = add i64 %652, %654
+  %656 = add i64 %650, %655
+  %657 = add i64 %656, %184
+  %658 = bitcast [0 x double]* %32 to double*
+  %659 = getelementptr double* %658, i64 %657
+  %660 = load double* %659, align 8
+  %661 = fcmp olt double %660, 1.000000e-03
+  %toBool13 = icmp ne i1 %661, false
+  %662 = or i1 %toBool13, false
+  %663 = icmp ne i1 %662, false
+  br i1 %663, label %"36", label %"37"
+
+"36":                                             ; preds = %"35"
+  br label %"37"
+
+"37":                                             ; preds = %"36", %"35"
+  %664 = phi double [ %660, %"36" ], [ 1.000000e-03, %"35" ]
+  %665 = fcmp ole double %664, 0.000000e+00
+  %666 = icmp ne i1 %665, false
+  br i1 %666, label %"38", label %"39"
+
+"38":                                             ; preds = %"37"
+  %667 = sext i32 %489 to i64
+  %668 = sext i32 %261 to i64
+  %669 = mul i64 %668, %129
+  %670 = sext i32 %485 to i64
+  %671 = mul i64 %670, %124
+  %672 = add i64 %669, %671
+  %673 = add i64 %667, %672
+  %674 = add i64 %673, %143
+  %675 = call double @copysign(double 1.000000e+00, double %517) #1
+  %676 = fadd double %675, 1.000000e+00
+  %677 = fmul double %676, 5.000000e-01
+  %678 = call double @fabs(double %677) #1
+  %679 = bitcast [0 x double]* %30 to double*
+  %680 = getelementptr double* %679, i64 %674
+  store double %678, double* %680, align 8
+  %681 = sext i32 %489 to i64
+  %682 = sext i32 %261 to i64
+  %683 = mul i64 %682, %152
+  %684 = sext i32 %485 to i64
+  %685 = mul i64 %684, %147
+  %686 = add i64 %683, %685
+  %687 = add i64 %681, %686
+  %688 = add i64 %687, %166
+  %689 = sext i32 %489 to i64
+  %690 = sext i32 %261 to i64
+  %691 = mul i64 %690, %129
+  %692 = sext i32 %485 to i64
+  %693 = mul i64 %692, %124
+  %694 = add i64 %691, %693
+  %695 = add i64 %689, %694
+  %696 = add i64 %695, %143
+  %697 = bitcast [0 x double]* %30 to double*
+  %698 = getelementptr double* %697, i64 %696
+  %699 = load double* %698, align 8
+  %700 = sext i32 %489 to i64
+  %701 = sext i32 %485 to i64
+  %702 = mul i64 %701, %188
+  %703 = add i64 %700, %702
+  %704 = add i64 %703, %not8
+  %705 = bitcast [0 x double]* %201 to double*
+  %706 = getelementptr double* %705, i64 %704
+  %707 = load double* %706, align 8
+  %708 = fmul double %699, %707
+  %709 = fmul double %708, %517
+  %710 = bitcast [0 x double]* %31 to double*
+  %711 = getelementptr double* %710, i64 %688
+  store double %709, double* %711, align 8
+  br label %"48"
+
+"39":                                             ; preds = %"37"
+  %712 = fdiv double %517, %664
+  %713 = load double* @__data_turbulence_MOD_q_crit, align 8
+  %714 = fdiv double %712, %713
+  %715 = fadd double %714, 1.000000e+00
+  %716 = load double* @__data_turbulence_MOD_clc_diag, align 8
+  %717 = fmul double %715, %716
+  %718 = fcmp ogt double %717, 0.000000e+00
+  %toBool14 = icmp ne i1 %718, false
+  %719 = or i1 %toBool14, false
+  %720 = icmp ne i1 %719, false
+  br i1 %720, label %"40", label %"41"
+
+"40":                                             ; preds = %"39"
+  br label %"41"
+
+"41":                                             ; preds = %"40", %"39"
+  %721 = phi double [ %717, %"40" ], [ 0.000000e+00, %"39" ]
+  %722 = fcmp olt double %721, 1.000000e+00
+  %toBool15 = icmp ne i1 %722, false
+  %723 = or i1 %toBool15, false
+  %724 = icmp ne i1 %723, false
+  br i1 %724, label %"42", label %"43"
+
+"42":                                             ; preds = %"41"
+  br label %"43"
+
+"43":                                             ; preds = %"42", %"41"
+  %725 = phi double [ %721, %"42" ], [ 1.000000e+00, %"41" ]
+  %726 = sext i32 %489 to i64
+  %727 = sext i32 %261 to i64
+  %728 = mul i64 %727, %129
+  %729 = sext i32 %485 to i64
+  %730 = mul i64 %729, %124
+  %731 = add i64 %728, %730
+  %732 = add i64 %726, %731
+  %733 = add i64 %732, %143
+  %734 = bitcast [0 x double]* %30 to double*
+  %735 = getelementptr double* %734, i64 %733
+  store double %725, double* %735, align 8
+  %736 = load double* @__data_turbulence_MOD_q_crit, align 8
+  %737 = fsub double -0.000000e+00, %736
+  %738 = fcmp oge double %737, %712
+  %739 = icmp ne i1 %738, false
+  br i1 %739, label %"44", label %"45"
+
+"44":                                             ; preds = %"43"
+  %740 = sext i32 %489 to i64
+  %741 = sext i32 %261 to i64
+  %742 = mul i64 %741, %152
+  %743 = sext i32 %485 to i64
+  %744 = mul i64 %743, %147
+  %745 = add i64 %742, %744
+  %746 = add i64 %740, %745
+  %747 = add i64 %746, %166
+  %748 = bitcast [0 x double]* %31 to double*
+  %749 = getelementptr double* %748, i64 %747
+  store double 0.000000e+00, double* %749, align 8
+  br label %"48"
+
+"45":                                             ; preds = %"43"
+  %750 = fcmp oge double %712, %257
+  %751 = icmp ne i1 %750, false
+  br i1 %751, label %"46", label %"47"
+
+"46":                                             ; preds = %"45"
+  %752 = sext i32 %489 to i64
+  %753 = sext i32 %261 to i64
+  %754 = mul i64 %753, %152
+  %755 = sext i32 %485 to i64
+  %756 = mul i64 %755, %147
+  %757 = add i64 %754, %756
+  %758 = add i64 %752, %757
+  %759 = add i64 %758, %166
+  %760 = sext i32 %489 to i64
+  %761 = sext i32 %485 to i64
+  %762 = mul i64 %761, %188
+  %763 = add i64 %760, %762
+  %764 = add i64 %763, %not8
+  %765 = bitcast [0 x double]* %201 to double*
+  %766 = getelementptr double* %765, i64 %764
+  %767 = load double* %766, align 8
+  %768 = fmul double %767, %517
+  %769 = bitcast [0 x double]* %31 to double*
+  %770 = getelementptr double* %769, i64 %759
+  store double %768, double* %770, align 8
+  br label %"48"
+
+"47":                                             ; preds = %"45"
+  %771 = sext i32 %489 to i64
+  %772 = sext i32 %261 to i64
+  %773 = mul i64 %772, %152
+  %774 = sext i32 %485 to i64
+  %775 = mul i64 %774, %147
+  %776 = add i64 %773, %775
+  %777 = add i64 %771, %776
+  %778 = add i64 %777, %166
+  %779 = sext i32 %489 to i64
+  %780 = sext i32 %485 to i64
+  %781 = mul i64 %780, %188
+  %782 = add i64 %779, %781
+  %783 = add i64 %782, %not8
+  %784 = bitcast [0 x double]* %201 to double*
+  %785 = getelementptr double* %784, i64 %783
+  %786 = load double* %785, align 8
+  %787 = fmul double %786, %664
+  %788 = load double* @__data_turbulence_MOD_q_crit, align 8
+  %789 = fadd double %712, %788
+  %790 = fmul double %787, %789
+  %791 = fadd double %712, %257
+  %792 = fmul double %790, %791
+  %793 = load double* @__data_turbulence_MOD_q_crit, align 8
+  %794 = fadd double %793, %257
+  %795 = fmul double %794, 2.000000e+00
+  %796 = fdiv double %792, %795
+  %797 = bitcast [0 x double]* %31 to double*
+  %798 = getelementptr double* %797, i64 %778
+  store double %796, double* %798, align 8
+  br label %"48"
+
+"48":                                             ; preds = %"47", %"46", %"44", %"38", %"34", %"33"
+  %799 = icmp eq i32 %489, %487
+  %800 = add i32 %489, 1
+  %801 = icmp ne i1 %799, false
+  br i1 %801, label %"50", label %"49"
+
+"49":                                             ; preds = %"48"
+  br label %"26"
+
+"50":                                             ; preds = %"48", %"25"
+  %802 = icmp eq i32 %485, %483
+  %803 = add i32 %485, 1
+  %804 = icmp ne i1 %802, false
+  br i1 %804, label %"52", label %"51"
+
+"51":                                             ; preds = %"50"
+  br label %"25"
+
+"52":                                             ; preds = %"50", %"24"
+  %805 = icmp eq i32 %261, %259
+  %806 = add i32 %261, 1
+  %807 = icmp ne i1 %805, false
+  br i1 %807, label %"54", label %"53"
+
+"53":                                             ; preds = %"52"
+  br label %"5"
+
+"54":                                             ; preds = %"52", %"4"
+  %808 = bitcast [0 x double]* %252 to i8*
+  %809 = icmp ne i8* %808, null
+  br i1 %809, label %"55", label %"56"
+
+"55":                                             ; preds = %"54"
+  call void @free(i8* %808) #2
+  br label %"56"
+
+"56":                                             ; preds = %"55", %"54"
+  %810 = bitcast [0 x double]* %235 to i8*
+  %811 = icmp ne i8* %810, null
+  br i1 %811, label %"57", label %"58"
+
+"57":                                             ; preds = %"56"
+  call void @free(i8* %810) #2
+  br label %"58"
+
+"58":                                             ; preds = %"57", %"56"
+  %812 = bitcast [0 x double]* %218 to i8*
+  %813 = icmp ne i8* %812, null
+  br i1 %813, label %"59", label %"60"
+
+"59":                                             ; preds = %"58"
+  call void @free(i8* %812) #2
+  br label %"60"
+
+"60":                                             ; preds = %"59", %"58"
+  %814 = bitcast [0 x double]* %201 to i8*
+  %815 = icmp ne i8* %814, null
+  br i1 %815, label %"61", label %"62"
+
+"61":                                             ; preds = %"60"
+  call void @free(i8* %814) #2
+  br label %"62"
+
+"62":                                             ; preds = %"61", %"60"
+  br label %return
+
+return:                                           ; preds = %"62"
+  ret void
+}
+
+; Function Attrs: nounwind
+declare noalias i8* @malloc(i64) #2
+
+; Function Attrs: nounwind
+declare void @free(i8*) #2
+
+; Function Attrs: nounwind uwtable
+define void @__turbulence_utilities_MOD_stab_funct(%"struct.array2_real(kind=8)"* noalias %sm, %"struct.array2_real(kind=8).0"* noalias %sh, %"struct.array2_real(kind=8).1"* noalias %fm2, %"struct.array2_real(kind=8).2"* noalias %fh2, %"struct.array2_real(kind=8).3"* noalias %frc, %"struct.array2_real(kind=8).4"* noalias %tvs, %"struct.array2_real(kind=8).5"* noalias %tls, %"struct.array3_real(kind=8).6"* noalias %dd, i32* noalias %i_st, i32* noalias %i_en, i32* noalias %j_st, i32* noalias %j_en) unnamed_addr #0 {
+entry:
+  %sm_addr = alloca %"struct.array2_real(kind=8)"*, align 8
+  %sh_addr = alloca %"struct.array2_real(kind=8).0"*, align 8
+  %fm2_addr = alloca %"struct.array2_real(kind=8).1"*, align 8
+  %fh2_addr = alloca %"struct.array2_real(kind=8).2"*, align 8
+  %frc_addr = alloca %"struct.array2_real(kind=8).3"*, align 8
+  %tvs_addr = alloca %"struct.array2_real(kind=8).4"*, align 8
+  %tls_addr = alloca %"struct.array2_real(kind=8).5"*, align 8
+  %dd_addr = alloca %"struct.array3_real(kind=8).6"*, align 8
+  %i_st_addr = alloca i32*, align 8
+  %i_en_addr = alloca i32*, align 8
+  %j_st_addr = alloca i32*, align 8
+  %j_en_addr = alloca i32*, align 8
+  %a11 = alloca double
+  %a12 = alloca double
+  %a21 = alloca double
+  %a22 = alloca double
+  %a3 = alloca double
+  %a5 = alloca double
+  %a6 = alloca double
+  %be1 = alloca double
+  %be2 = alloca double
+  %d1 = alloca double
+  %d2 = alloca double
+  %d3 = alloca double
+  %d4 = alloca double
+  %d5 = alloca double
+  %d6 = alloca double
+  %ubound.105 = alloca i64
+  %stride.106 = alloca i64
+  %ubound.107 = alloca i64
+  %stride.108 = alloca i64
+  %ubound.109 = alloca i64
+  %stride.110 = alloca i64
+  %offset.111 = alloca i64
+  %size.112 = alloca i64
+  %dd.0 = alloca [0 x double]*
+  %fakt = alloca double
+  %ubound.113 = alloca i64
+  %stride.114 = alloca i64
+  %ubound.115 = alloca i64
+  %stride.116 = alloca i64
+  %offset.117 = alloca i64
+  %size.118 = alloca i64
+  %fh2.0 = alloca [0 x double]*
+  %ubound.119 = alloca i64
+  %stride.120 = alloca i64
+  %ubound.121 = alloca i64
+  %stride.122 = alloca i64
+  %offset.123 = alloca i64
+  %size.124 = alloca i64
+  %fm2.0 = alloca [0 x double]*
+  %ubound.125 = alloca i64
+  %stride.126 = alloca i64
+  %ubound.127 = alloca i64
+  %stride.128 = alloca i64
+  %offset.129 = alloca i64
+  %size.130 = alloca i64
+  %frc.0 = alloca [0 x double]*
+  %gama = alloca double
+  %gh = alloca double
+  %gm = alloca double
+  %i = alloca i32
+  %j = alloca i32
+  %ubound.131 = alloca i64
+  %stride.132 = alloca i64
+  %ubound.133 = alloca i64
+  %stride.134 = alloca i64
+  %offset.135 = alloca i64
+  %size.136 = alloca i64
+  %sh.0 = alloca [0 x double]*
+  %ubound.137 = alloca i64
+  %stride.138 = alloca i64
+  %ubound.139 = alloca i64
+  %stride.140 = alloca i64
+  %offset.141 = alloca i64
+  %size.142 = alloca i64
+  %sm.0 = alloca [0 x double]*
+  %ubound.143 = alloca i64
+  %stride.144 = alloca i64
+  %ubound.145 = alloca i64
+  %stride.146 = alloca i64
+  %offset.147 = alloca i64
+  %size.148 = alloca i64
+  %tls.0 = alloca [0 x double]*
+  %ubound.149 = alloca i64
+  %stride.150 = alloca i64
+  %ubound.151 = alloca i64
+  %stride.152 = alloca i64
+  %offset.153 = alloca i64
+  %size.154 = alloca i64
+  %tvs.0 = alloca [0 x double]*
+  %val1 = alloca double
+  %val2 = alloca double
+  %D.2174 = alloca i64
+  %D.2175 = alloca i64
+  %D.2176 = alloca i64
+  %D.2178 = alloca i64
+  %D.2179 = alloca i64
+  %D.2180 = alloca i64
+  %D.2182 = alloca i64
+  %D.2183 = alloca i64
+  %D.2184 = alloca i64
+  %D.2186 = alloca i64
+  %D.2187 = alloca i64
+  %D.2188 = alloca i64
+  %D.2190 = alloca i64
+  %D.2191 = alloca i64
+  %D.2192 = alloca i64
+  %D.2194 = alloca i64
+  %D.2195 = alloca i64
+  %D.2196 = alloca i64
+  %D.2198 = alloca i64
+  %D.2199 = alloca i64
+  %D.2200 = alloca i64
+  %D.2202 = alloca i64
+  %D.2203 = alloca i64
+  %D.2204 = alloca i64
+  %D.2201 = alloca i64
+  %D.2197 = alloca i64
+  %D.2193 = alloca i64
+  %D.2189 = alloca i64
+  %D.2185 = alloca i64
+  %D.2181 = alloca i64
+  %D.2177 = alloca i64
+  %D.2173 = alloca i64
+  %D.2163 = alloca i32
+  %j.337 = alloca i32
+  %D.2172 = alloca i32
+  %D.2167 = alloca i32
+  %i.338 = alloca i32
+  %D.2171 = alloca i32
+  %"alloca point" = bitcast i32 0 to i32
+  store %"struct.array2_real(kind=8)"* %sm, %"struct.array2_real(kind=8)"** %sm_addr, align 1
+  store %"struct.array2_real(kind=8).0"* %sh, %"struct.array2_real(kind=8).0"** %sh_addr, align 1
+  store %"struct.array2_real(kind=8).1"* %fm2, %"struct.array2_real(kind=8).1"** %fm2_addr, align 1
+  store %"struct.array2_real(kind=8).2"* %fh2, %"struct.array2_real(kind=8).2"** %fh2_addr, align 1
+  store %"struct.array2_real(kind=8).3"* %frc, %"struct.array2_real(kind=8).3"** %frc_addr, align 1
+  store %"struct.array2_real(kind=8).4"* %tvs, %"struct.array2_real(kind=8).4"** %tvs_addr, align 1
+  store %"struct.array2_real(kind=8).5"* %tls, %"struct.array2_real(kind=8).5"** %tls_addr, align 1
+  store %"struct.array3_real(kind=8).6"* %dd, %"struct.array3_real(kind=8).6"** %dd_addr, align 1
+  store i32* %i_st, i32** %i_st_addr, align 1
+  store i32* %i_en, i32** %i_en_addr, align 1
+  store i32* %j_st, i32** %j_st_addr, align 1
+  store i32* %j_en, i32** %j_en_addr, align 1
+  %0 = load %"struct.array3_real(kind=8).6"** %dd_addr, align 8
+  %1 = load %"struct.array2_real(kind=8).5"** %tls_addr, align 8
+  %2 = load %"struct.array2_real(kind=8).3"** %frc_addr, align 8
+  %3 = load %"struct.array2_real(kind=8).4"** %tvs_addr, align 8
+  %4 = load %"struct.array2_real(kind=8).2"** %fh2_addr, align 8
+  %5 = load %"struct.array2_real(kind=8).1"** %fm2_addr, align 8
+  %6 = load %"struct.array2_real(kind=8).0"** %sh_addr, align 8
+  %7 = load %"struct.array2_real(kind=8)"** %sm_addr, align 8
+  %8 = load i32** %j_st_addr, align 8
+  %9 = load i32** %j_en_addr, align 8
+  %10 = load i32** %i_st_addr, align 8
+  %11 = load i32** %i_en_addr, align 8
+  %"ssa point" = bitcast i32 0 to i32
+  br label %"2"
+
+"2":                                              ; preds = %entry
+  %12 = bitcast %"struct.array3_real(kind=8).6"* %0 to %struct.array_descriptor3*
+  %13 = getelementptr inbounds %struct.array_descriptor3* %12, i32 0, i32 3
+  %14 = bitcast [3 x %struct.descriptor_dimension]* %13 to %struct.descriptor_dimension*
+  %15 = getelementptr %struct.descriptor_dimension* %14, i64 0
+  %16 = getelementptr inbounds %struct.descriptor_dimension* %15, i32 0, i32 0
+  %17 = load i64* %16, align 8
+  %18 = icmp ne i64 %17, 0
+  br i1 %18, label %"3", label %"4"
+
+"3":                                              ; preds = %"2"
+  br label %"5"
+
+"4":                                              ; preds = %"2"
+  br label %"5"
+
+"5":                                              ; preds = %"4", %"3"
+  %19 = phi i64 [ 1, %"4" ], [ %17, %"3" ]
+  %20 = bitcast %"struct.array3_real(kind=8).6"* %0 to %struct.array_descriptor3*
+  %21 = getelementptr inbounds %struct.array_descriptor3* %20, i32 0, i32 0
+  %22 = load i8** %21, align 8
+  %23 = bitcast i8* %22 to [0 x double]*
+  %24 = bitcast %"struct.array3_real(kind=8).6"* %0 to %struct.array_descriptor3*
+  %25 = getelementptr inbounds %struct.array_descriptor3* %24, i32 0, i32 3
+  %26 = bitcast [3 x %struct.descriptor_dimension]* %25 to %struct.descriptor_dimension*
+  %27 = getelementptr %struct.descriptor_dimension* %26, i64 0
+  %28 = getelementptr inbounds %struct.descriptor_dimension* %27, i32 0, i32 2
+  %29 = load i64* %28, align 8
+  %30 = bitcast %"struct.array3_real(kind=8).6"* %0 to %struct.array_descriptor3*
+  %31 = getelementptr inbounds %struct.array_descriptor3* %30, i32 0, i32 3
+  %32 = bitcast [3 x %struct.descriptor_dimension]* %31 to %struct.descriptor_dimension*
+  %33 = getelementptr %struct.descriptor_dimension* %32, i64 0
+  %34 = getelementptr inbounds %struct.descriptor_dimension* %33, i32 0, i32 1
+  %35 = load i64* %34, align 8
+  %36 = sub i64 %29, %35
+  %37 = add i64 %36, 1
+  %38 = bitcast %"struct.array3_real(kind=8).6"* %0 to %struct.array_descriptor3*
+  %39 = getelementptr inbounds %struct.array_descriptor3* %38, i32 0, i32 3
+  %40 = bitcast [3 x %struct.descriptor_dimension]* %39 to %struct.descriptor_dimension*
+  %41 = getelementptr %struct.descriptor_dimension* %40, i64 1
+  %42 = getelementptr inbounds %struct.descriptor_dimension* %41, i32 0, i32 0
+  %43 = load i64* %42, align 8
+  %44 = bitcast %"struct.array3_real(kind=8).6"* %0 to %struct.array_descriptor3*
+  %45 = getelementptr inbounds %struct.array_descriptor3* %44, i32 0, i32 3
+  %46 = bitcast [3 x %struct.descriptor_dimension]* %45 to %struct.descriptor_dimension*
+  %47 = getelementptr %struct.descriptor_dimension* %46, i64 1
+  %48 = getelementptr inbounds %struct.descriptor_dimension* %47, i32 0, i32 2
+  %49 = load i64* %48, align 8
+  %50 = bitcast %"struct.array3_real(kind=8).6"* %0 to %struct.array_descriptor3*
+  %51 = getelementptr inbounds %struct.array_descriptor3* %50, i32 0, i32 3
+  %52 = bitcast [3 x %struct.descriptor_dimension]* %51 to %struct.descriptor_dimension*
+  %53 = getelementptr %struct.descriptor_dimension* %52, i64 1
+  %54 = getelementptr inbounds %struct.descriptor_dimension* %53, i32 0, i32 1
+  %55 = load i64* %54, align 8
+  %56 = sub i64 %49, %55
+  %57 = add i64 %56, 1
+  %58 = bitcast %"struct.array3_real(kind=8).6"* %0 to %struct.array_descriptor3*
+  %59 = getelementptr inbounds %struct.array_descriptor3* %58, i32 0, i32 3
+  %60 = bitcast [3 x %struct.descriptor_dimension]* %59 to %struct.descriptor_dimension*
+  %61 = getelementptr %struct.descriptor_dimension* %60, i64 2
+  %62 = getelementptr inbounds %struct.descriptor_dimension* %61, i32 0, i32 0
+  %63 = load i64* %62, align 8
+  %64 = bitcast %"struct.array3_real(kind=8).6"* %0 to %struct.array_descriptor3*
+  %65 = getelementptr inbounds %struct.array_descriptor3* %64, i32 0, i32 3
+  %66 = bitcast [3 x %struct.descriptor_dimension]* %65 to %struct.descriptor_dimension*
+  %67 = getelementptr %struct.descriptor_dimension* %66, i64 2
+  %68 = getelementptr inbounds %struct.descriptor_dimension* %67, i32 0, i32 2
+  %69 = load i64* %68, align 8
+  %70 = bitcast %"struct.array3_real(kind=8).6"* %0 to %struct.array_descriptor3*
+  %71 = getelementptr inbounds %struct.array_descriptor3* %70, i32 0, i32 3
+  %72 = bitcast [3 x %struct.descriptor_dimension]* %71 to %struct.descriptor_dimension*
+  %73 = getelementptr %struct.descriptor_dimension* %72, i64 2
+  %74 = getelementptr inbounds %struct.descriptor_dimension* %73, i32 0, i32 1
+  %75 = load i64* %74, align 8
+  %76 = sub i64 %69, %75
+  %77 = add i64 %76, 1
+  %78 = mul i64 %77, %63
+  %79 = sub i64 0, %19
+  %80 = sub i64 %79, %43
+  %81 = add i64 %78, -1
+  %82 = mul i64 %78, 64
+  %83 = mul i64 %78, 8
+  %84 = bitcast %"struct.array2_real(kind=8).5"* %1 to %struct.array_descriptor2*
+  %85 = getelementptr inbounds %struct.array_descriptor2* %84, i32 0, i32 3
+  %86 = bitcast [2 x %struct.descriptor_dimension]* %85 to %struct.descriptor_dimension*
+  %87 = getelementptr %struct.descriptor_dimension* %86, i64 0
+  %88 = getelementptr inbounds %struct.descriptor_dimension* %87, i32 0, i32 0
+  %89 = load i64* %88, align 8
+  %90 = icmp ne i64 %89, 0
+  br i1 %90, label %"6", label %"7"
+
+"6":                                              ; preds = %"5"
+  br label %"8"
+
+"7":                                              ; preds = %"5"
+  br label %"8"
+
+"8":                                              ; preds = %"7", %"6"
+  %91 = phi i64 [ 1, %"7" ], [ %89, %"6" ]
+  %92 = bitcast %"struct.array2_real(kind=8).5"* %1 to %struct.array_descriptor2*
+  %93 = getelementptr inbounds %struct.array_descriptor2* %92, i32 0, i32 0
+  %94 = load i8** %93, align 8
+  %95 = bitcast i8* %94 to [0 x double]*
+  %96 = bitcast %"struct.array2_real(kind=8).5"* %1 to %struct.array_descriptor2*
+  %97 = getelementptr inbounds %struct.array_descriptor2* %96, i32 0, i32 3
+  %98 = bitcast [2 x %struct.descriptor_dimension]* %97 to %struct.descriptor_dimension*
+  %99 = getelementptr %struct.descriptor_dimension* %98, i64 0
+  %100 = getelementptr inbounds %struct.descriptor_dimension* %99, i32 0, i32 2
+  %101 = load i64* %100, align 8
+  %102 = bitcast %"struct.array2_real(kind=8).5"* %1 to %struct.array_descriptor2*
+  %103 = getelementptr inbounds %struct.array_descriptor2* %102, i32 0, i32 3
+  %104 = bitcast [2 x %struct.descriptor_dimension]* %103 to %struct.descriptor_dimension*
+  %105 = getelementptr %struct.descriptor_dimension* %104, i64 0
+  %106 = getelementptr inbounds %struct.descriptor_dimension* %105, i32 0, i32 1
+  %107 = load i64* %106, align 8
+  %108 = sub i64 %101, %107
+  %109 = add i64 %108, 1
+  %110 = bitcast %"struct.array2_real(kind=8).5"* %1 to %struct.array_descriptor2*
+  %111 = getelementptr inbounds %struct.array_descriptor2* %110, i32 0, i32 3
+  %112 = bitcast [2 x %struct.descriptor_dimension]* %111 to %struct.descriptor_dimension*
+  %113 = getelementptr %struct.descriptor_dimension* %112, i64 1
+  %114 = getelementptr inbounds %struct.descriptor_dimension* %113, i32 0, i32 0
+  %115 = load i64* %114, align 8
+  %116 = bitcast %"struct.array2_real(kind=8).5"* %1 to %struct.array_descriptor2*
+  %117 = getelementptr inbounds %struct.array_descriptor2* %116, i32 0, i32 3
+  %118 = bitcast [2 x %struct.descriptor_dimension]* %117 to %struct.descriptor_dimension*
+  %119 = getelementptr %struct.descriptor_dimension* %118, i64 1
+  %120 = getelementptr inbounds %struct.descriptor_dimension* %119, i32 0, i32 2
+  %121 = load i64* %120, align 8
+  %122 = bitcast %"struct.array2_real(kind=8).5"* %1 to %struct.array_descriptor2*
+  %123 = getelementptr inbounds %struct.array_descriptor2* %122, i32 0, i32 3
+  %124 = bitcast [2 x %struct.descriptor_dimension]* %123 to %struct.descriptor_dimension*
+  %125 = getelementptr %struct.descriptor_dimension* %124, i64 1
+  %126 = getelementptr inbounds %struct.descriptor_dimension* %125, i32 0, i32 1
+  %127 = load i64* %126, align 8
+  %128 = sub i64 %121, %127
+  %129 = add i64 %128, 1
+  %130 = mul i64 %115, %129
+  %131 = sub i64 0, %91
+  %132 = sub i64 %131, %115
+  %133 = add i64 %130, -1
+  %134 = mul i64 %130, 64
+  %135 = mul i64 %130, 8
+  %136 = bitcast %"struct.array2_real(kind=8).3"* %2 to %struct.array_descriptor2*
+  %137 = getelementptr inbounds %struct.array_descriptor2* %136, i32 0, i32 3
+  %138 = bitcast [2 x %struct.descriptor_dimension]* %137 to %struct.descriptor_dimension*
+  %139 = getelementptr %struct.descriptor_dimension* %138, i64 0
+  %140 = getelementptr inbounds %struct.descriptor_dimension* %139, i32 0, i32 0
+  %141 = load i64* %140, align 8
+  %142 = icmp ne i64 %141, 0
+  br i1 %142, label %"9", label %"10"
+
+"9":                                              ; preds = %"8"
+  br label %"11"
+
+"10":                                             ; preds = %"8"
+  br label %"11"
+
+"11":                                             ; preds = %"10", %"9"
+  %143 = phi i64 [ 1, %"10" ], [ %141, %"9" ]
+  %144 = bitcast %"struct.array2_real(kind=8).3"* %2 to %struct.array_descriptor2*
+  %145 = getelementptr inbounds %struct.array_descriptor2* %144, i32 0, i32 0
+  %146 = load i8** %145, align 8
+  %147 = bitcast i8* %146 to [0 x double]*
+  %148 = bitcast %"struct.array2_real(kind=8).3"* %2 to %struct.array_descriptor2*
+  %149 = getelementptr inbounds %struct.array_descriptor2* %148, i32 0, i32 3
+  %150 = bitcast [2 x %struct.descriptor_dimension]* %149 to %struct.descriptor_dimension*
+  %151 = getelementptr %struct.descriptor_dimension* %150, i64 0
+  %152 = getelementptr inbounds %struct.descriptor_dimension* %151, i32 0, i32 2
+  %153 = load i64* %152, align 8
+  %154 = bitcast %"struct.array2_real(kind=8).3"* %2 to %struct.array_descriptor2*
+  %155 = getelementptr inbounds %struct.array_descriptor2* %154, i32 0, i32 3
+  %156 = bitcast [2 x %struct.descriptor_dimension]* %155 to %struct.descriptor_dimension*
+  %157 = getelementptr %struct.descriptor_dimension* %156, i64 0
+  %158 = getelementptr inbounds %struct.descriptor_dimension* %157, i32 0, i32 1
+  %159 = load i64* %158, align 8
+  %160 = sub i64 %153, %159
+  %161 = add i64 %160, 1
+  %162 = bitcast %"struct.array2_real(kind=8).3"* %2 to %struct.array_descriptor2*
+  %163 = getelementptr inbounds %struct.array_descriptor2* %162, i32 0, i32 3
+  %164 = bitcast [2 x %struct.descriptor_dimension]* %163 to %struct.descriptor_dimension*
+  %165 = getelementptr %struct.descriptor_dimension* %164, i64 1
+  %166 = getelementptr inbounds %struct.descriptor_dimension* %165, i32 0, i32 0
+  %167 = load i64* %166, align 8
+  %168 = bitcast %"struct.array2_real(kind=8).3"* %2 to %struct.array_descriptor2*
+  %169 = getelementptr inbounds %struct.array_descriptor2* %168, i32 0, i32 3
+  %170 = bitcast [2 x %struct.descriptor_dimension]* %169 to %struct.descriptor_dimension*
+  %171 = getelementptr %struct.descriptor_dimension* %170, i64 1
+  %172 = getelementptr inbounds %struct.descriptor_dimension* %171, i32 0, i32 2
+  %173 = load i64* %172, align 8
+  %174 = bitcast %"struct.array2_real(kind=8).3"* %2 to %struct.array_descriptor2*
+  %175 = getelementptr inbounds %struct.array_descriptor2* %174, i32 0, i32 3
+  %176 = bitcast [2 x %struct.descriptor_dimension]* %175 to %struct.descriptor_dimension*
+  %177 = getelementptr %struct.descriptor_dimension* %176, i64 1
+  %178 = getelementptr inbounds %struct.descriptor_dimension* %177, i32 0, i32 1
+  %179 = load i64* %178, align 8
+  %180 = sub i64 %173, %179
+  %181 = add i64 %180, 1
+  %182 = mul i64 %167, %181
+  %183 = sub i64 0, %143
+  %184 = sub i64 %183, %167
+  %185 = add i64 %182, -1
+  %186 = mul i64 %182, 64
+  %187 = mul i64 %182, 8
+  %188 = bitcast %"struct.array2_real(kind=8).4"* %3 to %struct.array_descriptor2*
+  %189 = getelementptr inbounds %struct.array_descriptor2* %188, i32 0, i32 3
+  %190 = bitcast [2 x %struct.descriptor_dimension]* %189 to %struct.descriptor_dimension*
+  %191 = getelementptr %struct.descriptor_dimension* %190, i64 0
+  %192 = getelementptr inbounds %struct.descriptor_dimension* %191, i32 0, i32 0
+  %193 = load i64* %192, align 8
+  %194 = icmp ne i64 %193, 0
+  br i1 %194, label %"12", label %"13"
+
+"12":                                             ; preds = %"11"
+  br label %"14"
+
+"13":                                             ; preds = %"11"
+  br label %"14"
+
+"14":                                             ; preds = %"13", %"12"
+  %195 = phi i64 [ 1, %"13" ], [ %193, %"12" ]
+  %196 = bitcast %"struct.array2_real(kind=8).4"* %3 to %struct.array_descriptor2*
+  %197 = getelementptr inbounds %struct.array_descriptor2* %196, i32 0, i32 0
+  %198 = load i8** %197, align 8
+  %199 = bitcast i8* %198 to [0 x double]*
+  %200 = bitcast %"struct.array2_real(kind=8).4"* %3 to %struct.array_descriptor2*
+  %201 = getelementptr inbounds %struct.array_descriptor2* %200, i32 0, i32 3
+  %202 = bitcast [2 x %struct.descriptor_dimension]* %201 to %struct.descriptor_dimension*
+  %203 = getelementptr %struct.descriptor_dimension* %202, i64 0
+  %204 = getelementptr inbounds %struct.descriptor_dimension* %203, i32 0, i32 2
+  %205 = load i64* %204, align 8
+  %206 = bitcast %"struct.array2_real(kind=8).4"* %3 to %struct.array_descriptor2*
+  %207 = getelementptr inbounds %struct.array_descriptor2* %206, i32 0, i32 3
+  %208 = bitcast [2 x %struct.descriptor_dimension]* %207 to %struct.descriptor_dimension*
+  %209 = getelementptr %struct.descriptor_dimension* %208, i64 0
+  %210 = getelementptr inbounds %struct.descriptor_dimension* %209, i32 0, i32 1
+  %211 = load i64* %210, align 8
+  %212 = sub i64 %205, %211
+  %213 = add i64 %212, 1
+  %214 = bitcast %"struct.array2_real(kind=8).4"* %3 to %struct.array_descriptor2*
+  %215 = getelementptr inbounds %struct.array_descriptor2* %214, i32 0, i32 3
+  %216 = bitcast [2 x %struct.descriptor_dimension]* %215 to %struct.descriptor_dimension*
+  %217 = getelementptr %struct.descriptor_dimension* %216, i64 1
+  %218 = getelementptr inbounds %struct.descriptor_dimension* %217, i32 0, i32 0
+  %219 = load i64* %218, align 8
+  %220 = bitcast %"struct.array2_real(kind=8).4"* %3 to %struct.array_descriptor2*
+  %221 = getelementptr inbounds %struct.array_descriptor2* %220, i32 0, i32 3
+  %222 = bitcast [2 x %struct.descriptor_dimension]* %221 to %struct.descriptor_dimension*
+  %223 = getelementptr %struct.descriptor_dimension* %222, i64 1
+  %224 = getelementptr inbounds %struct.descriptor_dimension* %223, i32 0, i32 2
+  %225 = load i64* %224, align 8
+  %226 = bitcast %"struct.array2_real(kind=8).4"* %3 to %struct.array_descriptor2*
+  %227 = getelementptr inbounds %struct.array_descriptor2* %226, i32 0, i32 3
+  %228 = bitcast [2 x %struct.descriptor_dimension]* %227 to %struct.descriptor_dimension*
+  %229 = getelementptr %struct.descriptor_dimension* %228, i64 1
+  %230 = getelementptr inbounds %struct.descriptor_dimension* %229, i32 0, i32 1
+  %231 = load i64* %230, align 8
+  %232 = sub i64 %225, %231
+  %233 = add i64 %232, 1
+  %234 = mul i64 %219, %233
+  %235 = sub i64 0, %195
+  %236 = sub i64 %235, %219
+  %237 = add i64 %234, -1
+  %238 = mul i64 %234, 64
+  %239 = mul i64 %234, 8
+  %240 = bitcast %"struct.array2_real(kind=8).2"* %4 to %struct.array_descriptor2*
+  %241 = getelementptr inbounds %struct.array_descriptor2* %240, i32 0, i32 3
+  %242 = bitcast [2 x %struct.descriptor_dimension]* %241 to %struct.descriptor_dimension*
+  %243 = getelementptr %struct.descriptor_dimension* %242, i64 0
+  %244 = getelementptr inbounds %struct.descriptor_dimension* %243, i32 0, i32 0
+  %245 = load i64* %244, align 8
+  %246 = icmp ne i64 %245, 0
+  br i1 %246, label %"15", label %"16"
+
+"15":                                             ; preds = %"14"
+  br label %"17"
+
+"16":                                             ; preds = %"14"
+  br label %"17"
+
+"17":                                             ; preds = %"16", %"15"
+  %247 = phi i64 [ 1, %"16" ], [ %245, %"15" ]
+  %248 = bitcast %"struct.array2_real(kind=8).2"* %4 to %struct.array_descriptor2*
+  %249 = getelementptr inbounds %struct.array_descriptor2* %248, i32 0, i32 0
+  %250 = load i8** %249, align 8
+  %251 = bitcast i8* %250 to [0 x double]*
+  %252 = bitcast %"struct.array2_real(kind=8).2"* %4 to %struct.array_descriptor2*
+  %253 = getelementptr inbounds %struct.array_descriptor2* %252, i32 0, i32 3
+  %254 = bitcast [2 x %struct.descriptor_dimension]* %253 to %struct.descriptor_dimension*
+  %255 = getelementptr %struct.descriptor_dimension* %254, i64 0
+  %256 = getelementptr inbounds %struct.descriptor_dimension* %255, i32 0, i32 2
+  %257 = load i64* %256, align 8
+  %258 = bitcast %"struct.array2_real(kind=8).2"* %4 to %struct.array_descriptor2*
+  %259 = getelementptr inbounds %struct.array_descriptor2* %258, i32 0, i32 3
+  %260 = bitcast [2 x %struct.descriptor_dimension]* %259 to %struct.descriptor_dimension*
+  %261 = getelementptr %struct.descriptor_dimension* %260, i64 0
+  %262 = getelementptr inbounds %struct.descriptor_dimension* %261, i32 0, i32 1
+  %263 = load i64* %262, align 8
+  %264 = sub i64 %257, %263
+  %265 = add i64 %264, 1
+  %266 = bitcast %"struct.array2_real(kind=8).2"* %4 to %struct.array_descriptor2*
+  %267 = getelementptr inbounds %struct.array_descriptor2* %266, i32 0, i32 3
+  %268 = bitcast [2 x %struct.descriptor_dimension]* %267 to %struct.descriptor_dimension*
+  %269 = getelementptr %struct.descriptor_dimension* %268, i64 1
+  %270 = getelementptr inbounds %struct.descriptor_dimension* %269, i32 0, i32 0
+  %271 = load i64* %270, align 8
+  %272 = bitcast %"struct.array2_real(kind=8).2"* %4 to %struct.array_descriptor2*
+  %273 = getelementptr inbounds %struct.array_descriptor2* %272, i32 0, i32 3
+  %274 = bitcast [2 x %struct.descriptor_dimension]* %273 to %struct.descriptor_dimension*
+  %275 = getelementptr %struct.descriptor_dimension* %274, i64 1
+  %276 = getelementptr inbounds %struct.descriptor_dimension* %275, i32 0, i32 2
+  %277 = load i64* %276, align 8
+  %278 = bitcast %"struct.array2_real(kind=8).2"* %4 to %struct.array_descriptor2*
+  %279 = getelementptr inbounds %struct.array_descriptor2* %278, i32 0, i32 3
+  %280 = bitcast [2 x %struct.descriptor_dimension]* %279 to %struct.descriptor_dimension*
+  %281 = getelementptr %struct.descriptor_dimension* %280, i64 1
+  %282 = getelementptr inbounds %struct.descriptor_dimension* %281, i32 0, i32 1
+  %283 = load i64* %282, align 8
+  %284 = sub i64 %277, %283
+  %285 = add i64 %284, 1
+  %286 = mul i64 %271, %285
+  %287 = sub i64 0, %247
+  %288 = sub i64 %287, %271
+  %289 = add i64 %286, -1
+  %290 = mul i64 %286, 64
+  %291 = mul i64 %286, 8
+  %292 = bitcast %"struct.array2_real(kind=8).1"* %5 to %struct.array_descriptor2*
+  %293 = getelementptr inbounds %struct.array_descriptor2* %292, i32 0, i32 3
+  %294 = bitcast [2 x %struct.descriptor_dimension]* %293 to %struct.descriptor_dimension*
+  %295 = getelementptr %struct.descriptor_dimension* %294, i64 0
+  %296 = getelementptr inbounds %struct.descriptor_dimension* %295, i32 0, i32 0
+  %297 = load i64* %296, align 8
+  %298 = icmp ne i64 %297, 0
+  br i1 %298, label %"18", label %"19"
+
+"18":                                             ; preds = %"17"
+  br label %"20"
+
+"19":                                             ; preds = %"17"
+  br label %"20"
+
+"20":                                             ; preds = %"19", %"18"
+  %299 = phi i64 [ 1, %"19" ], [ %297, %"18" ]
+  %300 = bitcast %"struct.array2_real(kind=8).1"* %5 to %struct.array_descriptor2*
+  %301 = getelementptr inbounds %struct.array_descriptor2* %300, i32 0, i32 0
+  %302 = load i8** %301, align 8
+  %303 = bitcast i8* %302 to [0 x double]*
+  %304 = bitcast %"struct.array2_real(kind=8).1"* %5 to %struct.array_descriptor2*
+  %305 = getelementptr inbounds %struct.array_descriptor2* %304, i32 0, i32 3
+  %306 = bitcast [2 x %struct.descriptor_dimension]* %305 to %struct.descriptor_dimension*
+  %307 = getelementptr %struct.descriptor_dimension* %306, i64 0
+  %308 = getelementptr inbounds %struct.descriptor_dimension* %307, i32 0, i32 2
+  %309 = load i64* %308, align 8
+  %310 = bitcast %"struct.array2_real(kind=8).1"* %5 to %struct.array_descriptor2*
+  %311 = getelementptr inbounds %struct.array_descriptor2* %310, i32 0, i32 3
+  %312 = bitcast [2 x %struct.descriptor_dimension]* %311 to %struct.descriptor_dimension*
+  %313 = getelementptr %struct.descriptor_dimension* %312, i64 0
+  %314 = getelementptr inbounds %struct.descriptor_dimension* %313, i32 0, i32 1
+  %315 = load i64* %314, align 8
+  %316 = sub i64 %309, %315
+  %317 = add i64 %316, 1
+  %318 = bitcast %"struct.array2_real(kind=8).1"* %5 to %struct.array_descriptor2*
+  %319 = getelementptr inbounds %struct.array_descriptor2* %318, i32 0, i32 3
+  %320 = bitcast [2 x %struct.descriptor_dimension]* %319 to %struct.descriptor_dimension*
+  %321 = getelementptr %struct.descriptor_dimension* %320, i64 1
+  %322 = getelementptr inbounds %struct.descriptor_dimension* %321, i32 0, i32 0
+  %323 = load i64* %322, align 8
+  %324 = bitcast %"struct.array2_real(kind=8).1"* %5 to %struct.array_descriptor2*
+  %325 = getelementptr inbounds %struct.array_descriptor2* %324, i32 0, i32 3
+  %326 = bitcast [2 x %struct.descriptor_dimension]* %325 to %struct.descriptor_dimension*
+  %327 = getelementptr %struct.descriptor_dimension* %326, i64 1
+  %328 = getelementptr inbounds %struct.descriptor_dimension* %327, i32 0, i32 2
+  %329 = load i64* %328, align 8
+  %330 = bitcast %"struct.array2_real(kind=8).1"* %5 to %struct.array_descriptor2*
+  %331 = getelementptr inbounds %struct.array_descriptor2* %330, i32 0, i32 3
+  %332 = bitcast [2 x %struct.descriptor_dimension]* %331 to %struct.descriptor_dimension*
+  %333 = getelementptr %struct.descriptor_dimension* %332, i64 1
+  %334 = getelementptr inbounds %struct.descriptor_dimension* %333, i32 0, i32 1
+  %335 = load i64* %334, align 8
+  %336 = sub i64 %329, %335
+  %337 = add i64 %336, 1
+  %338 = mul i64 %323, %337
+  %339 = sub i64 0, %299
+  %340 = sub i64 %339, %323
+  %341 = add i64 %338, -1
+  %342 = mul i64 %338, 64
+  %343 = mul i64 %338, 8
+  %344 = bitcast %"struct.array2_real(kind=8).0"* %6 to %struct.array_descriptor2*
+  %345 = getelementptr inbounds %struct.array_descriptor2* %344, i32 0, i32 3
+  %346 = bitcast [2 x %struct.descriptor_dimension]* %345 to %struct.descriptor_dimension*
+  %347 = getelementptr %struct.descriptor_dimension* %346, i64 0
+  %348 = getelementptr inbounds %struct.descriptor_dimension* %347, i32 0, i32 0
+  %349 = load i64* %348, align 8
+  %350 = icmp ne i64 %349, 0
+  br i1 %350, label %"21", label %"22"
+
+"21":                                             ; preds = %"20"
+  br label %"23"
+
+"22":                                             ; preds = %"20"
+  br label %"23"
+
+"23":                                             ; preds = %"22", %"21"
+  %351 = phi i64 [ 1, %"22" ], [ %349, %"21" ]
+  %352 = bitcast %"struct.array2_real(kind=8).0"* %6 to %struct.array_descriptor2*
+  %353 = getelementptr inbounds %struct.array_descriptor2* %352, i32 0, i32 0
+  %354 = load i8** %353, align 8
+  %355 = bitcast i8* %354 to [0 x double]*
+  %356 = bitcast %"struct.array2_real(kind=8).0"* %6 to %struct.array_descriptor2*
+  %357 = getelementptr inbounds %struct.array_descriptor2* %356, i32 0, i32 3
+  %358 = bitcast [2 x %struct.descriptor_dimension]* %357 to %struct.descriptor_dimension*
+  %359 = getelementptr %struct.descriptor_dimension* %358, i64 0
+  %360 = getelementptr inbounds %struct.descriptor_dimension* %359, i32 0, i32 2
+  %361 = load i64* %360, align 8
+  %362 = bitcast %"struct.array2_real(kind=8).0"* %6 to %struct.array_descriptor2*
+  %363 = getelementptr inbounds %struct.array_descriptor2* %362, i32 0, i32 3
+  %364 = bitcast [2 x %struct.descriptor_dimension]* %363 to %struct.descriptor_dimension*
+  %365 = getelementptr %struct.descriptor_dimension* %364, i64 0
+  %366 = getelementptr inbounds %struct.descriptor_dimension* %365, i32 0, i32 1
+  %367 = load i64* %366, align 8
+  %368 = sub i64 %361, %367
+  %369 = add i64 %368, 1
+  %370 = bitcast %"struct.array2_real(kind=8).0"* %6 to %struct.array_descriptor2*
+  %371 = getelementptr inbounds %struct.array_descriptor2* %370, i32 0, i32 3
+  %372 = bitcast [2 x %struct.descriptor_dimension]* %371 to %struct.descriptor_dimension*
+  %373 = getelementptr %struct.descriptor_dimension* %372, i64 1
+  %374 = getelementptr inbounds %struct.descriptor_dimension* %373, i32 0, i32 0
+  %375 = load i64* %374, align 8
+  %376 = bitcast %"struct.array2_real(kind=8).0"* %6 to %struct.array_descriptor2*
+  %377 = getelementptr inbounds %struct.array_descriptor2* %376, i32 0, i32 3
+  %378 = bitcast [2 x %struct.descriptor_dimension]* %377 to %struct.descriptor_dimension*
+  %379 = getelementptr %struct.descriptor_dimension* %378, i64 1
+  %380 = getelementptr inbounds %struct.descriptor_dimension* %379, i32 0, i32 2
+  %381 = load i64* %380, align 8
+  %382 = bitcast %"struct.array2_real(kind=8).0"* %6 to %struct.array_descriptor2*
+  %383 = getelementptr inbounds %struct.array_descriptor2* %382, i32 0, i32 3
+  %384 = bitcast [2 x %struct.descriptor_dimension]* %383 to %struct.descriptor_dimension*
+  %385 = getelementptr %struct.descriptor_dimension* %384, i64 1
+  %386 = getelementptr inbounds %struct.descriptor_dimension* %385, i32 0, i32 1
+  %387 = load i64* %386, align 8
+  %388 = sub i64 %381, %387
+  %389 = add i64 %388, 1
+  %390 = mul i64 %375, %389
+  %391 = sub i64 0, %351
+  %392 = sub i64 %391, %375
+  %393 = add i64 %390, -1
+  %394 = mul i64 %390, 64
+  %395 = mul i64 %390, 8
+  %396 = bitcast %"struct.array2_real(kind=8)"* %7 to %struct.array_descriptor2*
+  %397 = getelementptr inbounds %struct.array_descriptor2* %396, i32 0, i32 3
+  %398 = bitcast [2 x %struct.descriptor_dimension]* %397 to %struct.descriptor_dimension*
+  %399 = getelementptr %struct.descriptor_dimension* %398, i64 0
+  %400 = getelementptr inbounds %struct.descriptor_dimension* %399, i32 0, i32 0
+  %401 = load i64* %400, align 8
+  %402 = icmp ne i64 %401, 0
+  br i1 %402, label %"24", label %"25"
+
+"24":                                             ; preds = %"23"
+  br label %"26"
+
+"25":                                             ; preds = %"23"
+  br label %"26"
+
+"26":                                             ; preds = %"25", %"24"
+  %403 = phi i64 [ 1, %"25" ], [ %401, %"24" ]
+  %404 = bitcast %"struct.array2_real(kind=8)"* %7 to %struct.array_descriptor2*
+  %405 = getelementptr inbounds %struct.array_descriptor2* %404, i32 0, i32 0
+  %406 = load i8** %405, align 8
+  %407 = bitcast i8* %406 to [0 x double]*
+  %408 = bitcast %"struct.array2_real(kind=8)"* %7 to %struct.array_descriptor2*
+  %409 = getelementptr inbounds %struct.array_descriptor2* %408, i32 0, i32 3
+  %410 = bitcast [2 x %struct.descriptor_dimension]* %409 to %struct.descriptor_dimension*
+  %411 = getelementptr %struct.descriptor_dimension* %410, i64 0
+  %412 = getelementptr inbounds %struct.descriptor_dimension* %411, i32 0, i32 2
+  %413 = load i64* %412, align 8
+  %414 = bitcast %"struct.array2_real(kind=8)"* %7 to %struct.array_descriptor2*
+  %415 = getelementptr inbounds %struct.array_descriptor2* %414, i32 0, i32 3
+  %416 = bitcast [2 x %struct.descriptor_dimension]* %415 to %struct.descriptor_dimension*
+  %417 = getelementptr %struct.descriptor_dimension* %416, i64 0
+  %418 = getelementptr inbounds %struct.descriptor_dimension* %417, i32 0, i32 1
+  %419 = load i64* %418, align 8
+  %420 = sub i64 %413, %419
+  %421 = add i64 %420, 1
+  %422 = bitcast %"struct.array2_real(kind=8)"* %7 to %struct.array_descriptor2*
+  %423 = getelementptr inbounds %struct.array_descriptor2* %422, i32 0, i32 3
+  %424 = bitcast [2 x %struct.descriptor_dimension]* %423 to %struct.descriptor_dimension*
+  %425 = getelementptr %struct.descriptor_dimension* %424, i64 1
+  %426 = getelementptr inbounds %struct.descriptor_dimension* %425, i32 0, i32 0
+  %427 = load i64* %426, align 8
+  %428 = bitcast %"struct.array2_real(kind=8)"* %7 to %struct.array_descriptor2*
+  %429 = getelementptr inbounds %struct.array_descriptor2* %428, i32 0, i32 3
+  %430 = bitcast [2 x %struct.descriptor_dimension]* %429 to %struct.descriptor_dimension*
+  %431 = getelementptr %struct.descriptor_dimension* %430, i64 1
+  %432 = getelementptr inbounds %struct.descriptor_dimension* %431, i32 0, i32 2
+  %433 = load i64* %432, align 8
+  %434 = bitcast %"struct.array2_real(kind=8)"* %7 to %struct.array_descriptor2*
+  %435 = getelementptr inbounds %struct.array_descriptor2* %434, i32 0, i32 3
+  %436 = bitcast [2 x %struct.descriptor_dimension]* %435 to %struct.descriptor_dimension*
+  %437 = getelementptr %struct.descriptor_dimension* %436, i64 1
+  %438 = getelementptr inbounds %struct.descriptor_dimension* %437, i32 0, i32 1
+  %439 = load i64* %438, align 8
+  %440 = sub i64 %433, %439
+  %441 = add i64 %440, 1
+  %442 = mul i64 %427, %441
+  %443 = sub i64 0, %403
+  %444 = sub i64 %443, %427
+  %445 = add i64 %442, -1
+  %446 = mul i64 %442, 64
+  %447 = mul i64 %442, 8
+  %448 = load i32* %8, align 4
+  %449 = load i32* %9, align 4
+  %450 = icmp sle i32 %448, %449
+  br i1 %450, label %"27", label %"35"
+
+"27":                                             ; preds = %"34", %"26"
+  %451 = phi i32 [ %771, %"34" ], [ %448, %"26" ]
+  %452 = load i32* %10, align 4
+  %453 = load i32* %11, align 4
+  %454 = icmp sle i32 %452, %453
+  br i1 %454, label %"28", label %"33"
+
+"28":                                             ; preds = %"32", %"27"
+  %455 = phi i32 [ %768, %"32" ], [ %452, %"27" ]
+  %456 = sext i32 %455 to i64
+  %457 = mul i64 %456, %19
+  %458 = sext i32 %451 to i64
+  %459 = mul i64 %458, %43
+  %460 = add i64 %457, %459
+  %461 = add i64 %460, %63
+  %462 = add i64 %461, %80
+  %463 = bitcast [0 x double]* %23 to double*
+  %464 = getelementptr double* %463, i64 %462
+  %465 = load double* %464, align 8
+  %466 = sext i32 %455 to i64
+  %467 = mul i64 %466, %19
+  %468 = sext i32 %451 to i64
+  %469 = mul i64 %468, %43
+  %470 = add i64 %467, %469
+  %471 = mul i64 %63, 2
+  %472 = add i64 %470, %471
+  %473 = add i64 %472, %80
+  %474 = bitcast [0 x double]* %23 to double*
+  %475 = getelementptr double* %474, i64 %473
+  %476 = load double* %475, align 8
+  %477 = sext i32 %455 to i64
+  %478 = mul i64 %477, %19
+  %479 = sext i32 %451 to i64
+  %480 = mul i64 %479, %43
+  %481 = add i64 %478, %480
+  %482 = mul i64 %63, 3
+  %483 = add i64 %481, %482
+  %484 = add i64 %483, %80
+  %485 = bitcast [0 x double]* %23 to double*
+  %486 = getelementptr double* %485, i64 %484
+  %487 = load double* %486, align 8
+  %488 = sext i32 %455 to i64
+  %489 = mul i64 %488, %19
+  %490 = sext i32 %451 to i64
+  %491 = mul i64 %490, %43
+  %492 = add i64 %489, %491
+  %493 = mul i64 %63, 4
+  %494 = add i64 %492, %493
+  %495 = add i64 %494, %80
+  %496 = bitcast [0 x double]* %23 to double*
+  %497 = getelementptr double* %496, i64 %495
+  %498 = load double* %497, align 8
+  %499 = sext i32 %455 to i64
+  %500 = mul i64 %499, %19
+  %501 = sext i32 %451 to i64
+  %502 = mul i64 %501, %43
+  %503 = add i64 %500, %502
+  %504 = mul i64 %63, 5
+  %505 = add i64 %503, %504
+  %506 = add i64 %505, %80
+  %507 = bitcast [0 x double]* %23 to double*
+  %508 = getelementptr double* %507, i64 %506
+  %509 = load double* %508, align 8
+  %510 = sext i32 %455 to i64
+  %511 = mul i64 %510, %19
+  %512 = sext i32 %451 to i64
+  %513 = mul i64 %512, %43
+  %514 = add i64 %511, %513
+  %515 = mul i64 %63, 6
+  %516 = add i64 %514, %515
+  %517 = add i64 %516, %80
+  %518 = bitcast [0 x double]* %23 to double*
+  %519 = getelementptr double* %518, i64 %517
+  %520 = load double* %519, align 8
+  %521 = sext i32 %455 to i64
+  %522 = mul i64 %521, %91
+  %523 = sext i32 %451 to i64
+  %524 = mul i64 %523, %115
+  %525 = add i64 %522, %524
+  %526 = add i64 %525, %132
+  %527 = bitcast [0 x double]* %95 to double*
+  %528 = getelementptr double* %527, i64 %526
+  %529 = load double* %528, align 8
+  %530 = sext i32 %455 to i64
+  %531 = mul i64 %530, %143
+  %532 = sext i32 %451 to i64
+  %533 = mul i64 %532, %167
+  %534 = add i64 %531, %533
+  %535 = add i64 %534, %184
+  %536 = bitcast [0 x double]* %147 to double*
+  %537 = getelementptr double* %536, i64 %535
+  %538 = load double* %537, align 8
+  %539 = fmul double %529, %538
+  %540 = sext i32 %455 to i64
+  %541 = mul i64 %540, %195
+  %542 = sext i32 %451 to i64
+  %543 = mul i64 %542, %219
+  %544 = add i64 %541, %543
+  %545 = add i64 %544, %236
+  %546 = bitcast [0 x double]* %199 to double*
+  %547 = getelementptr double* %546, i64 %545
+  %548 = load double* %547, align 8
+  %549 = sext i32 %455 to i64
+  %550 = mul i64 %549, %195
+  %551 = sext i32 %451 to i64
+  %552 = mul i64 %551, %219
+  %553 = add i64 %550, %552
+  %554 = add i64 %553, %236
+  %555 = bitcast [0 x double]* %199 to double*
+  %556 = getelementptr double* %555, i64 %554
+  %557 = load double* %556, align 8
+  %558 = fmul double %548, %557
+  %559 = fdiv double %539, %558
+  %560 = sext i32 %455 to i64
+  %561 = mul i64 %560, %91
+  %562 = sext i32 %451 to i64
+  %563 = mul i64 %562, %115
+  %564 = add i64 %561, %563
+  %565 = add i64 %564, %132
+  %566 = bitcast [0 x double]* %95 to double*
+  %567 = getelementptr double* %566, i64 %565
+  %568 = load double* %567, align 8
+  %569 = sext i32 %455 to i64
+  %570 = mul i64 %569, %195
+  %571 = sext i32 %451 to i64
+  %572 = mul i64 %571, %219
+  %573 = add i64 %570, %572
+  %574 = add i64 %573, %236
+  %575 = bitcast [0 x double]* %199 to double*
+  %576 = getelementptr double* %575, i64 %574
+  %577 = load double* %576, align 8
+  %578 = fdiv double %568, %577
+  %579 = fmul double %578, %578
+  %580 = sext i32 %455 to i64
+  %581 = mul i64 %580, %247
+  %582 = sext i32 %451 to i64
+  %583 = mul i64 %582, %271
+  %584 = add i64 %581, %583
+  %585 = add i64 %584, %288
+  %586 = bitcast [0 x double]* %251 to double*
+  %587 = getelementptr double* %586, i64 %585
+  %588 = load double* %587, align 8
+  %589 = fcmp oge double %588, 0.000000e+00
+  %590 = icmp ne i1 %589, false
+  br i1 %590, label %"29", label %"30"
+
+"29":                                             ; preds = %"28"
+  %591 = load double* @__data_turbulence_MOD_c_g, align 8
+  %592 = fsub double 1.000000e+00, %591
+  %593 = sext i32 %455 to i64
+  %594 = mul i64 %593, %247
+  %595 = sext i32 %451 to i64
+  %596 = mul i64 %595, %271
+  %597 = add i64 %594, %596
+  %598 = add i64 %597, %288
+  %599 = bitcast [0 x double]* %251 to double*
+  %600 = getelementptr double* %599, i64 %598
+  %601 = load double* %600, align 8
+  %602 = fmul double %601, %579
+  %603 = sext i32 %455 to i64
+  %604 = mul i64 %603, %299
+  %605 = sext i32 %451 to i64
+  %606 = mul i64 %605, %323
+  %607 = add i64 %604, %606
+  %608 = add i64 %607, %340
+  %609 = bitcast [0 x double]* %303 to double*
+  %610 = getelementptr double* %609, i64 %608
+  %611 = load double* %610, align 8
+  %612 = fmul double %611, %579
+  %613 = fsub double %509, %498
+  %614 = fmul double %613, %602
+  %615 = fadd double %614, %465
+  %616 = fmul double %498, %612
+  %617 = fsub double %520, %498
+  %618 = fmul double %617, %602
+  %619 = fmul double %487, %602
+  %620 = fadd double %619, %476
+  %621 = fmul double %498, %612
+  %622 = fadd double %620, %621
+  %623 = fmul double %615, %622
+  %624 = fmul double %616, %618
+  %625 = fsub double %623, %624
+  %626 = sext i32 %455 to i64
+  %627 = mul i64 %626, %351
+  %628 = sext i32 %451 to i64
+  %629 = mul i64 %628, %375
+  %630 = add i64 %627, %629
+  %631 = add i64 %630, %392
+  %632 = fmul double 1.000000e+00, %622
+  %633 = fmul double %592, %616
+  %634 = fsub double %632, %633
+  %635 = fdiv double %634, %625
+  %636 = bitcast [0 x double]* %355 to double*
+  %637 = getelementptr double* %636, i64 %631
+  store double %635, double* %637, align 8
+  %638 = sext i32 %455 to i64
+  %639 = mul i64 %638, %403
+  %640 = sext i32 %451 to i64
+  %641 = mul i64 %640, %427
+  %642 = add i64 %639, %641
+  %643 = add i64 %642, %444
+  %644 = fmul double %592, %615
+  %645 = fmul double 1.000000e+00, %618
+  %646 = fsub double %644, %645
+  %647 = fdiv double %646, %625
+  %648 = bitcast [0 x double]* %407 to double*
+  %649 = getelementptr double* %648, i64 %643
+  store double %647, double* %649, align 8
+  br label %"31"
+
+"30":                                             ; preds = %"28"
+  %650 = fmul double %498, %559
+  %651 = fsub double 1.000000e+00, %650
+  %652 = load double* @__data_turbulence_MOD_c_g, align 8
+  %653 = fsub double %651, %652
+  %654 = fmul double %487, %559
+  %655 = fdiv double %654, %476
+  %656 = fmul double %509, %559
+  %657 = fdiv double %656, %465
+  %658 = fmul double %520, %559
+  %659 = fdiv double %658, %476
+  %660 = fdiv double %651, %465
+  %661 = fdiv double %653, %476
+  %662 = sext i32 %455 to i64
+  %663 = mul i64 %662, %299
+  %664 = sext i32 %451 to i64
+  %665 = mul i64 %664, %323
+  %666 = add i64 %663, %665
+  %667 = add i64 %666, %340
+  %668 = bitcast [0 x double]* %303 to double*
+  %669 = getelementptr double* %668, i64 %667
+  %670 = load double* %669, align 8
+  %671 = fmul double %670, %661
+  %672 = fsub double %657, %655
+  %673 = fadd double %672, %660
+  %674 = sext i32 %455 to i64
+  %675 = mul i64 %674, %247
+  %676 = sext i32 %451 to i64
+  %677 = mul i64 %676, %271
+  %678 = add i64 %675, %677
+  %679 = add i64 %678, %288
+  %680 = bitcast [0 x double]* %251 to double*
+  %681 = getelementptr double* %680, i64 %679
+  %682 = load double* %681, align 8
+  %683 = fmul double %673, %682
+  %684 = fadd double %671, %683
+  %685 = fmul double %660, 2.000000e+00
+  %686 = fdiv double %684, %685
+  %687 = fmul double %686, %686
+  %688 = fadd double %659, %661
+  %689 = sext i32 %455 to i64
+  %690 = mul i64 %689, %247
+  %691 = sext i32 %451 to i64
+  %692 = mul i64 %691, %271
+  %693 = add i64 %690, %692
+  %694 = add i64 %693, %288
+  %695 = bitcast [0 x double]* %251 to double*
+  %696 = getelementptr double* %695, i64 %694
+  %697 = load double* %696, align 8
+  %698 = fmul double %688, %697
+  %699 = sext i32 %455 to i64
+  %700 = mul i64 %699, %299
+  %701 = sext i32 %451 to i64
+  %702 = mul i64 %701, %323
+  %703 = add i64 %700, %702
+  %704 = add i64 %703, %340
+  %705 = bitcast [0 x double]* %303 to double*
+  %706 = getelementptr double* %705, i64 %704
+  %707 = load double* %706, align 8
+  %708 = fmul double %698, %707
+  %709 = fdiv double %708, %660
+  %710 = fsub double %687, %709
+  %711 = call double @sqrt(double %710) #1
+  %712 = fadd double %711, %686
+  %713 = sext i32 %455 to i64
+  %714 = mul i64 %713, %247
+  %715 = sext i32 %451 to i64
+  %716 = mul i64 %715, %271
+  %717 = add i64 %714, %716
+  %718 = add i64 %717, %288
+  %719 = bitcast [0 x double]* %251 to double*
+  %720 = getelementptr double* %719, i64 %718
+  %721 = load double* %720, align 8
+  %722 = sext i32 %455 to i64
+  %723 = mul i64 %722, %247
+  %724 = sext i32 %451 to i64
+  %725 = mul i64 %724, %271
+  %726 = add i64 %723, %725
+  %727 = add i64 %726, %288
+  %728 = bitcast [0 x double]* %251 to double*
+  %729 = getelementptr double* %728, i64 %727
+  %730 = load double* %729, align 8
+  %731 = fsub double %712, %730
+  %732 = fdiv double %721, %731
+  %733 = sext i32 %455 to i64
+  %734 = mul i64 %733, %351
+  %735 = sext i32 %451 to i64
+  %736 = mul i64 %735, %375
+  %737 = add i64 %734, %736
+  %738 = add i64 %737, %392
+  %739 = fmul double %657, %732
+  %740 = fsub double %660, %739
+  %741 = bitcast [0 x double]* %355 to double*
+  %742 = getelementptr double* %741, i64 %738
+  store double %740, double* %742, align 8
+  %743 = sext i32 %455 to i64
+  %744 = mul i64 %743, %403
+  %745 = sext i32 %451 to i64
+  %746 = mul i64 %745, %427
+  %747 = add i64 %744, %746
+  %748 = add i64 %747, %444
+  %749 = sext i32 %455 to i64
+  %750 = mul i64 %749, %351
+  %751 = sext i32 %451 to i64
+  %752 = mul i64 %751, %375
+  %753 = add i64 %750, %752
+  %754 = add i64 %753, %392
+  %755 = bitcast [0 x double]* %355 to double*
+  %756 = getelementptr double* %755, i64 %754
+  %757 = load double* %756, align 8
+  %758 = fmul double %659, %732
+  %759 = fsub double %661, %758
+  %760 = fmul double %757, %759
+  %761 = fsub double %657, %655
+  %762 = fmul double %761, %732
+  %763 = fsub double %660, %762
+  %764 = fdiv double %760, %763
+  %765 = bitcast [0 x double]* %407 to double*
+  %766 = getelementptr double* %765, i64 %748
+  store double %764, double* %766, align 8
+  br label %"31"
+
+"31":                                             ; preds = %"30", %"29"
+  %767 = icmp eq i32 %455, %453
+  %768 = add i32 %455, 1
+  %769 = icmp ne i1 %767, false
+  br i1 %769, label %"33", label %"32"
+
+"32":                                             ; preds = %"31"
+  br label %"28"
+
+"33":                                             ; preds = %"31", %"27"
+  %770 = icmp eq i32 %451, %449
+  %771 = add i32 %451, 1
+  %772 = icmp ne i1 %770, false
+  br i1 %772, label %"35", label %"34"
+
+"34":                                             ; preds = %"33"
+  br label %"27"
+
+"35":                                             ; preds = %"33", %"26"
+  br label %return
+
+return:                                           ; preds = %"35"
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define void @__turbulence_utilities_MOD_init_surface_canopy(i32* noalias %ie, i32* noalias %je, i32* noalias %itran_scheme, i32* noalias %istartpar, i32* noalias %iendpar, i32* noalias %jstartpar, i32* noalias %jendpar, [0 x double]* noalias %fr_land, [0 x double]* noalias %plcov, [0 x double]* noalias %lai, [0 x double]* noalias %sai, [0 x double]* noalias %tai, [0 x double]* noalias %eai) unnamed_addr #0 {
+entry:
+  %ie_addr = alloca i32*, align 8
+  %je_addr = alloca i32*, align 8
+  %itran_scheme_addr = alloca i32*, align 8
+  %istartpar_addr = alloca i32*, align 8
+  %iendpar_addr = alloca i32*, align 8
+  %jstartpar_addr = alloca i32*, align 8
+  %jendpar_addr = alloca i32*, align 8
+  %fr_land_addr = alloca [0 x double]*, align 8
+  %plcov_addr = alloca [0 x double]*, align 8
+  %lai_addr = alloca [0 x double]*, align 8
+  %sai_addr = alloca [0 x double]*, align 8
+  %tai_addr = alloca [0 x double]*, align 8
+  %eai_addr = alloca [0 x double]*, align 8
+  %ubound.155 = alloca i64
+  %ubound.156 = alloca i64
+  %stride.157 = alloca i64
+  %offset.158 = alloca i64
+  %size.159 = alloca i64
+  %fakt = alloca double
+  %ubound.160 = alloca i64
+  %ubound.161 = alloca i64
+  %stride.162 = alloca i64
+  %offset.163 = alloca i64
+  %size.164 = alloca i64
+  %i = alloca i32
+  %j = alloca i32
+  %ubound.165 = alloca i64
+  %ubound.166 = alloca i64
+  %stride.167 = alloca i64
+  %offset.168 = alloca i64
+  %size.169 = alloca i64
+  %ubound.170 = alloca i64
+  %ubound.171 = alloca i64
+  %stride.172 = alloca i64
+  %offset.173 = alloca i64
+  %size.174 = alloca i64
+  %ubound.175 = alloca i64
+  %ubound.176 = alloca i64
+  %stride.177 = alloca i64
+  %offset.178 = alloca i64
+  %size.179 = alloca i64
+  %ubound.180 = alloca i64
+  %ubound.181 = alloca i64
+  %stride.182 = alloca i64
+  %offset.183 = alloca i64
+  %size.184 = alloca i64
+  %D.2284 = alloca i64
+  %D.2285 = alloca i64
+  %D.2286 = alloca i64
+  %D.2287 = alloca i64
+  %D.2288 = alloca i64
+  %D.2289 = alloca i64
+  %D.2290 = alloca i64
+  %D.2291 = alloca i64
+  %D.2292 = alloca i64
+  %D.2293 = alloca i64
+  %D.2294 = alloca i64
+  %D.2295 = alloca i64
+  %D.2296 = alloca i64
+  %D.2297 = alloca i64
+  %D.2298 = alloca i64
+  %D.2299 = alloca i64
+  %D.2300 = alloca i64
+  %D.2301 = alloca i64
+  %D.2245 = alloca i32
+  %j.303 = alloca i32
+  %D.2257 = alloca i32
+  %D.2249 = alloca i32
+  %i.304 = alloca i32
+  %D.2256 = alloca i32
+  %D.2255 = alloca double
+  %M.185 = alloca double
+  %D.2260 = alloca i32
+  %j.306 = alloca i32
+  %D.2269 = alloca i32
+  %D.2264 = alloca i32
+  %i.307 = alloca i32
+  %D.2268 = alloca i32
+  %D.2271 = alloca i32
+  %j.308 = alloca i32
+  %D.2283 = alloca i32
+  %D.2275 = alloca i32
+  %i.309 = alloca i32
+  %D.2282 = alloca i32
+  %"alloca point" = bitcast i32 0 to i32
+  store i32* %ie, i32** %ie_addr, align 1
+  store i32* %je, i32** %je_addr, align 1
+  store i32* %itran_scheme, i32** %itran_scheme_addr, align 1
+  store i32* %istartpar, i32** %istartpar_addr, align 1
+  store i32* %iendpar, i32** %iendpar_addr, align 1
+  store i32* %jstartpar, i32** %jstartpar_addr, align 1
+  store i32* %jendpar, i32** %jendpar_addr, align 1
+  store [0 x double]* %fr_land, [0 x double]** %fr_land_addr, align 1
+  store [0 x double]* %plcov, [0 x double]** %plcov_addr, align 1
+  store [0 x double]* %lai, [0 x double]** %lai_addr, align 1
+  store [0 x double]* %sai, [0 x double]** %sai_addr, align 1
+  store [0 x double]* %tai, [0 x double]** %tai_addr, align 1
+  store [0 x double]* %eai, [0 x double]** %eai_addr, align 1
+  %0 = load i32** %ie_addr, align 8
+  %1 = load i32** %je_addr, align 8
+  %2 = load i32** %jstartpar_addr, align 8
+  %3 = load i32** %jendpar_addr, align 8
+  %4 = load i32** %istartpar_addr, align 8
+  %5 = load i32** %iendpar_addr, align 8
+  %6 = load [0 x double]** %fr_land_addr, align 8
+  %7 = load [0 x double]** %sai_addr, align 8
+  %8 = load [0 x double]** %lai_addr, align 8
+  %9 = load [0 x double]** %tai_addr, align 8
+  %10 = load i32** %itran_scheme_addr, align 8
+  %11 = load [0 x double]** %plcov_addr, align 8
+  %12 = load [0 x double]** %eai_addr, align 8
+  %"ssa point" = bitcast i32 0 to i32
+  br label %"2"
+
+"2":                                              ; preds = %entry
+  %13 = load i32* %0, align 4
+  %14 = sext i32 %13 to i64
+  %15 = icmp sge i64 %14, 0
+  %16 = select i1 %15, i64 %14, i64 0
+  %17 = load i32* %1, align 4
+  %18 = sext i32 %17 to i64
+  %19 = mul i64 %16, %18
+  %20 = icmp sge i64 %19, 0
+  %21 = select i1 %20, i64 %19, i64 0
+  %22 = add i64 %21, -1
+  %23 = mul i64 %21, 64
+  %24 = mul i64 %21, 8
+  %not = xor i64 %16, -1
+  %25 = load i32* %0, align 4
+  %26 = sext i32 %25 to i64
+  %27 = icmp sge i64 %26, 0
+  %28 = select i1 %27, i64 %26, i64 0
+  %29 = load i32* %1, align 4
+  %30 = sext i32 %29 to i64
+  %31 = mul i64 %28, %30
+  %32 = icmp sge i64 %31, 0
+  %33 = select i1 %32, i64 %31, i64 0
+  %34 = add i64 %33, -1
+  %35 = mul i64 %33, 64
+  %36 = mul i64 %33, 8
+  %not1 = xor i64 %28, -1
+  %37 = load i32* %0, align 4
+  %38 = sext i32 %37 to i64
+  %39 = icmp sge i64 %38, 0
+  %40 = select i1 %39, i64 %38, i64 0
+  %41 = load i32* %1, align 4
+  %42 = sext i32 %41 to i64
+  %43 = mul i64 %40, %42
+  %44 = icmp sge i64 %43, 0
+  %45 = select i1 %44, i64 %43, i64 0
+  %46 = add i64 %45, -1
+  %47 = mul i64 %45, 64
+  %48 = mul i64 %45, 8
+  %not2 = xor i64 %40, -1
+  %49 = load i32* %0, align 4
+  %50 = sext i32 %49 to i64
+  %51 = icmp sge i64 %50, 0
+  %52 = select i1 %51, i64 %50, i64 0
+  %53 = load i32* %1, align 4
+  %54 = sext i32 %53 to i64
+  %55 = mul i64 %52, %54
+  %56 = icmp sge i64 %55, 0
+  %57 = select i1 %56, i64 %55, i64 0
+  %58 = add i64 %57, -1
+  %59 = mul i64 %57, 64
+  %60 = mul i64 %57, 8
+  %not3 = xor i64 %52, -1
+  %61 = load i32* %0, align 4
+  %62 = sext i32 %61 to i64
+  %63 = icmp sge i64 %62, 0
+  %64 = select i1 %63, i64 %62, i64 0
+  %65 = load i32* %1, align 4
+  %66 = sext i32 %65 to i64
+  %67 = mul i64 %64, %66
+  %68 = icmp sge i64 %67, 0
+  %69 = select i1 %68, i64 %67, i64 0
+  %70 = add i64 %69, -1
+  %71 = mul i64 %69, 64
+  %72 = mul i64 %69, 8
+  %not4 = xor i64 %64, -1
+  %73 = load i32* %0, align 4
+  %74 = sext i32 %73 to i64
+  %75 = icmp sge i64 %74, 0
+  %76 = select i1 %75, i64 %74, i64 0
+  %77 = load i32* %1, align 4
+  %78 = sext i32 %77 to i64
+  %79 = mul i64 %76, %78
+  %80 = icmp sge i64 %79, 0
+  %81 = select i1 %80, i64 %79, i64 0
+  %82 = add i64 %81, -1
+  %83 = mul i64 %81, 64
+  %84 = mul i64 %81, 8
+  %not5 = xor i64 %76, -1
+  %85 = load i32* %2, align 4
+  %86 = load i32* %3, align 4
+  %87 = icmp sle i32 %85, %86
+  br i1 %87, label %"3", label %"13"
+
+"3":                                              ; preds = %"12", %"2"
+  %88 = phi i32 [ %134, %"12" ], [ %85, %"2" ]
+  %89 = load i32* %4, align 4
+  %90 = load i32* %5, align 4
+  %91 = icmp sle i32 %89, %90
+  br i1 %91, label %"4", label %"11"
+
+"4":                                              ; preds = %"10", %"3"
+  %92 = phi i32 [ %131, %"10" ], [ %89, %"3" ]
+  %93 = sext i32 %92 to i64
+  %94 = sext i32 %88 to i64
+  %95 = mul i64 %94, %16
+  %96 = add i64 %93, %95
+  %97 = add i64 %96, %not
+  %98 = bitcast [0 x double]* %6 to double*
+  %99 = getelementptr double* %98, i64 %97
+  %100 = load double* %99, align 8
+  %101 = fcmp olt double %100, 5.000000e-01
+  %102 = icmp ne i1 %101, false
+  br i1 %102, label %"5", label %"6"
+
+"5":                                              ; preds = %"4"
+  %103 = sext i32 %92 to i64
+  %104 = sext i32 %88 to i64
+  %105 = mul i64 %104, %28
+  %106 = add i64 %103, %105
+  %107 = add i64 %106, %not1
+  %108 = load double* @__data_turbulence_MOD_c_sea, align 8
+  %109 = bitcast [0 x double]* %7 to double*
+  %110 = getelementptr double* %109, i64 %107
+  store double %108, double* %110, align 8
+  br label %"9"
+
+"6":                                              ; preds = %"4"
+  %111 = sext i32 %92 to i64
+  %112 = sext i32 %88 to i64
+  %113 = mul i64 %112, %52
+  %114 = add i64 %111, %113
+  %115 = add i64 %114, %not3
+  %116 = bitcast [0 x double]* %8 to double*
+  %117 = getelementptr double* %116, i64 %115
+  %118 = load double* %117, align 8
+  %119 = fcmp ogt double %118, 1.000000e-06
+  %toBool = icmp ne i1 %119, false
+  %120 = or i1 %toBool, false
+  %121 = icmp ne i1 %120, false
+  br i1 %121, label %"7", label %"8"
+
+"7":                                              ; preds = %"6"
+  br label %"8"
+
+"8":                                              ; preds = %"7", %"6"
+  %122 = phi double [ %118, %"7" ], [ 1.000000e-06, %"6" ]
+  %123 = sext i32 %92 to i64
+  %124 = sext i32 %88 to i64
+  %125 = mul i64 %124, %40
+  %126 = add i64 %123, %125
+  %127 = add i64 %126, %not2
+  %128 = bitcast [0 x double]* %9 to double*
+  %129 = getelementptr double* %128, i64 %127
+  store double %122, double* %129, align 8
+  br label %"9"
+
+"9":                                              ; preds = %"8", %"5"
+  %130 = icmp eq i32 %92, %90
+  %131 = add i32 %92, 1
+  %132 = icmp ne i1 %130, false
+  br i1 %132, label %"11", label %"10"
+
+"10":                                             ; preds = %"9"
+  br label %"4"
+
+"11":                                             ; preds = %"9", %"3"
+  %133 = icmp eq i32 %88, %86
+  %134 = add i32 %88, 1
+  %135 = icmp ne i1 %133, false
+  br i1 %135, label %"13", label %"12"
+
+"12":                                             ; preds = %"11"
+  br label %"3"
+
+"13":                                             ; preds = %"11", %"2"
+  %136 = load i32* %10, align 4
+  %137 = icmp eq i32 %136, 1
+  br i1 %137, label %"14", label %"22"
+
+"14":                                             ; preds = %"13"
+  %138 = load i32* %2, align 4
+  %139 = load i32* %3, align 4
+  %140 = icmp sle i32 %138, %139
+  br i1 %140, label %"15", label %"30"
+
+"15":                                             ; preds = %"21", %"14"
+  %141 = phi i32 [ %224, %"21" ], [ %138, %"14" ]
+  %142 = load i32* %4, align 4
+  %143 = load i32* %5, align 4
+  %144 = icmp sle i32 %142, %143
+  br i1 %144, label %"16", label %"20"
+
+"16":                                             ; preds = %"19", %"15"
+  %145 = phi i32 [ %221, %"19" ], [ %142, %"15" ]
+  %146 = sext i32 %145 to i64
+  %147 = sext i32 %141 to i64
+  %148 = mul i64 %147, %16
+  %149 = add i64 %146, %148
+  %150 = add i64 %149, %not
+  %151 = bitcast [0 x double]* %6 to double*
+  %152 = getelementptr double* %151, i64 %150
+  %153 = load double* %152, align 8
+  %154 = fcmp oge double %153, 5.000000e-01
+  %155 = icmp ne i1 %154, false
+  br i1 %155, label %"17", label %"18"
+
+"17":                                             ; preds = %"16"
+  %156 = sext i32 %145 to i64
+  %157 = sext i32 %141 to i64
+  %158 = mul i64 %157, %28
+  %159 = add i64 %156, %158
+  %160 = add i64 %159, %not1
+  %161 = sext i32 %145 to i64
+  %162 = sext i32 %141 to i64
+  %163 = mul i64 %162, %40
+  %164 = add i64 %161, %163
+  %165 = add i64 %164, %not2
+  %166 = bitcast [0 x double]* %9 to double*
+  %167 = getelementptr double* %166, i64 %165
+  %168 = load double* %167, align 8
+  %169 = bitcast [0 x double]* %7 to double*
+  %170 = getelementptr double* %169, i64 %160
+  store double %168, double* %170, align 8
+  %171 = sext i32 %145 to i64
+  %172 = sext i32 %141 to i64
+  %173 = mul i64 %172, %64
+  %174 = add i64 %171, %173
+  %175 = add i64 %174, %not4
+  %176 = sext i32 %145 to i64
+  %177 = sext i32 %141 to i64
+  %178 = mul i64 %177, %76
+  %179 = add i64 %176, %178
+  %180 = add i64 %179, %not5
+  %181 = bitcast [0 x double]* %11 to double*
+  %182 = getelementptr double* %181, i64 %180
+  %183 = load double* %182, align 8
+  %184 = fsub double 1.000000e+00, %183
+  %185 = sext i32 %145 to i64
+  %186 = sext i32 %141 to i64
+  %187 = mul i64 %186, %28
+  %188 = add i64 %185, %187
+  %189 = add i64 %188, %not1
+  %190 = bitcast [0 x double]* %7 to double*
+  %191 = getelementptr double* %190, i64 %189
+  %192 = load double* %191, align 8
+  %193 = fmul double %184, %192
+  %194 = bitcast [0 x double]* %12 to double*
+  %195 = getelementptr double* %194, i64 %175
+  store double %193, double* %195, align 8
+  %196 = sext i32 %145 to i64
+  %197 = sext i32 %141 to i64
+  %198 = mul i64 %197, %40
+  %199 = add i64 %196, %198
+  %200 = add i64 %199, %not2
+  %201 = sext i32 %145 to i64
+  %202 = sext i32 %141 to i64
+  %203 = mul i64 %202, %76
+  %204 = add i64 %201, %203
+  %205 = add i64 %204, %not5
+  %206 = bitcast [0 x double]* %11 to double*
+  %207 = getelementptr double* %206, i64 %205
+  %208 = load double* %207, align 8
+  %209 = sext i32 %145 to i64
+  %210 = sext i32 %141 to i64
+  %211 = mul i64 %210, %40
+  %212 = add i64 %209, %211
+  %213 = add i64 %212, %not2
+  %214 = bitcast [0 x double]* %9 to double*
+  %215 = getelementptr double* %214, i64 %213
+  %216 = load double* %215, align 8
+  %217 = fmul double %208, %216
+  %218 = bitcast [0 x double]* %9 to double*
+  %219 = getelementptr double* %218, i64 %200
+  store double %217, double* %219, align 8
+  br label %"18"
+
+"18":                                             ; preds = %"17", %"16"
+  %220 = icmp eq i32 %145, %143
+  %221 = add i32 %145, 1
+  %222 = icmp ne i1 %220, false
+  br i1 %222, label %"20", label %"19"
+
+"19":                                             ; preds = %"18"
+  br label %"16"
+
+"20":                                             ; preds = %"18", %"15"
+  %223 = icmp eq i32 %141, %139
+  %224 = add i32 %141, 1
+  %225 = icmp ne i1 %223, false
+  br i1 %225, label %"30", label %"21"
+
+"21":                                             ; preds = %"20"
+  br label %"15"
+
+"22":                                             ; preds = %"13"
+  %226 = load i32* %2, align 4
+  %227 = load i32* %3, align 4
+  %228 = icmp sle i32 %226, %227
+  br i1 %228, label %"23", label %"30"
+
+"23":                                             ; preds = %"29", %"22"
+  %229 = phi i32 [ %366, %"29" ], [ %226, %"22" ]
+  %230 = load i32* %4, align 4
+  %231 = load i32* %5, align 4
+  %232 = icmp sle i32 %230, %231
+  br i1 %232, label %"24", label %"28"
+
+"24":                                             ; preds = %"27", %"23"
+  %233 = phi i32 [ %363, %"27" ], [ %230, %"23" ]
+  %234 = sext i32 %233 to i64
+  %235 = sext i32 %229 to i64
+  %236 = mul i64 %235, %16
+  %237 = add i64 %234, %236
+  %238 = add i64 %237, %not
+  %239 = bitcast [0 x double]* %6 to double*
+  %240 = getelementptr double* %239, i64 %238
+  %241 = load double* %240, align 8
+  %242 = fcmp oge double %241, 5.000000e-01
+  %243 = icmp ne i1 %242, false
+  br i1 %243, label %"25", label %"26"
+
+"25":                                             ; preds = %"24"
+  %244 = sext i32 %233 to i64
+  %245 = sext i32 %229 to i64
+  %246 = mul i64 %245, %40
+  %247 = add i64 %244, %246
+  %248 = add i64 %247, %not2
+  %249 = sext i32 %233 to i64
+  %250 = sext i32 %229 to i64
+  %251 = mul i64 %250, %76
+  %252 = add i64 %249, %251
+  %253 = add i64 %252, %not5
+  %254 = bitcast [0 x double]* %11 to double*
+  %255 = getelementptr double* %254, i64 %253
+  %256 = load double* %255, align 8
+  %257 = sext i32 %233 to i64
+  %258 = sext i32 %229 to i64
+  %259 = mul i64 %258, %40
+  %260 = add i64 %257, %259
+  %261 = add i64 %260, %not2
+  %262 = bitcast [0 x double]* %9 to double*
+  %263 = getelementptr double* %262, i64 %261
+  %264 = load double* %263, align 8
+  %265 = fmul double %256, %264
+  %266 = bitcast [0 x double]* %9 to double*
+  %267 = getelementptr double* %266, i64 %248
+  store double %265, double* %267, align 8
+  %268 = sext i32 %233 to i64
+  %269 = sext i32 %229 to i64
+  %270 = mul i64 %269, %64
+  %271 = add i64 %268, %270
+  %272 = add i64 %271, %not4
+  %273 = load double* @__data_turbulence_MOD_c_soil, align 8
+  %274 = bitcast [0 x double]* %12 to double*
+  %275 = getelementptr double* %274, i64 %272
+  store double %273, double* %275, align 8
+  %276 = sext i32 %233 to i64
+  %277 = sext i32 %229 to i64
+  %278 = mul i64 %277, %28
+  %279 = add i64 %276, %278
+  %280 = add i64 %279, %not1
+  %281 = sext i32 %233 to i64
+  %282 = sext i32 %229 to i64
+  %283 = mul i64 %282, %40
+  %284 = add i64 %281, %283
+  %285 = add i64 %284, %not2
+  %286 = bitcast [0 x double]* %9 to double*
+  %287 = getelementptr double* %286, i64 %285
+  %288 = load double* %287, align 8
+  %289 = load double* @__data_turbulence_MOD_c_lnd, align 8
+  %290 = fadd double %288, %289
+  %291 = bitcast [0 x double]* %7 to double*
+  %292 = getelementptr double* %291, i64 %280
+  store double %290, double* %292, align 8
+  %293 = sext i32 %233 to i64
+  %294 = sext i32 %229 to i64
+  %295 = mul i64 %294, %28
+  %296 = add i64 %293, %295
+  %297 = add i64 %296, %not1
+  %298 = bitcast [0 x double]* %7 to double*
+  %299 = getelementptr double* %298, i64 %297
+  %300 = load double* %299, align 8
+  %301 = call double @log(double %300) #1
+  %302 = load double* @__data_turbulence_MOD_e_surf, align 8
+  %303 = fmul double %301, %302
+  %304 = call double @exp(double %303) #1
+  %305 = sext i32 %233 to i64
+  %306 = sext i32 %229 to i64
+  %307 = mul i64 %306, %28
+  %308 = add i64 %305, %307
+  %309 = add i64 %308, %not1
+  %310 = bitcast [0 x double]* %7 to double*
+  %311 = getelementptr double* %310, i64 %309
+  %312 = load double* %311, align 8
+  %313 = fdiv double %304, %312
+  %314 = sext i32 %233 to i64
+  %315 = sext i32 %229 to i64
+  %316 = mul i64 %315, %28
+  %317 = add i64 %314, %316
+  %318 = add i64 %317, %not1
+  %319 = sext i32 %233 to i64
+  %320 = sext i32 %229 to i64
+  %321 = mul i64 %320, %28
+  %322 = add i64 %319, %321
+  %323 = add i64 %322, %not1
+  %324 = bitcast [0 x double]* %7 to double*
+  %325 = getelementptr double* %324, i64 %323
+  %326 = load double* %325, align 8
+  %327 = fmul double %326, %313
+  %328 = bitcast [0 x double]* %7 to double*
+  %329 = getelementptr double* %328, i64 %318
+  store double %327, double* %329, align 8
+  %330 = sext i32 %233 to i64
+  %331 = sext i32 %229 to i64
+  %332 = mul i64 %331, %64
+  %333 = add i64 %330, %332
+  %334 = add i64 %333, %not4
+  %335 = sext i32 %233 to i64
+  %336 = sext i32 %229 to i64
+  %337 = mul i64 %336, %64
+  %338 = add i64 %335, %337
+  %339 = add i64 %338, %not4
+  %340 = bitcast [0 x double]* %12 to double*
+  %341 = getelementptr double* %340, i64 %339
+  %342 = load double* %341, align 8
+  %343 = fmul double %342, %313
+  %344 = bitcast [0 x double]* %12 to double*
+  %345 = getelementptr double* %344, i64 %334
+  store double %343, double* %345, align 8
+  %346 = sext i32 %233 to i64
+  %347 = sext i32 %229 to i64
+  %348 = mul i64 %347, %40
+  %349 = add i64 %346, %348
+  %350 = add i64 %349, %not2
+  %351 = sext i32 %233 to i64
+  %352 = sext i32 %229 to i64
+  %353 = mul i64 %352, %40
+  %354 = add i64 %351, %353
+  %355 = add i64 %354, %not2
+  %356 = bitcast [0 x double]* %9 to double*
+  %357 = getelementptr double* %356, i64 %355
+  %358 = load double* %357, align 8
+  %359 = fmul double %358, %313
+  %360 = bitcast [0 x double]* %9 to double*
+  %361 = getelementptr double* %360, i64 %350
+  store double %359, double* %361, align 8
+  br label %"26"
+
+"26":                                             ; preds = %"25", %"24"
+  %362 = icmp eq i32 %233, %231
+  %363 = add i32 %233, 1
+  %364 = icmp ne i1 %362, false
+  br i1 %364, label %"28", label %"27"
+
+"27":                                             ; preds = %"26"
+  br label %"24"
+
+"28":                                             ; preds = %"26", %"23"
+  %365 = icmp eq i32 %229, %227
+  %366 = add i32 %229, 1
+  %367 = icmp ne i1 %365, false
+  br i1 %367, label %"30", label %"29"
+
+"29":                                             ; preds = %"28"
+  br label %"23"
+
+"30":                                             ; preds = %"28", %"22", %"20", %"14"
+  br label %return
+
+return:                                           ; preds = %"30"
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define void @__turbulence_utilities_MOD_init_volume_canopy(i32* noalias %ie, i32* noalias %je, i32* noalias %ke, i32* noalias %ke1, i32* noalias %kcm, i32* noalias %istartpar, i32* noalias %iendpar, i32* noalias %jstartpar, i32* noalias %jendpar, [0 x double]* noalias %fr_land, [0 x double]* noalias %d_pat, [0 x double]* noalias %c_big, [0 x double]* noalias %c_sml, [0 x double]* noalias %r_air) unnamed_addr #0 {
+entry:
+  %ie_addr = alloca i32*, align 8
+  %je_addr = alloca i32*, align 8
+  %ke_addr = alloca i32*, align 8
+  %ke1_addr = alloca i32*, align 8
+  %kcm_addr = alloca i32*, align 8
+  %istartpar_addr = alloca i32*, align 8
+  %iendpar_addr = alloca i32*, align 8
+  %jstartpar_addr = alloca i32*, align 8
+  %jendpar_addr = alloca i32*, align 8
+  %fr_land_addr = alloca [0 x double]*, align 8
+  %d_pat_addr = alloca [0 x double]*, align 8
+  %c_big_addr = alloca [0 x double]*, align 8
+  %c_sml_addr = alloca [0 x double]*, align 8
+  %r_air_addr = alloca [0 x double]*, align 8
+  %ubound.186 = alloca i64
+  %ubound.187 = alloca i64
+  %stride.188 = alloca i64
+  %lbound.189 = alloca i64
+  %ubound.190 = alloca i64
+  %stride.191 = alloca i64
+  %offset.192 = alloca i64
+  %size.193 = alloca i64
+  %ubound.194 = alloca i64
+  %ubound.195 = alloca i64
+  %stride.196 = alloca i64
+  %lbound.197 = alloca i64
+  %ubound.198 = alloca i64
+  %stride.199 = alloca i64
+  %offset.200 = alloca i64
+  %size.201 = alloca i64
+  %ubound.202 = alloca i64
+  %ubound.203 = alloca i64
+  %stride.204 = alloca i64
+  %offset.205 = alloca i64
+  %size.206 = alloca i64
+  %ubound.207 = alloca i64
+  %ubound.208 = alloca i64
+  %stride.209 = alloca i64
+  %offset.210 = alloca i64
+  %size.211 = alloca i64
+  %i = alloca i32
+  %j = alloca i32
+  %ubound.212 = alloca i64
+  %ubound.213 = alloca i64
+  %stride.214 = alloca i64
+  %lbound.215 = alloca i64
+  %ubound.216 = alloca i64
+  %stride.217 = alloca i64
+  %offset.218 = alloca i64
+  %size.219 = alloca i64
+  %D.2394 = alloca i64
+  %D.2395 = alloca i64
+  %D.2396 = alloca i64
+  %D.2397 = alloca i64
+  %D.2398 = alloca i64
+  %D.2399 = alloca i64
+  %D.2400 = alloca i64
+  %D.2401 = alloca i64
+  %D.2402 = alloca i64
+  %D.2403 = alloca i64
+  %D.2404 = alloca i64
+  %D.2405 = alloca i64
+  %D.2406 = alloca i64
+  %D.2407 = alloca i64
+  %D.2408 = alloca i64
+  %D.2347 = alloca i64
+  %D.2346 = alloca i64
+  %D.2345 = alloca i64
+  %D.2344 = alloca i64
+  %D.2343 = alloca i64
+  %S.220 = alloca i64
+  %D.2350 = alloca i64
+  %S.221 = alloca i64
+  %D.2352 = alloca i64
+  %S.222 = alloca i64
+  %D.2360 = alloca i64
+  %D.2359 = alloca i64
+  %D.2358 = alloca i64
+  %D.2357 = alloca i64
+  %D.2356 = alloca i64
+  %S.223 = alloca i64
+  %D.2363 = alloca i64
+  %S.224 = alloca i64
+  %D.2365 = alloca i64
+  %S.225 = alloca i64
+  %D.2373 = alloca i64
+  %D.2372 = alloca i64
+  %D.2371 = alloca i64
+  %D.2370 = alloca i64
+  %D.2369 = alloca i64
+  %S.226 = alloca i64
+  %D.2376 = alloca i64
+  %S.227 = alloca i64
+  %D.2378 = alloca i64
+  %S.228 = alloca i64
+  %D.2383 = alloca i32
+  %j.288 = alloca i32
+  %D.2393 = alloca i32
+  %D.2387 = alloca i32
+  %i.289 = alloca i32
+  %D.2392 = alloca i32
+  %"alloca point" = bitcast i32 0 to i32
+  store i32* %ie, i32** %ie_addr, align 1
+  store i32* %je, i32** %je_addr, align 1
+  store i32* %ke, i32** %ke_addr, align 1
+  store i32* %ke1, i32** %ke1_addr, align 1
+  store i32* %kcm, i32** %kcm_addr, align 1
+  store i32* %istartpar, i32** %istartpar_addr, align 1
+  store i32* %iendpar, i32** %iendpar_addr, align 1
+  store i32* %jstartpar, i32** %jstartpar_addr, align 1
+  store i32* %jendpar, i32** %jendpar_addr, align 1
+  store [0 x double]* %fr_land, [0 x double]** %fr_land_addr, align 1
+  store [0 x double]* %d_pat, [0 x double]** %d_pat_addr, align 1
+  store [0 x double]* %c_big, [0 x double]** %c_big_addr, align 1
+  store [0 x double]* %c_sml, [0 x double]** %c_sml_addr, align 1
+  store [0 x double]* %r_air, [0 x double]** %r_air_addr, align 1
+  %0 = load i32** %ie_addr, align 8
+  %1 = load i32** %je_addr, align 8
+  %2 = load i32** %kcm_addr, align 8
+  %3 = load i32** %ke1_addr, align 8
+  %4 = load [0 x double]** %c_big_addr, align 8
+  %5 = load [0 x double]** %c_sml_addr, align 8
+  %6 = load [0 x double]** %r_air_addr, align 8
+  %7 = load i32** %jstartpar_addr, align 8
+  %8 = load i32** %jendpar_addr, align 8
+  %9 = load i32** %istartpar_addr, align 8
+  %10 = load i32** %iendpar_addr, align 8
+  %11 = load [0 x double]** %fr_land_addr, align 8
+  %12 = load [0 x double]** %d_pat_addr, align 8
+  %"ssa point" = bitcast i32 0 to i32
+  br label %"2"
+
+"2":                                              ; preds = %entry
+  %13 = load i32* %0, align 4
+  %14 = sext i32 %13 to i64
+  %15 = icmp sge i64 %14, 0
+  %16 = select i1 %15, i64 %14, i64 0
+  %17 = load i32* %1, align 4
+  %18 = sext i32 %17 to i64
+  %19 = mul i64 %16, %18
+  %20 = icmp sge i64 %19, 0
+  %21 = select i1 %20, i64 %19, i64 0
+  %22 = load i32* %2, align 4
+  %23 = sext i32 %22 to i64
+  %24 = load i32* %3, align 4
+  %25 = sext i32 %24 to i64
+  %26 = sub i64 1, %23
+  %27 = add i64 %26, %25
+  %28 = mul i64 %27, %21
+  %29 = icmp sge i64 %28, 0
+  %30 = select i1 %29, i64 %28, i64 0
+  %31 = add i64 %30, -1
+  %32 = mul i64 %30, 64
+  %33 = mul i64 %30, 8
+  %not = xor i64 %16, -1
+  %34 = mul i64 %23, %21
+  %35 = sub i64 %not, %34
+  %36 = load i32* %0, align 4
+  %37 = sext i32 %36 to i64
+  %38 = icmp sge i64 %37, 0
+  %39 = select i1 %38, i64 %37, i64 0
+  %40 = load i32* %1, align 4
+  %41 = sext i32 %40 to i64
+  %42 = mul i64 %39, %41
+  %43 = icmp sge i64 %42, 0
+  %44 = select i1 %43, i64 %42, i64 0
+  %45 = load i32* %2, align 4
+  %46 = sext i32 %45 to i64
+  %47 = load i32* %3, align 4
+  %48 = sext i32 %47 to i64
+  %49 = sub i64 1, %46
+  %50 = add i64 %49, %48
+  %51 = mul i64 %50, %44
+  %52 = icmp sge i64 %51, 0
+  %53 = select i1 %52, i64 %51, i64 0
+  %54 = add i64 %53, -1
+  %55 = mul i64 %53, 64
+  %56 = mul i64 %53, 8
+  %not1 = xor i64 %39, -1
+  %57 = mul i64 %46, %44
+  %58 = sub i64 %not1, %57
+  %59 = load i32* %0, align 4
+  %60 = sext i32 %59 to i64
+  %61 = icmp sge i64 %60, 0
+  %62 = select i1 %61, i64 %60, i64 0
+  %63 = load i32* %1, align 4
+  %64 = sext i32 %63 to i64
+  %65 = mul i64 %62, %64
+  %66 = icmp sge i64 %65, 0
+  %67 = select i1 %66, i64 %65, i64 0
+  %68 = load i32* %2, align 4
+  %69 = sext i32 %68 to i64
+  %70 = load i32* %3, align 4
+  %71 = sext i32 %70 to i64
+  %72 = sub i64 1, %69
+  %73 = add i64 %72, %71
+  %74 = mul i64 %73, %67
+  %75 = icmp sge i64 %74, 0
+  %76 = select i1 %75, i64 %74, i64 0
+  %77 = add i64 %76, -1
+  %78 = mul i64 %76, 64
+  %79 = mul i64 %76, 8
+  %not2 = xor i64 %62, -1
+  %80 = mul i64 %69, %67
+  %81 = sub i64 %not2, %80
+  %82 = load i32* %0, align 4
+  %83 = sext i32 %82 to i64
+  %84 = icmp sge i64 %83, 0
+  %85 = select i1 %84, i64 %83, i64 0
+  %86 = load i32* %1, align 4
+  %87 = sext i32 %86 to i64
+  %88 = mul i64 %85, %87
+  %89 = icmp sge i64 %88, 0
+  %90 = select i1 %89, i64 %88, i64 0
+  %91 = add i64 %90, -1
+  %92 = mul i64 %90, 64
+  %93 = mul i64 %90, 8
+  %not3 = xor i64 %85, -1
+  %94 = load i32* %0, align 4
+  %95 = sext i32 %94 to i64
+  %96 = icmp sge i64 %95, 0
+  %97 = select i1 %96, i64 %95, i64 0
+  %98 = load i32* %1, align 4
+  %99 = sext i32 %98 to i64
+  %100 = mul i64 %97, %99
+  %101 = icmp sge i64 %100, 0
+  %102 = select i1 %101, i64 %100, i64 0
+  %103 = add i64 %102, -1
+  %104 = mul i64 %102, 64
+  %105 = mul i64 %102, 8
+  %not4 = xor i64 %97, -1
+  br label %"3"
+
+"3":                                              ; preds = %"10", %"2"
+  %106 = phi i64 [ %121, %"10" ], [ %23, %"2" ]
+  %107 = icmp sgt i64 %106, %25
+  br i1 %107, label %"11", label %"4"
+
+"4":                                              ; preds = %"3"
+  %108 = mul i64 %106, %21
+  %109 = add i64 %108, %35
+  br label %"5"
+
+"5":                                              ; preds = %"9", %"4"
+  %110 = phi i64 [ %120, %"9" ], [ 1, %"4" ]
+  %111 = icmp sgt i64 %110, %18
+  br i1 %111, label %"10", label %"6"
+
+"6":                                              ; preds = %"5"
+  %112 = mul i64 %110, %16
+  %113 = add i64 %112, %109
+  br label %"7"
+
+"7":                                              ; preds = %"8", %"6"
+  %114 = phi i64 [ %119, %"8" ], [ 1, %"6" ]
+  %115 = icmp sgt i64 %114, %14
+  br i1 %115, label %"9", label %"8"
+
+"8":                                              ; preds = %"7"
+  %116 = add i64 %114, %113
+  %117 = bitcast [0 x double]* %4 to double*
+  %118 = getelementptr double* %117, i64 %116
+  store double 0.000000e+00, double* %118, align 8
+  %119 = add i64 %114, 1
+  br label %"7"
+
+"9":                                              ; preds = %"7"
+  %120 = add i64 %110, 1
+  br label %"5"
+
+"10":                                             ; preds = %"5"
+  %121 = add i64 %106, 1
+  br label %"3"
+
+"11":                                             ; preds = %"3"
+  br label %"12"
+
+"12":                                             ; preds = %"19", %"11"
+  %122 = phi i64 [ %137, %"19" ], [ %46, %"11" ]
+  %123 = icmp sgt i64 %122, %48
+  br i1 %123, label %"20", label %"13"
+
+"13":                                             ; preds = %"12"
+  %124 = mul i64 %122, %44
+  %125 = add i64 %124, %58
+  br label %"14"
+
+"14":                                             ; preds = %"18", %"13"
+  %126 = phi i64 [ %136, %"18" ], [ 1, %"13" ]
+  %127 = icmp sgt i64 %126, %41
+  br i1 %127, label %"19", label %"15"
+
+"15":                                             ; preds = %"14"
+  %128 = mul i64 %126, %39
+  %129 = add i64 %128, %125
+  br label %"16"
+
+"16":                                             ; preds = %"17", %"15"
+  %130 = phi i64 [ %135, %"17" ], [ 1, %"15" ]
+  %131 = icmp sgt i64 %130, %37
+  br i1 %131, label %"18", label %"17"
+
+"17":                                             ; preds = %"16"
+  %132 = add i64 %130, %129
+  %133 = bitcast [0 x double]* %5 to double*
+  %134 = getelementptr double* %133, i64 %132
+  store double 0.000000e+00, double* %134, align 8
+  %135 = add i64 %130, 1
+  br label %"16"
+
+"18":                                             ; preds = %"16"
+  %136 = add i64 %126, 1
+  br label %"14"
+
+"19":                                             ; preds = %"14"
+  %137 = add i64 %122, 1
+  br label %"12"
+
+"20":                                             ; preds = %"12"
+  br label %"21"
+
+"21":                                             ; preds = %"28", %"20"
+  %138 = phi i64 [ %153, %"28" ], [ %69, %"20" ]
+  %139 = icmp sgt i64 %138, %71
+  br i1 %139, label %"29", label %"22"
+
+"22":                                             ; preds = %"21"
+  %140 = mul i64 %138, %67
+  %141 = add i64 %140, %81
+  br label %"23"
+
+"23":                                             ; preds = %"27", %"22"
+  %142 = phi i64 [ %152, %"27" ], [ 1, %"22" ]
+  %143 = icmp sgt i64 %142, %64
+  br i1 %143, label %"28", label %"24"
+
+"24":                                             ; preds = %"23"
+  %144 = mul i64 %142, %62
+  %145 = add i64 %144, %141
+  br label %"25"
+
+"25":                                             ; preds = %"26", %"24"
+  %146 = phi i64 [ %151, %"26" ], [ 1, %"24" ]
+  %147 = icmp sgt i64 %146, %60
+  br i1 %147, label %"27", label %"26"
+
+"26":                                             ; preds = %"25"
+  %148 = add i64 %146, %145
+  %149 = bitcast [0 x double]* %6 to double*
+  %150 = getelementptr double* %149, i64 %148
+  store double 0.000000e+00, double* %150, align 8
+  %151 = add i64 %146, 1
+  br label %"25"
+
+"27":                                             ; preds = %"25"
+  %152 = add i64 %142, 1
+  br label %"23"
+
+"28":                                             ; preds = %"23"
+  %153 = add i64 %138, 1
+  br label %"21"
+
+"29":                                             ; preds = %"21"
+  %154 = load i32* %7, align 4
+  %155 = load i32* %8, align 4
+  %156 = icmp sle i32 %154, %155
+  br i1 %156, label %"30", label %"38"
+
+"30":                                             ; preds = %"37", %"29"
+  %157 = phi i32 [ %191, %"37" ], [ %154, %"29" ]
+  %158 = load i32* %9, align 4
+  %159 = load i32* %10, align 4
+  %160 = icmp sle i32 %158, %159
+  br i1 %160, label %"31", label %"36"
+
+"31":                                             ; preds = %"35", %"30"
+  %161 = phi i32 [ %188, %"35" ], [ %158, %"30" ]
+  %162 = sext i32 %161 to i64
+  %163 = sext i32 %157 to i64
+  %164 = mul i64 %163, %85
+  %165 = add i64 %162, %164
+  %166 = add i64 %165, %not3
+  %167 = bitcast [0 x double]* %11 to double*
+  %168 = getelementptr double* %167, i64 %166
+  %169 = load double* %168, align 8
+  %170 = fcmp olt double %169, 5.000000e-01
+  %171 = icmp ne i1 %170, false
+  br i1 %171, label %"32", label %"33"
+
+"32":                                             ; preds = %"31"
+  %172 = sext i32 %161 to i64
+  %173 = sext i32 %157 to i64
+  %174 = mul i64 %173, %97
+  %175 = add i64 %172, %174
+  %176 = add i64 %175, %not4
+  %177 = bitcast [0 x double]* %12 to double*
+  %178 = getelementptr double* %177, i64 %176
+  store double 0.000000e+00, double* %178, align 8
+  br label %"34"
+
+"33":                                             ; preds = %"31"
+  %179 = sext i32 %161 to i64
+  %180 = sext i32 %157 to i64
+  %181 = mul i64 %180, %97
+  %182 = add i64 %179, %181
+  %183 = add i64 %182, %not4
+  %184 = load double* @__data_turbulence_MOD_pat_len, align 8
+  %185 = bitcast [0 x double]* %12 to double*
+  %186 = getelementptr double* %185, i64 %183
+  store double %184, double* %186, align 8
+  br label %"34"
+
+"34":                                             ; preds = %"33", %"32"
+  %187 = icmp eq i32 %161, %159
+  %188 = add i32 %161, 1
+  %189 = icmp ne i1 %187, false
+  br i1 %189, label %"36", label %"35"
+
+"35":                                             ; preds = %"34"
+  br label %"31"
+
+"36":                                             ; preds = %"34", %"30"
+  %190 = icmp eq i32 %157, %155
+  %191 = add i32 %157, 1
+  %192 = icmp ne i1 %190, false
+  br i1 %192, label %"38", label %"37"
+
+"37":                                             ; preds = %"36"
+  br label %"30"
+
+"38":                                             ; preds = %"36", %"29"
+  br label %return
+
+return:                                           ; preds = %"38"
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define void @__turbulence_utilities_MOD_diag_level(i32* noalias %i_st, i32* noalias %i_en, i32* noalias %j_st, i32* noalias %j_en, i32* noalias %ke1, %"struct.array2_real(kind=8).7"* noalias %zdia_2d, %"struct.array2_integer(kind=4)"* noalias %k_2d, %"struct.array2_real(kind=8).8"* noalias %hk_2d, %"struct.array2_real(kind=8).9"* noalias %hk1_2d, %"struct.array3_real(kind=8).10"* noalias %hhl) unnamed_addr #0 {
+entry:
+  %i_st_addr = alloca i32*, align 8
+  %i_en_addr = alloca i32*, align 8
+  %j_st_addr = alloca i32*, align 8
+  %j_en_addr = alloca i32*, align 8
+  %ke1_addr = alloca i32*, align 8
+  %zdia_2d_addr = alloca %"struct.array2_real(kind=8).7"*, align 8
+  %k_2d_addr = alloca %"struct.array2_integer(kind=4)"*, align 8
+  %hk_2d_addr = alloca %"struct.array2_real(kind=8).8"*, align 8
+  %hk1_2d_addr = alloca %"struct.array2_real(kind=8).9"*, align 8
+  %hhl_addr = alloca %"struct.array3_real(kind=8).10"*, align 8
+  %ubound.229 = alloca i64
+  %stride.230 = alloca i64
+  %ubound.231 = alloca i64
+  %stride.232 = alloca i64
+  %ubound.233 = alloca i64
+  %stride.234 = alloca i64
+  %offset.235 = alloca i64
+  %size.236 = alloca i64
+  %hhl.0 = alloca [0 x double]*
+  %ubound.237 = alloca i64
+  %stride.238 = alloca i64
+  %ubound.239 = alloca i64
+  %stride.240 = alloca i64
+  %offset.241 = alloca i64
+  %size.242 = alloca i64
+  %hk1_2d.0 = alloca [0 x double]*
+  %ubound.243 = alloca i64
+  %stride.244 = alloca i64
+  %ubound.245 = alloca i64
+  %stride.246 = alloca i64
+  %offset.247 = alloca i64
+  %size.248 = alloca i64
+  %hk_2d.0 = alloca [0 x double]*
+  %i = alloca i32
+  %j = alloca i32
+  %ubound.249 = alloca i64
+  %stride.250 = alloca i64
+  %ubound.251 = alloca i64
+  %stride.252 = alloca i64
+  %offset.253 = alloca i64
+  %size.254 = alloca i64
+  %k_2d.0 = alloca [0 x i32]*
+  %lcheck = alloca i32
+  %ubound.255 = alloca i64
+  %stride.256 = alloca i64
+  %ubound.257 = alloca i64
+  %stride.258 = alloca i64
+  %offset.259 = alloca i64
+  %size.260 = alloca i64
+  %zdia_2d.0 = alloca [0 x double]*
+  %D.2468 = alloca i64
+  %D.2469 = alloca i64
+  %D.2470 = alloca i64
+  %D.2472 = alloca i64
+  %D.2473 = alloca i64
+  %D.2474 = alloca i64
+  %D.2476 = alloca i64
+  %D.2477 = alloca i64
+  %D.2478 = alloca i64
+  %D.2480 = alloca i64
+  %D.2481 = alloca i64
+  %D.2482 = alloca i64
+  %D.2484 = alloca i64
+  %D.2485 = alloca i64
+  %D.2486 = alloca i64
+  %D.2483 = alloca i64
+  %D.2479 = alloca i64
+  %D.2475 = alloca i64
+  %D.2471 = alloca i64
+  %D.2467 = alloca i64
+  %D.2457 = alloca i32
+  %j.276 = alloca i32
+  %D.2466 = alloca i32
+  %D.2461 = alloca i32
+  %i.277 = alloca i32
+  %D.2465 = alloca i32
+  %"alloca point" = bitcast i32 0 to i32
+  store i32* %i_st, i32** %i_st_addr, align 1
+  store i32* %i_en, i32** %i_en_addr, align 1
+  store i32* %j_st, i32** %j_st_addr, align 1
+  store i32* %j_en, i32** %j_en_addr, align 1
+  store i32* %ke1, i32** %ke1_addr, align 1
+  store %"struct.array2_real(kind=8).7"* %zdia_2d, %"struct.array2_real(kind=8).7"** %zdia_2d_addr, align 1
+  store %"struct.array2_integer(kind=4)"* %k_2d, %"struct.array2_integer(kind=4)"** %k_2d_addr, align 1
+  store %"struct.array2_real(kind=8).8"* %hk_2d, %"struct.array2_real(kind=8).8"** %hk_2d_addr, align 1
+  store %"struct.array2_real(kind=8).9"* %hk1_2d, %"struct.array2_real(kind=8).9"** %hk1_2d_addr, align 1
+  store %"struct.array3_real(kind=8).10"* %hhl, %"struct.array3_real(kind=8).10"** %hhl_addr, align 1
+  %0 = load %"struct.array2_real(kind=8).8"** %hk_2d_addr, align 8
+  %1 = load %"struct.array2_real(kind=8).7"** %zdia_2d_addr, align 8
+  %2 = load %"struct.array2_integer(kind=4)"** %k_2d_addr, align 8
+  %3 = load %"struct.array2_real(kind=8).9"** %hk1_2d_addr, align 8
+  %4 = load %"struct.array3_real(kind=8).10"** %hhl_addr, align 8
+  %5 = load i32** %j_st_addr, align 8
+  %6 = load i32** %j_en_addr, align 8
+  %7 = load i32** %i_st_addr, align 8
+  %8 = load i32** %i_en_addr, align 8
+  %9 = load i32** %ke1_addr, align 8
+  %"ssa point" = bitcast i32 0 to i32
+  br label %"2"
+
+"2":                                              ; preds = %entry
+  %10 = bitcast %"struct.array2_real(kind=8).8"* %0 to %struct.array_descriptor2*
+  %11 = getelementptr inbounds %struct.array_descriptor2* %10, i32 0, i32 3
+  %12 = bitcast [2 x %struct.descriptor_dimension]* %11 to %struct.descriptor_dimension*
+  %13 = getelementptr %struct.descriptor_dimension* %12, i64 0
+  %14 = getelementptr inbounds %struct.descriptor_dimension* %13, i32 0, i32 0
+  %15 = load i64* %14, align 8
+  %16 = icmp ne i64 %15, 0
+  br i1 %16, label %"3", label %"4"
+
+"3":                                              ; preds = %"2"
+  br label %"5"
+
+"4":                                              ; preds = %"2"
+  br label %"5"
+
+"5":                                              ; preds = %"4", %"3"
+  %17 = phi i64 [ 1, %"4" ], [ %15, %"3" ]
+  %18 = bitcast %"struct.array2_real(kind=8).8"* %0 to %struct.array_descriptor2*
+  %19 = getelementptr inbounds %struct.array_descriptor2* %18, i32 0, i32 0
+  %20 = load i8** %19, align 8
+  %21 = bitcast i8* %20 to [0 x double]*
+  %22 = bitcast %"struct.array2_real(kind=8).8"* %0 to %struct.array_descriptor2*
+  %23 = getelementptr inbounds %struct.array_descriptor2* %22, i32 0, i32 3
+  %24 = bitcast [2 x %struct.descriptor_dimension]* %23 to %struct.descriptor_dimension*
+  %25 = getelementptr %struct.descriptor_dimension* %24, i64 0
+  %26 = getelementptr inbounds %struct.descriptor_dimension* %25, i32 0, i32 2
+  %27 = load i64* %26, align 8
+  %28 = bitcast %"struct.array2_real(kind=8).8"* %0 to %struct.array_descriptor2*
+  %29 = getelementptr inbounds %struct.array_descriptor2* %28, i32 0, i32 3
+  %30 = bitcast [2 x %struct.descriptor_dimension]* %29 to %struct.descriptor_dimension*
+  %31 = getelementptr %struct.descriptor_dimension* %30, i64 0
+  %32 = getelementptr inbounds %struct.descriptor_dimension* %31, i32 0, i32 1
+  %33 = load i64* %32, align 8
+  %34 = sub i64 %27, %33
+  %35 = add i64 %34, 1
+  %36 = bitcast %"struct.array2_real(kind=8).8"* %0 to %struct.array_descriptor2*
+  %37 = getelementptr inbounds %struct.array_descriptor2* %36, i32 0, i32 3
+  %38 = bitcast [2 x %struct.descriptor_dimension]* %37 to %struct.descriptor_dimension*
+  %39 = getelementptr %struct.descriptor_dimension* %38, i64 1
+  %40 = getelementptr inbounds %struct.descriptor_dimension* %39, i32 0, i32 0
+  %41 = load i64* %40, align 8
+  %42 = bitcast %"struct.array2_real(kind=8).8"* %0 to %struct.array_descriptor2*
+  %43 = getelementptr inbounds %struct.array_descriptor2* %42, i32 0, i32 3
+  %44 = bitcast [2 x %struct.descriptor_dimension]* %43 to %struct.descriptor_dimension*
+  %45 = getelementptr %struct.descriptor_dimension* %44, i64 1
+  %46 = getelementptr inbounds %struct.descriptor_dimension* %45, i32 0, i32 2
+  %47 = load i64* %46, align 8
+  %48 = bitcast %"struct.array2_real(kind=8).8"* %0 to %struct.array_descriptor2*
+  %49 = getelementptr inbounds %struct.array_descriptor2* %48, i32 0, i32 3
+  %50 = bitcast [2 x %struct.descriptor_dimension]* %49 to %struct.descriptor_dimension*
+  %51 = getelementptr %struct.descriptor_dimension* %50, i64 1
+  %52 = getelementptr inbounds %struct.descriptor_dimension* %51, i32 0, i32 1
+  %53 = load i64* %52, align 8
+  %54 = sub i64 %47, %53
+  %55 = add i64 %54, 1
+  %56 = mul i64 %41, %55
+  %57 = sub i64 0, %17
+  %58 = sub i64 %57, %41
+  %59 = add i64 %56, -1
+  %60 = mul i64 %56, 64
+  %61 = mul i64 %56, 8
+  %62 = bitcast %"struct.array2_real(kind=8).7"* %1 to %struct.array_descriptor2*
+  %63 = getelementptr inbounds %struct.array_descriptor2* %62, i32 0, i32 3
+  %64 = bitcast [2 x %struct.descriptor_dimension]* %63 to %struct.descriptor_dimension*
+  %65 = getelementptr %struct.descriptor_dimension* %64, i64 0
+  %66 = getelementptr inbounds %struct.descriptor_dimension* %65, i32 0, i32 0
+  %67 = load i64* %66, align 8
+  %68 = icmp ne i64 %67, 0
+  br i1 %68, label %"6", label %"7"
+
+"6":                                              ; preds = %"5"
+  br label %"8"
+
+"7":                                              ; preds = %"5"
+  br label %"8"
+
+"8":                                              ; preds = %"7", %"6"
+  %69 = phi i64 [ 1, %"7" ], [ %67, %"6" ]
+  %70 = bitcast %"struct.array2_real(kind=8).7"* %1 to %struct.array_descriptor2*
+  %71 = getelementptr inbounds %struct.array_descriptor2* %70, i32 0, i32 0
+  %72 = load i8** %71, align 8
+  %73 = bitcast i8* %72 to [0 x double]*
+  %74 = bitcast %"struct.array2_real(kind=8).7"* %1 to %struct.array_descriptor2*
+  %75 = getelementptr inbounds %struct.array_descriptor2* %74, i32 0, i32 3
+  %76 = bitcast [2 x %struct.descriptor_dimension]* %75 to %struct.descriptor_dimension*
+  %77 = getelementptr %struct.descriptor_dimension* %76, i64 0
+  %78 = getelementptr inbounds %struct.descriptor_dimension* %77, i32 0, i32 2
+  %79 = load i64* %78, align 8
+  %80 = bitcast %"struct.array2_real(kind=8).7"* %1 to %struct.array_descriptor2*
+  %81 = getelementptr inbounds %struct.array_descriptor2* %80, i32 0, i32 3
+  %82 = bitcast [2 x %struct.descriptor_dimension]* %81 to %struct.descriptor_dimension*
+  %83 = getelementptr %struct.descriptor_dimension* %82, i64 0
+  %84 = getelementptr inbounds %struct.descriptor_dimension* %83, i32 0, i32 1
+  %85 = load i64* %84, align 8
+  %86 = sub i64 %79, %85
+  %87 = add i64 %86, 1
+  %88 = bitcast %"struct.array2_real(kind=8).7"* %1 to %struct.array_descriptor2*
+  %89 = getelementptr inbounds %struct.array_descriptor2* %88, i32 0, i32 3
+  %90 = bitcast [2 x %struct.descriptor_dimension]* %89 to %struct.descriptor_dimension*
+  %91 = getelementptr %struct.descriptor_dimension* %90, i64 1
+  %92 = getelementptr inbounds %struct.descriptor_dimension* %91, i32 0, i32 0
+  %93 = load i64* %92, align 8
+  %94 = bitcast %"struct.array2_real(kind=8).7"* %1 to %struct.array_descriptor2*
+  %95 = getelementptr inbounds %struct.array_descriptor2* %94, i32 0, i32 3
+  %96 = bitcast [2 x %struct.descriptor_dimension]* %95 to %struct.descriptor_dimension*
+  %97 = getelementptr %struct.descriptor_dimension* %96, i64 1
+  %98 = getelementptr inbounds %struct.descriptor_dimension* %97, i32 0, i32 2
+  %99 = load i64* %98, align 8
+  %100 = bitcast %"struct.array2_real(kind=8).7"* %1 to %struct.array_descriptor2*
+  %101 = getelementptr inbounds %struct.array_descriptor2* %100, i32 0, i32 3
+  %102 = bitcast [2 x %struct.descriptor_dimension]* %101 to %struct.descriptor_dimension*
+  %103 = getelementptr %struct.descriptor_dimension* %102, i64 1
+  %104 = getelementptr inbounds %struct.descriptor_dimension* %103, i32 0, i32 1
+  %105 = load i64* %104, align 8
+  %106 = sub i64 %99, %105
+  %107 = add i64 %106, 1
+  %108 = mul i64 %93, %107
+  %109 = sub i64 0, %69
+  %110 = sub i64 %109, %93
+  %111 = add i64 %108, -1
+  %112 = mul i64 %108, 64
+  %113 = mul i64 %108, 8
+  %114 = bitcast %"struct.array2_integer(kind=4)"* %2 to %struct.array_descriptor2*
+  %115 = getelementptr inbounds %struct.array_descriptor2* %114, i32 0, i32 3
+  %116 = bitcast [2 x %struct.descriptor_dimension]* %115 to %struct.descriptor_dimension*
+  %117 = getelementptr %struct.descriptor_dimension* %116, i64 0
+  %118 = getelementptr inbounds %struct.descriptor_dimension* %117, i32 0, i32 0
+  %119 = load i64* %118, align 8
+  %120 = icmp ne i64 %119, 0
+  br i1 %120, label %"9", label %"10"
+
+"9":                                              ; preds = %"8"
+  br label %"11"
+
+"10":                                             ; preds = %"8"
+  br label %"11"
+
+"11":                                             ; preds = %"10", %"9"
+  %121 = phi i64 [ 1, %"10" ], [ %119, %"9" ]
+  %122 = bitcast %"struct.array2_integer(kind=4)"* %2 to %struct.array_descriptor2*
+  %123 = getelementptr inbounds %struct.array_descriptor2* %122, i32 0, i32 0
+  %124 = load i8** %123, align 8
+  %125 = bitcast i8* %124 to [0 x i32]*
+  %126 = bitcast %"struct.array2_integer(kind=4)"* %2 to %struct.array_descriptor2*
+  %127 = getelementptr inbounds %struct.array_descriptor2* %126, i32 0, i32 3
+  %128 = bitcast [2 x %struct.descriptor_dimension]* %127 to %struct.descriptor_dimension*
+  %129 = getelementptr %struct.descriptor_dimension* %128, i64 0
+  %130 = getelementptr inbounds %struct.descriptor_dimension* %129, i32 0, i32 2
+  %131 = load i64* %130, align 8
+  %132 = bitcast %"struct.array2_integer(kind=4)"* %2 to %struct.array_descriptor2*
+  %133 = getelementptr inbounds %struct.array_descriptor2* %132, i32 0, i32 3
+  %134 = bitcast [2 x %struct.descriptor_dimension]* %133 to %struct.descriptor_dimension*
+  %135 = getelementptr %struct.descriptor_dimension* %134, i64 0
+  %136 = getelementptr inbounds %struct.descriptor_dimension* %135, i32 0, i32 1
+  %137 = load i64* %136, align 8
+  %138 = sub i64 %131, %137
+  %139 = add i64 %138, 1
+  %140 = bitcast %"struct.array2_integer(kind=4)"* %2 to %struct.array_descriptor2*
+  %141 = getelementptr inbounds %struct.array_descriptor2* %140, i32 0, i32 3
+  %142 = bitcast [2 x %struct.descriptor_dimension]* %141 to %struct.descriptor_dimension*
+  %143 = getelementptr %struct.descriptor_dimension* %142, i64 1
+  %144 = getelementptr inbounds %struct.descriptor_dimension* %143, i32 0, i32 0
+  %145 = load i64* %144, align 8
+  %146 = bitcast %"struct.array2_integer(kind=4)"* %2 to %struct.array_descriptor2*
+  %147 = getelementptr inbounds %struct.array_descriptor2* %146, i32 0, i32 3
+  %148 = bitcast [2 x %struct.descriptor_dimension]* %147 to %struct.descriptor_dimension*
+  %149 = getelementptr %struct.descriptor_dimension* %148, i64 1
+  %150 = getelementptr inbounds %struct.descriptor_dimension* %149, i32 0, i32 2
+  %151 = load i64* %150, align 8
+  %152 = bitcast %"struct.array2_integer(kind=4)"* %2 to %struct.array_descriptor2*
+  %153 = getelementptr inbounds %struct.array_descriptor2* %152, i32 0, i32 3
+  %154 = bitcast [2 x %struct.descriptor_dimension]* %153 to %struct.descriptor_dimension*
+  %155 = getelementptr %struct.descriptor_dimension* %154, i64 1
+  %156 = getelementptr inbounds %struct.descriptor_dimension* %155, i32 0, i32 1
+  %157 = load i64* %156, align 8
+  %158 = sub i64 %151, %157
+  %159 = add i64 %158, 1
+  %160 = mul i64 %145, %159
+  %161 = sub i64 0, %121
+  %162 = sub i64 %161, %145
+  %163 = add i64 %160, -1
+  %164 = mul i64 %160, 32
+  %165 = mul i64 %160, 4
+  %166 = bitcast %"struct.array2_real(kind=8).9"* %3 to %struct.array_descriptor2*
+  %167 = getelementptr inbounds %struct.array_descriptor2* %166, i32 0, i32 3
+  %168 = bitcast [2 x %struct.descriptor_dimension]* %167 to %struct.descriptor_dimension*
+  %169 = getelementptr %struct.descriptor_dimension* %168, i64 0
+  %170 = getelementptr inbounds %struct.descriptor_dimension* %169, i32 0, i32 0
+  %171 = load i64* %170, align 8
+  %172 = icmp ne i64 %171, 0
+  br i1 %172, label %"12", label %"13"
+
+"12":                                             ; preds = %"11"
+  br label %"14"
+
+"13":                                             ; preds = %"11"
+  br label %"14"
+
+"14":                                             ; preds = %"13", %"12"
+  %173 = phi i64 [ 1, %"13" ], [ %171, %"12" ]
+  %174 = bitcast %"struct.array2_real(kind=8).9"* %3 to %struct.array_descriptor2*
+  %175 = getelementptr inbounds %struct.array_descriptor2* %174, i32 0, i32 0
+  %176 = load i8** %175, align 8
+  %177 = bitcast i8* %176 to [0 x double]*
+  %178 = bitcast %"struct.array2_real(kind=8).9"* %3 to %struct.array_descriptor2*
+  %179 = getelementptr inbounds %struct.array_descriptor2* %178, i32 0, i32 3
+  %180 = bitcast [2 x %struct.descriptor_dimension]* %179 to %struct.descriptor_dimension*
+  %181 = getelementptr %struct.descriptor_dimension* %180, i64 0
+  %182 = getelementptr inbounds %struct.descriptor_dimension* %181, i32 0, i32 2
+  %183 = load i64* %182, align 8
+  %184 = bitcast %"struct.array2_real(kind=8).9"* %3 to %struct.array_descriptor2*
+  %185 = getelementptr inbounds %struct.array_descriptor2* %184, i32 0, i32 3
+  %186 = bitcast [2 x %struct.descriptor_dimension]* %185 to %struct.descriptor_dimension*
+  %187 = getelementptr %struct.descriptor_dimension* %186, i64 0
+  %188 = getelementptr inbounds %struct.descriptor_dimension* %187, i32 0, i32 1
+  %189 = load i64* %188, align 8
+  %190 = sub i64 %183, %189
+  %191 = add i64 %190, 1
+  %192 = bitcast %"struct.array2_real(kind=8).9"* %3 to %struct.array_descriptor2*
+  %193 = getelementptr inbounds %struct.array_descriptor2* %192, i32 0, i32 3
+  %194 = bitcast [2 x %struct.descriptor_dimension]* %193 to %struct.descriptor_dimension*
+  %195 = getelementptr %struct.descriptor_dimension* %194, i64 1
+  %196 = getelementptr inbounds %struct.descriptor_dimension* %195, i32 0, i32 0
+  %197 = load i64* %196, align 8
+  %198 = bitcast %"struct.array2_real(kind=8).9"* %3 to %struct.array_descriptor2*
+  %199 = getelementptr inbounds %struct.array_descriptor2* %198, i32 0, i32 3
+  %200 = bitcast [2 x %struct.descriptor_dimension]* %199 to %struct.descriptor_dimension*
+  %201 = getelementptr %struct.descriptor_dimension* %200, i64 1
+  %202 = getelementptr inbounds %struct.descriptor_dimension* %201, i32 0, i32 2
+  %203 = load i64* %202, align 8
+  %204 = bitcast %"struct.array2_real(kind=8).9"* %3 to %struct.array_descriptor2*
+  %205 = getelementptr inbounds %struct.array_descriptor2* %204, i32 0, i32 3
+  %206 = bitcast [2 x %struct.descriptor_dimension]* %205 to %struct.descriptor_dimension*
+  %207 = getelementptr %struct.descriptor_dimension* %206, i64 1
+  %208 = getelementptr inbounds %struct.descriptor_dimension* %207, i32 0, i32 1
+  %209 = load i64* %208, align 8
+  %210 = sub i64 %203, %209
+  %211 = add i64 %210, 1
+  %212 = mul i64 %197, %211
+  %213 = sub i64 0, %173
+  %214 = sub i64 %213, %197
+  %215 = add i64 %212, -1
+  %216 = mul i64 %212, 64
+  %217 = mul i64 %212, 8
+  %218 = bitcast %"struct.array3_real(kind=8).10"* %4 to %struct.array_descriptor3*
+  %219 = getelementptr inbounds %struct.array_descriptor3* %218, i32 0, i32 3
+  %220 = bitcast [3 x %struct.descriptor_dimension]* %219 to %struct.descriptor_dimension*
+  %221 = getelementptr %struct.descriptor_dimension* %220, i64 0
+  %222 = getelementptr inbounds %struct.descriptor_dimension* %221, i32 0, i32 0
+  %223 = load i64* %222, align 8
+  %224 = icmp ne i64 %223, 0
+  br i1 %224, label %"15", label %"16"
+
+"15":                                             ; preds = %"14"
+  br label %"17"
+
+"16":                                             ; preds = %"14"
+  br label %"17"
+
+"17":                                             ; preds = %"16", %"15"
+  %225 = phi i64 [ 1, %"16" ], [ %223, %"15" ]
+  %226 = bitcast %"struct.array3_real(kind=8).10"* %4 to %struct.array_descriptor3*
+  %227 = getelementptr inbounds %struct.array_descriptor3* %226, i32 0, i32 0
+  %228 = load i8** %227, align 8
+  %229 = bitcast i8* %228 to [0 x double]*
+  %230 = bitcast %"struct.array3_real(kind=8).10"* %4 to %struct.array_descriptor3*
+  %231 = getelementptr inbounds %struct.array_descriptor3* %230, i32 0, i32 3
+  %232 = bitcast [3 x %struct.descriptor_dimension]* %231 to %struct.descriptor_dimension*
+  %233 = getelementptr %struct.descriptor_dimension* %232, i64 0
+  %234 = getelementptr inbounds %struct.descriptor_dimension* %233, i32 0, i32 2
+  %235 = load i64* %234, align 8
+  %236 = bitcast %"struct.array3_real(kind=8).10"* %4 to %struct.array_descriptor3*
+  %237 = getelementptr inbounds %struct.array_descriptor3* %236, i32 0, i32 3
+  %238 = bitcast [3 x %struct.descriptor_dimension]* %237 to %struct.descriptor_dimension*
+  %239 = getelementptr %struct.descriptor_dimension* %238, i64 0
+  %240 = getelementptr inbounds %struct.descriptor_dimension* %239, i32 0, i32 1
+  %241 = load i64* %240, align 8
+  %242 = sub i64 %235, %241
+  %243 = add i64 %242, 1
+  %244 = bitcast %"struct.array3_real(kind=8).10"* %4 to %struct.array_descriptor3*
+  %245 = getelementptr inbounds %struct.array_descriptor3* %244, i32 0, i32 3
+  %246 = bitcast [3 x %struct.descriptor_dimension]* %245 to %struct.descriptor_dimension*
+  %247 = getelementptr %struct.descriptor_dimension* %246, i64 1
+  %248 = getelementptr inbounds %struct.descriptor_dimension* %247, i32 0, i32 0
+  %249 = load i64* %248, align 8
+  %250 = bitcast %"struct.array3_real(kind=8).10"* %4 to %struct.array_descriptor3*
+  %251 = getelementptr inbounds %struct.array_descriptor3* %250, i32 0, i32 3
+  %252 = bitcast [3 x %struct.descriptor_dimension]* %251 to %struct.descriptor_dimension*
+  %253 = getelementptr %struct.descriptor_dimension* %252, i64 1
+  %254 = getelementptr inbounds %struct.descriptor_dimension* %253, i32 0, i32 2
+  %255 = load i64* %254, align 8
+  %256 = bitcast %"struct.array3_real(kind=8).10"* %4 to %struct.array_descriptor3*
+  %257 = getelementptr inbounds %struct.array_descriptor3* %256, i32 0, i32 3
+  %258 = bitcast [3 x %struct.descriptor_dimension]* %257 to %struct.descriptor_dimension*
+  %259 = getelementptr %struct.descriptor_dimension* %258, i64 1
+  %260 = getelementptr inbounds %struct.descriptor_dimension* %259, i32 0, i32 1
+  %261 = load i64* %260, align 8
+  %262 = sub i64 %255, %261
+  %263 = add i64 %262, 1
+  %264 = bitcast %"struct.array3_real(kind=8).10"* %4 to %struct.array_descriptor3*
+  %265 = getelementptr inbounds %struct.array_descriptor3* %264, i32 0, i32 3
+  %266 = bitcast [3 x %struct.descriptor_dimension]* %265 to %struct.descriptor_dimension*
+  %267 = getelementptr %struct.descriptor_dimension* %266, i64 2
+  %268 = getelementptr inbounds %struct.descriptor_dimension* %267, i32 0, i32 0
+  %269 = load i64* %268, align 8
+  %270 = bitcast %"struct.array3_real(kind=8).10"* %4 to %struct.array_descriptor3*
+  %271 = getelementptr inbounds %struct.array_descriptor3* %270, i32 0, i32 3
+  %272 = bitcast [3 x %struct.descriptor_dimension]* %271 to %struct.descriptor_dimension*
+  %273 = getelementptr %struct.descriptor_dimension* %272, i64 2
+  %274 = getelementptr inbounds %struct.descriptor_dimension* %273, i32 0, i32 2
+  %275 = load i64* %274, align 8
+  %276 = bitcast %"struct.array3_real(kind=8).10"* %4 to %struct.array_descriptor3*
+  %277 = getelementptr inbounds %struct.array_descriptor3* %276, i32 0, i32 3
+  %278 = bitcast [3 x %struct.descriptor_dimension]* %277 to %struct.descriptor_dimension*
+  %279 = getelementptr %struct.descriptor_dimension* %278, i64 2
+  %280 = getelementptr inbounds %struct.descriptor_dimension* %279, i32 0, i32 1
+  %281 = load i64* %280, align 8
+  %282 = sub i64 %275, %281
+  %283 = add i64 %282, 1
+  %284 = mul i64 %269, %283
+  %285 = sub i64 0, %225
+  %286 = sub i64 %285, %249
+  %287 = sub i64 %286, %269
+  %288 = add i64 %284, -1
+  %289 = mul i64 %284, 64
+  %290 = mul i64 %284, 8
+  br label %"18"
+
+"18":                                             ; preds = %"28", %"17"
+  %291 = phi i1 [ %443, %"28" ], [ true, %"17" ]
+  %not = xor i1 %291, true
+  %292 = icmp ne i1 %not, false
+  br i1 %292, label %"29", label %"19"
+
+"19":                                             ; preds = %"18"
+  %293 = load i32* %5, align 4
+  %294 = load i32* %6, align 4
+  %295 = icmp sle i32 %293, %294
+  br i1 %295, label %"20", label %"28"
+
+"20":                                             ; preds = %"27", %"19"
+  %296 = phi i32 [ %441, %"27" ], [ %293, %"19" ]
+  %297 = phi i1 [ %439, %"27" ], [ false, %"19" ]
+  %298 = load i32* %7, align 4
+  %299 = load i32* %8, align 4
+  %300 = icmp sle i32 %298, %299
+  br i1 %300, label %"21", label %"26"
+
+"21":                                             ; preds = %"25", %"20"
+  %301 = phi i32 [ %437, %"25" ], [ %298, %"20" ]
+  %302 = phi i1 [ %435, %"25" ], [ %297, %"20" ]
+  %303 = sext i32 %301 to i64
+  %304 = mul i64 %303, %17
+  %305 = sext i32 %296 to i64
+  %306 = mul i64 %305, %41
+  %307 = add i64 %304, %306
+  %308 = add i64 %307, %58
+  %309 = bitcast [0 x double]* %21 to double*
+  %310 = getelementptr double* %309, i64 %308
+  %311 = load double* %310, align 8
+  %312 = sext i32 %301 to i64
+  %313 = mul i64 %312, %69
+  %314 = sext i32 %296 to i64
+  %315 = mul i64 %314, %93
+  %316 = add i64 %313, %315
+  %317 = add i64 %316, %110
+  %318 = bitcast [0 x double]* %73 to double*
+  %319 = getelementptr double* %318, i64 %317
+  %320 = load double* %319, align 8
+  %321 = fcmp olt double %311, %320
+  %322 = icmp ne i1 %321, false
+  br i1 %322, label %"22", label %"24"
+
+"22":                                             ; preds = %"21"
+  %323 = sext i32 %301 to i64
+  %324 = mul i64 %323, %121
+  %325 = sext i32 %296 to i64
+  %326 = mul i64 %325, %145
+  %327 = add i64 %324, %326
+  %328 = add i64 %327, %162
+  %329 = bitcast [0 x i32]* %125 to i32*
+  %330 = getelementptr i32* %329, i64 %328
+  %331 = load i32* %330, align 4
+  %332 = icmp sgt i32 %331, 1
+  br i1 %332, label %"23", label %"24"
+
+"23":                                             ; preds = %"22"
+  %333 = sext i32 %301 to i64
+  %334 = mul i64 %333, %121
+  %335 = sext i32 %296 to i64
+  %336 = mul i64 %335, %145
+  %337 = add i64 %334, %336
+  %338 = add i64 %337, %162
+  %339 = sext i32 %301 to i64
+  %340 = mul i64 %339, %121
+  %341 = sext i32 %296 to i64
+  %342 = mul i64 %341, %145
+  %343 = add i64 %340, %342
+  %344 = add i64 %343, %162
+  %345 = bitcast [0 x i32]* %125 to i32*
+  %346 = getelementptr i32* %345, i64 %344
+  %347 = load i32* %346, align 4
+  %348 = add i32 %347, -1
+  %349 = bitcast [0 x i32]* %125 to i32*
+  %350 = getelementptr i32* %349, i64 %338
+  store i32 %348, i32* %350, align 4
+  %351 = sext i32 %301 to i64
+  %352 = mul i64 %351, %173
+  %353 = sext i32 %296 to i64
+  %354 = mul i64 %353, %197
+  %355 = add i64 %352, %354
+  %356 = add i64 %355, %214
+  %357 = sext i32 %301 to i64
+  %358 = mul i64 %357, %17
+  %359 = sext i32 %296 to i64
+  %360 = mul i64 %359, %41
+  %361 = add i64 %358, %360
+  %362 = add i64 %361, %58
+  %363 = bitcast [0 x double]* %21 to double*
+  %364 = getelementptr double* %363, i64 %362
+  %365 = load double* %364, align 8
+  %366 = bitcast [0 x double]* %177 to double*
+  %367 = getelementptr double* %366, i64 %356
+  store double %365, double* %367, align 8
+  %368 = sext i32 %301 to i64
+  %369 = mul i64 %368, %17
+  %370 = sext i32 %296 to i64
+  %371 = mul i64 %370, %41
+  %372 = add i64 %369, %371
+  %373 = add i64 %372, %58
+  %374 = sext i32 %301 to i64
+  %375 = mul i64 %374, %225
+  %376 = sext i32 %296 to i64
+  %377 = mul i64 %376, %249
+  %378 = add i64 %375, %377
+  %379 = sext i32 %301 to i64
+  %380 = mul i64 %379, %121
+  %381 = sext i32 %296 to i64
+  %382 = mul i64 %381, %145
+  %383 = add i64 %380, %382
+  %384 = add i64 %383, %162
+  %385 = bitcast [0 x i32]* %125 to i32*
+  %386 = getelementptr i32* %385, i64 %384
+  %387 = load i32* %386, align 4
+  %388 = sext i32 %387 to i64
+  %389 = mul i64 %388, %269
+  %390 = add i64 %378, %389
+  %391 = add i64 %390, %287
+  %392 = bitcast [0 x double]* %229 to double*
+  %393 = getelementptr double* %392, i64 %391
+  %394 = load double* %393, align 8
+  %395 = sext i32 %301 to i64
+  %396 = mul i64 %395, %225
+  %397 = sext i32 %296 to i64
+  %398 = mul i64 %397, %249
+  %399 = add i64 %396, %398
+  %400 = sext i32 %301 to i64
+  %401 = mul i64 %400, %121
+  %402 = sext i32 %296 to i64
+  %403 = mul i64 %402, %145
+  %404 = add i64 %401, %403
+  %405 = add i64 %404, %162
+  %406 = bitcast [0 x i32]* %125 to i32*
+  %407 = getelementptr i32* %406, i64 %405
+  %408 = load i32* %407, align 4
+  %409 = add i32 %408, 1
+  %410 = sext i32 %409 to i64
+  %411 = mul i64 %410, %269
+  %412 = add i64 %399, %411
+  %413 = add i64 %412, %287
+  %414 = bitcast [0 x double]* %229 to double*
+  %415 = getelementptr double* %414, i64 %413
+  %416 = load double* %415, align 8
+  %417 = fadd double %394, %416
+  %418 = fmul double %417, 5.000000e-01
+  %419 = sext i32 %301 to i64
+  %420 = mul i64 %419, %225
+  %421 = sext i32 %296 to i64
+  %422 = mul i64 %421, %249
+  %423 = add i64 %420, %422
+  %424 = load i32* %9, align 4
+  %425 = sext i32 %424 to i64
+  %426 = mul i64 %425, %269
+  %427 = add i64 %423, %426
+  %428 = add i64 %427, %287
+  %429 = bitcast [0 x double]* %229 to double*
+  %430 = getelementptr double* %429, i64 %428
+  %431 = load double* %430, align 8
+  %432 = fsub double %418, %431
+  %433 = bitcast [0 x double]* %21 to double*
+  %434 = getelementptr double* %433, i64 %373
+  store double %432, double* %434, align 8
+  br label %"24"
+
+"24":                                             ; preds = %"23", %"22", %"21"
+  %435 = phi i1 [ true, %"23" ], [ %302, %"22" ], [ %302, %"21" ]
+  %436 = icmp eq i32 %301, %299
+  %437 = add i32 %301, 1
+  %438 = icmp ne i1 %436, false
+  br i1 %438, label %"26", label %"25"
+
+"25":                                             ; preds = %"24"
+  br label %"21"
+
+"26":                                             ; preds = %"24", %"20"
+  %439 = phi i1 [ %435, %"24" ], [ %297, %"20" ]
+  %440 = icmp eq i32 %296, %294
+  %441 = add i32 %296, 1
+  %442 = icmp ne i1 %440, false
+  br i1 %442, label %"28", label %"27"
+
+"27":                                             ; preds = %"26"
+  br label %"20"
+
+"28":                                             ; preds = %"26", %"19"
+  %443 = phi i1 [ %439, %"26" ], [ false, %"19" ]
+  br label %"18"
+
+"29":                                             ; preds = %"18"
+  br label %return
+
+return:                                           ; preds = %"29"
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define void @__turbulence_utilities_MOD_canopy_source() unnamed_addr #0 {
+entry:
+  %"ssa point" = bitcast i32 0 to i32
+  br label %"2"
+
+"2":                                              ; preds = %entry
+  br label %return
+
+return:                                           ; preds = %"2"
+  ret void
+}
+
+attributes #0 = { nounwind uwtable }
+attributes #1 = { nounwind readnone }
+attributes #2 = { nounwind }

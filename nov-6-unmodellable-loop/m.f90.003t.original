@@ -1,0 +1,424 @@
+break_scop ()
+{
+  
+}
+
+
+radiation_rg_organize (integer(kind=4) & restrict ierror, character(kind=1)[1:_yerrmsg] & restrict yerrmsg, character(kind=1)[1:14] & restrict ydate_ini, logical(kind=4) & restrict lzradstep, integer(kind=4) & restrict nproma, integer(kind=4) & restrict ke, integer(kind=4) & restrict ke_soil, integer(kind=4) & restrict ke_snow, integer(kind=4) & restrict ipend, real(kind=4)[0:] * restrict aer_bc, real(kind=4)[0:] * restrict aerlan, real(kind=4)[0:] * restrict aer_or, real(kind=4)[0:] * restrict aersea, real(kind=4)[0:] * restrict aer_ss, real(kind=4)[0:] * restrict aer_su, real(kind=4)[0:] * restrict aerurb, real(kind=4)[0:D.2311] * restrict alb_dif, real(kind=4)[0:D.2317] * restrict alb_dry, real(kind=4)[0:D.2314] * restrict alb_sat, real(kind=4)[0:] * restrict clc_con, real(kind=4)[0:] * restrict depth_lk, real(kind=4)[0:] * restrict dp0, real(kind=4)[0:D.2341] * restrict emis_rad, real(kind=4)[0:] * restrict for_d, real(kind=4)[0:] * restrict for_e, real(kind=4)[0:] * restrict freshsnow, real(kind=4)[0:] * restrict h_ice, real(kind=4)[0:] * restrict hmo3, logical(kind=4)[0:D.2329] * restrict llandmask, real(kind=4)[0:] * restrict p0, real(kind=4)[0:] * restrict p0hl, real(kind=4)[0:] * restrict plcov, real(kind=4)[0:] * restrict pp, real(kind=4)[0:] * restrict ps, real(kind=4)[0:] * restrict qc, real(kind=4)[0:] * restrict qi, real(kind=4)[0:] * restrict qv, real(kind=4)[0:] * restrict rcld, real(kind=4)[0:D.2326] * restrict soiltyp, real(kind=4)[0:] * restrict swdir_cor, real(kind=4)[0:] * restrict t, real(kind=4)[0:D.2335] * restrict t_g, real(kind=4)[0:] * restrict t_ice, real(kind=4)[0:] * restrict t_s, real(kind=4)[0:D.2332] * restrict t_snow, real(kind=4)[0:D.2338] * restrict t_snow_mult, real(kind=4)[0:] * restrict vio3, real(kind=4)[0:D.2320] * restrict w_g1, real(kind=4)[0:] * restrict w_snow, real(kind=4)[0:D.2323] * restrict w_so, real(kind=4)[0:] * restrict zskyview, real(kind=4)[0:] * restrict zsmu0_fesft, real(kind=4)[0:] * restrict zsmu0_flux, real(kind=4)[0:] * restrict alb_rad, real(kind=4)[0:] * restrict clch, real(kind=4)[0:] * restrict clcl, real(kind=4)[0:] * restrict clcm, real(kind=4)[0:] * restrict clct, real(kind=4)[0:] * restrict lwd_s, real(kind=4)[0:] * restrict lwu_s, real(kind=4)[0:] * restrict qc_rad, real(kind=4)[0:] * restrict qi_rad, real(kind=4)[0:] * restrict sodwddm, real(kind=4)[0:] * restrict thbs, real(kind=4)[0:] * restrict thbt, real(kind=4)[0:] * restrict thhr, real(kind=4)[0:] * restrict aerdes, real(kind=4)[0:] * restrict aer_du, real(kind=4)[0:] * restrict clc_sgs, real(kind=4)[0:] * restrict sod_t, real(kind=4)[0:] * restrict sotr, real(kind=4)[0:] * restrict sotr_par, real(kind=4)[0:] * restrict swtrdifd_s, real(kind=4)[0:] * restrict swtrdifu_s, real(kind=4)[0:] * restrict swtrdir_s, real(kind=4)[0:] * restrict pabs, real(kind=4)[0:] * restrict sobs, real(kind=4)[0:] * restrict sobt, real(kind=4)[0:] * restrict swdifd_s, real(kind=4)[0:] * restrict swdifu_s, real(kind=4)[0:] * restrict swdir_s, real(kind=4)[0:] * restrict sohr, integer(kind=4) _yerrmsg, integer(kind=4) _ydate_ini)
+{
+  integer(kind=8) ubound.0;
+  integer(kind=8) size.1;
+  integer(kind=8) ubound.2;
+  integer(kind=8) size.3;
+  integer(kind=8) ubound.4;
+  integer(kind=8) size.5;
+  integer(kind=8) ubound.6;
+  integer(kind=8) size.7;
+  integer(kind=4) ip;
+  integer(kind=4) ist;
+  integer(kind=8) ubound.8;
+  integer(kind=8) size.9;
+  integer(kind=8) ubound.10;
+  integer(kind=8) size.11;
+  integer(kind=8) ubound.12;
+  integer(kind=8) size.13;
+  integer(kind=8) ubound.14;
+  integer(kind=8) size.15;
+  integer(kind=8) ubound.16;
+  integer(kind=8) ubound.17;
+  integer(kind=8) stride.18;
+  integer(kind=8) offset.19;
+  integer(kind=8) size.20;
+  real(kind=4) t_test;
+  integer(kind=8) ubound.21;
+  integer(kind=8) size.22;
+  integer(kind=8) ubound.23;
+  integer(kind=8) ubound.24;
+  integer(kind=8) stride.25;
+  integer(kind=8) offset.26;
+  integer(kind=8) size.27;
+  real(kind=4) ztt;
+  real(kind=4) zwetfrac;
+  real(kind=4) zzpa;
+  real(kind=4) zzpv;
+  integer(kind=8) D.2311;
+  bit_size_type D.2312;
+  <unnamed-unsigned:64> D.2313;
+  integer(kind=8) D.2314;
+  bit_size_type D.2315;
+  <unnamed-unsigned:64> D.2316;
+  integer(kind=8) D.2317;
+  bit_size_type D.2318;
+  <unnamed-unsigned:64> D.2319;
+  integer(kind=8) D.2320;
+  bit_size_type D.2321;
+  <unnamed-unsigned:64> D.2322;
+  integer(kind=8) D.2323;
+  bit_size_type D.2324;
+  <unnamed-unsigned:64> D.2325;
+  integer(kind=8) D.2326;
+  bit_size_type D.2327;
+  <unnamed-unsigned:64> D.2328;
+  integer(kind=8) D.2329;
+  bit_size_type D.2330;
+  <unnamed-unsigned:64> D.2331;
+  integer(kind=8) D.2332;
+  bit_size_type D.2333;
+  <unnamed-unsigned:64> D.2334;
+  integer(kind=8) D.2335;
+  bit_size_type D.2336;
+  <unnamed-unsigned:64> D.2337;
+  integer(kind=8) D.2338;
+  bit_size_type D.2339;
+  <unnamed-unsigned:64> D.2340;
+  integer(kind=8) D.2341;
+  bit_size_type D.2342;
+  <unnamed-unsigned:64> D.2343;
+  bit_size_type D.2344;
+  <unnamed-unsigned:64> D.2345;
+
+  D.2344 = (bit_size_type) ((<unnamed-unsigned:64>) _yerrmsg * 8);
+  D.2345 = (<unnamed-unsigned:64>) (_yerrmsg + -1) + 1;
+  ubound.6 = (integer(kind=8)) *nproma;
+  size.7 = NON_LVALUE_EXPR <ubound.6>;
+  size.7 = MAX_EXPR <size.7, 0>;
+  D.2341 = size.7 + -1;
+  D.2342 = (bit_size_type) size.7 * 32;
+  D.2343 = (<unnamed-unsigned:64>) size.7 * 4;
+  ubound.16 = (integer(kind=8)) *nproma;
+  stride.18 = NON_LVALUE_EXPR <ubound.16>;
+  stride.18 = MAX_EXPR <stride.18, 0>;
+  ubound.17 = (integer(kind=8)) *ke_snow;
+  size.20 = stride.18 * NON_LVALUE_EXPR <ubound.17>;
+  size.20 = MAX_EXPR <size.20, 0>;
+  D.2338 = size.20 + -1;
+  D.2339 = (bit_size_type) size.20 * 32;
+  D.2340 = (<unnamed-unsigned:64>) size.20 * 4;
+  offset.19 = ~NON_LVALUE_EXPR <stride.18>;
+  ubound.12 = (integer(kind=8)) *nproma;
+  size.13 = NON_LVALUE_EXPR <ubound.12>;
+  size.13 = MAX_EXPR <size.13, 0>;
+  D.2335 = size.13 + -1;
+  D.2336 = (bit_size_type) size.13 * 32;
+  D.2337 = (<unnamed-unsigned:64>) size.13 * 4;
+  ubound.14 = (integer(kind=8)) *nproma;
+  size.15 = NON_LVALUE_EXPR <ubound.14>;
+  size.15 = MAX_EXPR <size.15, 0>;
+  D.2332 = size.15 + -1;
+  D.2333 = (bit_size_type) size.15 * 32;
+  D.2334 = (<unnamed-unsigned:64>) size.15 * 4;
+  ubound.8 = (integer(kind=8)) *nproma;
+  size.9 = NON_LVALUE_EXPR <ubound.8>;
+  size.9 = MAX_EXPR <size.9, 0>;
+  D.2329 = size.9 + -1;
+  D.2330 = (bit_size_type) size.9 * 32;
+  D.2331 = (<unnamed-unsigned:64>) size.9 * 4;
+  ubound.10 = (integer(kind=8)) *nproma;
+  size.11 = NON_LVALUE_EXPR <ubound.10>;
+  size.11 = MAX_EXPR <size.11, 0>;
+  D.2326 = size.11 + -1;
+  D.2327 = (bit_size_type) size.11 * 32;
+  D.2328 = (<unnamed-unsigned:64>) size.11 * 4;
+  ubound.23 = (integer(kind=8)) *nproma;
+  stride.25 = NON_LVALUE_EXPR <ubound.23>;
+  stride.25 = MAX_EXPR <stride.25, 0>;
+  ubound.24 = (integer(kind=8)) *ke_soil;
+  size.27 = stride.25 * NON_LVALUE_EXPR <ubound.24>;
+  size.27 = MAX_EXPR <size.27, 0>;
+  D.2323 = size.27 + -1;
+  D.2324 = (bit_size_type) size.27 * 32;
+  D.2325 = (<unnamed-unsigned:64>) size.27 * 4;
+  offset.26 = ~NON_LVALUE_EXPR <stride.25>;
+  ubound.21 = (integer(kind=8)) *nproma;
+  size.22 = NON_LVALUE_EXPR <ubound.21>;
+  size.22 = MAX_EXPR <size.22, 0>;
+  D.2320 = size.22 + -1;
+  D.2321 = (bit_size_type) size.22 * 32;
+  D.2322 = (<unnamed-unsigned:64>) size.22 * 4;
+  ubound.2 = (integer(kind=8)) *nproma;
+  size.3 = NON_LVALUE_EXPR <ubound.2>;
+  size.3 = MAX_EXPR <size.3, 0>;
+  D.2317 = size.3 + -1;
+  D.2318 = (bit_size_type) size.3 * 32;
+  D.2319 = (<unnamed-unsigned:64>) size.3 * 4;
+  ubound.4 = (integer(kind=8)) *nproma;
+  size.5 = NON_LVALUE_EXPR <ubound.4>;
+  size.5 = MAX_EXPR <size.5, 0>;
+  D.2314 = size.5 + -1;
+  D.2315 = (bit_size_type) size.5 * 32;
+  D.2316 = (<unnamed-unsigned:64>) size.5 * 4;
+  ubound.0 = (integer(kind=8)) *nproma;
+  size.1 = NON_LVALUE_EXPR <ubound.0>;
+  size.1 = MAX_EXPR <size.1, 0>;
+  D.2311 = size.1 + -1;
+  D.2312 = (bit_size_type) size.1 * 32;
+  D.2313 = (<unnamed-unsigned:64>) size.1 * 4;
+  break_scop ();
+  {
+    integer(kind=4) D.2250;
+
+    D.2250 = *ipend;
+    ip = 1;
+    if (ip <= D.2250)
+      {
+        while (1)
+          {
+            {
+              logical(kind=4) D.2310;
+
+              break_scop ();
+              if (lemiss)
+                {
+                  {
+                    integer(kind=8) inc.29;
+                    integer(kind=8) inc.28;
+
+                    (*(real(kind=4)[0:] * restrict) zalth.data)[_gfortran_polly_array_index_1 (zalth.offset, 1, (integer(kind=8)) ip)] = 1.0e+0 - (*emis_rad)[_gfortran_polly_array_index_1 (-1, 1, (integer(kind=8)) ip)];
+                  }
+                }
+              else
+                {
+                  {
+                    integer(kind=8) inc.30;
+
+                    (*(real(kind=4)[0:] * restrict) zalth.data)[_gfortran_polly_array_index_1 (zalth.offset, 1, (integer(kind=8)) ip)] = ctalb;
+                  }
+                }
+              L.3:;
+              ist = 10;
+              if (lmulti_snow)
+                {
+                  {
+                    integer(kind=8) inc.31;
+
+                    if ((*t_snow_mult)[_gfortran_polly_array_index_2 (offset.19, stride.18, 1, 1, (integer(kind=8)) ip)] < 0.0)
+                      {
+                        {
+                          integer(kind=8) inc.32;
+
+                          t_test = (*t_g)[_gfortran_polly_array_index_1 (-1, 1, (integer(kind=8)) ip)];
+                        }
+                      }
+                    else
+                      {
+                        {
+                          integer(kind=8) inc.33;
+
+                          t_test = (*t_snow_mult)[_gfortran_polly_array_index_2 (offset.19, stride.18, 1, 1, (integer(kind=8)) ip)];
+                        }
+                      }
+                  }
+                  L.5:;
+                }
+              else
+                {
+                  {
+                    integer(kind=8) inc.34;
+
+                    if ((*t_snow)[_gfortran_polly_array_index_1 (-1, 1, (integer(kind=8)) ip)] < 0.0)
+                      {
+                        {
+                          integer(kind=8) inc.35;
+
+                          t_test = (*t_g)[_gfortran_polly_array_index_1 (-1, 1, (integer(kind=8)) ip)];
+                        }
+                      }
+                    else
+                      {
+                        {
+                          integer(kind=8) inc.36;
+
+                          t_test = (*t_snow)[_gfortran_polly_array_index_1 (-1, 1, (integer(kind=8)) ip)];
+                        }
+                      }
+                  }
+                  L.6:;
+                }
+              L.4:;
+              {
+                integer(kind=8) inc.37;
+
+                if ((*llandmask)[_gfortran_polly_array_index_1 (-1, 1, (integer(kind=8)) ip)] || t0_melt - 1.7000000476837158203125e+0 <= t_test)
+                  {
+                    {
+                      integer(kind=8) inc.38;
+
+                      ist = (integer(kind=4)) __builtin_lroundf ((*soiltyp)[_gfortran_polly_array_index_1 (-1, 1, (integer(kind=8)) ip)]);
+                    }
+                  }
+              }
+              L.7:;
+              {
+                integer(kind=8) inc.40;
+                integer(kind=8) inc.39;
+
+                (*(real(kind=4)[0:] * restrict) zalso.data)[_gfortran_polly_array_index_1 (zalso.offset, 1, (integer(kind=8)) ip)] = csalb[_gfortran_polly_array_index_1 (-1, 1, (integer(kind=8)) ist)];
+              }
+              {
+                integer(kind=8) inc.41;
+
+                if (lsoil && (*llandmask)[_gfortran_polly_array_index_1 (-1, 1, (integer(kind=8)) ip)])
+                  {
+                    if (itype_albedo == 1)
+                      {
+                        if (lmulti_layer)
+                          {
+                            {
+                              integer(kind=8) inc.45;
+                              integer(kind=8) inc.44;
+                              integer(kind=8) inc.43;
+                              integer(kind=8) inc.42;
+
+                              (*(real(kind=4)[0:] * restrict) zalso.data)[_gfortran_polly_array_index_1 (zalso.offset, 1, (integer(kind=8)) ip)] = csalb[_gfortran_polly_array_index_1 (-1, 1, (integer(kind=8)) ist)] - rad_csalbw[_gfortran_polly_array_index_1 (-1, 1, (integer(kind=8)) ist)] * (*w_so)[_gfortran_polly_array_index_2 (offset.26, stride.25, 1, 1, (integer(kind=8)) ip)];
+                            }
+                          }
+                        else
+                          {
+                            {
+                              integer(kind=8) inc.49;
+                              integer(kind=8) inc.48;
+                              integer(kind=8) inc.47;
+                              integer(kind=8) inc.46;
+
+                              (*(real(kind=4)[0:] * restrict) zalso.data)[_gfortran_polly_array_index_1 (zalso.offset, 1, (integer(kind=8)) ip)] = csalb[_gfortran_polly_array_index_1 (-1, 1, (integer(kind=8)) ist)] - rad_csalbw[_gfortran_polly_array_index_1 (-1, 1, (integer(kind=8)) ist)] * (*w_g1)[_gfortran_polly_array_index_1 (-1, 1, (integer(kind=8)) ip)];
+                            }
+                          }
+                        L.10:;
+                      }
+                    else
+                      {
+                        if (itype_albedo == 2)
+                          {
+                            if (lmulti_layer)
+                              {
+                                {
+                                  integer(kind=8) inc.54;
+                                  integer(kind=8) inc.53;
+                                  integer(kind=8) inc.52;
+                                  integer(kind=8) inc.51;
+                                  integer(kind=8) inc.50;
+
+                                  zwetfrac = ((((*w_so)[_gfortran_polly_array_index_2 (offset.26, stride.25, 1, 1, (integer(kind=8)) ip)] * 5.0e-1) / (*(real(kind=4)[0:] * restrict) czmls.data)[_gfortran_polly_array_index_1 (czmls.offset, 1, 1)] - cadp[_gfortran_polly_array_index_1 (-1, 1, (integer(kind=8)) ist)])) / ((cporv[_gfortran_polly_array_index_1 (-1, 1, (integer(kind=8)) ist)] - cadp[_gfortran_polly_array_index_1 (-1, 1, (integer(kind=8)) ist)]));
+                                }
+                                {
+                                  real(kind=4) M.56;
+                                  real(kind=4) M.55;
+
+                                  M.55 = 0.0;
+                                  if (zwetfrac > M.55 || M.55 unord M.55)
+                                    {
+                                      M.55 = zwetfrac;
+                                    }
+                                  M.56 = 1.0e+0;
+                                  if (M.55 < M.56 || M.56 unord M.56)
+                                    {
+                                      M.56 = M.55;
+                                    }
+                                  zwetfrac = M.56;
+                                }
+                                {
+                                  integer(kind=8) inc.59;
+                                  integer(kind=8) inc.58;
+                                  integer(kind=8) inc.57;
+
+                                  (*(real(kind=4)[0:] * restrict) zalso.data)[_gfortran_polly_array_index_1 (zalso.offset, 1, (integer(kind=8)) ip)] = ((1.0e+0 - zwetfrac)) * (*alb_dry)[_gfortran_polly_array_index_1 (-1, 1, (integer(kind=8)) ip)] + (*alb_sat)[_gfortran_polly_array_index_1 (-1, 1, (integer(kind=8)) ip)] * zwetfrac;
+                                }
+                              }
+                            else
+                              {
+                                if (nlgw == 2)
+                                  {
+                                    {
+                                      integer(kind=8) inc.63;
+                                      integer(kind=8) inc.62;
+                                      integer(kind=8) inc.61;
+                                      integer(kind=8) inc.60;
+
+                                      zwetfrac = (((*w_g1)[_gfortran_polly_array_index_1 (-1, 1, (integer(kind=8)) ip)] / cdzw12 - cadp[_gfortran_polly_array_index_1 (-1, 1, (integer(kind=8)) ist)])) / ((cporv[_gfortran_polly_array_index_1 (-1, 1, (integer(kind=8)) ist)] - cadp[_gfortran_polly_array_index_1 (-1, 1, (integer(kind=8)) ist)]));
+                                    }
+                                  }
+                                else
+                                  {
+                                    {
+                                      integer(kind=8) inc.67;
+                                      integer(kind=8) inc.66;
+                                      integer(kind=8) inc.65;
+                                      integer(kind=8) inc.64;
+
+                                      zwetfrac = (((*w_g1)[_gfortran_polly_array_index_1 (-1, 1, (integer(kind=8)) ip)] / cdzw13 - cadp[_gfortran_polly_array_index_1 (-1, 1, (integer(kind=8)) ist)])) / ((cporv[_gfortran_polly_array_index_1 (-1, 1, (integer(kind=8)) ist)] - cadp[_gfortran_polly_array_index_1 (-1, 1, (integer(kind=8)) ist)]));
+                                    }
+                                  }
+                                L.12:;
+                                {
+                                  real(kind=4) M.69;
+                                  real(kind=4) M.68;
+
+                                  M.68 = 0.0;
+                                  if (zwetfrac > M.68 || M.68 unord M.68)
+                                    {
+                                      M.68 = zwetfrac;
+                                    }
+                                  M.69 = 1.0e+0;
+                                  if (M.68 < M.69 || M.69 unord M.69)
+                                    {
+                                      M.69 = M.68;
+                                    }
+                                  zwetfrac = M.69;
+                                }
+                                {
+                                  integer(kind=8) inc.72;
+                                  integer(kind=8) inc.71;
+                                  integer(kind=8) inc.70;
+
+                                  (*(real(kind=4)[0:] * restrict) zalso.data)[_gfortran_polly_array_index_1 (zalso.offset, 1, (integer(kind=8)) ip)] = ((1.0e+0 - zwetfrac)) * (*alb_dry)[_gfortran_polly_array_index_1 (-1, 1, (integer(kind=8)) ip)] + (*alb_sat)[_gfortran_polly_array_index_1 (-1, 1, (integer(kind=8)) ip)] * zwetfrac;
+                                }
+                              }
+                            L.11:;
+                          }
+                        else
+                          {
+                            if (itype_albedo == 3)
+                              {
+                                {
+                                  integer(kind=8) inc.74;
+                                  integer(kind=8) inc.73;
+
+                                  (*(real(kind=4)[0:] * restrict) zalso.data)[_gfortran_polly_array_index_1 (zalso.offset, 1, (integer(kind=8)) ip)] = (*alb_dif)[_gfortran_polly_array_index_1 (-1, 1, (integer(kind=8)) ip)];
+                                }
+                              }
+                          }
+                      }
+                    L.9:;
+                  }
+              }
+              L.8:;
+              L.1:;
+              D.2310 = ip == D.2250;
+              ip = ip + 1;
+              if (D.2310) goto L.2;
+            }
+          }
+      }
+    L.2:;
+  }
+  break_scop ();
+}
+
+
+p ()
+{
+  
+}
+
+
+main (integer(kind=4) argc, character(kind=1) * * argv)
+{
+  static integer(kind=4) options.75[8] = {68, 511, 0, 0, 0, 1, 0, 1};
+
+  _gfortran_set_args (argc, argv);
+  _gfortran_set_options (8, &options.75[0]);
+  p ();
+  return 0;
+}
+
+

@@ -1,0 +1,141 @@
+; ModuleID = '/users/siddhart/playground/standalone/pp/data_constants.f90'
+target datalayout = "e-p:64:64:64-S128-i1:8:8-i8:8:8-i16:16:16-i32:32:32-i64:64:64-f16:16:16-f32:32:32-f64:64:64-f128:128:128-v64:64:64-v128:128:128-a0:0:64-s0:64:64-f80:128:128-n8:16:32:64"
+target triple = "x86_64-unknown-linux-gnu"
+
+module asm "\09.ident\09\22GCC: (GNU) 4.6.4 LLVM: 3.3.1\22"
+
+@__data_constants_MOD_ucl = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_uc2 = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_uc1 = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_t0_melt = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_solc = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_sigma = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_rvd_m_o = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_rho_w = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_rho_ice = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_rdv = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_rdocp = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_rcpv = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_rcpl = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_r_v = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_r_earth = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_r_d = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_qi0 = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_qc0 = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_pi = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_p0ref = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_o_m_rdv = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_lhocp = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_lh_v = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_lh_s = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_lh_f = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_k_w = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_k_ice = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_gr = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_gq = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_gh = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_gamma = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_g = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_day_len = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_cpdr = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_cp_d = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_con_m = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_con_h = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_b4w = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_b4i = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_b3 = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_b2w = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_b2i = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_b234w = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_b1 = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_aks4 = unnamed_addr global double 0.000000e+00
+@__data_constants_MOD_aks2 = unnamed_addr global double 0.000000e+00
+
+; Function Attrs: nounwind uwtable
+define void @__data_constants_MOD_set_constants() unnamed_addr #0 {
+entry:
+  %"ssa point" = bitcast i32 0 to i32
+  br label %"2"
+
+"2":                                              ; preds = %entry
+  store double 0x400921FB54442D18, double* @__data_constants_MOD_pi, align 8
+  store double 2.731500e+02, double* @__data_constants_MOD_t0_melt, align 8
+  store double 2.870500e+02, double* @__data_constants_MOD_r_d, align 8
+  store double 4.615100e+02, double* @__data_constants_MOD_r_v, align 8
+  %0 = load double* @__data_constants_MOD_r_d, align 8
+  %1 = load double* @__data_constants_MOD_r_v, align 8
+  %2 = fdiv double %0, %1
+  store double %2, double* @__data_constants_MOD_rdv, align 8
+  %3 = load double* @__data_constants_MOD_rdv, align 8
+  %4 = fsub double 1.000000e+00, %3
+  store double %4, double* @__data_constants_MOD_o_m_rdv, align 8
+  %5 = load double* @__data_constants_MOD_r_v, align 8
+  %6 = load double* @__data_constants_MOD_r_d, align 8
+  %7 = fdiv double %5, %6
+  %8 = fsub double %7, 1.000000e+00
+  store double %8, double* @__data_constants_MOD_rvd_m_o, align 8
+  store double 1.005000e+03, double* @__data_constants_MOD_cp_d, align 8
+  %9 = load double* @__data_constants_MOD_cp_d, align 8
+  %10 = fdiv double 1.000000e+00, %9
+  store double %10, double* @__data_constants_MOD_cpdr, align 8
+  %11 = load double* @__data_constants_MOD_r_d, align 8
+  %12 = load double* @__data_constants_MOD_cp_d, align 8
+  %13 = fdiv double %11, %12
+  store double %13, double* @__data_constants_MOD_rdocp, align 8
+  %14 = load double* @__data_constants_MOD_rdocp, align 8
+  %15 = fsub double 1.000000e+00, %14
+  %16 = fdiv double 1.000000e+00, %15
+  store double %16, double* @__data_constants_MOD_gamma, align 8
+  store double 2.501000e+06, double* @__data_constants_MOD_lh_v, align 8
+  store double 3.340000e+05, double* @__data_constants_MOD_lh_f, align 8
+  store double 2.835000e+06, double* @__data_constants_MOD_lh_s, align 8
+  %17 = load double* @__data_constants_MOD_lh_v, align 8
+  %18 = load double* @__data_constants_MOD_cp_d, align 8
+  %19 = fdiv double %17, %18
+  store double %19, double* @__data_constants_MOD_lhocp, align 8
+  store double 8.396000e-01, double* @__data_constants_MOD_rcpv, align 8
+  store double 3.173300e+00, double* @__data_constants_MOD_rcpl, align 8
+  store double 1.500000e-05, double* @__data_constants_MOD_con_m, align 8
+  store double 2.200000e-05, double* @__data_constants_MOD_con_h, align 8
+  store double 9.806650e+00, double* @__data_constants_MOD_g, align 8
+  %20 = load double* @__data_constants_MOD_g, align 8
+  %21 = load double* @__data_constants_MOD_g, align 8
+  %22 = fmul double %20, %21
+  store double %22, double* @__data_constants_MOD_gq, align 8
+  %23 = load double* @__data_constants_MOD_g, align 8
+  %24 = fmul double %23, 5.000000e-01
+  store double %24, double* @__data_constants_MOD_gh, align 8
+  %25 = load double* @__data_constants_MOD_g, align 8
+  %26 = fdiv double 1.000000e+00, %25
+  store double %26, double* @__data_constants_MOD_gr, align 8
+  store double 6.371229e+06, double* @__data_constants_MOD_r_earth, align 8
+  store double 0x40F5094172DA1230, double* @__data_constants_MOD_day_len, align 8
+  store double 1.000000e+03, double* @__data_constants_MOD_rho_w, align 8
+  store double 9.000000e+02, double* @__data_constants_MOD_rho_ice, align 8
+  store double 9.300000e-01, double* @__data_constants_MOD_k_w, align 8
+  store double 1.760000e-01, double* @__data_constants_MOD_k_ice, align 8
+  store double 5.669700e-08, double* @__data_constants_MOD_sigma, align 8
+  store double 1.368000e+03, double* @__data_constants_MOD_solc, align 8
+  store double 1.000000e+05, double* @__data_constants_MOD_p0ref, align 8
+  store double 6.107800e+02, double* @__data_constants_MOD_b1, align 8
+  store double 0x403144F6A004EDA6, double* @__data_constants_MOD_b2w, align 8
+  store double 0x4035DFE30F2E712D, double* @__data_constants_MOD_b2i, align 8
+  store double 2.731600e+02, double* @__data_constants_MOD_b3, align 8
+  store double 3.586000e+01, double* @__data_constants_MOD_b4w, align 8
+  store double 7.660000e+00, double* @__data_constants_MOD_b4i, align 8
+  %27 = load double* @__data_constants_MOD_b3, align 8
+  %28 = load double* @__data_constants_MOD_b4w, align 8
+  %29 = fsub double %27, %28
+  %30 = load double* @__data_constants_MOD_b2w, align 8
+  %31 = fmul double %29, %30
+  store double %31, double* @__data_constants_MOD_b234w, align 8
+  store double 8.000000e-01, double* @__data_constants_MOD_uc1, align 8
+  store double 0x3FFBB67AE8584CAA, double* @__data_constants_MOD_uc2, align 8
+  store double 1.000000e+00, double* @__data_constants_MOD_ucl, align 8
+  br label %return
+
+return:                                           ; preds = %"2"
+  ret void
+}
+
+attributes #0 = { nounwind uwtable }

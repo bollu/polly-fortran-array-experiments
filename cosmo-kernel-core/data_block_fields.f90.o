@@ -1,0 +1,428 @@
+; ModuleID = '/users/siddhart/playground/standalone/pp/data_block_fields.f90'
+target datalayout = "e-p:64:64:64-S128-i1:8:8-i8:8:8-i16:16:16-i32:32:32-i64:64:64-f16:16:16-f32:32:32-f64:64:64-f128:128:128-v64:64:64-v128:128:128-a0:0:64-s0:64:64-f80:128:128-n8:16:32:64"
+target triple = "x86_64-unknown-linux-gnu"
+
+module asm "\09.ident\09\22GCC: (GNU) 4.6.4 LLVM: 3.3.1\22"
+
+%"struct.array1_real(kind=8)" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%struct.descriptor_dimension = type { i64, i64, i64 }
+%"struct.array1_real(kind=8).0" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).1" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8)" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).2" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).3" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).4" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).5" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).6" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).7" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).8" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).9" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).10" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).11" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).12" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).13" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).14" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).15" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).16" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).17" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).18" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).19" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).20" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).21" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).22" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).23" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).24" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).25" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).26" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).27" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).28" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).29" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).30" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).31" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).32" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).33" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).34" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).35" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).36" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).37" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).38" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).39" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array3_real(kind=8)" = type { i8*, i64, i64, [3 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).40" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).41" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).42" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).43" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).44" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).45" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).46" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).47" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).48" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).49" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).50" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).51" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).52" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).53" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).54" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).55" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).56" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).57" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).58" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).59" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).60" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).61" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).62" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).63" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).64" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).65" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).66" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).67" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).68" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).69" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).70" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).71" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).72" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).73" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).74" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).75" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).76" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).77" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).78" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).79" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).80" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).81" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).82" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).83" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).84" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).85" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).86" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).87" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).88" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).89" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).90" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).91" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).92" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).93" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).94" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).95" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).96" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).97" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).98" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).99" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).100" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).101" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).102" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).103" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).104" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).105" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).106" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).107" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).108" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).109" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).110" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).111" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).112" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).113" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).114" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).115" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).116" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).117" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).118" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).119" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).120" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).121" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).122" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).123" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).124" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).125" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).126" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).127" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).128" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).129" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).130" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).131" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).132" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).133" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).134" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).135" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).136" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).137" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).138" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).139" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).140" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).141" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).142" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).143" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).144" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).145" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).146" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).147" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).148" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).149" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).150" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).151" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).152" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).153" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).154" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).155" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).156" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).157" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).158" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).159" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).160" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).161" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).162" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).163" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).164" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).165" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).166" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).167" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).168" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).169" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).170" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).171" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).172" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).173" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).174" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).175" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).176" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).177" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).178" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).179" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).180" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).181" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).182" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).183" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).184" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).185" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).186" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).187" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).188" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).189" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).190" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array2_real(kind=8).191" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).192" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).193" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).194" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).195" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).196" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).197" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).198" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).199" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).200" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).201" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).202" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).203" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).204" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).205" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).206" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+
+@__data_block_fields_MOD_zsmu0_flux_b = global %"struct.array1_real(kind=8)" zeroinitializer, align 32
+@__data_block_fields_MOD_zsmu0_fesft_b = global %"struct.array1_real(kind=8).0" zeroinitializer, align 32
+@__data_block_fields_MOD_zskyview_b = global %"struct.array1_real(kind=8).1" zeroinitializer, align 32
+@__data_block_fields_MOD_wliq_snow_new_b = global %"struct.array2_real(kind=8)" zeroinitializer, align 32
+@__data_block_fields_MOD_wliq_snow_b = global %"struct.array2_real(kind=8).2" zeroinitializer, align 32
+@__data_block_fields_MOD_w_so_new_b = global %"struct.array2_real(kind=8).3" zeroinitializer, align 32
+@__data_block_fields_MOD_w_so_ice_new_b = global %"struct.array2_real(kind=8).4" zeroinitializer, align 32
+@__data_block_fields_MOD_w_so_ice_b = global %"struct.array2_real(kind=8).5" zeroinitializer, align 32
+@__data_block_fields_MOD_w_so_b = global %"struct.array2_real(kind=8).6" zeroinitializer, align 32
+@__data_block_fields_MOD_w_snow_new_b = global %"struct.array1_real(kind=8).7" zeroinitializer, align 32
+@__data_block_fields_MOD_w_snow_mult_new_b = global %"struct.array2_real(kind=8).8" zeroinitializer, align 32
+@__data_block_fields_MOD_w_snow_mult_b = global %"struct.array2_real(kind=8).9" zeroinitializer, align 32
+@__data_block_fields_MOD_w_snow_b = global %"struct.array1_real(kind=8).10" zeroinitializer, align 32
+@__data_block_fields_MOD_w_i_new_b = global %"struct.array1_real(kind=8).11" zeroinitializer, align 32
+@__data_block_fields_MOD_w_i_b = global %"struct.array1_real(kind=8).12" zeroinitializer, align 32
+@__data_block_fields_MOD_w_g1_b = global %"struct.array1_real(kind=8).13" zeroinitializer, align 32
+@__data_block_fields_MOD_w_b = global %"struct.array2_real(kind=8).14" zeroinitializer, align 32
+@__data_block_fields_MOD_vt_sso_b = global %"struct.array2_real(kind=8).15" zeroinitializer, align 32
+@__data_block_fields_MOD_vstr_sso_b = global %"struct.array1_real(kind=8).16" zeroinitializer, align 32
+@__data_block_fields_MOD_vio3_b = global %"struct.array1_real(kind=8).17" zeroinitializer, align 32
+@__data_block_fields_MOD_vdis_sso_b = global %"struct.array1_real(kind=8).18" zeroinitializer, align 32
+@__data_block_fields_MOD_v_m_b = global %"struct.array2_real(kind=8).19" zeroinitializer, align 32
+@__data_block_fields_MOD_v_10m_b = global %"struct.array1_real(kind=8).20" zeroinitializer, align 32
+@__data_block_fields_MOD_ut_sso_b = global %"struct.array2_real(kind=8).21" zeroinitializer, align 32
+@__data_block_fields_MOD_ustr_sso_b = global %"struct.array1_real(kind=8).22" zeroinitializer, align 32
+@__data_block_fields_MOD_u_m_b = global %"struct.array2_real(kind=8).23" zeroinitializer, align 32
+@__data_block_fields_MOD_u_10m_b = global %"struct.array1_real(kind=8).24" zeroinitializer, align 32
+@__data_block_fields_MOD_ttens_b = global %"struct.array2_real(kind=8).25" zeroinitializer, align 32
+@__data_block_fields_MOD_tt_sso_b = global %"struct.array2_real(kind=8).26" zeroinitializer, align 32
+@__data_block_fields_MOD_tt_lheat_nx_b = unnamed_addr global %"struct.array2_real(kind=8).27" zeroinitializer, align 32
+@__data_block_fields_MOD_tt_lheat_new_b = global %"struct.array2_real(kind=8).28" zeroinitializer, align 32
+@__data_block_fields_MOD_tt_lheat_b = global %"struct.array2_real(kind=8).29" zeroinitializer, align 32
+@__data_block_fields_MOD_tt_conv_b = global %"struct.array2_real(kind=8).30" zeroinitializer, align 32
+@__data_block_fields_MOD_top_con_b = global %"struct.array1_real(kind=8).31" zeroinitializer, align 32
+@__data_block_fields_MOD_tkvm_b = global %"struct.array2_real(kind=8).32" zeroinitializer, align 32
+@__data_block_fields_MOD_tkvh_b = global %"struct.array2_real(kind=8).33" zeroinitializer, align 32
+@__data_block_fields_MOD_tkhm_b = global %"struct.array2_real(kind=8).34" zeroinitializer, align 32
+@__data_block_fields_MOD_tkhh_b = global %"struct.array2_real(kind=8).35" zeroinitializer, align 32
+@__data_block_fields_MOD_tketens_b = global %"struct.array2_real(kind=8).36" zeroinitializer, align 32
+@__data_block_fields_MOD_tket_sso_b = global %"struct.array2_real(kind=8).37" zeroinitializer, align 32
+@__data_block_fields_MOD_tket_conv_b = global %"struct.array2_real(kind=8).38" zeroinitializer, align 32
+@__data_block_fields_MOD_tket_adv_b = global %"struct.array2_real(kind=8).39" zeroinitializer, align 32
+@__data_block_fields_MOD_tke_b = global %"struct.array3_real(kind=8)" zeroinitializer, align 32
+@__data_block_fields_MOD_tinc_lh_b = global %"struct.array2_real(kind=8).40" zeroinitializer, align 32
+@__data_block_fields_MOD_thhr_b = global %"struct.array2_real(kind=8).41" zeroinitializer, align 32
+@__data_block_fields_MOD_thbt_b = global %"struct.array1_real(kind=8).42" zeroinitializer, align 32
+@__data_block_fields_MOD_thbs_b = global %"struct.array1_real(kind=8).43" zeroinitializer, align 32
+@__data_block_fields_MOD_tfv_b = global %"struct.array1_real(kind=8).44" zeroinitializer, align 32
+@__data_block_fields_MOD_tfm_b = global %"struct.array1_real(kind=8).45" zeroinitializer, align 32
+@__data_block_fields_MOD_tfh_b = global %"struct.array1_real(kind=8).46" zeroinitializer, align 32
+@__data_block_fields_MOD_td_2m_b = global %"struct.array1_real(kind=8).47" zeroinitializer, align 32
+@__data_block_fields_MOD_tcm_b = global %"struct.array1_real(kind=8).48" zeroinitializer, align 32
+@__data_block_fields_MOD_tch_b = global %"struct.array1_real(kind=8).49" zeroinitializer, align 32
+@__data_block_fields_MOD_tai_b = global %"struct.array1_real(kind=8).50" zeroinitializer, align 32
+@__data_block_fields_MOD_t_so_new_b = global %"struct.array2_real(kind=8).51" zeroinitializer, align 32
+@__data_block_fields_MOD_t_so_b = global %"struct.array2_real(kind=8).52" zeroinitializer, align 32
+@__data_block_fields_MOD_t_snow_new_b = global %"struct.array1_real(kind=8).53" zeroinitializer, align 32
+@__data_block_fields_MOD_t_snow_mult_new_b = global %"struct.array2_real(kind=8).54" zeroinitializer, align 32
+@__data_block_fields_MOD_t_snow_mult_b = global %"struct.array2_real(kind=8).55" zeroinitializer, align 32
+@__data_block_fields_MOD_t_snow_b = global %"struct.array1_real(kind=8).56" zeroinitializer, align 32
+@__data_block_fields_MOD_t_s_new_b = global %"struct.array1_real(kind=8).57" zeroinitializer, align 32
+@__data_block_fields_MOD_t_s_b = global %"struct.array1_real(kind=8).58" zeroinitializer, align 32
+@__data_block_fields_MOD_t_nx_b = unnamed_addr global %"struct.array2_real(kind=8).59" zeroinitializer, align 32
+@__data_block_fields_MOD_t_new_b = global %"struct.array2_real(kind=8).60" zeroinitializer, align 32
+@__data_block_fields_MOD_t_ice_b = global %"struct.array1_real(kind=8).61" zeroinitializer, align 32
+@__data_block_fields_MOD_t_g_new_b = global %"struct.array1_real(kind=8).62" zeroinitializer, align 32
+@__data_block_fields_MOD_t_g_b = global %"struct.array1_real(kind=8).63" zeroinitializer, align 32
+@__data_block_fields_MOD_t_b = global %"struct.array2_real(kind=8).64" zeroinitializer, align 32
+@__data_block_fields_MOD_t_2m_b = global %"struct.array1_real(kind=8).65" zeroinitializer, align 32
+@__data_block_fields_MOD_swtrdir_s_b = global %"struct.array1_real(kind=8).66" zeroinitializer, align 32
+@__data_block_fields_MOD_swtrdifu_s_b = global %"struct.array1_real(kind=8).67" zeroinitializer, align 32
+@__data_block_fields_MOD_swtrdifd_s_b = global %"struct.array1_real(kind=8).68" zeroinitializer, align 32
+@__data_block_fields_MOD_swdir_s_b = global %"struct.array1_real(kind=8).69" zeroinitializer, align 32
+@__data_block_fields_MOD_swdir_cor_b = global %"struct.array1_real(kind=8).70" zeroinitializer, align 32
+@__data_block_fields_MOD_swdifu_s_b = global %"struct.array1_real(kind=8).71" zeroinitializer, align 32
+@__data_block_fields_MOD_swdifd_s_b = global %"struct.array1_real(kind=8).72" zeroinitializer, align 32
+@__data_block_fields_MOD_sun_el_b = global %"struct.array1_real(kind=8).73" zeroinitializer, align 32
+@__data_block_fields_MOD_sun_azi_b = global %"struct.array1_real(kind=8).74" zeroinitializer, align 32
+@__data_block_fields_MOD_sso_theta_b = global %"struct.array1_real(kind=8).75" zeroinitializer, align 32
+@__data_block_fields_MOD_sso_stdh_b = global %"struct.array1_real(kind=8).76" zeroinitializer, align 32
+@__data_block_fields_MOD_sso_sigma_b = global %"struct.array1_real(kind=8).77" zeroinitializer, align 32
+@__data_block_fields_MOD_sso_gamma_b = global %"struct.array1_real(kind=8).78" zeroinitializer, align 32
+@__data_block_fields_MOD_sotr_par_b = global %"struct.array1_real(kind=8).79" zeroinitializer, align 32
+@__data_block_fields_MOD_sotr_b = global %"struct.array2_real(kind=8).80" zeroinitializer, align 32
+@__data_block_fields_MOD_soiltyp_b = global %"struct.array1_real(kind=8).81" zeroinitializer, align 32
+@__data_block_fields_MOD_sohr_b = global %"struct.array2_real(kind=8).82" zeroinitializer, align 32
+@__data_block_fields_MOD_sodwddm_b = global %"struct.array1_real(kind=8).83" zeroinitializer, align 32
+@__data_block_fields_MOD_sod_t_b = global %"struct.array1_real(kind=8).84" zeroinitializer, align 32
+@__data_block_fields_MOD_sobt_b = global %"struct.array1_real(kind=8).85" zeroinitializer, align 32
+@__data_block_fields_MOD_sobs_b = global %"struct.array1_real(kind=8).86" zeroinitializer, align 32
+@__data_block_fields_MOD_snow_melt_b = global %"struct.array1_real(kind=8).87" zeroinitializer, align 32
+@__data_block_fields_MOD_slo_asp_b = global %"struct.array1_real(kind=8).88" zeroinitializer, align 32
+@__data_block_fields_MOD_slo_ang_b = global %"struct.array1_real(kind=8).89" zeroinitializer, align 32
+@__data_block_fields_MOD_skyview_b = global %"struct.array1_real(kind=8).90" zeroinitializer, align 32
+@__data_block_fields_MOD_shfl_s_b = global %"struct.array1_real(kind=8).91" zeroinitializer, align 32
+@__data_block_fields_MOD_sai_b = global %"struct.array1_real(kind=8).92" zeroinitializer, align 32
+@__data_block_fields_MOD_runoff_s_b = global %"struct.array1_real(kind=8).93" zeroinitializer, align 32
+@__data_block_fields_MOD_runoff_g_b = global %"struct.array1_real(kind=8).94" zeroinitializer, align 32
+@__data_block_fields_MOD_rsmin2d_b = global %"struct.array1_real(kind=8).95" zeroinitializer, align 32
+@__data_block_fields_MOD_rootdp_b = global %"struct.array1_real(kind=8).96" zeroinitializer, align 32
+@__data_block_fields_MOD_rlon_b = global %"struct.array1_real(kind=8).97" zeroinitializer, align 32
+@__data_block_fields_MOD_rlat_b = global %"struct.array1_real(kind=8).98" zeroinitializer, align 32
+@__data_block_fields_MOD_rlandmask_b = global %"struct.array1_real(kind=8).99" zeroinitializer, align 32
+@__data_block_fields_MOD_rho_snow_new_b = global %"struct.array1_real(kind=8).100" zeroinitializer, align 32
+@__data_block_fields_MOD_rho_snow_mult_new_b = global %"struct.array2_real(kind=8).101" zeroinitializer, align 32
+@__data_block_fields_MOD_rho_snow_mult_b = global %"struct.array2_real(kind=8).102" zeroinitializer, align 32
+@__data_block_fields_MOD_rho_snow_b = global %"struct.array1_real(kind=8).103" zeroinitializer, align 32
+@__data_block_fields_MOD_rho_b = global %"struct.array2_real(kind=8).104" zeroinitializer, align 32
+@__data_block_fields_MOD_rho0_b = global %"struct.array2_real(kind=8).105" zeroinitializer, align 32
+@__data_block_fields_MOD_rh_2m_b = global %"struct.array1_real(kind=8).106" zeroinitializer, align 32
+@__data_block_fields_MOD_rcld_b = global %"struct.array2_real(kind=8).107" zeroinitializer, align 32
+@__data_block_fields_MOD_r_air_b = global %"struct.array2_real(kind=8).108" zeroinitializer, align 32
+@__data_block_fields_MOD_qvtens_b = global %"struct.array2_real(kind=8).109" zeroinitializer, align 32
+@__data_block_fields_MOD_qvt_conv_b = global %"struct.array2_real(kind=8).110" zeroinitializer, align 32
+@__data_block_fields_MOD_qv_s_new_b = global %"struct.array1_real(kind=8).111" zeroinitializer, align 32
+@__data_block_fields_MOD_qv_s_b = global %"struct.array1_real(kind=8).112" zeroinitializer, align 32
+@__data_block_fields_MOD_qv_nx_b = unnamed_addr global %"struct.array2_real(kind=8).113" zeroinitializer, align 32
+@__data_block_fields_MOD_qv_new_b = global %"struct.array2_real(kind=8).114" zeroinitializer, align 32
+@__data_block_fields_MOD_qv_b = global %"struct.array2_real(kind=8).115" zeroinitializer, align 32
+@__data_block_fields_MOD_qv_2m_b = global %"struct.array1_real(kind=8).116" zeroinitializer, align 32
+@__data_block_fields_MOD_qs_nx_b = unnamed_addr global %"struct.array2_real(kind=8).117" zeroinitializer, align 32
+@__data_block_fields_MOD_qs_new_b = global %"struct.array2_real(kind=8).118" zeroinitializer, align 32
+@__data_block_fields_MOD_qs_b = global %"struct.array2_real(kind=8).119" zeroinitializer, align 32
+@__data_block_fields_MOD_qrsflux_b = global %"struct.array2_real(kind=8).120" zeroinitializer, align 32
+@__data_block_fields_MOD_qrs_b = global %"struct.array2_real(kind=8).121" zeroinitializer, align 32
+@__data_block_fields_MOD_qr_nx_b = unnamed_addr global %"struct.array2_real(kind=8).122" zeroinitializer, align 32
+@__data_block_fields_MOD_qr_new_b = global %"struct.array2_real(kind=8).123" zeroinitializer, align 32
+@__data_block_fields_MOD_qr_b = global %"struct.array2_real(kind=8).124" zeroinitializer, align 32
+@__data_block_fields_MOD_qi_rad_b = global %"struct.array2_real(kind=8).125" zeroinitializer, align 32
+@__data_block_fields_MOD_qi_nx_b = unnamed_addr global %"struct.array2_real(kind=8).126" zeroinitializer, align 32
+@__data_block_fields_MOD_qi_new_b = global %"struct.array2_real(kind=8).127" zeroinitializer, align 32
+@__data_block_fields_MOD_qi_b = global %"struct.array2_real(kind=8).128" zeroinitializer, align 32
+@__data_block_fields_MOD_qg_nx_b = unnamed_addr global %"struct.array2_real(kind=8).129" zeroinitializer, align 32
+@__data_block_fields_MOD_qg_new_b = global %"struct.array2_real(kind=8).130" zeroinitializer, align 32
+@__data_block_fields_MOD_qg_b = global %"struct.array2_real(kind=8).131" zeroinitializer, align 32
+@__data_block_fields_MOD_qcvg_con_b = global %"struct.array1_real(kind=8).132" zeroinitializer, align 32
+@__data_block_fields_MOD_qctens_b = global %"struct.array2_real(kind=8).133" zeroinitializer, align 32
+@__data_block_fields_MOD_qc_rad_b = global %"struct.array2_real(kind=8).134" zeroinitializer, align 32
+@__data_block_fields_MOD_qc_nx_b = unnamed_addr global %"struct.array2_real(kind=8).135" zeroinitializer, align 32
+@__data_block_fields_MOD_qc_new_b = global %"struct.array2_real(kind=8).136" zeroinitializer, align 32
+@__data_block_fields_MOD_qc_b = global %"struct.array2_real(kind=8).137" zeroinitializer, align 32
+@__data_block_fields_MOD_ptot_b = global %"struct.array2_real(kind=8).138" zeroinitializer, align 32
+@__data_block_fields_MOD_ps_b = global %"struct.array1_real(kind=8).139" zeroinitializer, align 32
+@__data_block_fields_MOD_prs_gsp_b = global %"struct.array1_real(kind=8).140" zeroinitializer, align 32
+@__data_block_fields_MOD_prs_con_b = global %"struct.array1_real(kind=8).141" zeroinitializer, align 32
+@__data_block_fields_MOD_prr_gsp_b = global %"struct.array1_real(kind=8).142" zeroinitializer, align 32
+@__data_block_fields_MOD_prr_con_b = global %"struct.array1_real(kind=8).143" zeroinitializer, align 32
+@__data_block_fields_MOD_prg_gsp_b = global %"struct.array1_real(kind=8).144" zeroinitializer, align 32
+@__data_block_fields_MOD_pp_nx_b = unnamed_addr global %"struct.array2_real(kind=8).145" zeroinitializer, align 32
+@__data_block_fields_MOD_pp_new_b = global %"struct.array2_real(kind=8).146" zeroinitializer, align 32
+@__data_block_fields_MOD_pp_b = global %"struct.array2_real(kind=8).147" zeroinitializer, align 32
+@__data_block_fields_MOD_plcov_b = global %"struct.array1_real(kind=8).148" zeroinitializer, align 32
+@__data_block_fields_MOD_ph_b = global %"struct.array2_real(kind=8).149" zeroinitializer, align 32
+@__data_block_fields_MOD_pf_b = global %"struct.array2_real(kind=8).150" zeroinitializer, align 32
+@__data_block_fields_MOD_pertstoph_b = global %"struct.array2_real(kind=8).151" zeroinitializer, align 32
+@__data_block_fields_MOD_pabs_b = global %"struct.array1_real(kind=8).152" zeroinitializer, align 32
+@__data_block_fields_MOD_p0hl_b = global %"struct.array2_real(kind=8).153" zeroinitializer, align 32
+@__data_block_fields_MOD_p0_b = global %"struct.array2_real(kind=8).154" zeroinitializer, align 32
+@__data_block_fields_MOD_mflx_con_b = global %"struct.array1_real(kind=8).155" zeroinitializer, align 32
+@__data_block_fields_MOD_lwu_s_b = global %"struct.array1_real(kind=8).156" zeroinitializer, align 32
+@__data_block_fields_MOD_lwd_s_b = global %"struct.array1_real(kind=8).157" zeroinitializer, align 32
+@__data_block_fields_MOD_lhfl_s_b = global %"struct.array1_real(kind=8).158" zeroinitializer, align 32
+@__data_block_fields_MOD_hsurf_b = global %"struct.array1_real(kind=8).159" zeroinitializer, align 32
+@__data_block_fields_MOD_horizon_b = global %"struct.array2_real(kind=8).160" zeroinitializer, align 32
+@__data_block_fields_MOD_hmo3_b = global %"struct.array1_real(kind=8).161" zeroinitializer, align 32
+@__data_block_fields_MOD_hhl_b = global %"struct.array2_real(kind=8).162" zeroinitializer, align 32
+@__data_block_fields_MOD_h_snow_b = global %"struct.array1_real(kind=8).163" zeroinitializer, align 32
+@__data_block_fields_MOD_h_ice_b = global %"struct.array1_real(kind=8).164" zeroinitializer, align 32
+@__data_block_fields_MOD_gz0_b = global %"struct.array1_real(kind=8).165" zeroinitializer, align 32
+@__data_block_fields_MOD_freshsnow_b = global %"struct.array1_real(kind=8).166" zeroinitializer, align 32
+@__data_block_fields_MOD_fr_land_b = global %"struct.array1_real(kind=8).167" zeroinitializer, align 32
+@__data_block_fields_MOD_for_e_b = global %"struct.array1_real(kind=8).168" zeroinitializer, align 32
+@__data_block_fields_MOD_for_d_b = global %"struct.array1_real(kind=8).169" zeroinitializer, align 32
+@__data_block_fields_MOD_fih_b = global %"struct.array2_real(kind=8).170" zeroinitializer, align 32
+@__data_block_fields_MOD_fif_b = global %"struct.array2_real(kind=8).171" zeroinitializer, align 32
+@__data_block_fields_MOD_emis_rad_b = global %"struct.array1_real(kind=8).172" zeroinitializer, align 32
+@__data_block_fields_MOD_edr_b = global %"struct.array2_real(kind=8).173" zeroinitializer, align 32
+@__data_block_fields_MOD_eai_b = global %"struct.array1_real(kind=8).174" zeroinitializer, align 32
+@__data_block_fields_MOD_dzh_snow_mult_new_b = global %"struct.array2_real(kind=8).175" zeroinitializer, align 32
+@__data_block_fields_MOD_dzh_snow_mult_b = global %"struct.array2_real(kind=8).176" zeroinitializer, align 32
+@__data_block_fields_MOD_dz_b = global %"struct.array2_real(kind=8).177" zeroinitializer, align 32
+@__data_block_fields_MOD_dqvdt_conv_b = global %"struct.array2_real(kind=8).178" zeroinitializer, align 32
+@__data_block_fields_MOD_dp0_b = global %"struct.array2_real(kind=8).179" zeroinitializer, align 32
+@__data_block_fields_MOD_depth_lk_b = global %"struct.array1_real(kind=8).180" zeroinitializer, align 32
+@__data_block_fields_MOD_d_pat_b = global %"struct.array1_real(kind=8).181" zeroinitializer, align 32
+@__data_block_fields_MOD_clw_con_b = global %"struct.array2_real(kind=8).182" zeroinitializer, align 32
+@__data_block_fields_MOD_clct_b = global %"struct.array1_real(kind=8).183" zeroinitializer, align 32
+@__data_block_fields_MOD_clcm_b = global %"struct.array1_real(kind=8).184" zeroinitializer, align 32
+@__data_block_fields_MOD_clcl_b = global %"struct.array1_real(kind=8).185" zeroinitializer, align 32
+@__data_block_fields_MOD_clch_b = global %"struct.array1_real(kind=8).186" zeroinitializer, align 32
+@__data_block_fields_MOD_clc_sgs_b = global %"struct.array2_real(kind=8).187" zeroinitializer, align 32
+@__data_block_fields_MOD_clc_con_b = global %"struct.array2_real(kind=8).188" zeroinitializer, align 32
+@__data_block_fields_MOD_cape_con_b = global %"struct.array1_real(kind=8).189" zeroinitializer, align 32
+@__data_block_fields_MOD_c_sml_b = global %"struct.array2_real(kind=8).190" zeroinitializer, align 32
+@__data_block_fields_MOD_c_big_b = global %"struct.array2_real(kind=8).191" zeroinitializer, align 32
+@__data_block_fields_MOD_bas_con_b = global %"struct.array1_real(kind=8).192" zeroinitializer, align 32
+@__data_block_fields_MOD_alb_sat_b = global %"struct.array1_real(kind=8).193" zeroinitializer, align 32
+@__data_block_fields_MOD_alb_rad_coarse_b = global %"struct.array1_real(kind=8).194" zeroinitializer, align 32
+@__data_block_fields_MOD_alb_rad_b = global %"struct.array1_real(kind=8).195" zeroinitializer, align 32
+@__data_block_fields_MOD_alb_dry_b = global %"struct.array1_real(kind=8).196" zeroinitializer, align 32
+@__data_block_fields_MOD_alb_dif_b = global %"struct.array1_real(kind=8).197" zeroinitializer, align 32
+@__data_block_fields_MOD_aerurb_b = global %"struct.array1_real(kind=8).198" zeroinitializer, align 32
+@__data_block_fields_MOD_aersea_b = global %"struct.array1_real(kind=8).199" zeroinitializer, align 32
+@__data_block_fields_MOD_aerlan_b = global %"struct.array1_real(kind=8).200" zeroinitializer, align 32
+@__data_block_fields_MOD_aerdes_b = global %"struct.array1_real(kind=8).201" zeroinitializer, align 32
+@__data_block_fields_MOD_aer_su_b = global %"struct.array1_real(kind=8).202" zeroinitializer, align 32
+@__data_block_fields_MOD_aer_ss_b = global %"struct.array1_real(kind=8).203" zeroinitializer, align 32
+@__data_block_fields_MOD_aer_or_b = global %"struct.array1_real(kind=8).204" zeroinitializer, align 32
+@__data_block_fields_MOD_aer_du_b = global %"struct.array1_real(kind=8).205" zeroinitializer, align 32
+@__data_block_fields_MOD_aer_bc_b = global %"struct.array1_real(kind=8).206" zeroinitializer, align 32

@@ -1,0 +1,4 @@
+*.ll
+*.s
+!simple-nonaffine-read.ll
+!**program.ll

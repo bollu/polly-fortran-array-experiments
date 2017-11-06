@@ -1,0 +1,900 @@
+main (integer(kind=4) argc, character(kind=1) * * argv)
+{
+  integer(kind=4) D.2364;
+  static integer(kind=4) options.75[8] = {68, 511, 0, 0, 0, 1, 0, 1};
+
+  _gfortran_set_args (argc, argv);
+  _gfortran_set_options (8, &options.75[0]);
+  p ();
+  D.2364 = 0;
+  return D.2364;
+}
+
+
+p ()
+{
+
+}
+
+
+radiation_rg_organize (integer(kind=4) & restrict ierror, character(kind=1)[1:_yerrmsg] & restrict yerrmsg, character(kind=1)[1:14] & restrict ydate_ini, logical(kind=4) & restrict lzradstep, integer(kind=4) & restrict nproma, integer(kind=4) & restrict ke, integer(kind=4) & restrict ke_soil, integer(kind=4) & restrict ke_snow, integer(kind=4) & restrict ipend, real(kind=4)[0:] * restrict aer_bc, real(kind=4)[0:] * restrict aerlan, real(kind=4)[0:] * restrict aer_or, real(kind=4)[0:] * restrict aersea, real(kind=4)[0:] * restrict aer_ss, real(kind=4)[0:] * restrict aer_su, real(kind=4)[0:] * restrict aerurb, real(kind=4)[0:D.2311] * restrict alb_dif, real(kind=4)[0:D.2317] * restrict alb_dry, real(kind=4)[0:D.2314] * restrict alb_sat, real(kind=4)[0:] * restrict clc_con, real(kind=4)[0:] * restrict depth_lk, real(kind=4)[0:] * restrict dp0, real(kind=4)[0:D.2341] * restrict emis_rad, real(kind=4)[0:] * restrict for_d, real(kind=4)[0:] * restrict for_e, real(kind=4)[0:] * restrict freshsnow, real(kind=4)[0:] * restrict h_ice, real(kind=4)[0:] * restrict hmo3, logical(kind=4)[0:D.2329] * restrict llandmask, real(kind=4)[0:] * restrict p0, real(kind=4)[0:] * restrict p0hl, real(kind=4)[0:] * restrict plcov, real(kind=4)[0:] * restrict pp, real(kind=4)[0:] * restrict ps, real(kind=4)[0:] * restrict qc, real(kind=4)[0:] * restrict qi, real(kind=4)[0:] * restrict qv, real(kind=4)[0:] * restrict rcld, real(kind=4)[0:D.2326] * restrict soiltyp, real(kind=4)[0:] * restrict swdir_cor, real(kind=4)[0:] * restrict t, real(kind=4)[0:D.2335] * restrict t_g, real(kind=4)[0:] * restrict t_ice, real(kind=4)[0:] * restrict t_s, real(kind=4)[0:D.2332] * restrict t_snow, real(kind=4)[0:D.2338] * restrict t_snow_mult, real(kind=4)[0:] * restrict vio3, real(kind=4)[0:D.2320] * restrict w_g1, real(kind=4)[0:] * restrict w_snow, real(kind=4)[0:D.2323] * restrict w_so, real(kind=4)[0:] * restrict zskyview, real(kind=4)[0:] * restrict zsmu0_fesft, real(kind=4)[0:] * restrict zsmu0_flux, real(kind=4)[0:] * restrict alb_rad, real(kind=4)[0:] * restrict clch, real(kind=4)[0:] * restrict clcl, real(kind=4)[0:] * restrict clcm, real(kind=4)[0:] * restrict clct, real(kind=4)[0:] * restrict lwd_s, real(kind=4)[0:] * restrict lwu_s, real(kind=4)[0:] * restrict qc_rad, real(kind=4)[0:] * restrict qi_rad, real(kind=4)[0:] * restrict sodwddm, real(kind=4)[0:] * restrict thbs, real(kind=4)[0:] * restrict thbt, real(kind=4)[0:] * restrict thhr, real(kind=4)[0:] * restrict aerdes, real(kind=4)[0:] * restrict aer_du, real(kind=4)[0:] * restrict clc_sgs, real(kind=4)[0:] * restrict sod_t, real(kind=4)[0:] * restrict sotr, real(kind=4)[0:] * restrict sotr_par, real(kind=4)[0:] * restrict swtrdifd_s, real(kind=4)[0:] * restrict swtrdifu_s, real(kind=4)[0:] * restrict swtrdir_s, real(kind=4)[0:] * restrict pabs, real(kind=4)[0:] * restrict sobs, real(kind=4)[0:] * restrict sobt, real(kind=4)[0:] * restrict swdifd_s, real(kind=4)[0:] * restrict swdifu_s, real(kind=4)[0:] * restrict swdir_s, real(kind=4)[0:] * restrict sohr, integer(kind=4) _yerrmsg, integer(kind=4) _ydate_ini)
+{
+  <unnamed-unsigned:64> D.2366;
+  integer(kind=4) D.2367;
+  <unnamed-unsigned:64> D.2368;
+  integer(kind=4) D.2369;
+  bit_size_type size.76;
+  <unnamed-unsigned:64> size.77;
+  integer(kind=4) D.2372;
+  integer(kind=4) D.2373;
+  bit_size_type size.78;
+  <unnamed-unsigned:64> size.79;
+  integer(kind=4) D.2376;
+  bit_size_type size.80;
+  <unnamed-unsigned:64> size.81;
+  integer(kind=4) D.2379;
+  bit_size_type size.82;
+  <unnamed-unsigned:64> size.83;
+  integer(kind=4) D.2382;
+  bit_size_type size.84;
+  <unnamed-unsigned:64> size.85;
+  integer(kind=4) D.2385;
+  bit_size_type size.86;
+  <unnamed-unsigned:64> size.87;
+  integer(kind=4) D.2388;
+  integer(kind=4) D.2389;
+  bit_size_type size.88;
+  <unnamed-unsigned:64> size.89;
+  integer(kind=4) D.2392;
+  bit_size_type size.90;
+  <unnamed-unsigned:64> size.91;
+  integer(kind=4) D.2395;
+  bit_size_type size.92;
+  <unnamed-unsigned:64> size.93;
+  integer(kind=4) D.2398;
+  bit_size_type size.94;
+  <unnamed-unsigned:64> size.95;
+  integer(kind=4) D.2401;
+  bit_size_type size.96;
+  <unnamed-unsigned:64> size.97;
+  logical(kind=4) lemiss.98;
+  void * restrict D.2410;
+  integer(kind=8) D.2411;
+  integer(kind=8) D.2412;
+  integer(kind=8) D.2413;
+  integer(kind=8) D.2414;
+  integer(kind=8) D.2415;
+  real(kind=4) D.2416;
+  real(kind=4) D.2417;
+  void * restrict D.2419;
+  integer(kind=8) D.2420;
+  integer(kind=8) D.2421;
+  integer(kind=8) D.2422;
+  real(kind=4) ctalb.99;
+  logical(kind=4) lmulti_snow.100;
+  integer(kind=8) D.2427;
+  integer(kind=8) D.2428;
+  real(kind=4) D.2429;
+  logical(kind=4) D.2430;
+  integer(kind=8) D.2433;
+  integer(kind=8) D.2434;
+  integer(kind=8) D.2436;
+  integer(kind=8) D.2437;
+  integer(kind=8) D.2439;
+  integer(kind=8) D.2440;
+  real(kind=4) D.2441;
+  logical(kind=4) D.2442;
+  integer(kind=8) D.2445;
+  integer(kind=8) D.2446;
+  integer(kind=8) D.2448;
+  integer(kind=8) D.2449;
+  integer(kind=8) D.2452;
+  integer(kind=8) D.2453;
+  logical(kind=4) D.2454;
+  real(kind=4) t0_melt.101;
+  real(kind=4) D.2457;
+  logical(kind=4) D.2458;
+  integer(kind=8) D.2459;
+  integer(kind=8) D.2460;
+  real(kind=4) D.2461;
+  integer(kind=8) D.2462;
+  void * restrict D.2463;
+  integer(kind=8) D.2464;
+  integer(kind=8) D.2465;
+  integer(kind=8) D.2466;
+  integer(kind=8) D.2467;
+  integer(kind=8) D.2468;
+  real(kind=4) D.2469;
+  logical(kind=4) lsoil.102;
+  integer(kind=8) D.2473;
+  integer(kind=8) D.2474;
+  logical(kind=4) D.2475;
+  integer(kind=4) itype_albedo.103;
+  logical(kind=4) lmulti_layer.104;
+  void * restrict D.2484;
+  integer(kind=8) D.2485;
+  integer(kind=8) D.2486;
+  integer(kind=8) D.2487;
+  integer(kind=8) D.2488;
+  integer(kind=8) D.2489;
+  real(kind=4) D.2490;
+  integer(kind=8) D.2491;
+  integer(kind=8) D.2492;
+  real(kind=4) D.2493;
+  integer(kind=8) D.2494;
+  integer(kind=8) D.2495;
+  real(kind=4) D.2496;
+  real(kind=4) D.2497;
+  real(kind=4) D.2498;
+  void * restrict D.2500;
+  integer(kind=8) D.2501;
+  integer(kind=8) D.2502;
+  integer(kind=8) D.2503;
+  integer(kind=8) D.2504;
+  integer(kind=8) D.2505;
+  real(kind=4) D.2506;
+  integer(kind=8) D.2507;
+  integer(kind=8) D.2508;
+  real(kind=4) D.2509;
+  integer(kind=8) D.2510;
+  integer(kind=8) D.2511;
+  real(kind=4) D.2512;
+  real(kind=4) D.2513;
+  real(kind=4) D.2514;
+  integer(kind=4) itype_albedo.105;
+  logical(kind=4) lmulti_layer.106;
+  integer(kind=8) D.2522;
+  integer(kind=8) D.2523;
+  real(kind=4) D.2524;
+  real(kind=4) D.2525;
+  void * restrict D.2526;
+  integer(kind=8) D.2527;
+  integer(kind=8) D.2528;
+  real(kind=4) D.2529;
+  real(kind=4) D.2530;
+  integer(kind=8) D.2531;
+  integer(kind=8) D.2532;
+  real(kind=4) D.2533;
+  real(kind=4) D.2534;
+  real(kind=4) D.2535;
+  integer(kind=8) D.2536;
+  integer(kind=8) D.2537;
+  real(kind=4) D.2538;
+  integer(kind=8) D.2539;
+  integer(kind=8) D.2540;
+  real(kind=4) D.2541;
+  real(kind=4) D.2542;
+  real(kind=4) D.2543;
+  logical(kind=4) D.2544;
+  logical(kind=4) D.2545;
+  logical(kind=4) D.2546;
+  logical(kind=4) D.2550;
+  logical(kind=4) D.2551;
+  logical(kind=4) D.2552;
+  void * restrict D.2556;
+  integer(kind=8) D.2557;
+  integer(kind=8) D.2558;
+  integer(kind=8) D.2559;
+  real(kind=4) D.2560;
+  real(kind=4) D.2561;
+  integer(kind=8) D.2562;
+  integer(kind=8) D.2563;
+  real(kind=4) D.2564;
+  real(kind=4) D.2565;
+  integer(kind=8) D.2566;
+  integer(kind=8) D.2567;
+  real(kind=4) D.2568;
+  real(kind=4) D.2569;
+  real(kind=4) D.2570;
+  integer(kind=4) nlgw.107;
+  integer(kind=8) D.2575;
+  integer(kind=8) D.2576;
+  real(kind=4) D.2577;
+  real(kind=4) cdzw12.108;
+  real(kind=4) D.2579;
+  integer(kind=8) D.2580;
+  integer(kind=8) D.2581;
+  real(kind=4) D.2582;
+  real(kind=4) D.2583;
+  real(kind=4) D.2584;
+  integer(kind=8) D.2585;
+  integer(kind=8) D.2586;
+  real(kind=4) D.2587;
+  integer(kind=8) D.2588;
+  integer(kind=8) D.2589;
+  real(kind=4) D.2590;
+  real(kind=4) D.2591;
+  real(kind=4) D.2592;
+  integer(kind=8) D.2594;
+  integer(kind=8) D.2595;
+  real(kind=4) D.2596;
+  real(kind=4) cdzw13.109;
+  real(kind=4) D.2598;
+  integer(kind=8) D.2599;
+  integer(kind=8) D.2600;
+  real(kind=4) D.2601;
+  real(kind=4) D.2602;
+  real(kind=4) D.2603;
+  integer(kind=8) D.2604;
+  integer(kind=8) D.2605;
+  real(kind=4) D.2606;
+  integer(kind=8) D.2607;
+  integer(kind=8) D.2608;
+  real(kind=4) D.2609;
+  real(kind=4) D.2610;
+  real(kind=4) D.2611;
+  logical(kind=4) D.2612;
+  logical(kind=4) D.2613;
+  logical(kind=4) D.2614;
+  logical(kind=4) D.2618;
+  logical(kind=4) D.2619;
+  logical(kind=4) D.2620;
+  void * restrict D.2624;
+  integer(kind=8) D.2625;
+  integer(kind=8) D.2626;
+  integer(kind=8) D.2627;
+  real(kind=4) D.2628;
+  real(kind=4) D.2629;
+  integer(kind=8) D.2630;
+  integer(kind=8) D.2631;
+  real(kind=4) D.2632;
+  real(kind=4) D.2633;
+  integer(kind=8) D.2634;
+  integer(kind=8) D.2635;
+  real(kind=4) D.2636;
+  real(kind=4) D.2637;
+  real(kind=4) D.2638;
+  integer(kind=4) itype_albedo.110;
+  void * restrict D.2643;
+  integer(kind=8) D.2644;
+  integer(kind=8) D.2645;
+  integer(kind=8) D.2646;
+  integer(kind=8) D.2647;
+  integer(kind=8) D.2648;
+  real(kind=4) D.2649;
+  integer(kind=8) ubound.0;
+  integer(kind=8) size.1;
+  integer(kind=8) ubound.2;
+  integer(kind=8) size.3;
+  integer(kind=8) ubound.4;
+  integer(kind=8) size.5;
+  integer(kind=8) ubound.6;
+  integer(kind=8) size.7;
+  integer(kind=4) ip;
+  integer(kind=4) ist;
+  integer(kind=8) ubound.8;
+  integer(kind=8) size.9;
+  integer(kind=8) ubound.10;
+  integer(kind=8) size.11;
+  integer(kind=8) ubound.12;
+  integer(kind=8) size.13;
+  integer(kind=8) ubound.14;
+  integer(kind=8) size.15;
+  integer(kind=8) ubound.16;
+  integer(kind=8) ubound.17;
+  integer(kind=8) stride.18;
+  integer(kind=8) offset.19;
+  integer(kind=8) size.20;
+  real(kind=4) t_test;
+  integer(kind=8) ubound.21;
+  integer(kind=8) size.22;
+  integer(kind=8) ubound.23;
+  integer(kind=8) ubound.24;
+  integer(kind=8) stride.25;
+  integer(kind=8) offset.26;
+  integer(kind=8) size.27;
+  real(kind=4) ztt;
+  real(kind=4) zwetfrac;
+  real(kind=4) zzpa;
+  real(kind=4) zzpv;
+  integer(kind=8) D.2311;
+  bit_size_type D.2312;
+  <unnamed-unsigned:64> D.2313;
+  integer(kind=8) D.2314;
+  bit_size_type D.2315;
+  <unnamed-unsigned:64> D.2316;
+  integer(kind=8) D.2317;
+  bit_size_type D.2318;
+  <unnamed-unsigned:64> D.2319;
+  integer(kind=8) D.2320;
+  bit_size_type D.2321;
+  <unnamed-unsigned:64> D.2322;
+  integer(kind=8) D.2323;
+  bit_size_type D.2324;
+  <unnamed-unsigned:64> D.2325;
+  integer(kind=8) D.2326;
+  bit_size_type D.2327;
+  <unnamed-unsigned:64> D.2328;
+  integer(kind=8) D.2329;
+  bit_size_type D.2330;
+  <unnamed-unsigned:64> D.2331;
+  integer(kind=8) D.2332;
+  bit_size_type D.2333;
+  <unnamed-unsigned:64> D.2334;
+  integer(kind=8) D.2335;
+  bit_size_type D.2336;
+  <unnamed-unsigned:64> D.2337;
+  integer(kind=8) D.2338;
+  bit_size_type D.2339;
+  <unnamed-unsigned:64> D.2340;
+  integer(kind=8) D.2341;
+  bit_size_type D.2342;
+  <unnamed-unsigned:64> D.2343;
+  bit_size_type D.2344;
+  <unnamed-unsigned:64> D.2345;
+
+  D.2366 = (<unnamed-unsigned:64>) _yerrmsg;
+  D.2344 = D.2366 * 8;
+  D.2367 = _yerrmsg + -1;
+  D.2368 = (<unnamed-unsigned:64>) D.2367;
+  D.2345 = D.2368 + 1;
+  D.2369 = *nproma;
+  ubound.6 = (integer(kind=8)) D.2369;
+  size.7 = ubound.6;
+  size.7 = MAX_EXPR <size.7, 0>;
+  D.2341 = size.7 + -1;
+  size.76 = (bit_size_type) size.7;
+  D.2342 = size.76 * 32;
+  size.77 = (<unnamed-unsigned:64>) size.7;
+  D.2343 = size.77 * 4;
+  D.2372 = *nproma;
+  ubound.16 = (integer(kind=8)) D.2372;
+  stride.18 = ubound.16;
+  stride.18 = MAX_EXPR <stride.18, 0>;
+  D.2373 = *ke_snow;
+  ubound.17 = (integer(kind=8)) D.2373;
+  size.20 = stride.18 * ubound.17;
+  size.20 = MAX_EXPR <size.20, 0>;
+  D.2338 = size.20 + -1;
+  size.78 = (bit_size_type) size.20;
+  D.2339 = size.78 * 32;
+  size.79 = (<unnamed-unsigned:64>) size.20;
+  D.2340 = size.79 * 4;
+  offset.19 = ~stride.18;
+  D.2376 = *nproma;
+  ubound.12 = (integer(kind=8)) D.2376;
+  size.13 = ubound.12;
+  size.13 = MAX_EXPR <size.13, 0>;
+  D.2335 = size.13 + -1;
+  size.80 = (bit_size_type) size.13;
+  D.2336 = size.80 * 32;
+  size.81 = (<unnamed-unsigned:64>) size.13;
+  D.2337 = size.81 * 4;
+  D.2379 = *nproma;
+  ubound.14 = (integer(kind=8)) D.2379;
+  size.15 = ubound.14;
+  size.15 = MAX_EXPR <size.15, 0>;
+  D.2332 = size.15 + -1;
+  size.82 = (bit_size_type) size.15;
+  D.2333 = size.82 * 32;
+  size.83 = (<unnamed-unsigned:64>) size.15;
+  D.2334 = size.83 * 4;
+  D.2382 = *nproma;
+  ubound.8 = (integer(kind=8)) D.2382;
+  size.9 = ubound.8;
+  size.9 = MAX_EXPR <size.9, 0>;
+  D.2329 = size.9 + -1;
+  size.84 = (bit_size_type) size.9;
+  D.2330 = size.84 * 32;
+  size.85 = (<unnamed-unsigned:64>) size.9;
+  D.2331 = size.85 * 4;
+  D.2385 = *nproma;
+  ubound.10 = (integer(kind=8)) D.2385;
+  size.11 = ubound.10;
+  size.11 = MAX_EXPR <size.11, 0>;
+  D.2326 = size.11 + -1;
+  size.86 = (bit_size_type) size.11;
+  D.2327 = size.86 * 32;
+  size.87 = (<unnamed-unsigned:64>) size.11;
+  D.2328 = size.87 * 4;
+  D.2388 = *nproma;
+  ubound.23 = (integer(kind=8)) D.2388;
+  stride.25 = ubound.23;
+  stride.25 = MAX_EXPR <stride.25, 0>;
+  D.2389 = *ke_soil;
+  ubound.24 = (integer(kind=8)) D.2389;
+  size.27 = stride.25 * ubound.24;
+  size.27 = MAX_EXPR <size.27, 0>;
+  D.2323 = size.27 + -1;
+  size.88 = (bit_size_type) size.27;
+  D.2324 = size.88 * 32;
+  size.89 = (<unnamed-unsigned:64>) size.27;
+  D.2325 = size.89 * 4;
+  offset.26 = ~stride.25;
+  D.2392 = *nproma;
+  ubound.21 = (integer(kind=8)) D.2392;
+  size.22 = ubound.21;
+  size.22 = MAX_EXPR <size.22, 0>;
+  D.2320 = size.22 + -1;
+  size.90 = (bit_size_type) size.22;
+  D.2321 = size.90 * 32;
+  size.91 = (<unnamed-unsigned:64>) size.22;
+  D.2322 = size.91 * 4;
+  D.2395 = *nproma;
+  ubound.2 = (integer(kind=8)) D.2395;
+  size.3 = ubound.2;
+  size.3 = MAX_EXPR <size.3, 0>;
+  D.2317 = size.3 + -1;
+  size.92 = (bit_size_type) size.3;
+  D.2318 = size.92 * 32;
+  size.93 = (<unnamed-unsigned:64>) size.3;
+  D.2319 = size.93 * 4;
+  D.2398 = *nproma;
+  ubound.4 = (integer(kind=8)) D.2398;
+  size.5 = ubound.4;
+  size.5 = MAX_EXPR <size.5, 0>;
+  D.2314 = size.5 + -1;
+  size.94 = (bit_size_type) size.5;
+  D.2315 = size.94 * 32;
+  size.95 = (<unnamed-unsigned:64>) size.5;
+  D.2316 = size.95 * 4;
+  D.2401 = *nproma;
+  ubound.0 = (integer(kind=8)) D.2401;
+  size.1 = ubound.0;
+  size.1 = MAX_EXPR <size.1, 0>;
+  D.2311 = size.1 + -1;
+  size.96 = (bit_size_type) size.1;
+  D.2312 = size.96 * 32;
+  size.97 = (<unnamed-unsigned:64>) size.1;
+  D.2313 = size.97 * 4;
+  break_scop ();
+  {
+    integer(kind=4) D.2250;
+
+    D.2250 = *ipend;
+    ip = 1;
+    if (ip <= D.2250) goto <D.2404>; else goto <D.2405>;
+    <D.2404>:
+    <D.2406>:
+    {
+      logical(kind=4) D.2310;
+
+      break_scop ();
+      lemiss.98 = lemiss;
+      if (lemiss.98 != 0) goto <D.2408>; else goto <D.2409>;
+      <D.2408>:
+      {
+        integer(kind=8) inc.29;
+        integer(kind=8) inc.28;
+
+        D.2410 = zalth.data;
+        D.2411 = (integer(kind=8)) ip;
+        D.2412 = zalth.offset;
+        D.2413 = _gfortran_polly_array_index_1 (D.2412, 1, D.2411);
+        D.2414 = (integer(kind=8)) ip;
+        D.2415 = _gfortran_polly_array_index_1 (-1, 1, D.2414);
+        D.2416 = *emis_rad[D.2415];
+        D.2417 = 1.0e+0 - D.2416;
+        MEM[(real(kind=4)[0:] *)D.2410][D.2413] = D.2417;
+      }
+      goto <D.2418>;
+      <D.2409>:
+      {
+        integer(kind=8) inc.30;
+
+        D.2419 = zalth.data;
+        D.2420 = (integer(kind=8)) ip;
+        D.2421 = zalth.offset;
+        D.2422 = _gfortran_polly_array_index_1 (D.2421, 1, D.2420);
+        ctalb.99 = ctalb;
+        MEM[(real(kind=4)[0:] *)D.2419][D.2422] = ctalb.99;
+      }
+      <D.2418>:
+      L.3:
+      ist = 10;
+      lmulti_snow.100 = lmulti_snow;
+      if (lmulti_snow.100 != 0) goto <D.2425>; else goto <D.2426>;
+      <D.2425>:
+      {
+        integer(kind=8) inc.31;
+
+        D.2427 = (integer(kind=8)) ip;
+        D.2428 = _gfortran_polly_array_index_2 (offset.19, stride.18, 1, 1, D.2427);
+        D.2429 = *t_snow_mult[D.2428];
+        D.2430 = D.2429 < 0.0;
+        if (D.2430 != 0) goto <D.2431>; else goto <D.2432>;
+        <D.2431>:
+        {
+          integer(kind=8) inc.32;
+
+          D.2433 = (integer(kind=8)) ip;
+          D.2434 = _gfortran_polly_array_index_1 (-1, 1, D.2433);
+          t_test = *t_g[D.2434];
+        }
+        goto <D.2435>;
+        <D.2432>:
+        {
+          integer(kind=8) inc.33;
+
+          D.2436 = (integer(kind=8)) ip;
+          D.2437 = _gfortran_polly_array_index_2 (offset.19, stride.18, 1, 1, D.2436);
+          t_test = *t_snow_mult[D.2437];
+        }
+        <D.2435>:
+      }
+      L.5:
+      goto <D.2438>;
+      <D.2426>:
+      {
+        integer(kind=8) inc.34;
+
+        D.2439 = (integer(kind=8)) ip;
+        D.2440 = _gfortran_polly_array_index_1 (-1, 1, D.2439);
+        D.2441 = *t_snow[D.2440];
+        D.2442 = D.2441 < 0.0;
+        if (D.2442 != 0) goto <D.2443>; else goto <D.2444>;
+        <D.2443>:
+        {
+          integer(kind=8) inc.35;
+
+          D.2445 = (integer(kind=8)) ip;
+          D.2446 = _gfortran_polly_array_index_1 (-1, 1, D.2445);
+          t_test = *t_g[D.2446];
+        }
+        goto <D.2447>;
+        <D.2444>:
+        {
+          integer(kind=8) inc.36;
+
+          D.2448 = (integer(kind=8)) ip;
+          D.2449 = _gfortran_polly_array_index_1 (-1, 1, D.2448);
+          t_test = *t_snow[D.2449];
+        }
+        <D.2447>:
+      }
+      L.6:
+      <D.2438>:
+      L.4:
+      {
+        integer(kind=8) inc.37;
+
+        D.2452 = (integer(kind=8)) ip;
+        D.2453 = _gfortran_polly_array_index_1 (-1, 1, D.2452);
+        D.2454 = *llandmask[D.2453];
+        if (D.2454 != 0) goto <D.2450>; else goto <D.2455>;
+        <D.2455>:
+        t0_melt.101 = t0_melt;
+        D.2457 = t0_melt.101 - 1.7000000476837158203125e+0;
+        D.2458 = D.2457 <= t_test;
+        if (D.2458 != 0) goto <D.2450>; else goto <D.2451>;
+        <D.2450>:
+        {
+          integer(kind=8) inc.38;
+
+          D.2459 = (integer(kind=8)) ip;
+          D.2460 = _gfortran_polly_array_index_1 (-1, 1, D.2459);
+          D.2461 = *soiltyp[D.2460];
+          D.2462 = __builtin_lroundf (D.2461);
+          ist = (integer(kind=4)) D.2462;
+        }
+        <D.2451>:
+      }
+      L.7:
+      {
+        integer(kind=8) inc.40;
+        integer(kind=8) inc.39;
+
+        D.2463 = zalso.data;
+        D.2464 = (integer(kind=8)) ip;
+        D.2465 = zalso.offset;
+        D.2466 = _gfortran_polly_array_index_1 (D.2465, 1, D.2464);
+        D.2467 = (integer(kind=8)) ist;
+        D.2468 = _gfortran_polly_array_index_1 (-1, 1, D.2467);
+        D.2469 = csalb[D.2468];
+        MEM[(real(kind=4)[0:] *)D.2463][D.2466] = D.2469;
+      }
+      {
+        integer(kind=8) inc.41;
+
+        lsoil.102 = lsoil;
+        if (lsoil.102 != 0) goto <D.2471>; else goto <D.2472>;
+        <D.2471>:
+        D.2473 = (integer(kind=8)) ip;
+        D.2474 = _gfortran_polly_array_index_1 (-1, 1, D.2473);
+        D.2475 = *llandmask[D.2474];
+        if (D.2475 != 0) goto <D.2476>; else goto <D.2477>;
+        <D.2476>:
+        itype_albedo.103 = itype_albedo;
+        if (itype_albedo.103 == 1) goto <D.2479>; else goto <D.2480>;
+        <D.2479>:
+        lmulti_layer.104 = lmulti_layer;
+        if (lmulti_layer.104 != 0) goto <D.2482>; else goto <D.2483>;
+        <D.2482>:
+        {
+          integer(kind=8) inc.45;
+          integer(kind=8) inc.44;
+          integer(kind=8) inc.43;
+          integer(kind=8) inc.42;
+
+          D.2484 = zalso.data;
+          D.2485 = (integer(kind=8)) ip;
+          D.2486 = zalso.offset;
+          D.2487 = _gfortran_polly_array_index_1 (D.2486, 1, D.2485);
+          D.2488 = (integer(kind=8)) ist;
+          D.2489 = _gfortran_polly_array_index_1 (-1, 1, D.2488);
+          D.2490 = csalb[D.2489];
+          D.2491 = (integer(kind=8)) ist;
+          D.2492 = _gfortran_polly_array_index_1 (-1, 1, D.2491);
+          D.2493 = rad_csalbw[D.2492];
+          D.2494 = (integer(kind=8)) ip;
+          D.2495 = _gfortran_polly_array_index_2 (offset.26, stride.25, 1, 1, D.2494);
+          D.2496 = *w_so[D.2495];
+          D.2497 = D.2493 * D.2496;
+          D.2498 = D.2490 - D.2497;
+          MEM[(real(kind=4)[0:] *)D.2484][D.2487] = D.2498;
+        }
+        goto <D.2499>;
+        <D.2483>:
+        {
+          integer(kind=8) inc.49;
+          integer(kind=8) inc.48;
+          integer(kind=8) inc.47;
+          integer(kind=8) inc.46;
+
+          D.2500 = zalso.data;
+          D.2501 = (integer(kind=8)) ip;
+          D.2502 = zalso.offset;
+          D.2503 = _gfortran_polly_array_index_1 (D.2502, 1, D.2501);
+          D.2504 = (integer(kind=8)) ist;
+          D.2505 = _gfortran_polly_array_index_1 (-1, 1, D.2504);
+          D.2506 = csalb[D.2505];
+          D.2507 = (integer(kind=8)) ist;
+          D.2508 = _gfortran_polly_array_index_1 (-1, 1, D.2507);
+          D.2509 = rad_csalbw[D.2508];
+          D.2510 = (integer(kind=8)) ip;
+          D.2511 = _gfortran_polly_array_index_1 (-1, 1, D.2510);
+          D.2512 = *w_g1[D.2511];
+          D.2513 = D.2509 * D.2512;
+          D.2514 = D.2506 - D.2513;
+          MEM[(real(kind=4)[0:] *)D.2500][D.2503] = D.2514;
+        }
+        <D.2499>:
+        L.10:
+        goto <D.2515>;
+        <D.2480>:
+        itype_albedo.105 = itype_albedo;
+        if (itype_albedo.105 == 2) goto <D.2517>; else goto <D.2518>;
+        <D.2517>:
+        lmulti_layer.106 = lmulti_layer;
+        if (lmulti_layer.106 != 0) goto <D.2520>; else goto <D.2521>;
+        <D.2520>:
+        {
+          integer(kind=8) inc.54;
+          integer(kind=8) inc.53;
+          integer(kind=8) inc.52;
+          integer(kind=8) inc.51;
+          integer(kind=8) inc.50;
+
+          D.2522 = (integer(kind=8)) ip;
+          D.2523 = _gfortran_polly_array_index_2 (offset.26, stride.25, 1, 1, D.2522);
+          D.2524 = *w_so[D.2523];
+          D.2525 = D.2524 * 5.0e-1;
+          D.2526 = czmls.data;
+          D.2527 = czmls.offset;
+          D.2528 = _gfortran_polly_array_index_1 (D.2527, 1, 1);
+          D.2529 = MEM[(real(kind=4)[0:] *)D.2526][D.2528];
+          D.2530 = D.2525 / D.2529;
+          D.2531 = (integer(kind=8)) ist;
+          D.2532 = _gfortran_polly_array_index_1 (-1, 1, D.2531);
+          D.2533 = cadp[D.2532];
+          D.2534 = D.2530 - D.2533;
+          D.2535 = ((D.2534));
+          D.2536 = (integer(kind=8)) ist;
+          D.2537 = _gfortran_polly_array_index_1 (-1, 1, D.2536);
+          D.2538 = cporv[D.2537];
+          D.2539 = (integer(kind=8)) ist;
+          D.2540 = _gfortran_polly_array_index_1 (-1, 1, D.2539);
+          D.2541 = cadp[D.2540];
+          D.2542 = D.2538 - D.2541;
+          D.2543 = ((D.2542));
+          zwetfrac = D.2535 / D.2543;
+        }
+        {
+          real(kind=4) M.56;
+          real(kind=4) M.55;
+
+          M.55 = 0.0;
+          D.2544 = zwetfrac > M.55;
+          D.2545 = M.55 unord M.55;
+          D.2546 = D.2544 || D.2545;
+          if (D.2546 != 0) goto <D.2547>; else goto <D.2548>;
+          <D.2547>:
+          M.55 = zwetfrac;
+          goto <D.2549>;
+          <D.2548>:
+          <D.2549>:
+          M.56 = 1.0e+0;
+          D.2550 = M.55 < M.56;
+          D.2551 = M.56 unord M.56;
+          D.2552 = D.2550 || D.2551;
+          if (D.2552 != 0) goto <D.2553>; else goto <D.2554>;
+          <D.2553>:
+          M.56 = M.55;
+          goto <D.2555>;
+          <D.2554>:
+          <D.2555>:
+          zwetfrac = M.56;
+        }
+        {
+          integer(kind=8) inc.59;
+          integer(kind=8) inc.58;
+          integer(kind=8) inc.57;
+
+          D.2556 = zalso.data;
+          D.2557 = (integer(kind=8)) ip;
+          D.2558 = zalso.offset;
+          D.2559 = _gfortran_polly_array_index_1 (D.2558, 1, D.2557);
+          D.2560 = 1.0e+0 - zwetfrac;
+          D.2561 = ((D.2560));
+          D.2562 = (integer(kind=8)) ip;
+          D.2563 = _gfortran_polly_array_index_1 (-1, 1, D.2562);
+          D.2564 = *alb_dry[D.2563];
+          D.2565 = D.2561 * D.2564;
+          D.2566 = (integer(kind=8)) ip;
+          D.2567 = _gfortran_polly_array_index_1 (-1, 1, D.2566);
+          D.2568 = *alb_sat[D.2567];
+          D.2569 = D.2568 * zwetfrac;
+          D.2570 = D.2565 + D.2569;
+          MEM[(real(kind=4)[0:] *)D.2556][D.2559] = D.2570;
+        }
+        goto <D.2571>;
+        <D.2521>:
+        nlgw.107 = nlgw;
+        if (nlgw.107 == 2) goto <D.2573>; else goto <D.2574>;
+        <D.2573>:
+        {
+          integer(kind=8) inc.63;
+          integer(kind=8) inc.62;
+          integer(kind=8) inc.61;
+          integer(kind=8) inc.60;
+
+          D.2575 = (integer(kind=8)) ip;
+          D.2576 = _gfortran_polly_array_index_1 (-1, 1, D.2575);
+          D.2577 = *w_g1[D.2576];
+          cdzw12.108 = cdzw12;
+          D.2579 = D.2577 / cdzw12.108;
+          D.2580 = (integer(kind=8)) ist;
+          D.2581 = _gfortran_polly_array_index_1 (-1, 1, D.2580);
+          D.2582 = cadp[D.2581];
+          D.2583 = D.2579 - D.2582;
+          D.2584 = ((D.2583));
+          D.2585 = (integer(kind=8)) ist;
+          D.2586 = _gfortran_polly_array_index_1 (-1, 1, D.2585);
+          D.2587 = cporv[D.2586];
+          D.2588 = (integer(kind=8)) ist;
+          D.2589 = _gfortran_polly_array_index_1 (-1, 1, D.2588);
+          D.2590 = cadp[D.2589];
+          D.2591 = D.2587 - D.2590;
+          D.2592 = ((D.2591));
+          zwetfrac = D.2584 / D.2592;
+        }
+        goto <D.2593>;
+        <D.2574>:
+        {
+          integer(kind=8) inc.67;
+          integer(kind=8) inc.66;
+          integer(kind=8) inc.65;
+          integer(kind=8) inc.64;
+
+          D.2594 = (integer(kind=8)) ip;
+          D.2595 = _gfortran_polly_array_index_1 (-1, 1, D.2594);
+          D.2596 = *w_g1[D.2595];
+          cdzw13.109 = cdzw13;
+          D.2598 = D.2596 / cdzw13.109;
+          D.2599 = (integer(kind=8)) ist;
+          D.2600 = _gfortran_polly_array_index_1 (-1, 1, D.2599);
+          D.2601 = cadp[D.2600];
+          D.2602 = D.2598 - D.2601;
+          D.2603 = ((D.2602));
+          D.2604 = (integer(kind=8)) ist;
+          D.2605 = _gfortran_polly_array_index_1 (-1, 1, D.2604);
+          D.2606 = cporv[D.2605];
+          D.2607 = (integer(kind=8)) ist;
+          D.2608 = _gfortran_polly_array_index_1 (-1, 1, D.2607);
+          D.2609 = cadp[D.2608];
+          D.2610 = D.2606 - D.2609;
+          D.2611 = ((D.2610));
+          zwetfrac = D.2603 / D.2611;
+        }
+        <D.2593>:
+        L.12:
+        {
+          real(kind=4) M.69;
+          real(kind=4) M.68;
+
+          M.68 = 0.0;
+          D.2612 = zwetfrac > M.68;
+          D.2613 = M.68 unord M.68;
+          D.2614 = D.2612 || D.2613;
+          if (D.2614 != 0) goto <D.2615>; else goto <D.2616>;
+          <D.2615>:
+          M.68 = zwetfrac;
+          goto <D.2617>;
+          <D.2616>:
+          <D.2617>:
+          M.69 = 1.0e+0;
+          D.2618 = M.68 < M.69;
+          D.2619 = M.69 unord M.69;
+          D.2620 = D.2618 || D.2619;
+          if (D.2620 != 0) goto <D.2621>; else goto <D.2622>;
+          <D.2621>:
+          M.69 = M.68;
+          goto <D.2623>;
+          <D.2622>:
+          <D.2623>:
+          zwetfrac = M.69;
+        }
+        {
+          integer(kind=8) inc.72;
+          integer(kind=8) inc.71;
+          integer(kind=8) inc.70;
+
+          D.2624 = zalso.data;
+          D.2625 = (integer(kind=8)) ip;
+          D.2626 = zalso.offset;
+          D.2627 = _gfortran_polly_array_index_1 (D.2626, 1, D.2625);
+          D.2628 = 1.0e+0 - zwetfrac;
+          D.2629 = ((D.2628));
+          D.2630 = (integer(kind=8)) ip;
+          D.2631 = _gfortran_polly_array_index_1 (-1, 1, D.2630);
+          D.2632 = *alb_dry[D.2631];
+          D.2633 = D.2629 * D.2632;
+          D.2634 = (integer(kind=8)) ip;
+          D.2635 = _gfortran_polly_array_index_1 (-1, 1, D.2634);
+          D.2636 = *alb_sat[D.2635];
+          D.2637 = D.2636 * zwetfrac;
+          D.2638 = D.2633 + D.2637;
+          MEM[(real(kind=4)[0:] *)D.2624][D.2627] = D.2638;
+        }
+        <D.2571>:
+        L.11:
+        goto <D.2639>;
+        <D.2518>:
+        itype_albedo.110 = itype_albedo;
+        if (itype_albedo.110 == 3) goto <D.2641>; else goto <D.2642>;
+        <D.2641>:
+        {
+          integer(kind=8) inc.74;
+          integer(kind=8) inc.73;
+
+          D.2643 = zalso.data;
+          D.2644 = (integer(kind=8)) ip;
+          D.2645 = zalso.offset;
+          D.2646 = _gfortran_polly_array_index_1 (D.2645, 1, D.2644);
+          D.2647 = (integer(kind=8)) ip;
+          D.2648 = _gfortran_polly_array_index_1 (-1, 1, D.2647);
+          D.2649 = *alb_dif[D.2648];
+          MEM[(real(kind=4)[0:] *)D.2643][D.2646] = D.2649;
+        }
+        goto <D.2650>;
+        <D.2642>:
+        <D.2650>:
+        <D.2639>:
+        <D.2515>:
+        L.9:
+        goto <D.2651>;
+        <D.2477>:
+        <D.2651>:
+        <D.2472>:
+      }
+      L.8:
+      L.1:
+      D.2310 = ip == D.2250;
+      ip = ip + 1;
+      if (D.2310 != 0) goto L.2; else goto <D.2652>;
+      <D.2652>:
+    }
+    goto <D.2406>;
+    <D.2405>:
+    L.2:
+  }
+  break_scop ();
+}
+
+
+break_scop ()
+{
+
+}
+
+

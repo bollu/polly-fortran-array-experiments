@@ -1,0 +1,350 @@
+main (integer(kind=4) argc, character(kind=1) * * argv)
+{
+  integer(kind=4) D.1625;
+  static integer(kind=4) options.16[8] = {68, 511, 0, 0, 0, 1, 0, 1};
+
+  _gfortran_set_args (argc, argv);
+  _gfortran_set_options (8, &options.16[0]);
+  p ();
+  D.1625 = 0;
+  return D.1625;
+}
+
+
+p ()
+{
+  integer(kind=8) D.1627;
+  integer(kind=8) D.1628;
+  logical(kind=4) D.1629;
+  void * restrict D.1632;
+  void * D.1635;
+  integer(kind=8) D.1639;
+  integer(kind=8) D.1640;
+  logical(kind=4) D.1641;
+  void * restrict D.1644;
+  void * D.1647;
+  void * restrict D.1654;
+  integer(kind=8) D.1655;
+  integer(kind=8) D.1656;
+  integer(kind=8) D.1657;
+  void * restrict D.1665;
+  integer(kind=8) D.1666;
+  integer(kind=8) D.1667;
+  integer(kind=8) D.1668;
+  integer(kind=8) D.1669;
+  integer(kind=8) D.1670;
+  integer(kind=4) D.1671;
+  integer(kind=4) D.1672;
+  real(kind=4) D.1673;
+  void * restrict D.1676;
+  integer(kind=4) i;
+  integer(kind=4) j;
+
+  {
+    integer(kind=4) overflow.7;
+    integer(kind=4) overflow.6;
+
+    arr1.dtype = 281;
+    arr1.dim[0].lbound = 0;
+    arr1.dim[0].ubound = 3;
+    arr1.dim[0].stride = 1;
+    overflow.6 = 0;
+    D.1627 = overflow.6 != 0;
+    D.1628 = __builtin_expect (D.1627, 0);
+    D.1629 = (logical(kind=4)) D.1628;
+    if (D.1629 != 0) goto <D.1630>; else goto <D.1631>;
+    <D.1630>:
+    _gfortran_runtime_error (&"Integer overflow when calculating the amount of memory to allocate"[1]{lb: 1 sz: 1});
+    <D.1631>:
+    {
+      void * restrict D.1596;
+
+      D.1632 = arr1.data;
+      if (D.1632 == 0B) goto <D.1633>; else goto <D.1634>;
+      <D.1633>:
+      {
+        void * restrict D.1597;
+
+        D.1635 = __builtin_malloc (16);
+        D.1597 = (void * restrict) D.1635;
+        if (D.1597 == 0B) goto <D.1636>; else goto <D.1637>;
+        <D.1636>:
+        _gfortran_os_error (&"Allocation would exceed memory limit"[1]{lb: 1 sz: 1});
+        <D.1637>:
+        D.1596 = D.1597;
+      }
+      goto <D.1638>;
+      <D.1634>:
+      _gfortran_runtime_error_at (&"At line 24 of file m.f90"[1]{lb: 1 sz: 1}, &"Attempting to allocate already allocated variable \'%s\'"[1]{lb: 1 sz: 1}, &"arr1"[1]{lb: 1 sz: 1});
+      <D.1638>:
+      arr1.data = D.1596;
+    }
+    arr1.offset = 0;
+    arr2.dtype = 282;
+    arr2.dim[0].lbound = 0;
+    arr2.dim[0].ubound = 3;
+    arr2.dim[0].stride = 1;
+    arr2.dim[1].lbound = 0;
+    arr2.dim[1].ubound = 1;
+    arr2.dim[1].stride = 4;
+    overflow.7 = 0;
+    D.1639 = overflow.7 != 0;
+    D.1640 = __builtin_expect (D.1639, 0);
+    D.1641 = (logical(kind=4)) D.1640;
+    if (D.1641 != 0) goto <D.1642>; else goto <D.1643>;
+    <D.1642>:
+    _gfortran_runtime_error (&"Integer overflow when calculating the amount of memory to allocate"[1]{lb: 1 sz: 1});
+    <D.1643>:
+    {
+      void * restrict D.1599;
+
+      D.1644 = arr2.data;
+      if (D.1644 == 0B) goto <D.1645>; else goto <D.1646>;
+      <D.1645>:
+      {
+        void * restrict D.1600;
+
+        D.1647 = __builtin_malloc (32);
+        D.1600 = (void * restrict) D.1647;
+        if (D.1600 == 0B) goto <D.1648>; else goto <D.1649>;
+        <D.1648>:
+        _gfortran_os_error (&"Allocation would exceed memory limit"[1]{lb: 1 sz: 1});
+        <D.1649>:
+        D.1599 = D.1600;
+      }
+      goto <D.1650>;
+      <D.1646>:
+      _gfortran_runtime_error_at (&"At line 25 of file m.f90"[1]{lb: 1 sz: 1}, &"Attempting to allocate already allocated variable \'%s\'"[1]{lb: 1 sz: 1}, &"arr2"[1]{lb: 1 sz: 1});
+      <D.1650>:
+      arr2.data = D.1599;
+    }
+    arr2.offset = 0;
+    i = 0;
+    if (i <= 3) goto <D.1651>; else goto <D.1652>;
+    <D.1651>:
+    <D.1653>:
+    {
+      logical(kind=4) D.1604;
+
+      {
+        integer(kind=8) inc.8;
+
+        D.1654 = arr1.data;
+        D.1655 = (integer(kind=8)) i;
+        D.1656 = arr1.offset;
+        D.1657 = _gfortran_polly_array_index_1 (D.1656, 1, D.1655);
+        MEM[(real(kind=4)[0:] *)D.1654][D.1657] = -4.2e+1;
+      }
+      L.2:
+      D.1604 = i == 3;
+      i = i + 1;
+      if (D.1604 != 0) goto L.3; else goto <D.1658>;
+      <D.1658>:
+    }
+    goto <D.1653>;
+    <D.1652>:
+    L.3:
+    i = 0;
+    if (i <= 3) goto <D.1659>; else goto <D.1660>;
+    <D.1659>:
+    <D.1661>:
+    {
+      logical(kind=4) D.1611;
+
+      j = 0;
+      if (j <= 1) goto <D.1662>; else goto <D.1663>;
+      <D.1662>:
+      <D.1664>:
+      {
+        logical(kind=4) D.1610;
+
+        {
+          integer(kind=8) inc.9;
+
+          D.1665 = arr2.data;
+          D.1666 = (integer(kind=8)) i;
+          D.1667 = (integer(kind=8)) j;
+          D.1668 = arr2.dim[1].stride;
+          D.1669 = arr2.offset;
+          D.1670 = _gfortran_polly_array_index_2 (D.1669, D.1668, 1, D.1667, D.1666);
+          D.1671 = i * j;
+          D.1672 = D.1671 + -3;
+          D.1673 = (real(kind=4)) D.1672;
+          MEM[(real(kind=4)[0:] *)D.1665][D.1670] = D.1673;
+        }
+        L.6:
+        D.1610 = j == 1;
+        j = j + 1;
+        if (D.1610 != 0) goto L.7; else goto <D.1674>;
+        <D.1674>:
+      }
+      goto <D.1664>;
+      <D.1663>:
+      L.7:
+      L.4:
+      D.1611 = i == 3;
+      i = i + 1;
+      if (D.1611 != 0) goto L.5; else goto <D.1675>;
+      <D.1675>:
+    }
+    goto <D.1661>;
+    <D.1660>:
+    L.5:
+    {
+      struct __st_parameter_dt dt_parm.10;
+
+      dt_parm.10.common.filename = &"m.f90"[1]{lb: 1 sz: 1};
+      dt_parm.10.common.line = 37;
+      dt_parm.10.common.flags = 128;
+      dt_parm.10.common.unit = 6;
+      _gfortran_st_write (&dt_parm.10);
+      _gfortran_transfer_character_write (&dt_parm.10, &"arr1:"[1]{lb: 1 sz: 1}, 5);
+      _gfortran_st_write_done (&dt_parm.10);
+    }
+    {
+      struct __st_parameter_dt dt_parm.11;
+
+      dt_parm.11.common.filename = &"m.f90"[1]{lb: 1 sz: 1};
+      dt_parm.11.common.line = 38;
+      dt_parm.11.common.flags = 128;
+      dt_parm.11.common.unit = 6;
+      _gfortran_st_write (&dt_parm.11);
+      _gfortran_transfer_array_write (&dt_parm.11, &arr1, 4, 0);
+      _gfortran_st_write_done (&dt_parm.11);
+    }
+    {
+      struct __st_parameter_dt dt_parm.12;
+
+      dt_parm.12.common.filename = &"m.f90"[1]{lb: 1 sz: 1};
+      dt_parm.12.common.line = 39;
+      dt_parm.12.common.flags = 128;
+      dt_parm.12.common.unit = 6;
+      _gfortran_st_write (&dt_parm.12);
+      _gfortran_transfer_character_write (&dt_parm.12, &"arr2:"[1]{lb: 1 sz: 1}, 5);
+      _gfortran_st_write_done (&dt_parm.12);
+    }
+    {
+      struct __st_parameter_dt dt_parm.13;
+
+      dt_parm.13.common.filename = &"m.f90"[1]{lb: 1 sz: 1};
+      dt_parm.13.common.line = 40;
+      dt_parm.13.common.flags = 128;
+      dt_parm.13.common.unit = 6;
+      _gfortran_st_write (&dt_parm.13);
+      _gfortran_transfer_array_write (&dt_parm.13, &arr2, 4, 0);
+      _gfortran_st_write_done (&dt_parm.13);
+    }
+    {
+      struct __st_parameter_dt dt_parm.14;
+
+      dt_parm.14.common.filename = &"m.f90"[1]{lb: 1 sz: 1};
+      dt_parm.14.common.line = 41;
+      dt_parm.14.common.flags = 128;
+      dt_parm.14.common.unit = 6;
+      _gfortran_st_write (&dt_parm.14);
+      _gfortran_transfer_character_write (&dt_parm.14, &"===calling f()==="[1]{lb: 1 sz: 1}, 17);
+      _gfortran_st_write_done (&dt_parm.14);
+    }
+    {
+      static integer(kind=4) C.1618 = 0;
+      static integer(kind=4) C.1617 = 0;
+
+      D.1676 = arr2.data;
+      f (D.1676, &C.1617, &C.1618);
+    }
+    {
+      struct __st_parameter_dt dt_parm.15;
+
+      dt_parm.15.common.filename = &"m.f90"[1]{lb: 1 sz: 1};
+      dt_parm.15.common.line = 43;
+      dt_parm.15.common.flags = 128;
+      dt_parm.15.common.unit = 6;
+      _gfortran_st_write (&dt_parm.15);
+      _gfortran_transfer_array_write (&dt_parm.15, &arr1, 4, 0);
+      _gfortran_st_write_done (&dt_parm.15);
+    }
+  }
+}
+
+
+f (real(kind=4)[0:D.1588] * restrict srcarr, integer(kind=4) & restrict dim1, integer(kind=4) & restrict dim2)
+{
+  integer(kind=4) D.1677;
+  integer(kind=4) D.1678;
+  integer(kind=4) D.1679;
+  bit_size_type size.17;
+  <unnamed-unsigned:64> size.18;
+  integer(kind=4) D.1682;
+  integer(kind=4) D.1683;
+  integer(kind=8) D.1684;
+  integer(kind=8) D.1687;
+  integer(kind=8) D.1688;
+  integer(kind=8) D.1689;
+  real(kind=4) D.1690;
+  integer(kind=8) ubound.0;
+  integer(kind=8) ubound.1;
+  integer(kind=8) stride.2;
+  integer(kind=8) offset.3;
+  integer(kind=8) size.4;
+  integer(kind=8) D.1588;
+  bit_size_type D.1589;
+  <unnamed-unsigned:64> D.1590;
+
+  D.1677 = *dim1;
+  ubound.0 = (integer(kind=8)) D.1677;
+  stride.2 = ubound.0;
+  stride.2 = MAX_EXPR <stride.2, 0>;
+  D.1678 = *dim2;
+  D.1679 = D.1678 + 1;
+  ubound.1 = (integer(kind=8)) D.1679;
+  size.4 = stride.2 * ubound.1;
+  size.4 = MAX_EXPR <size.4, 0>;
+  D.1588 = size.4 + -1;
+  size.17 = (bit_size_type) size.4;
+  D.1589 = size.17 * 32;
+  size.18 = (<unnamed-unsigned:64>) size.4;
+  D.1590 = size.18 * 4;
+  offset.3 = ~stride.2;
+  {
+    integer(kind=8) D.1584;
+    integer(kind=8) D.1583;
+    integer(kind=8) D.1582;
+    integer(kind=8) D.1581;
+    integer(kind=8) D.1580;
+    real(kind=4)[0:] * restrict D.1579;
+    integer(kind=8) D.1578;
+    integer(kind=8) D.1577;
+
+    D.1577 = offset.3;
+    D.1578 = ubound.0;
+    D.1579 = arr1.data;
+    D.1580 = arr1.offset;
+    D.1581 = arr1.dim[0].lbound;
+    D.1582 = arr1.dim[0].ubound;
+    D.1682 = *dim2;
+    D.1683 = D.1682 + 1;
+    D.1583 = (integer(kind=8)) D.1683;
+    D.1584 = D.1581 + -1;
+    {
+      integer(kind=8) D.1586;
+      integer(kind=8) S.5;
+
+      D.1684 = D.1583 * stride.2;
+      D.1586 = D.1684 + D.1577;
+      S.5 = 1;
+      <D.1685>:
+      if (S.5 > D.1578) goto L.1; else goto <D.1686>;
+      <D.1686>:
+      D.1687 = S.5 + D.1584;
+      D.1688 = D.1687 + D.1580;
+      D.1689 = S.5 + D.1586;
+      D.1690 = *srcarr[D.1689];
+      *D.1579[D.1688] = D.1690;
+      S.5 = S.5 + 1;
+      goto <D.1685>;
+      L.1:
+    }
+  }
+}
+
+

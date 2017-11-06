@@ -1,0 +1,99 @@
+f (real(kind=4)[0:D.1602] * restrict sotr, real(kind=4)[0:D.1605] * restrict sobs, real(kind=4)[0:] * restrict sod_t, real(kind=4)[0:D.1608] * restrict zsmu0_flux, integer(kind=4) & restrict nproma, integer(kind=4) & restrict ke, integer(kind=4) & restrict ipend)
+{
+  integer(kind=4) ip;
+  integer(kind=8) ubound.0;
+  integer(kind=8) size.1;
+  integer(kind=8) ubound.2;
+  integer(kind=8) ubound.3;
+  integer(kind=8) stride.4;
+  integer(kind=8) offset.5;
+  integer(kind=8) size.6;
+  integer(kind=8) ubound.7;
+  integer(kind=8) size.8;
+  integer(kind=8) D.1602;
+  bit_size_type D.1603;
+  <unnamed-unsigned:64> D.1604;
+  integer(kind=8) D.1605;
+  bit_size_type D.1606;
+  <unnamed-unsigned:64> D.1607;
+  integer(kind=8) D.1608;
+  bit_size_type D.1609;
+  <unnamed-unsigned:64> D.1610;
+
+  ubound.7 = (integer(kind=8)) *nproma;
+  size.8 = NON_LVALUE_EXPR <ubound.7>;
+  size.8 = MAX_EXPR <size.8, 0>;
+  D.1608 = size.8 + -1;
+  D.1609 = (bit_size_type) size.8 * 32;
+  D.1610 = (<unnamed-unsigned:64>) size.8 * 4;
+  ubound.0 = (integer(kind=8)) *nproma;
+  size.1 = NON_LVALUE_EXPR <ubound.0>;
+  size.1 = MAX_EXPR <size.1, 0>;
+  D.1605 = size.1 + -1;
+  D.1606 = (bit_size_type) size.1 * 32;
+  D.1607 = (<unnamed-unsigned:64>) size.1 * 4;
+  ubound.2 = (integer(kind=8)) *nproma;
+  stride.4 = NON_LVALUE_EXPR <ubound.2>;
+  stride.4 = MAX_EXPR <stride.4, 0>;
+  ubound.3 = (integer(kind=8)) (*ke + 1);
+  size.6 = stride.4 * NON_LVALUE_EXPR <ubound.3>;
+  size.6 = MAX_EXPR <size.6, 0>;
+  D.1602 = size.6 + -1;
+  D.1603 = (bit_size_type) size.6 * 32;
+  D.1604 = (<unnamed-unsigned:64>) size.6 * 4;
+  offset.5 = ~NON_LVALUE_EXPR <stride.4>;
+  {
+    integer(kind=4) D.1594;
+
+    D.1594 = *ipend;
+    ip = 1;
+    if (ip <= D.1594)
+      {
+        while (1)
+          {
+            {
+              logical(kind=4) D.1601;
+
+              {
+                integer(kind=8) inc.9;
+
+                if ((*zsmu0_flux)[_gfortran_polly_array_index_1 (-1, 1, (integer(kind=8)) ip)] > 1.0e+1)
+                  {
+                    {
+                      integer(kind=8) inc.11;
+                      integer(kind=8) inc.10;
+
+                      (*sobs)[_gfortran_polly_array_index_1 (-1, 1, (integer(kind=8)) ip)] = (*sotr)[_gfortran_polly_array_index_2 (offset.5, stride.4, 1, (integer(kind=8)) *ke, 1)];
+                    }
+                  }
+              }
+              L.3:;
+              L.1:;
+              D.1601 = ip == D.1594;
+              ip = ip + 1;
+              if (D.1601) goto L.2;
+            }
+          }
+      }
+    L.2:;
+  }
+}
+
+
+p ()
+{
+  
+}
+
+
+main (integer(kind=4) argc, character(kind=1) * * argv)
+{
+  static integer(kind=4) options.12[8] = {68, 511, 0, 0, 0, 1, 0, 1};
+
+  _gfortran_set_args (argc, argv);
+  _gfortran_set_options (8, &options.12[0]);
+  p ();
+  return 0;
+}
+
+

@@ -1,0 +1,109 @@
+f (struct array2_real(kind=4) & restrict fld, struct array1_real(kind=4) & restrict fld_b, integer(kind=4) & restrict ipend, integer(kind=4) & restrict ib)
+{
+  integer(kind=8) ubound.0;
+  integer(kind=8) stride.1;
+  integer(kind=8) ubound.2;
+  integer(kind=8) stride.3;
+  integer(kind=8) offset.4;
+  integer(kind=8) size.5;
+  real(kind=4)[0:D.1606] * restrict fld.0;
+  integer(kind=8) ubound.6;
+  integer(kind=8) stride.7;
+  integer(kind=8) offset.8;
+  integer(kind=8) size.9;
+  real(kind=4)[0:D.1610] * restrict fld_b.0;
+  integer(kind=4) i;
+  integer(kind=4) ip;
+  integer(kind=4) j;
+  integer(kind=8) D.1606;
+  bit_size_type D.1607;
+  <unnamed-unsigned:64> D.1608;
+  integer(kind=8) D.1610;
+  bit_size_type D.1611;
+  <unnamed-unsigned:64> D.1612;
+
+  {
+    integer(kind=8) D.1609;
+
+    D.1609 = fld_b->dim[0].stride;
+    stride.7 = D.1609 != 0 ? D.1609 : 1;
+    fld_b.0 = (real(kind=4)[0:D.1610] * restrict) fld_b->data;
+    ubound.6 = (fld_b->dim[0].ubound - fld_b->dim[0].lbound) + 1;
+    size.9 = stride.7 * NON_LVALUE_EXPR <ubound.6>;
+    offset.8 = -stride.7;
+    D.1610 = size.9 + -1;
+    D.1611 = (bit_size_type) size.9 * 32;
+    D.1612 = (<unnamed-unsigned:64>) size.9 * 4;
+  }
+  {
+    integer(kind=8) D.1605;
+
+    D.1605 = fld->dim[0].stride;
+    stride.1 = D.1605 != 0 ? D.1605 : 1;
+    fld.0 = (real(kind=4)[0:D.1606] * restrict) fld->data;
+    ubound.0 = (fld->dim[0].ubound - fld->dim[0].lbound) + 1;
+    stride.3 = fld->dim[1].stride;
+    ubound.2 = (fld->dim[1].ubound - fld->dim[1].lbound) + 1;
+    size.5 = stride.3 * NON_LVALUE_EXPR <ubound.2>;
+    offset.4 = -stride.1 - NON_LVALUE_EXPR <stride.3>;
+    D.1606 = size.5 + -1;
+    D.1607 = (bit_size_type) size.5 * 32;
+    D.1608 = (<unnamed-unsigned:64>) size.5 * 4;
+  }
+  {
+    integer(kind=4) D.1597;
+
+    D.1597 = *ipend;
+    ip = 1;
+    if (ip <= D.1597)
+      {
+        while (1)
+          {
+            {
+              logical(kind=4) D.1604;
+
+              {
+                integer(kind=8) inc.10;
+
+                i = (*(integer(kind=4)[0:] * restrict) mind_ilon.data)[_gfortran_polly_array_index_2 (mind_ilon.offset, mind_ilon.dim[1].stride, 1, (integer(kind=8)) *ib, (integer(kind=8)) ip)];
+              }
+              {
+                integer(kind=8) inc.11;
+
+                j = (*(integer(kind=4)[0:] * restrict) mind_jlat.data)[_gfortran_polly_array_index_2 (mind_jlat.offset, mind_jlat.dim[1].stride, 1, (integer(kind=8)) *ib, (integer(kind=8)) ip)];
+              }
+              {
+                integer(kind=8) inc.13;
+                integer(kind=8) inc.12;
+
+                (*fld_b.0)[_gfortran_polly_array_index_1 (offset.8, stride.7, (integer(kind=8)) ip)] = (*fld.0)[_gfortran_polly_array_index_2 (offset.4, stride.3, stride.1, (integer(kind=8)) j, (integer(kind=8)) i)];
+              }
+              L.1:;
+              D.1604 = ip == D.1597;
+              ip = ip + 1;
+              if (D.1604) goto L.2;
+            }
+          }
+      }
+    L.2:;
+  }
+}
+
+
+p ()
+{
+  
+}
+
+
+main (integer(kind=4) argc, character(kind=1) * * argv)
+{
+  static integer(kind=4) options.14[8] = {68, 511, 0, 0, 0, 1, 0, 1};
+
+  _gfortran_set_args (argc, argv);
+  _gfortran_set_options (8, &options.14[0]);
+  p ();
+  return 0;
+}
+
+

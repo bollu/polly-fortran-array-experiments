@@ -1,0 +1,94 @@
+fn (struct array1_real(kind=4) & restrict in_array, struct array1_real(kind=4) & restrict out_array)
+{
+  integer(kind=4) i;
+  integer(kind=8) ubound.0;
+  integer(kind=8) stride.1;
+  integer(kind=8) offset.2;
+  integer(kind=8) size.3;
+  real(kind=4)[0:D.1599] * restrict in_array.0;
+  integer(kind=4) indirect_idx;
+  integer(kind=8) ubound.4;
+  integer(kind=8) stride.5;
+  integer(kind=8) offset.6;
+  integer(kind=8) size.7;
+  real(kind=4)[0:D.1603] * restrict out_array.0;
+  integer(kind=8) D.1599;
+  bit_size_type D.1600;
+  <unnamed-unsigned:64> D.1601;
+  integer(kind=8) D.1603;
+  bit_size_type D.1604;
+  <unnamed-unsigned:64> D.1605;
+
+  {
+    integer(kind=8) D.1602;
+
+    D.1602 = out_array->dim[0].stride;
+    stride.5 = D.1602 != 0 ? D.1602 : 1;
+    out_array.0 = (real(kind=4)[0:D.1603] * restrict) out_array->data;
+    ubound.4 = (out_array->dim[0].ubound - out_array->dim[0].lbound) + 1;
+    size.7 = stride.5 * NON_LVALUE_EXPR <ubound.4>;
+    offset.6 = -stride.5;
+    D.1603 = size.7 + -1;
+    D.1604 = (bit_size_type) size.7 * 32;
+    D.1605 = (<unnamed-unsigned:64>) size.7 * 4;
+  }
+  {
+    integer(kind=8) D.1598;
+
+    D.1598 = in_array->dim[0].stride;
+    stride.1 = D.1598 != 0 ? D.1598 : 1;
+    in_array.0 = (real(kind=4)[0:D.1599] * restrict) in_array->data;
+    ubound.0 = (in_array->dim[0].ubound - in_array->dim[0].lbound) + 1;
+    size.3 = stride.1 * NON_LVALUE_EXPR <ubound.0>;
+    offset.2 = -stride.1;
+    D.1599 = size.3 + -1;
+    D.1600 = (bit_size_type) size.3 * 32;
+    D.1601 = (<unnamed-unsigned:64>) size.3 * 4;
+  }
+  i = 1;
+  if (i <= 100)
+    {
+      while (1)
+        {
+          {
+            logical(kind=4) D.1597;
+
+            {
+              integer(kind=8) inc.8;
+
+              indirect_idx = (*(integer(kind=4)[0:] * restrict) global_idx_array.data)[_gfortran_polly_array_index_1 (global_idx_array.offset, 1, (integer(kind=8)) i)];
+            }
+            {
+              integer(kind=8) inc.10;
+              integer(kind=8) inc.9;
+
+              (*out_array.0)[_gfortran_polly_array_index_1 (offset.6, stride.5, (integer(kind=8)) i)] = (*in_array.0)[_gfortran_polly_array_index_1 (offset.2, stride.1, (integer(kind=8)) indirect_idx)];
+            }
+            L.1:;
+            D.1597 = i == 100;
+            i = i + 1;
+            if (D.1597) goto L.2;
+          }
+        }
+    }
+  L.2:;
+}
+
+
+p ()
+{
+  
+}
+
+
+main (integer(kind=4) argc, character(kind=1) * * argv)
+{
+  static integer(kind=4) options.11[8] = {68, 511, 0, 0, 0, 1, 0, 1};
+
+  _gfortran_set_args (argc, argv);
+  _gfortran_set_options (8, &options.11[0]);
+  p ();
+  return 0;
+}
+
+

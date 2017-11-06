@@ -1,0 +1,30 @@
+; ModuleID = '/users/siddhart/playground/standalone/pp/data_gscp.f90'
+target datalayout = "e-p:64:64:64-S128-i1:8:8-i8:8:8-i16:16:16-i32:32:32-i64:64:64-f16:16:16-f32:32:32-f64:64:64-f128:128:128-v64:64:64-v128:128:128-a0:0:64-s0:64:64-f80:128:128-n8:16:32:64"
+target triple = "x86_64-unknown-linux-gnu"
+
+module asm "\09.ident\09\22GCC: (GNU) 4.6.4 LLVM: 3.3.1\22"
+
+@__data_gscp_MOD_zvzxp = unnamed_addr global double 0.000000e+00
+@__data_gscp_MOD_zvz0r = unnamed_addr global double 0.000000e+00
+@__data_gscp_MOD_zconst = unnamed_addr global double 0.000000e+00
+@__data_gscp_MOD_zcevxp = unnamed_addr global double 0.000000e+00
+@__data_gscp_MOD_zcev = unnamed_addr global double 0.000000e+00
+@__data_gscp_MOD_zbevxp = unnamed_addr global double 0.000000e+00
+@__data_gscp_MOD_zbev = unnamed_addr global double 0.000000e+00
+@__data_gscp_MOD_v0snow = unnamed_addr global double 2.000000e+01
+@__data_gscp_MOD_rain_n0_factor = unnamed_addr global double 1.000000e-01
+@__data_gscp_MOD_mu_rain = unnamed_addr global double 5.000000e-01
+@__data_gscp_MOD_cloud_num = unnamed_addr global double 5.000000e+08
+@__data_gscp_MOD_ccswxp = unnamed_addr global double 0.000000e+00
+@__data_gscp_MOD_ccsvxp = unnamed_addr global double 0.000000e+00
+@__data_gscp_MOD_ccsvel = unnamed_addr global double 0.000000e+00
+@__data_gscp_MOD_ccsrim = unnamed_addr global double 0.000000e+00
+@__data_gscp_MOD_ccslxp = unnamed_addr global double 0.000000e+00
+@__data_gscp_MOD_ccslam = unnamed_addr global double 0.000000e+00
+@__data_gscp_MOD_ccshi1 = unnamed_addr global double 0.000000e+00
+@__data_gscp_MOD_ccsdxp = unnamed_addr global double 0.000000e+00
+@__data_gscp_MOD_ccsdep = unnamed_addr global double 0.000000e+00
+@__data_gscp_MOD_ccsaxp = unnamed_addr global double 0.000000e+00
+@__data_gscp_MOD_ccsagg = unnamed_addr global double 0.000000e+00
+@__data_gscp_MOD_ccidep = unnamed_addr global double 0.000000e+00
+@__data_gscp_MOD_ccdvtp = unnamed_addr global double 0.000000e+00

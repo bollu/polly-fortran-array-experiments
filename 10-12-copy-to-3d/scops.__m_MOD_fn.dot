@@ -1,0 +1,26 @@
+digraph "Scop Graph for '__m_MOD_fn' function" {
+	label="Scop Graph for '__m_MOD_fn' function";
+
+	Node0x9c8c60 [shape=record,label="{entry:\l  br label %entry.split\l}"];
+	Node0x9c8c60 -> Node0x9e5c20;
+	Node0x9e5c20 [shape=record,label="{entry.split:                                      \l  %tmp = getelementptr inbounds %\"struct.array1_real(kind=4).0\",\l... %\"struct.array1_real(kind=4).0\"* %out_array, i64 0, i32 3, i64 0, i32 0\l  %tmp1 = load i64, i64* %tmp, align 8\l  %tmp2 = icmp eq i64 %tmp1, 0\l  %tmp3 = select i1 %tmp2, i64 1, i64 %tmp1\l  %tmp4 = bitcast %\"struct.array1_real(kind=4).0\"* %out_array to float**\l  %out_arr_data = load float*, float** %tmp4, align 8\l  %tmp6 = sub i64 0, %tmp3\l  %tmp7 = getelementptr inbounds %\"struct.array1_real(kind=4)\",\l... %\"struct.array1_real(kind=4)\"* %in_array, i64 0, i32 3, i64 0, i32 0\l  %tmp8 = load i64, i64* %tmp7, align 8\l  %tmp9 = icmp eq i64 %tmp8, 0\l  %. = select i1 %tmp9, i64 1, i64 %tmp8\l  %tmp10 = bitcast %\"struct.array1_real(kind=4)\"* %in_array to float**\l  %in_arr_data = load float*, float** %tmp10, align 8\l  %tmp12 = sub i64 0, %.\l  br label %\"9\"\l}"];
+	Node0x9e5c20 -> Node0x9bd6d0;
+	Node0x9bd6d0 [shape=record,label="{\"9\":                                              \l  %indvars.iv = phi i64 [ %indvars.iv.next, %\"9\" ], [ 1, %entry.split ]\l  %idx_array_data = load i32*, i32** bitcast\l... (%\"struct.array1_integer(kind=4)\"* @__m_MOD_global_idx_array to i32**), align\l... 32\l  %tmp14 = load i64, i64* getelementptr inbounds\l... (%\"struct.array1_integer(kind=4)\", %\"struct.array1_integer(kind=4)\"*\l... @__m_MOD_global_idx_array, i64 0, i32 1), align 8\l  %idx_array_islot_index = tail call i64 @_gfortran_polly_array_index_1(i64\l... %tmp14, i64 1, i64 %indvars.iv) #2\l  %idx_array_slot = getelementptr i32, i32* %idx_array_data, i64\l... %idx_array_islot_index\l  %indirect_idx = load i32, i32* %idx_array_slot, align 4\l  %tmp18 = tail call i64 @_gfortran_polly_array_index_1(i64 %tmp6, i64 %tmp3,\l... i64 %indvars.iv) #2\l  %indirect_idx_sext = sext i32 %indirect_idx to i64\l  %in_array_idx_loc = tail call i64 @_gfortran_polly_array_index_1(i64 %tmp12,\l... i64 %., i64 %indirect_idx_sext) #2\l  %in_arr_slot = getelementptr float, float* %in_arr_data, i64\l... %in_array_idx_loc\l  %in_arr_slot_typed = bitcast float* %in_arr_slot to i32*\l  %in_arr_slot_val = load i32, i32* %in_arr_slot_typed, align 4\l  %out_arr_slot = getelementptr float, float* %out_arr_data, i64 %tmp18\l  %out_arr_slot_bitcast = bitcast float* %out_arr_slot to i32*\l  store i32 %in_arr_slot_val, i32* %out_arr_slot_bitcast, align 4\l  %tmp26 = icmp eq i64 %indvars.iv, 100\l  %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1\l  br i1 %tmp26, label %return, label %\"9\"\l}"];
+	Node0x9bd6d0 -> Node0x9eb350;
+	Node0x9bd6d0 -> Node0x9bd6d0[constraint=false];
+	Node0x9eb350 [shape=record,label="{return:                                           \l  ret void\l}"];
+	colorscheme = "paired12"
+        subgraph cluster_0x9cbe40 {
+          label = "";
+          style = solid;
+          color = 1
+          subgraph cluster_0x9cbf90 {
+            label = "";
+            style = filled;
+            color = 3            Node0x9bd6d0;
+          }
+          Node0x9c8c60;
+          Node0x9e5c20;
+          Node0x9eb350;
+        }
+}

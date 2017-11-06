@@ -1,0 +1,52 @@
+; ModuleID = '/users/siddhart/playground/standalone/pp/data_parallel.f90'
+target datalayout = "e-p:64:64:64-S128-i1:8:8-i8:8:8-i16:16:16-i32:32:32-i64:64:64-f16:16:16-f32:32:32-f64:64:64-f128:128:128-v64:64:64-v128:128:128-a0:0:64-s0:64:64-f80:128:128-n8:16:32:64"
+target triple = "x86_64-unknown-linux-gnu"
+
+module asm "\09.ident\09\22GCC: (GNU) 4.6.4 LLVM: 3.3.1\22"
+
+%"struct.array2_real(kind=8)" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%struct.descriptor_dimension = type { i64, i64, i64 }
+%"struct.array1_real(kind=8)" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_logical(kind=4)" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array2_integer(kind=4)" = type { i8*, i64, i64, [2 x %struct.descriptor_dimension] }
+%"struct.array1_integer(kind=4)" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%struct.array1_unknown = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+
+@__data_parallel_MOD_sendbuf = unnamed_addr global %"struct.array2_real(kind=8)" zeroinitializer, align 32
+@__data_parallel_MOD_realbuf = unnamed_addr global %"struct.array1_real(kind=8)" zeroinitializer, align 32
+@__data_parallel_MOD_num_compute = unnamed_addr global i32 0
+@__data_parallel_MOD_nprocy = unnamed_addr global i32 0
+@__data_parallel_MOD_nprocx = unnamed_addr global i32 0
+@__data_parallel_MOD_nprocio = unnamed_addr global i32 0
+@__data_parallel_MOD_nproc = unnamed_addr global i32 0
+@__data_parallel_MOD_nexch_tag = unnamed_addr global i32 0
+@__data_parallel_MOD_ncomm_type = unnamed_addr global i32 0
+@__data_parallel_MOD_nboundlines = unnamed_addr global i32 0
+@__data_parallel_MOD_my_world_id = unnamed_addr global i32 0
+@__data_parallel_MOD_my_cart_pos = unnamed_addr global [2 x i32] zeroinitializer
+@__data_parallel_MOD_my_cart_neigh = unnamed_addr global [4 x i32] zeroinitializer, align 16
+@__data_parallel_MOD_my_cart_id = unnamed_addr global i32 0
+@__data_parallel_MOD_ltime_barrier = unnamed_addr global i32 0
+@__data_parallel_MOD_lreorder = unnamed_addr global i32 0
+@__data_parallel_MOD_logbuf = unnamed_addr global %"struct.array1_logical(kind=4)" zeroinitializer, align 32
+@__data_parallel_MOD_ldatatypes = unnamed_addr global i32 0
+@__data_parallel_MOD_lcompute_pe = unnamed_addr global i32 0
+@__data_parallel_MOD_isubpos = global %"struct.array2_integer(kind=4)" zeroinitializer, align 32
+@__data_parallel_MOD_isendbuflen = unnamed_addr global i32 0
+@__data_parallel_MOD_intbuf = unnamed_addr global %"struct.array1_integer(kind=4)" zeroinitializer, align 32
+@__data_parallel_MOD_imp_single = unnamed_addr global i32 0
+@__data_parallel_MOD_imp_reals = unnamed_addr global i32 0
+@__data_parallel_MOD_imp_logical = unnamed_addr global i32 0
+@__data_parallel_MOD_imp_integers = unnamed_addr global i32 0
+@__data_parallel_MOD_imp_double = unnamed_addr global i32 0
+@__data_parallel_MOD_imp_character = unnamed_addr global i32 0
+@__data_parallel_MOD_imp_byte = unnamed_addr global i32 0
+@__data_parallel_MOD_igroup_world = unnamed_addr global i32 0
+@__data_parallel_MOD_igroup_cart = unnamed_addr global i32 0
+@__data_parallel_MOD_iexch_req = unnamed_addr global [4 x i32] zeroinitializer, align 16
+@__data_parallel_MOD_icomm_world = unnamed_addr global i32 0
+@__data_parallel_MOD_icomm_row = unnamed_addr global i32 0
+@__data_parallel_MOD_icomm_compute = unnamed_addr global i32 0
+@__data_parallel_MOD_icomm_cart = unnamed_addr global i32 0
+@__data_parallel_MOD_icomm_asynio = unnamed_addr global i32 0
+@__data_parallel_MOD_charbuf = unnamed_addr global %struct.array1_unknown zeroinitializer, align 32

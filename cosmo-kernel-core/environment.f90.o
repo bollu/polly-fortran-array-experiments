@@ -1,0 +1,2015 @@
+; ModuleID = '/users/siddhart/playground/standalone/pp/environment.f90'
+target datalayout = "e-p:64:64:64-S128-i1:8:8-i8:8:8-i16:16:16-i32:32:32-i64:64:64-f16:16:16-f32:32:32-f64:64:64-f128:128:128-v64:64:64-v128:128:128-a0:0:64-s0:64:64-f80:128:128-n8:16:32:64"
+target triple = "x86_64-unknown-linux-gnu"
+
+module asm "\09.ident\09\22GCC: (GNU) 4.6.4 LLVM: 3.3.1\22"
+
+%0 = type { i32 }
+%1 = type { i32 }
+%2 = type { i32, i32, [5 x i32] }
+%3 = type { [5 x i32], [1 x i32] }
+%4 = type { [1 x [1 x i8]], [1 x [1 x i8]] }
+%struct.__st_parameter_dt = type { %struct.__st_parameter_common, i64, i64*, i64*, i8*, i8*, i32, i32, i8*, i8*, i32, i32, i8*, [256 x i8], i32*, i64, i8*, i32, i32, i8*, i8*, i32, i32, i8*, i8*, i32, i32, i8*, i8*, i32, [4 x i8] }
+%struct.__st_parameter_common = type { i32, i32, i8*, i32, i32, i8*, i32* }
+%struct.__st_parameter_inquire = type { %struct.__st_parameter_common, i32*, i32*, i32*, i32*, i32*, i32*, i64*, i8*, i32, i32, i8*, i8*, i32, i32, i8*, i8*, i32, i32, i8*, i8*, i32, i32, i8*, i8*, i32, i32, i8*, i8*, i32, i32, i8*, i8*, i32, i32, i8*, i8*, i32, i32, i8*, i8*, i32, i32, i8*, i32, i32, i8*, i8*, i32, i32, i8*, i8*, i32, i32*, i64*, i32* }
+%struct.__st_parameter_close = type { %struct.__st_parameter_common, i8*, i32, [4 x i8] }
+
+@mpifcmb5_ = common unnamed_addr global %0 zeroinitializer, align 16
+@mpifcmb9_ = common unnamed_addr global %1 zeroinitializer, align 16
+@mpipriv1_ = common unnamed_addr global %2 zeroinitializer, align 16
+@mpipriv2_ = common unnamed_addr global %3 zeroinitializer, align 16
+@mpiprivc_ = common unnamed_addr global %4 zeroinitializer, align 16
+@__environment_MOD_iunit_table = global [80 x i32] zeroinitializer, align 32
+@__environment_MOD_iunit_start = unnamed_addr global i32 21
+@__environment_MOD_iunit_end = unnamed_addr global i32 100
+@.cst = linker_private constant [3 x i8] c"   ", align 8
+@.cst1 = linker_private constant [11 x i8] c"MPI_BARRIER", align 8
+@.cst2 = linker_private constant [4 x i8] c"    ", align 8
+@0 = internal constant i32 0
+@.cst3 = linker_private constant [14 x i8] c"MPI_COMM_SPLIT", align 8
+@.cst4 = linker_private constant [15 x i8] c"MPI_CART_CREATE", align 8
+@.cst5 = linker_private constant [14 x i8] c"MPI_COMM_GROUP", align 8
+@.cst6 = linker_private constant [13 x i8] c"MPI_COMM_RANK", align 8
+@.cst7 = linker_private constant [15 x i8] c"MPI_CART_COORDS", align 8
+@.cst8 = linker_private constant [13 x i8] c"MPI_CART_RANK", align 8
+@.cst9 = linker_private constant [14 x i8] c"MPI_GROUP_INCL", align 8
+@.cst10 = linker_private constant [15 x i8] c"MPI_COMM_CREATE", align 8
+@.cst11 = linker_private constant [57 x i8] c"/users/siddhart/playground/standalone/pp/environment.f90\00", align 64
+@.cst12 = linker_private constant [62 x i8] c"*------------------------------------------------------------*", align 64
+@.cst13 = linker_private constant [54 x i8] c"*    PROGRAM TERMINATED BECAUSE OF MPI ERRORS DETECTED", align 64
+@.cst14 = linker_private constant [29 x i8] c"*              IN ROUTINE:   ", align 8
+@.cst15 = linker_private constant [1 x i8] c"*", align 8
+@.cst16 = linker_private constant [19 x i8] c"*    ERROR CODE is ", align 8
+@.cst17 = linker_private constant [2 x i8] c": ", align 8
+@.cst18 = linker_private constant [19 x i8] c"*    MPI ROUTINE:  ", align 8
+@.cst19 = linker_private constant [23 x i8] c"*    MPI ERROR CODE is ", align 8
+@.cst20 = linker_private constant [3 x i8] c":  ", align 8
+@.cst21 = linker_private constant [50 x i8] c"*    PROGRAM TERMINATED BECAUSE OF ERRORS DETECTED", align 64
+@.cst22 = linker_private constant [5 x i8] c"*    ", align 8
+@1 = internal constant i32 30
+@2 = internal constant i32 1140850688
+@.cst23 = linker_private constant [24 x i8] c" *** WARNING:  The unit ", align 8
+@.cst24 = linker_private constant [21 x i8] c" is already free *** ", align 8
+@.cst25 = linker_private constant [55 x i8] c" *** WARNING:  No more free unit numbers available *** ", align 64
+@.cst26 = linker_private constant [8 x i8] c"MPI_INIT", align 8
+@.cst27 = linker_private constant [13 x i8] c"MPI_COMM_SIZE", align 8
+
+; Function Attrs: nounwind uwtable
+define void @__environment_MOD_comm_barrier(i32* noalias %icomm, i32* noalias %ierror, [0 x i8]* noalias %yerrmsg, i32 %_yerrmsg) unnamed_addr #0 {
+entry:
+  %icomm_addr = alloca i32*, align 8
+  %ierror_addr = alloca i32*, align 8
+  %yerrmsg_addr = alloca [0 x i8]*, align 8
+  %_yerrmsg_addr = alloca i32, align 4
+  %izmplcode = alloca i32
+  %D.1899 = alloca i64
+  %D.1900 = alloca i64
+  %D.1895 = alloca i32
+  %D.1898 = alloca i32
+  %"alloca point" = bitcast i32 0 to i32
+  store i32* %icomm, i32** %icomm_addr, align 1
+  store i32* %ierror, i32** %ierror_addr, align 1
+  store [0 x i8]* %yerrmsg, [0 x i8]** %yerrmsg_addr, align 1
+  store i32 %_yerrmsg, i32* %_yerrmsg_addr, align 1
+  %0 = load i32* %_yerrmsg_addr, align 4
+  %1 = load i32** %ierror_addr, align 8
+  %2 = load [0 x i8]** %yerrmsg_addr, align 8
+  %3 = load i32** %icomm_addr, align 8
+  %"ssa point" = bitcast i32 0 to i32
+  br label %"2"
+
+"2":                                              ; preds = %entry
+  %4 = sext i32 %0 to i64
+  %5 = mul i64 %4, 8
+  %6 = add i32 %0, -1
+  %7 = sext i32 %6 to i64
+  %8 = add i64 %7, 1
+  store i32 0, i32* %1, align 4
+  %9 = icmp ne i32 %0, 0
+  br i1 %9, label %"3", label %"6"
+
+"3":                                              ; preds = %"2"
+  %10 = sext i32 %0 to i64
+  %11 = icmp ule i64 %10, 3
+  br i1 %11, label %"4", label %"5"
+
+"4":                                              ; preds = %"3"
+  %12 = sext i32 %0 to i64
+  %13 = bitcast [0 x i8]* %2 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %13, i8* getelementptr inbounds ([3 x i8]* @.cst, i64 0, i64 0), i64 %12, i32 1, i1 false)
+  br label %"6"
+
+"5":                                              ; preds = %"3"
+  %14 = bitcast [0 x i8]* %2 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %14, i8* getelementptr inbounds ([3 x i8]* @.cst, i64 0, i64 0), i64 3, i32 1, i1 false)
+  %15 = sext i32 %0 to i64
+  %16 = add i64 %15, -3
+  %17 = bitcast [0 x i8]* %2 to i8*
+  %18 = getelementptr i8* %17, i64 3
+  call void @llvm.memset.p0i8.i64(i8* %18, i8 32, i64 %16, i32 1, i1 false)
+  br label %"6"
+
+"6":                                              ; preds = %"5", %"4", %"2"
+  store i32 0, i32* %izmplcode, align 4
+  call void bitcast (void (...)* @mpi_barrier_ to void (i32*, i32*)*)(i32* noalias %3, i32* %izmplcode) #1
+  %19 = load i32* %izmplcode, align 4
+  %20 = icmp ne i32 %19, 0
+  br i1 %20, label %"7", label %"11"
+
+"7":                                              ; preds = %"6"
+  %21 = load i32* %izmplcode, align 4
+  store i32 %21, i32* %1, align 4
+  %22 = icmp ne i32 %0, 0
+  br i1 %22, label %"8", label %"11"
+
+"8":                                              ; preds = %"7"
+  %23 = sext i32 %0 to i64
+  %24 = icmp ule i64 %23, 11
+  br i1 %24, label %"9", label %"10"
+
+"9":                                              ; preds = %"8"
+  %25 = sext i32 %0 to i64
+  %26 = bitcast [0 x i8]* %2 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %26, i8* getelementptr inbounds ([11 x i8]* @.cst1, i64 0, i64 0), i64 %25, i32 1, i1 false)
+  br label %"11"
+
+"10":                                             ; preds = %"8"
+  %27 = bitcast [0 x i8]* %2 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %27, i8* getelementptr inbounds ([11 x i8]* @.cst1, i64 0, i64 0), i64 11, i32 1, i1 false)
+  %28 = sext i32 %0 to i64
+  %29 = add i64 %28, -11
+  %30 = bitcast [0 x i8]* %2 to i8*
+  %31 = getelementptr i8* %30, i64 11
+  call void @llvm.memset.p0i8.i64(i8* %31, i8 32, i64 %29, i32 1, i1 false)
+  br label %"11"
+
+"11":                                             ; preds = %"10", %"9", %"7", %"6"
+  br label %return
+
+return:                                           ; preds = %"11"
+  ret void
+}
+
+; Function Attrs: nounwind
+declare void @llvm.memcpy.p0i8.p0i8.i64(i8* nocapture, i8* nocapture, i64, i32, i1) #1
+
+; Function Attrs: nounwind
+declare void @llvm.memset.p0i8.i64(i8* nocapture, i8, i64, i32, i1) #1
+
+declare void @mpi_barrier_(...)
+
+; Function Attrs: nounwind uwtable
+define void @__environment_MOD_init_procgrid(i32* noalias %nproc, i32* noalias %nprocx, i32* noalias %nprocy, i32* noalias %nprocio, i32* noalias %lperi_x, i32* noalias %lperi_y, i32* noalias %lreproduce, i32* noalias %lreorder, i32* noalias %icomm_world, i32* noalias %igroup_world, i32* noalias %my_world_id, i32* noalias %icomm_compute, i32* noalias %icomm_asynio, i32* noalias %icomm_cart, i32* noalias %igroup_cart, i32* noalias %my_cart_id, [2 x i32]* noalias %my_cart_pos, [4 x i32]* noalias %my_cart_neigh, i32* noalias %icomm_row, i32* noalias %lcompute_pe, [50 x i8]* noalias %yerrmsg, i32* noalias %ierror, i32 %_yerrmsg) unnamed_addr #0 {
+entry:
+  %nproc_addr = alloca i32*, align 8
+  %nprocx_addr = alloca i32*, align 8
+  %nprocy_addr = alloca i32*, align 8
+  %nprocio_addr = alloca i32*, align 8
+  %lperi_x_addr = alloca i32*, align 8
+  %lperi_y_addr = alloca i32*, align 8
+  %lreproduce_addr = alloca i32*, align 8
+  %lreorder_addr = alloca i32*, align 8
+  %icomm_world_addr = alloca i32*, align 8
+  %igroup_world_addr = alloca i32*, align 8
+  %my_world_id_addr = alloca i32*, align 8
+  %icomm_compute_addr = alloca i32*, align 8
+  %icomm_asynio_addr = alloca i32*, align 8
+  %icomm_cart_addr = alloca i32*, align 8
+  %igroup_cart_addr = alloca i32*, align 8
+  %my_cart_id_addr = alloca i32*, align 8
+  %my_cart_pos_addr = alloca [2 x i32]*, align 8
+  %my_cart_neigh_addr = alloca [4 x i32]*, align 8
+  %icomm_row_addr = alloca i32*, align 8
+  %lcompute_pe_addr = alloca i32*, align 8
+  %yerrmsg_addr = alloca [50 x i8]*, align 8
+  %ierror_addr = alloca i32*, align 8
+  %_yerrmsg_addr = alloca i32, align 4
+  %color_comp = alloca i32
+  %ij = alloca [2 x i32]
+  %ix = alloca i32
+  %iy = alloca i32
+  %izcomm = alloca i32
+  %izgroup = alloca i32
+  %izmplcode = alloca i32
+  %ubound.0 = alloca i64
+  %size.1 = alloca i64
+  %izranks = alloca [0 x i32]*
+  %lzperiods = alloca [2 x i32]
+  %nziope0 = alloca i32
+  %nzneigh = alloca i32
+  %nznumdims = alloca i32
+  %nzsizdims = alloca [2 x i32]
+  %D.1976 = alloca i64
+  %D.1977 = alloca i64
+  %D.1978 = alloca i64
+  %izranks.51 = alloca i8*
+  %D.1979 = alloca i64
+  %S.2 = alloca i64
+  %D.1959 = alloca i32
+  %D.1972 = alloca i32
+  %D.1962 = alloca i32
+  %D.1965 = alloca i32
+  %D.1981 = alloca i8*
+  %"alloca point" = bitcast i32 0 to i32
+  store i32* %nproc, i32** %nproc_addr, align 1
+  store i32* %nprocx, i32** %nprocx_addr, align 1
+  store i32* %nprocy, i32** %nprocy_addr, align 1
+  store i32* %nprocio, i32** %nprocio_addr, align 1
+  store i32* %lperi_x, i32** %lperi_x_addr, align 1
+  store i32* %lperi_y, i32** %lperi_y_addr, align 1
+  store i32* %lreproduce, i32** %lreproduce_addr, align 1
+  store i32* %lreorder, i32** %lreorder_addr, align 1
+  store i32* %icomm_world, i32** %icomm_world_addr, align 1
+  store i32* %igroup_world, i32** %igroup_world_addr, align 1
+  store i32* %my_world_id, i32** %my_world_id_addr, align 1
+  store i32* %icomm_compute, i32** %icomm_compute_addr, align 1
+  store i32* %icomm_asynio, i32** %icomm_asynio_addr, align 1
+  store i32* %icomm_cart, i32** %icomm_cart_addr, align 1
+  store i32* %igroup_cart, i32** %igroup_cart_addr, align 1
+  store i32* %my_cart_id, i32** %my_cart_id_addr, align 1
+  store [2 x i32]* %my_cart_pos, [2 x i32]** %my_cart_pos_addr, align 1
+  store [4 x i32]* %my_cart_neigh, [4 x i32]** %my_cart_neigh_addr, align 1
+  store i32* %icomm_row, i32** %icomm_row_addr, align 1
+  store i32* %lcompute_pe, i32** %lcompute_pe_addr, align 1
+  store [50 x i8]* %yerrmsg, [50 x i8]** %yerrmsg_addr, align 1
+  store i32* %ierror, i32** %ierror_addr, align 1
+  store i32 %_yerrmsg, i32* %_yerrmsg_addr, align 1
+  %0 = load i32** %nproc_addr, align 8
+  %1 = load i32** %ierror_addr, align 8
+  %2 = load [50 x i8]** %yerrmsg_addr, align 8
+  %3 = load i32** %icomm_world_addr, align 8
+  %4 = load i32** %icomm_compute_addr, align 8
+  %5 = load i32** %icomm_asynio_addr, align 8
+  %6 = load i32** %lcompute_pe_addr, align 8
+  %7 = load i32** %my_cart_id_addr, align 8
+  %8 = load i32** %icomm_cart_addr, align 8
+  %9 = load i32** %icomm_row_addr, align 8
+  %10 = load [2 x i32]** %my_cart_pos_addr, align 8
+  %11 = load [4 x i32]** %my_cart_neigh_addr, align 8
+  %12 = load i32** %nprocio_addr, align 8
+  %13 = load i32** %my_world_id_addr, align 8
+  %14 = load i32** %nprocx_addr, align 8
+  %15 = load i32** %nprocy_addr, align 8
+  %16 = load i32** %lperi_x_addr, align 8
+  %17 = load i32** %lperi_y_addr, align 8
+  %18 = load i32** %lreorder_addr, align 8
+  %19 = load i32** %igroup_cart_addr, align 8
+  %20 = load i32** %lreproduce_addr, align 8
+  %"ssa point" = bitcast i32 0 to i32
+  br label %"2"
+
+"2":                                              ; preds = %entry
+  %21 = load i32* %0, align 4
+  %22 = add i32 %21, -1
+  %23 = sext i32 %22 to i64
+  %24 = add i64 %23, 1
+  %25 = icmp sge i64 %24, 0
+  %26 = select i1 %25, i64 %24, i64 0
+  %27 = add i64 %26, -1
+  %28 = mul i64 %26, 32
+  %29 = mul i64 %26, 4
+  %30 = mul i64 %26, 4
+  %31 = icmp uge i64 %30, 1
+  %32 = select i1 %31, i64 %30, i64 1
+  %33 = call noalias i8* @malloc(i64 %32) #1
+  %34 = bitcast i8* %33 to [0 x i32]*
+  store i32 0, i32* %1, align 4
+  store i32 0, i32* %izmplcode, align 4
+  %35 = bitcast [50 x i8]* %2 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %35, i8* getelementptr inbounds ([4 x i8]* @.cst2, i64 0, i64 0), i64 4, i32 1, i1 false)
+  %36 = bitcast [50 x i8]* %2 to i8*
+  %37 = getelementptr i8* %36, i64 4
+  call void @llvm.memset.p0i8.i64(i8* %37, i8 32, i64 46, i32 1, i1 false)
+  %38 = load i32* %3, align 4
+  store i32 %38, i32* %4, align 4
+  %39 = load i32* %3, align 4
+  store i32 %39, i32* %5, align 4
+  store i32 1, i32* %6, align 4
+  store i32 0, i32* %7, align 4
+  %40 = load i32* %3, align 4
+  store i32 %40, i32* %8, align 4
+  %41 = load i32* %3, align 4
+  store i32 %41, i32* %9, align 4
+  %42 = bitcast [2 x i32]* %10 to i8*
+  call void @llvm.memset.p0i8.i64(i8* %42, i8 0, i64 8, i32 1, i1 false)
+  br label %"3"
+
+"3":                                              ; preds = %"4", %"2"
+  %43 = phi i64 [ %48, %"4" ], [ 1, %"2" ]
+  %44 = icmp sgt i64 %43, 4
+  br i1 %44, label %"5", label %"4"
+
+"4":                                              ; preds = %"3"
+  %45 = add i64 %43, -1
+  %46 = bitcast [4 x i32]* %11 to i32*
+  %47 = getelementptr i32* %46, i64 %45
+  store i32 -1, i32* %47, align 4
+  %48 = add i64 %43, 1
+  br label %"3"
+
+"5":                                              ; preds = %"3"
+  %49 = load i32* %0, align 4
+  %50 = icmp sgt i32 %49, 1
+  br i1 %50, label %"6", label %"77"
+
+"6":                                              ; preds = %"5"
+  %51 = load i32* %12, align 4
+  %52 = icmp sgt i32 %51, 0
+  br i1 %52, label %"7", label %"8"
+
+"7":                                              ; preds = %"6"
+  %53 = load i32* %0, align 4
+  %54 = load i32* %12, align 4
+  %55 = sub i32 %53, %54
+  br label %"8"
+
+"8":                                              ; preds = %"7", %"6"
+  %56 = phi i32 [ %55, %"7" ], [ 0, %"6" ]
+  %57 = icmp ne i32 %56, 0
+  br i1 %57, label %"9", label %"14"
+
+"9":                                              ; preds = %"8"
+  %58 = load i32* %13, align 4
+  %59 = icmp sge i32 %58, %56
+  br i1 %59, label %"10", label %"11"
+
+"10":                                             ; preds = %"9"
+  store i32 0, i32* %6, align 4
+  store i32 -32766, i32* %color_comp, align 4
+  br label %"12"
+
+"11":                                             ; preds = %"9"
+  store i32 1, i32* %6, align 4
+  store i32 0, i32* %color_comp, align 4
+  br label %"12"
+
+"12":                                             ; preds = %"11", %"10"
+  call void bitcast (void (...)* @mpi_comm_split_ to void (i32*, i32*, i32*, i32*, i32*)*)(i32* noalias %3, i32* %color_comp, i32* @0, i32* noalias %4, i32* %izmplcode) #1
+  %60 = load i32* %izmplcode, align 4
+  %61 = icmp ne i32 %60, 0
+  br i1 %61, label %"13", label %"14"
+
+"13":                                             ; preds = %"12"
+  %62 = load i32* %izmplcode, align 4
+  store i32 %62, i32* %1, align 4
+  %63 = bitcast [50 x i8]* %2 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %63, i8* getelementptr inbounds ([14 x i8]* @.cst3, i64 0, i64 0), i64 14, i32 1, i1 false)
+  %64 = bitcast [50 x i8]* %2 to i8*
+  %65 = getelementptr i8* %64, i64 14
+  call void @llvm.memset.p0i8.i64(i8* %65, i8 32, i64 36, i32 1, i1 false)
+  br label %"82"
+
+"14":                                             ; preds = %"12", %"8"
+  %66 = load i32* %6, align 4, !range !0
+  %67 = trunc i32 %66 to i1
+  %68 = icmp ne i1 %67, false
+  br i1 %68, label %"15", label %"75"
+
+"15":                                             ; preds = %"14"
+  %69 = load i32* %14, align 4
+  %70 = load i32* %15, align 4
+  %71 = mul i32 %69, %70
+  %72 = icmp sgt i32 %71, 1
+  br i1 %72, label %"16", label %"75"
+
+"16":                                             ; preds = %"15"
+  store i32 2, i32* %nznumdims, align 4
+  %73 = load i32* %14, align 4
+  %74 = bitcast [2 x i32]* %nzsizdims to i32*
+  %75 = getelementptr i32* %74, i64 0
+  store i32 %73, i32* %75, align 4
+  %76 = load i32* %15, align 4
+  %77 = bitcast [2 x i32]* %nzsizdims to i32*
+  %78 = getelementptr i32* %77, i64 1
+  store i32 %76, i32* %78, align 4
+  %79 = load i32* %16, align 4, !range !0
+  %80 = trunc i32 %79 to i1
+  %81 = bitcast [2 x i32]* %lzperiods to i32*
+  %82 = getelementptr i32* %81, i64 0
+  %83 = zext i1 %80 to i32
+  store i32 %83, i32* %82, align 4
+  %84 = load i32* %17, align 4, !range !0
+  %85 = trunc i32 %84 to i1
+  %86 = bitcast [2 x i32]* %lzperiods to i32*
+  %87 = getelementptr i32* %86, i64 1
+  %88 = zext i1 %85 to i32
+  store i32 %88, i32* %87, align 4
+  call void bitcast (void (...)* @mpi_cart_create_ to void (i32*, i32*, [2 x i32]*, [2 x i32]*, i32*, i32*, i32*)*)(i32* noalias %4, i32* %nznumdims, [2 x i32]* %nzsizdims, [2 x i32]* %lzperiods, i32* noalias %18, i32* noalias %8, i32* %izmplcode) #1
+  %89 = load i32* %izmplcode, align 4
+  %90 = icmp ne i32 %89, 0
+  br i1 %90, label %"17", label %"18"
+
+"17":                                             ; preds = %"16"
+  %91 = load i32* %izmplcode, align 4
+  store i32 %91, i32* %1, align 4
+  %92 = bitcast [50 x i8]* %2 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %92, i8* getelementptr inbounds ([15 x i8]* @.cst4, i64 0, i64 0), i64 15, i32 1, i1 false)
+  %93 = bitcast [50 x i8]* %2 to i8*
+  %94 = getelementptr i8* %93, i64 15
+  call void @llvm.memset.p0i8.i64(i8* %94, i8 32, i64 35, i32 1, i1 false)
+  br label %"82"
+
+"18":                                             ; preds = %"16"
+  call void bitcast (void (...)* @mpi_comm_group_ to void (i32*, i32*, i32*)*)(i32* noalias %8, i32* noalias %19, i32* %izmplcode) #1
+  %95 = load i32* %izmplcode, align 4
+  %96 = icmp ne i32 %95, 0
+  br i1 %96, label %"19", label %"20"
+
+"19":                                             ; preds = %"18"
+  %97 = load i32* %izmplcode, align 4
+  store i32 %97, i32* %1, align 4
+  %98 = bitcast [50 x i8]* %2 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %98, i8* getelementptr inbounds ([14 x i8]* @.cst5, i64 0, i64 0), i64 14, i32 1, i1 false)
+  %99 = bitcast [50 x i8]* %2 to i8*
+  %100 = getelementptr i8* %99, i64 14
+  call void @llvm.memset.p0i8.i64(i8* %100, i8 32, i64 36, i32 1, i1 false)
+  br label %"82"
+
+"20":                                             ; preds = %"18"
+  call void bitcast (void (...)* @mpi_comm_rank_ to void (i32*, i32*, i32*)*)(i32* noalias %8, i32* noalias %7, i32* %izmplcode) #1
+  %101 = load i32* %izmplcode, align 4
+  %102 = icmp ne i32 %101, 0
+  br i1 %102, label %"21", label %"22"
+
+"21":                                             ; preds = %"20"
+  %103 = load i32* %izmplcode, align 4
+  store i32 %103, i32* %1, align 4
+  %104 = bitcast [50 x i8]* %2 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %104, i8* getelementptr inbounds ([13 x i8]* @.cst6, i64 0, i64 0), i64 13, i32 1, i1 false)
+  %105 = bitcast [50 x i8]* %2 to i8*
+  %106 = getelementptr i8* %105, i64 13
+  call void @llvm.memset.p0i8.i64(i8* %106, i8 32, i64 37, i32 1, i1 false)
+  br label %"82"
+
+"22":                                             ; preds = %"20"
+  call void bitcast (void (...)* @mpi_cart_coords_ to void (i32*, i32*, i32*, [2 x i32]*, i32*)*)(i32* noalias %8, i32* noalias %7, i32* %nznumdims, [2 x i32]* noalias %10, i32* %izmplcode) #1
+  %107 = load i32* %izmplcode, align 4
+  %108 = icmp ne i32 %107, 0
+  br i1 %108, label %"23", label %"24"
+
+"23":                                             ; preds = %"22"
+  %109 = load i32* %izmplcode, align 4
+  store i32 %109, i32* %1, align 4
+  %110 = bitcast [50 x i8]* %2 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %110, i8* getelementptr inbounds ([15 x i8]* @.cst7, i64 0, i64 0), i64 15, i32 1, i1 false)
+  %111 = bitcast [50 x i8]* %2 to i8*
+  %112 = getelementptr i8* %111, i64 15
+  call void @llvm.memset.p0i8.i64(i8* %112, i8 32, i64 35, i32 1, i1 false)
+  br label %"82"
+
+"24":                                             ; preds = %"22"
+  %113 = bitcast [2 x i32]* %10 to i32*
+  %114 = getelementptr i32* %113, i64 0
+  %115 = load i32* %114, align 4
+  %116 = icmp eq i32 %115, 0
+  br i1 %116, label %"25", label %"26"
+
+"25":                                             ; preds = %"24"
+  %117 = bitcast [4 x i32]* %11 to i32*
+  %118 = getelementptr i32* %117, i64 0
+  store i32 -1, i32* %118, align 4
+  br label %"29"
+
+"26":                                             ; preds = %"24"
+  %119 = bitcast [2 x i32]* %10 to i32*
+  %120 = getelementptr i32* %119, i64 0
+  %121 = load i32* %120, align 4
+  %122 = add i32 %121, -1
+  %123 = bitcast [2 x i32]* %ij to i32*
+  %124 = getelementptr i32* %123, i64 0
+  store i32 %122, i32* %124, align 4
+  %125 = bitcast [2 x i32]* %10 to i32*
+  %126 = getelementptr i32* %125, i64 1
+  %127 = load i32* %126, align 4
+  %128 = bitcast [2 x i32]* %ij to i32*
+  %129 = getelementptr i32* %128, i64 1
+  store i32 %127, i32* %129, align 4
+  call void bitcast (void (...)* @mpi_cart_rank_ to void (i32*, [2 x i32]*, i32*, i32*)*)(i32* noalias %8, [2 x i32]* %ij, i32* %nzneigh, i32* %izmplcode) #1
+  %130 = load i32* %izmplcode, align 4
+  %131 = icmp ne i32 %130, 0
+  br i1 %131, label %"27", label %"28"
+
+"27":                                             ; preds = %"26"
+  %132 = load i32* %izmplcode, align 4
+  store i32 %132, i32* %1, align 4
+  %133 = bitcast [50 x i8]* %2 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %133, i8* getelementptr inbounds ([13 x i8]* @.cst8, i64 0, i64 0), i64 13, i32 1, i1 false)
+  %134 = bitcast [50 x i8]* %2 to i8*
+  %135 = getelementptr i8* %134, i64 13
+  call void @llvm.memset.p0i8.i64(i8* %135, i8 32, i64 37, i32 1, i1 false)
+  br label %"82"
+
+"28":                                             ; preds = %"26"
+  %136 = load i32* %nzneigh, align 4
+  %137 = bitcast [4 x i32]* %11 to i32*
+  %138 = getelementptr i32* %137, i64 0
+  store i32 %136, i32* %138, align 4
+  br label %"29"
+
+"29":                                             ; preds = %"28", %"25"
+  %139 = bitcast [2 x i32]* %10 to i32*
+  %140 = getelementptr i32* %139, i64 1
+  %141 = load i32* %140, align 4
+  %142 = load i32* %15, align 4
+  %143 = add i32 %142, -1
+  %144 = icmp eq i32 %141, %143
+  br i1 %144, label %"30", label %"31"
+
+"30":                                             ; preds = %"29"
+  %145 = bitcast [4 x i32]* %11 to i32*
+  %146 = getelementptr i32* %145, i64 1
+  store i32 -1, i32* %146, align 4
+  br label %"34"
+
+"31":                                             ; preds = %"29"
+  %147 = bitcast [2 x i32]* %10 to i32*
+  %148 = getelementptr i32* %147, i64 0
+  %149 = load i32* %148, align 4
+  %150 = bitcast [2 x i32]* %ij to i32*
+  %151 = getelementptr i32* %150, i64 0
+  store i32 %149, i32* %151, align 4
+  %152 = bitcast [2 x i32]* %10 to i32*
+  %153 = getelementptr i32* %152, i64 1
+  %154 = load i32* %153, align 4
+  %155 = add i32 %154, 1
+  %156 = bitcast [2 x i32]* %ij to i32*
+  %157 = getelementptr i32* %156, i64 1
+  store i32 %155, i32* %157, align 4
+  call void bitcast (void (...)* @mpi_cart_rank_ to void (i32*, [2 x i32]*, i32*, i32*)*)(i32* noalias %8, [2 x i32]* %ij, i32* %nzneigh, i32* %izmplcode) #1
+  %158 = load i32* %izmplcode, align 4
+  %159 = icmp ne i32 %158, 0
+  br i1 %159, label %"32", label %"33"
+
+"32":                                             ; preds = %"31"
+  %160 = load i32* %izmplcode, align 4
+  store i32 %160, i32* %1, align 4
+  %161 = bitcast [50 x i8]* %2 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %161, i8* getelementptr inbounds ([13 x i8]* @.cst8, i64 0, i64 0), i64 13, i32 1, i1 false)
+  %162 = bitcast [50 x i8]* %2 to i8*
+  %163 = getelementptr i8* %162, i64 13
+  call void @llvm.memset.p0i8.i64(i8* %163, i8 32, i64 37, i32 1, i1 false)
+  br label %"82"
+
+"33":                                             ; preds = %"31"
+  %164 = load i32* %nzneigh, align 4
+  %165 = bitcast [4 x i32]* %11 to i32*
+  %166 = getelementptr i32* %165, i64 1
+  store i32 %164, i32* %166, align 4
+  br label %"34"
+
+"34":                                             ; preds = %"33", %"30"
+  %167 = bitcast [2 x i32]* %10 to i32*
+  %168 = getelementptr i32* %167, i64 0
+  %169 = load i32* %168, align 4
+  %170 = load i32* %14, align 4
+  %171 = add i32 %170, -1
+  %172 = icmp eq i32 %169, %171
+  br i1 %172, label %"35", label %"36"
+
+"35":                                             ; preds = %"34"
+  %173 = bitcast [4 x i32]* %11 to i32*
+  %174 = getelementptr i32* %173, i64 2
+  store i32 -1, i32* %174, align 4
+  br label %"39"
+
+"36":                                             ; preds = %"34"
+  %175 = bitcast [2 x i32]* %10 to i32*
+  %176 = getelementptr i32* %175, i64 0
+  %177 = load i32* %176, align 4
+  %178 = add i32 %177, 1
+  %179 = bitcast [2 x i32]* %ij to i32*
+  %180 = getelementptr i32* %179, i64 0
+  store i32 %178, i32* %180, align 4
+  %181 = bitcast [2 x i32]* %10 to i32*
+  %182 = getelementptr i32* %181, i64 1
+  %183 = load i32* %182, align 4
+  %184 = bitcast [2 x i32]* %ij to i32*
+  %185 = getelementptr i32* %184, i64 1
+  store i32 %183, i32* %185, align 4
+  call void bitcast (void (...)* @mpi_cart_rank_ to void (i32*, [2 x i32]*, i32*, i32*)*)(i32* noalias %8, [2 x i32]* %ij, i32* %nzneigh, i32* %izmplcode) #1
+  %186 = load i32* %izmplcode, align 4
+  %187 = icmp ne i32 %186, 0
+  br i1 %187, label %"37", label %"38"
+
+"37":                                             ; preds = %"36"
+  %188 = load i32* %izmplcode, align 4
+  store i32 %188, i32* %1, align 4
+  %189 = bitcast [50 x i8]* %2 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %189, i8* getelementptr inbounds ([13 x i8]* @.cst8, i64 0, i64 0), i64 13, i32 1, i1 false)
+  %190 = bitcast [50 x i8]* %2 to i8*
+  %191 = getelementptr i8* %190, i64 13
+  call void @llvm.memset.p0i8.i64(i8* %191, i8 32, i64 37, i32 1, i1 false)
+  br label %"82"
+
+"38":                                             ; preds = %"36"
+  %192 = load i32* %nzneigh, align 4
+  %193 = bitcast [4 x i32]* %11 to i32*
+  %194 = getelementptr i32* %193, i64 2
+  store i32 %192, i32* %194, align 4
+  br label %"39"
+
+"39":                                             ; preds = %"38", %"35"
+  %195 = bitcast [2 x i32]* %10 to i32*
+  %196 = getelementptr i32* %195, i64 1
+  %197 = load i32* %196, align 4
+  %198 = icmp eq i32 %197, 0
+  br i1 %198, label %"40", label %"41"
+
+"40":                                             ; preds = %"39"
+  %199 = bitcast [4 x i32]* %11 to i32*
+  %200 = getelementptr i32* %199, i64 3
+  store i32 -1, i32* %200, align 4
+  br label %"44"
+
+"41":                                             ; preds = %"39"
+  %201 = bitcast [2 x i32]* %10 to i32*
+  %202 = getelementptr i32* %201, i64 0
+  %203 = load i32* %202, align 4
+  %204 = bitcast [2 x i32]* %ij to i32*
+  %205 = getelementptr i32* %204, i64 0
+  store i32 %203, i32* %205, align 4
+  %206 = bitcast [2 x i32]* %10 to i32*
+  %207 = getelementptr i32* %206, i64 1
+  %208 = load i32* %207, align 4
+  %209 = add i32 %208, -1
+  %210 = bitcast [2 x i32]* %ij to i32*
+  %211 = getelementptr i32* %210, i64 1
+  store i32 %209, i32* %211, align 4
+  call void bitcast (void (...)* @mpi_cart_rank_ to void (i32*, [2 x i32]*, i32*, i32*)*)(i32* noalias %8, [2 x i32]* %ij, i32* %nzneigh, i32* %izmplcode) #1
+  %212 = load i32* %izmplcode, align 4
+  %213 = icmp ne i32 %212, 0
+  br i1 %213, label %"42", label %"43"
+
+"42":                                             ; preds = %"41"
+  %214 = load i32* %izmplcode, align 4
+  store i32 %214, i32* %1, align 4
+  %215 = bitcast [50 x i8]* %2 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %215, i8* getelementptr inbounds ([13 x i8]* @.cst8, i64 0, i64 0), i64 13, i32 1, i1 false)
+  %216 = bitcast [50 x i8]* %2 to i8*
+  %217 = getelementptr i8* %216, i64 13
+  call void @llvm.memset.p0i8.i64(i8* %217, i8 32, i64 37, i32 1, i1 false)
+  br label %"82"
+
+"43":                                             ; preds = %"41"
+  %218 = load i32* %nzneigh, align 4
+  %219 = bitcast [4 x i32]* %11 to i32*
+  %220 = getelementptr i32* %219, i64 3
+  store i32 %218, i32* %220, align 4
+  br label %"44"
+
+"44":                                             ; preds = %"43", %"40"
+  %221 = load i32* %16, align 4, !range !0
+  %222 = trunc i32 %221 to i1
+  %223 = icmp ne i1 %222, false
+  br i1 %223, label %"45", label %"53"
+
+"45":                                             ; preds = %"44"
+  %224 = bitcast [2 x i32]* %10 to i32*
+  %225 = getelementptr i32* %224, i64 0
+  %226 = load i32* %225, align 4
+  %227 = icmp eq i32 %226, 0
+  br i1 %227, label %"46", label %"49"
+
+"46":                                             ; preds = %"45"
+  %228 = load i32* %14, align 4
+  %229 = add i32 %228, -1
+  %230 = bitcast [2 x i32]* %ij to i32*
+  %231 = getelementptr i32* %230, i64 0
+  store i32 %229, i32* %231, align 4
+  %232 = bitcast [2 x i32]* %10 to i32*
+  %233 = getelementptr i32* %232, i64 1
+  %234 = load i32* %233, align 4
+  %235 = bitcast [2 x i32]* %ij to i32*
+  %236 = getelementptr i32* %235, i64 1
+  store i32 %234, i32* %236, align 4
+  call void bitcast (void (...)* @mpi_cart_rank_ to void (i32*, [2 x i32]*, i32*, i32*)*)(i32* noalias %8, [2 x i32]* %ij, i32* %nzneigh, i32* %izmplcode) #1
+  %237 = load i32* %izmplcode, align 4
+  %238 = icmp ne i32 %237, 0
+  br i1 %238, label %"47", label %"48"
+
+"47":                                             ; preds = %"46"
+  %239 = load i32* %izmplcode, align 4
+  store i32 %239, i32* %1, align 4
+  %240 = bitcast [50 x i8]* %2 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %240, i8* getelementptr inbounds ([13 x i8]* @.cst8, i64 0, i64 0), i64 13, i32 1, i1 false)
+  %241 = bitcast [50 x i8]* %2 to i8*
+  %242 = getelementptr i8* %241, i64 13
+  call void @llvm.memset.p0i8.i64(i8* %242, i8 32, i64 37, i32 1, i1 false)
+  br label %"82"
+
+"48":                                             ; preds = %"46"
+  %243 = load i32* %nzneigh, align 4
+  %244 = bitcast [4 x i32]* %11 to i32*
+  %245 = getelementptr i32* %244, i64 0
+  store i32 %243, i32* %245, align 4
+  br label %"49"
+
+"49":                                             ; preds = %"48", %"45"
+  %246 = bitcast [2 x i32]* %10 to i32*
+  %247 = getelementptr i32* %246, i64 0
+  %248 = load i32* %247, align 4
+  %249 = load i32* %14, align 4
+  %250 = add i32 %249, -1
+  %251 = icmp eq i32 %248, %250
+  br i1 %251, label %"50", label %"53"
+
+"50":                                             ; preds = %"49"
+  %252 = bitcast [2 x i32]* %ij to i32*
+  %253 = getelementptr i32* %252, i64 0
+  store i32 0, i32* %253, align 4
+  %254 = bitcast [2 x i32]* %10 to i32*
+  %255 = getelementptr i32* %254, i64 1
+  %256 = load i32* %255, align 4
+  %257 = bitcast [2 x i32]* %ij to i32*
+  %258 = getelementptr i32* %257, i64 1
+  store i32 %256, i32* %258, align 4
+  call void bitcast (void (...)* @mpi_cart_rank_ to void (i32*, [2 x i32]*, i32*, i32*)*)(i32* noalias %8, [2 x i32]* %ij, i32* %nzneigh, i32* %izmplcode) #1
+  %259 = load i32* %izmplcode, align 4
+  %260 = icmp ne i32 %259, 0
+  br i1 %260, label %"51", label %"52"
+
+"51":                                             ; preds = %"50"
+  %261 = load i32* %izmplcode, align 4
+  store i32 %261, i32* %1, align 4
+  %262 = bitcast [50 x i8]* %2 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %262, i8* getelementptr inbounds ([13 x i8]* @.cst8, i64 0, i64 0), i64 13, i32 1, i1 false)
+  %263 = bitcast [50 x i8]* %2 to i8*
+  %264 = getelementptr i8* %263, i64 13
+  call void @llvm.memset.p0i8.i64(i8* %264, i8 32, i64 37, i32 1, i1 false)
+  br label %"82"
+
+"52":                                             ; preds = %"50"
+  %265 = load i32* %nzneigh, align 4
+  %266 = bitcast [4 x i32]* %11 to i32*
+  %267 = getelementptr i32* %266, i64 2
+  store i32 %265, i32* %267, align 4
+  br label %"53"
+
+"53":                                             ; preds = %"52", %"49", %"44"
+  %268 = load i32* %17, align 4, !range !0
+  %269 = trunc i32 %268 to i1
+  %270 = icmp ne i1 %269, false
+  br i1 %270, label %"54", label %"62"
+
+"54":                                             ; preds = %"53"
+  %271 = bitcast [2 x i32]* %10 to i32*
+  %272 = getelementptr i32* %271, i64 1
+  %273 = load i32* %272, align 4
+  %274 = load i32* %15, align 4
+  %275 = add i32 %274, -1
+  %276 = icmp eq i32 %273, %275
+  br i1 %276, label %"55", label %"58"
+
+"55":                                             ; preds = %"54"
+  %277 = bitcast [2 x i32]* %10 to i32*
+  %278 = getelementptr i32* %277, i64 0
+  %279 = load i32* %278, align 4
+  %280 = bitcast [2 x i32]* %ij to i32*
+  %281 = getelementptr i32* %280, i64 0
+  store i32 %279, i32* %281, align 4
+  %282 = bitcast [2 x i32]* %ij to i32*
+  %283 = getelementptr i32* %282, i64 1
+  store i32 0, i32* %283, align 4
+  call void bitcast (void (...)* @mpi_cart_rank_ to void (i32*, [2 x i32]*, i32*, i32*)*)(i32* noalias %8, [2 x i32]* %ij, i32* %nzneigh, i32* %izmplcode) #1
+  %284 = load i32* %izmplcode, align 4
+  %285 = icmp ne i32 %284, 0
+  br i1 %285, label %"56", label %"57"
+
+"56":                                             ; preds = %"55"
+  %286 = load i32* %izmplcode, align 4
+  store i32 %286, i32* %1, align 4
+  %287 = bitcast [50 x i8]* %2 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %287, i8* getelementptr inbounds ([13 x i8]* @.cst8, i64 0, i64 0), i64 13, i32 1, i1 false)
+  %288 = bitcast [50 x i8]* %2 to i8*
+  %289 = getelementptr i8* %288, i64 13
+  call void @llvm.memset.p0i8.i64(i8* %289, i8 32, i64 37, i32 1, i1 false)
+  br label %"82"
+
+"57":                                             ; preds = %"55"
+  %290 = load i32* %nzneigh, align 4
+  %291 = bitcast [4 x i32]* %11 to i32*
+  %292 = getelementptr i32* %291, i64 1
+  store i32 %290, i32* %292, align 4
+  br label %"58"
+
+"58":                                             ; preds = %"57", %"54"
+  %293 = bitcast [2 x i32]* %10 to i32*
+  %294 = getelementptr i32* %293, i64 1
+  %295 = load i32* %294, align 4
+  %296 = icmp eq i32 %295, 0
+  br i1 %296, label %"59", label %"62"
+
+"59":                                             ; preds = %"58"
+  %297 = bitcast [2 x i32]* %10 to i32*
+  %298 = getelementptr i32* %297, i64 0
+  %299 = load i32* %298, align 4
+  %300 = bitcast [2 x i32]* %ij to i32*
+  %301 = getelementptr i32* %300, i64 0
+  store i32 %299, i32* %301, align 4
+  %302 = load i32* %15, align 4
+  %303 = add i32 %302, -1
+  %304 = bitcast [2 x i32]* %ij to i32*
+  %305 = getelementptr i32* %304, i64 1
+  store i32 %303, i32* %305, align 4
+  call void bitcast (void (...)* @mpi_cart_rank_ to void (i32*, [2 x i32]*, i32*, i32*)*)(i32* noalias %8, [2 x i32]* %ij, i32* %nzneigh, i32* %izmplcode) #1
+  %306 = load i32* %izmplcode, align 4
+  %307 = icmp ne i32 %306, 0
+  br i1 %307, label %"60", label %"61"
+
+"60":                                             ; preds = %"59"
+  %308 = load i32* %izmplcode, align 4
+  store i32 %308, i32* %1, align 4
+  %309 = bitcast [50 x i8]* %2 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %309, i8* getelementptr inbounds ([13 x i8]* @.cst8, i64 0, i64 0), i64 13, i32 1, i1 false)
+  %310 = bitcast [50 x i8]* %2 to i8*
+  %311 = getelementptr i8* %310, i64 13
+  call void @llvm.memset.p0i8.i64(i8* %311, i8 32, i64 37, i32 1, i1 false)
+  br label %"82"
+
+"61":                                             ; preds = %"59"
+  %312 = load i32* %nzneigh, align 4
+  %313 = bitcast [4 x i32]* %11 to i32*
+  %314 = getelementptr i32* %313, i64 3
+  store i32 %312, i32* %314, align 4
+  br label %"62"
+
+"62":                                             ; preds = %"61", %"58", %"53"
+  %315 = load i32* %20, align 4, !range !0
+  %316 = trunc i32 %315 to i1
+  %317 = icmp ne i1 %316, false
+  br i1 %317, label %"63", label %"75"
+
+"63":                                             ; preds = %"62"
+  %318 = load i32* %15, align 4
+  %319 = add i32 %318, -1
+  %320 = icmp sle i32 0, %319
+  br i1 %320, label %"64", label %"75"
+
+"64":                                             ; preds = %"74", %"63"
+  %321 = phi i32 [ %355, %"74" ], [ 0, %"63" ]
+  %322 = load i32* %14, align 4
+  %323 = add i32 %322, -1
+  %324 = icmp sle i32 0, %323
+  br i1 %324, label %"65", label %"67"
+
+"65":                                             ; preds = %"66", %"64"
+  %325 = phi i32 [ %333, %"66" ], [ 0, %"64" ]
+  %326 = sext i32 %325 to i64
+  %327 = load i32* %15, align 4
+  %328 = mul i32 %327, %325
+  %329 = add i32 %328, %321
+  %330 = bitcast [0 x i32]* %34 to i32*
+  %331 = getelementptr i32* %330, i64 %326
+  store i32 %329, i32* %331, align 4
+  %332 = icmp eq i32 %325, %323
+  %333 = add i32 %325, 1
+  %334 = icmp ne i1 %332, false
+  br i1 %334, label %"67", label %"66"
+
+"66":                                             ; preds = %"65"
+  br label %"65"
+
+"67":                                             ; preds = %"65", %"64"
+  %335 = bitcast [0 x i32]* %34 to i32*
+  %336 = getelementptr i32* %335, i64 0
+  call void bitcast (void (...)* @mpi_group_incl_ to void (i32*, i32*, i32*, i32*, i32*)*)(i32* noalias %19, i32* noalias %14, i32* %336, i32* %izgroup, i32* %izmplcode) #1
+  %337 = load i32* %izmplcode, align 4
+  %338 = icmp ne i32 %337, 0
+  br i1 %338, label %"68", label %"69"
+
+"68":                                             ; preds = %"67"
+  %339 = load i32* %izmplcode, align 4
+  store i32 %339, i32* %1, align 4
+  %340 = bitcast [50 x i8]* %2 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %340, i8* getelementptr inbounds ([14 x i8]* @.cst9, i64 0, i64 0), i64 14, i32 1, i1 false)
+  %341 = bitcast [50 x i8]* %2 to i8*
+  %342 = getelementptr i8* %341, i64 14
+  call void @llvm.memset.p0i8.i64(i8* %342, i8 32, i64 36, i32 1, i1 false)
+  br label %"82"
+
+"69":                                             ; preds = %"67"
+  call void bitcast (void (...)* @mpi_barrier_ to void (i32*, i32*)*)(i32* noalias %8, i32* %izmplcode) #1
+  call void bitcast (void (...)* @mpi_comm_create_ to void (i32*, i32*, i32*, i32*)*)(i32* noalias %8, i32* %izgroup, i32* %izcomm, i32* %izmplcode) #1
+  %343 = load i32* %izmplcode, align 4
+  %344 = icmp ne i32 %343, 0
+  br i1 %344, label %"70", label %"71"
+
+"70":                                             ; preds = %"69"
+  %345 = load i32* %izmplcode, align 4
+  store i32 %345, i32* %1, align 4
+  %346 = bitcast [50 x i8]* %2 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %346, i8* getelementptr inbounds ([15 x i8]* @.cst10, i64 0, i64 0), i64 15, i32 1, i1 false)
+  %347 = bitcast [50 x i8]* %2 to i8*
+  %348 = getelementptr i8* %347, i64 15
+  call void @llvm.memset.p0i8.i64(i8* %348, i8 32, i64 35, i32 1, i1 false)
+  br label %"82"
+
+"71":                                             ; preds = %"69"
+  %349 = bitcast [2 x i32]* %10 to i32*
+  %350 = getelementptr i32* %349, i64 1
+  %351 = load i32* %350, align 4
+  %352 = icmp eq i32 %351, %321
+  br i1 %352, label %"72", label %"73"
+
+"72":                                             ; preds = %"71"
+  %353 = load i32* %izcomm, align 4
+  store i32 %353, i32* %9, align 4
+  br label %"73"
+
+"73":                                             ; preds = %"72", %"71"
+  %354 = icmp eq i32 %321, %319
+  %355 = add i32 %321, 1
+  %356 = icmp ne i1 %354, false
+  br i1 %356, label %"75", label %"74"
+
+"74":                                             ; preds = %"73"
+  br label %"64"
+
+"75":                                             ; preds = %"73", %"63", %"62", %"15", %"14"
+  %357 = load i32* %6, align 4, !range !0
+  %358 = trunc i32 %357 to i1
+  %not = xor i1 %358, true
+  %359 = icmp ne i1 %not, false
+  br i1 %359, label %"76", label %"81"
+
+"76":                                             ; preds = %"75"
+  store i32 -32766, i32* %7, align 4
+  store i32 -32766, i32* %8, align 4
+  store i32 -32766, i32* %9, align 4
+  br label %"81"
+
+"77":                                             ; preds = %"5"
+  %360 = load i32* %16, align 4, !range !0
+  %361 = trunc i32 %360 to i1
+  %362 = icmp ne i1 %361, false
+  br i1 %362, label %"78", label %"79"
+
+"78":                                             ; preds = %"77"
+  %363 = bitcast [4 x i32]* %11 to i32*
+  %364 = getelementptr i32* %363, i64 0
+  store i32 0, i32* %364, align 4
+  %365 = bitcast [4 x i32]* %11 to i32*
+  %366 = getelementptr i32* %365, i64 2
+  store i32 0, i32* %366, align 4
+  br label %"79"
+
+"79":                                             ; preds = %"78", %"77"
+  %367 = load i32* %17, align 4, !range !0
+  %368 = trunc i32 %367 to i1
+  %369 = icmp ne i1 %368, false
+  br i1 %369, label %"80", label %"81"
+
+"80":                                             ; preds = %"79"
+  %370 = bitcast [4 x i32]* %11 to i32*
+  %371 = getelementptr i32* %370, i64 1
+  store i32 0, i32* %371, align 4
+  %372 = bitcast [4 x i32]* %11 to i32*
+  %373 = getelementptr i32* %372, i64 3
+  store i32 0, i32* %373, align 4
+  br label %"81"
+
+"81":                                             ; preds = %"80", %"79", %"76", %"75"
+  br label %"82"
+
+"82":                                             ; preds = %"81", %"70", %"68", %"60", %"56", %"51", %"47", %"42", %"37", %"32", %"27", %"23", %"21", %"19", %"17", %"13"
+  %374 = bitcast [0 x i32]* %34 to i8*
+  %375 = icmp ne i8* %374, null
+  br i1 %375, label %"83", label %"84"
+
+"83":                                             ; preds = %"82"
+  call void @free(i8* %374) #1
+  br label %"84"
+
+"84":                                             ; preds = %"83", %"82"
+  br label %return
+
+return:                                           ; preds = %"84"
+  ret void
+}
+
+; Function Attrs: nounwind
+declare noalias i8* @malloc(i64) #1
+
+declare void @mpi_comm_split_(...)
+
+declare void @mpi_cart_create_(...)
+
+declare void @mpi_comm_group_(...)
+
+declare void @mpi_comm_rank_(...)
+
+declare void @mpi_cart_coords_(...)
+
+declare void @mpi_cart_rank_(...)
+
+declare void @mpi_group_incl_(...)
+
+declare void @mpi_comm_create_(...)
+
+; Function Attrs: nounwind
+declare void @free(i8*) #1
+
+; Function Attrs: nounwind uwtable
+define void @__environment_MOD_model_abort(i32* noalias %my_id, i32* noalias %ierrorcode, [0 x i8]* noalias %yerrorstring, [0 x i8]* noalias %yroutine, i32* %implerrorcode, i32 %_yerrorstring, i32 %_yroutine) unnamed_addr #0 {
+entry:
+  %my_id_addr = alloca i32*, align 8
+  %ierrorcode_addr = alloca i32*, align 8
+  %yerrorstring_addr = alloca [0 x i8]*, align 8
+  %yroutine_addr = alloca [0 x i8]*, align 8
+  %implerrorcode_addr = alloca i32*, align 8
+  %_yerrorstring_addr = alloca i32, align 4
+  %_yroutine_addr = alloca i32, align 4
+  %i = alloca i32
+  %lzopen = alloca i32
+  %nzerrcode = alloca i32
+  %nzlen = alloca i32
+  %ymplmsg = alloca [100 x i8]
+  %D.2038 = alloca i64
+  %D.2039 = alloca i64
+  %D.2040 = alloca i64
+  %D.2041 = alloca i64
+  %dt_parm.3 = alloca %struct.__st_parameter_dt
+  %dt_parm.4 = alloca %struct.__st_parameter_dt
+  %dt_parm.5 = alloca %struct.__st_parameter_dt
+  %dt_parm.6 = alloca %struct.__st_parameter_dt
+  %dt_parm.7 = alloca %struct.__st_parameter_dt
+  %dt_parm.8 = alloca %struct.__st_parameter_dt
+  %D.1996 = alloca i32
+  %dt_parm.9 = alloca %struct.__st_parameter_dt
+  %dt_parm.10 = alloca %struct.__st_parameter_dt
+  %dt_parm.11 = alloca %struct.__st_parameter_dt
+  %dt_parm.12 = alloca %struct.__st_parameter_dt
+  %dt_parm.13 = alloca %struct.__st_parameter_dt
+  %dt_parm.14 = alloca %struct.__st_parameter_dt
+  %dt_parm.15 = alloca %struct.__st_parameter_dt
+  %dt_parm.16 = alloca %struct.__st_parameter_dt
+  %D.2005 = alloca i32
+  %dt_parm.17 = alloca %struct.__st_parameter_dt
+  %D.2008 = alloca i32
+  %i.47 = alloca i32
+  %D.2015 = alloca i32
+  %inquire_parm.18 = alloca %struct.__st_parameter_inquire
+  %close_parm.19 = alloca %struct.__st_parameter_close
+  %dt_parm.20 = alloca %struct.__st_parameter_dt
+  %dt_parm.21 = alloca %struct.__st_parameter_dt
+  %dt_parm.22 = alloca %struct.__st_parameter_dt
+  %dt_parm.23 = alloca %struct.__st_parameter_dt
+  %dt_parm.24 = alloca %struct.__st_parameter_dt
+  %dt_parm.25 = alloca %struct.__st_parameter_dt
+  %D.2025 = alloca i32
+  %dt_parm.26 = alloca %struct.__st_parameter_dt
+  %dt_parm.27 = alloca %struct.__st_parameter_dt
+  %dt_parm.28 = alloca %struct.__st_parameter_dt
+  %dt_parm.29 = alloca %struct.__st_parameter_dt
+  %dt_parm.30 = alloca %struct.__st_parameter_dt
+  %dt_parm.31 = alloca %struct.__st_parameter_dt
+  %dt_parm.32 = alloca %struct.__st_parameter_dt
+  %dt_parm.33 = alloca %struct.__st_parameter_dt
+  %D.2034 = alloca i32
+  %dt_parm.34 = alloca %struct.__st_parameter_dt
+  %"alloca point" = bitcast i32 0 to i32
+  store i32* %my_id, i32** %my_id_addr, align 1
+  store i32* %ierrorcode, i32** %ierrorcode_addr, align 1
+  store [0 x i8]* %yerrorstring, [0 x i8]** %yerrorstring_addr, align 1
+  store [0 x i8]* %yroutine, [0 x i8]** %yroutine_addr, align 1
+  store i32* %implerrorcode, i32** %implerrorcode_addr, align 1
+  store i32 %_yerrorstring, i32* %_yerrorstring_addr, align 1
+  store i32 %_yroutine, i32* %_yroutine_addr, align 1
+  %0 = load i32* %_yerrorstring_addr, align 4
+  %1 = load i32* %_yroutine_addr, align 4
+  %2 = load i32** %my_id_addr, align 8
+  %3 = load i32** %implerrorcode_addr, align 8
+  %4 = load [0 x i8]** %yroutine_addr, align 8
+  %5 = load i32** %ierrorcode_addr, align 8
+  %6 = load [0 x i8]** %yerrorstring_addr, align 8
+  %"ssa point" = bitcast i32 0 to i32
+  br label %"2"
+
+"2":                                              ; preds = %entry
+  %7 = sext i32 %0 to i64
+  %8 = mul i64 %7, 8
+  %9 = add i32 %0, -1
+  %10 = sext i32 %9 to i64
+  %11 = add i64 %10, 1
+  %12 = sext i32 %1 to i64
+  %13 = mul i64 %12, 8
+  %14 = add i32 %1, -1
+  %15 = sext i32 %14 to i64
+  %16 = add i64 %15, 1
+  %17 = load i32* %2, align 4
+  %18 = icmp eq i32 %17, 0
+  br i1 %18, label %"3", label %"12"
+
+"3":                                              ; preds = %"2"
+  %19 = icmp ne i32* %3, null
+  br i1 %19, label %"4", label %"5"
+
+"4":                                              ; preds = %"3"
+  call void bitcast (void (...)* @mpi_error_string_ to void (i32*, [100 x i8]*, i32*, i32*, i32)*)(i32* %3, [100 x i8]* %ymplmsg, i32* %nzlen, i32* %nzerrcode, i32 100) #1
+  %20 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.3, i32 0, i32 0
+  %21 = getelementptr inbounds %struct.__st_parameter_common* %20, i32 0, i32 2
+  store i8* getelementptr inbounds ([57 x i8]* @.cst11, i64 0, i64 0), i8** %21, align 8
+  %22 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.3, i32 0, i32 0
+  %23 = getelementptr inbounds %struct.__st_parameter_common* %22, i32 0, i32 3
+  store i32 448, i32* %23, align 8
+  %24 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.3, i32 0, i32 0
+  %25 = getelementptr inbounds %struct.__st_parameter_common* %24, i32 0, i32 0
+  store i32 128, i32* %25, align 8
+  %26 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.3, i32 0, i32 0
+  %27 = getelementptr inbounds %struct.__st_parameter_common* %26, i32 0, i32 1
+  store i32 6, i32* %27, align 4
+  call void @_gfortran_st_write(%struct.__st_parameter_dt* %dt_parm.3) #1
+  call void @_gfortran_transfer_character_write(%struct.__st_parameter_dt* %dt_parm.3, i8* getelementptr inbounds ([62 x i8]* @.cst12, i64 0, i64 0), i32 62) #1
+  call void @_gfortran_st_write_done(%struct.__st_parameter_dt* %dt_parm.3) #1
+  %28 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.4, i32 0, i32 0
+  %29 = getelementptr inbounds %struct.__st_parameter_common* %28, i32 0, i32 2
+  store i8* getelementptr inbounds ([57 x i8]* @.cst11, i64 0, i64 0), i8** %29, align 8
+  %30 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.4, i32 0, i32 0
+  %31 = getelementptr inbounds %struct.__st_parameter_common* %30, i32 0, i32 3
+  store i32 449, i32* %31, align 8
+  %32 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.4, i32 0, i32 0
+  %33 = getelementptr inbounds %struct.__st_parameter_common* %32, i32 0, i32 0
+  store i32 128, i32* %33, align 8
+  %34 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.4, i32 0, i32 0
+  %35 = getelementptr inbounds %struct.__st_parameter_common* %34, i32 0, i32 1
+  store i32 6, i32* %35, align 4
+  call void @_gfortran_st_write(%struct.__st_parameter_dt* %dt_parm.4) #1
+  call void @_gfortran_transfer_character_write(%struct.__st_parameter_dt* %dt_parm.4, i8* getelementptr inbounds ([54 x i8]* @.cst13, i64 0, i64 0), i32 54) #1
+  call void @_gfortran_st_write_done(%struct.__st_parameter_dt* %dt_parm.4) #1
+  %36 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.5, i32 0, i32 0
+  %37 = getelementptr inbounds %struct.__st_parameter_common* %36, i32 0, i32 2
+  store i8* getelementptr inbounds ([57 x i8]* @.cst11, i64 0, i64 0), i8** %37, align 8
+  %38 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.5, i32 0, i32 0
+  %39 = getelementptr inbounds %struct.__st_parameter_common* %38, i32 0, i32 3
+  store i32 450, i32* %39, align 8
+  %40 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.5, i32 0, i32 0
+  %41 = getelementptr inbounds %struct.__st_parameter_common* %40, i32 0, i32 0
+  store i32 128, i32* %41, align 8
+  %42 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.5, i32 0, i32 0
+  %43 = getelementptr inbounds %struct.__st_parameter_common* %42, i32 0, i32 1
+  store i32 6, i32* %43, align 4
+  call void @_gfortran_st_write(%struct.__st_parameter_dt* %dt_parm.5) #1
+  call void @_gfortran_transfer_character_write(%struct.__st_parameter_dt* %dt_parm.5, i8* getelementptr inbounds ([29 x i8]* @.cst14, i64 0, i64 0), i32 29) #1
+  call void bitcast (void (%struct.__st_parameter_dt*, i8*, i32)* @_gfortran_transfer_character_write to void (%struct.__st_parameter_dt*, [0 x i8]*, i32)*)(%struct.__st_parameter_dt* %dt_parm.5, [0 x i8]* noalias %4, i32 %1) #1
+  call void @_gfortran_st_write_done(%struct.__st_parameter_dt* %dt_parm.5) #1
+  %44 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.6, i32 0, i32 0
+  %45 = getelementptr inbounds %struct.__st_parameter_common* %44, i32 0, i32 2
+  store i8* getelementptr inbounds ([57 x i8]* @.cst11, i64 0, i64 0), i8** %45, align 8
+  %46 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.6, i32 0, i32 0
+  %47 = getelementptr inbounds %struct.__st_parameter_common* %46, i32 0, i32 3
+  store i32 451, i32* %47, align 8
+  %48 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.6, i32 0, i32 0
+  %49 = getelementptr inbounds %struct.__st_parameter_common* %48, i32 0, i32 0
+  store i32 128, i32* %49, align 8
+  %50 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.6, i32 0, i32 0
+  %51 = getelementptr inbounds %struct.__st_parameter_common* %50, i32 0, i32 1
+  store i32 6, i32* %51, align 4
+  call void @_gfortran_st_write(%struct.__st_parameter_dt* %dt_parm.6) #1
+  call void @_gfortran_transfer_character_write(%struct.__st_parameter_dt* %dt_parm.6, i8* getelementptr inbounds ([1 x i8]* @.cst15, i64 0, i64 0), i32 1) #1
+  call void @_gfortran_st_write_done(%struct.__st_parameter_dt* %dt_parm.6) #1
+  %52 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.7, i32 0, i32 0
+  %53 = getelementptr inbounds %struct.__st_parameter_common* %52, i32 0, i32 2
+  store i8* getelementptr inbounds ([57 x i8]* @.cst11, i64 0, i64 0), i8** %53, align 8
+  %54 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.7, i32 0, i32 0
+  %55 = getelementptr inbounds %struct.__st_parameter_common* %54, i32 0, i32 3
+  store i32 452, i32* %55, align 8
+  %56 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.7, i32 0, i32 0
+  %57 = getelementptr inbounds %struct.__st_parameter_common* %56, i32 0, i32 0
+  store i32 128, i32* %57, align 8
+  %58 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.7, i32 0, i32 0
+  %59 = getelementptr inbounds %struct.__st_parameter_common* %58, i32 0, i32 1
+  store i32 6, i32* %59, align 4
+  call void @_gfortran_st_write(%struct.__st_parameter_dt* %dt_parm.7) #1
+  call void @_gfortran_transfer_character_write(%struct.__st_parameter_dt* %dt_parm.7, i8* getelementptr inbounds ([19 x i8]* @.cst16, i64 0, i64 0), i32 19) #1
+  call void bitcast (void (%struct.__st_parameter_dt*, i8*, i32)* @_gfortran_transfer_integer_write to void (%struct.__st_parameter_dt*, i32*, i32)*)(%struct.__st_parameter_dt* %dt_parm.7, i32* noalias %5, i32 4) #1
+  call void @_gfortran_transfer_character_write(%struct.__st_parameter_dt* %dt_parm.7, i8* getelementptr inbounds ([2 x i8]* @.cst17, i64 0, i64 0), i32 2) #1
+  call void @_gfortran_st_write_done(%struct.__st_parameter_dt* %dt_parm.7) #1
+  %60 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.8, i32 0, i32 0
+  %61 = getelementptr inbounds %struct.__st_parameter_common* %60, i32 0, i32 2
+  store i8* getelementptr inbounds ([57 x i8]* @.cst11, i64 0, i64 0), i8** %61, align 8
+  %62 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.8, i32 0, i32 0
+  %63 = getelementptr inbounds %struct.__st_parameter_common* %62, i32 0, i32 3
+  store i32 453, i32* %63, align 8
+  %64 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.8, i32 0, i32 0
+  %65 = getelementptr inbounds %struct.__st_parameter_common* %64, i32 0, i32 0
+  store i32 128, i32* %65, align 8
+  %66 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.8, i32 0, i32 0
+  %67 = getelementptr inbounds %struct.__st_parameter_common* %66, i32 0, i32 1
+  store i32 6, i32* %67, align 4
+  call void @_gfortran_st_write(%struct.__st_parameter_dt* %dt_parm.8) #1
+  call void @_gfortran_transfer_character_write(%struct.__st_parameter_dt* %dt_parm.8, i8* getelementptr inbounds ([19 x i8]* @.cst18, i64 0, i64 0), i32 19) #1
+  %68 = call i32 bitcast (i32 (i32, i8*)* @_gfortran_string_len_trim to i32 (i32, [0 x i8]*)*)(i32 %0, [0 x i8]* noalias %6) #1
+  %69 = icmp sge i32 %68, 0
+  %70 = select i1 %69, i32 %68, i32 0
+  call void bitcast (void (%struct.__st_parameter_dt*, i8*, i32)* @_gfortran_transfer_character_write to void (%struct.__st_parameter_dt*, [0 x i8]*, i32)*)(%struct.__st_parameter_dt* %dt_parm.8, [0 x i8]* noalias %6, i32 %70) #1
+  call void @_gfortran_st_write_done(%struct.__st_parameter_dt* %dt_parm.8) #1
+  %71 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.9, i32 0, i32 0
+  %72 = getelementptr inbounds %struct.__st_parameter_common* %71, i32 0, i32 2
+  store i8* getelementptr inbounds ([57 x i8]* @.cst11, i64 0, i64 0), i8** %72, align 8
+  %73 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.9, i32 0, i32 0
+  %74 = getelementptr inbounds %struct.__st_parameter_common* %73, i32 0, i32 3
+  store i32 454, i32* %74, align 8
+  %75 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.9, i32 0, i32 0
+  %76 = getelementptr inbounds %struct.__st_parameter_common* %75, i32 0, i32 0
+  store i32 128, i32* %76, align 8
+  %77 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.9, i32 0, i32 0
+  %78 = getelementptr inbounds %struct.__st_parameter_common* %77, i32 0, i32 1
+  store i32 6, i32* %78, align 4
+  call void @_gfortran_st_write(%struct.__st_parameter_dt* %dt_parm.9) #1
+  call void @_gfortran_transfer_character_write(%struct.__st_parameter_dt* %dt_parm.9, i8* getelementptr inbounds ([23 x i8]* @.cst19, i64 0, i64 0), i32 23) #1
+  call void bitcast (void (%struct.__st_parameter_dt*, i8*, i32)* @_gfortran_transfer_integer_write to void (%struct.__st_parameter_dt*, i32*, i32)*)(%struct.__st_parameter_dt* %dt_parm.9, i32* %3, i32 4) #1
+  call void @_gfortran_transfer_character_write(%struct.__st_parameter_dt* %dt_parm.9, i8* getelementptr inbounds ([3 x i8]* @.cst20, i64 0, i64 0), i32 3) #1
+  call void bitcast (void (%struct.__st_parameter_dt*, i8*, i32)* @_gfortran_transfer_character_write to void (%struct.__st_parameter_dt*, [100 x i8]*, i32)*)(%struct.__st_parameter_dt* %dt_parm.9, [100 x i8]* %ymplmsg, i32 100) #1
+  call void @_gfortran_st_write_done(%struct.__st_parameter_dt* %dt_parm.9) #1
+  %79 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.10, i32 0, i32 0
+  %80 = getelementptr inbounds %struct.__st_parameter_common* %79, i32 0, i32 2
+  store i8* getelementptr inbounds ([57 x i8]* @.cst11, i64 0, i64 0), i8** %80, align 8
+  %81 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.10, i32 0, i32 0
+  %82 = getelementptr inbounds %struct.__st_parameter_common* %81, i32 0, i32 3
+  store i32 455, i32* %82, align 8
+  %83 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.10, i32 0, i32 0
+  %84 = getelementptr inbounds %struct.__st_parameter_common* %83, i32 0, i32 0
+  store i32 128, i32* %84, align 8
+  %85 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.10, i32 0, i32 0
+  %86 = getelementptr inbounds %struct.__st_parameter_common* %85, i32 0, i32 1
+  store i32 6, i32* %86, align 4
+  call void @_gfortran_st_write(%struct.__st_parameter_dt* %dt_parm.10) #1
+  call void @_gfortran_transfer_character_write(%struct.__st_parameter_dt* %dt_parm.10, i8* getelementptr inbounds ([62 x i8]* @.cst12, i64 0, i64 0), i32 62) #1
+  call void @_gfortran_st_write_done(%struct.__st_parameter_dt* %dt_parm.10) #1
+  br label %"6"
+
+"5":                                              ; preds = %"3"
+  %87 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.11, i32 0, i32 0
+  %88 = getelementptr inbounds %struct.__st_parameter_common* %87, i32 0, i32 2
+  store i8* getelementptr inbounds ([57 x i8]* @.cst11, i64 0, i64 0), i8** %88, align 8
+  %89 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.11, i32 0, i32 0
+  %90 = getelementptr inbounds %struct.__st_parameter_common* %89, i32 0, i32 3
+  store i32 457, i32* %90, align 8
+  %91 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.11, i32 0, i32 0
+  %92 = getelementptr inbounds %struct.__st_parameter_common* %91, i32 0, i32 0
+  store i32 128, i32* %92, align 8
+  %93 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.11, i32 0, i32 0
+  %94 = getelementptr inbounds %struct.__st_parameter_common* %93, i32 0, i32 1
+  store i32 6, i32* %94, align 4
+  call void @_gfortran_st_write(%struct.__st_parameter_dt* %dt_parm.11) #1
+  call void @_gfortran_transfer_character_write(%struct.__st_parameter_dt* %dt_parm.11, i8* getelementptr inbounds ([62 x i8]* @.cst12, i64 0, i64 0), i32 62) #1
+  call void @_gfortran_st_write_done(%struct.__st_parameter_dt* %dt_parm.11) #1
+  %95 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.12, i32 0, i32 0
+  %96 = getelementptr inbounds %struct.__st_parameter_common* %95, i32 0, i32 2
+  store i8* getelementptr inbounds ([57 x i8]* @.cst11, i64 0, i64 0), i8** %96, align 8
+  %97 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.12, i32 0, i32 0
+  %98 = getelementptr inbounds %struct.__st_parameter_common* %97, i32 0, i32 3
+  store i32 458, i32* %98, align 8
+  %99 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.12, i32 0, i32 0
+  %100 = getelementptr inbounds %struct.__st_parameter_common* %99, i32 0, i32 0
+  store i32 128, i32* %100, align 8
+  %101 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.12, i32 0, i32 0
+  %102 = getelementptr inbounds %struct.__st_parameter_common* %101, i32 0, i32 1
+  store i32 6, i32* %102, align 4
+  call void @_gfortran_st_write(%struct.__st_parameter_dt* %dt_parm.12) #1
+  call void @_gfortran_transfer_character_write(%struct.__st_parameter_dt* %dt_parm.12, i8* getelementptr inbounds ([50 x i8]* @.cst21, i64 0, i64 0), i32 50) #1
+  call void @_gfortran_st_write_done(%struct.__st_parameter_dt* %dt_parm.12) #1
+  %103 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.13, i32 0, i32 0
+  %104 = getelementptr inbounds %struct.__st_parameter_common* %103, i32 0, i32 2
+  store i8* getelementptr inbounds ([57 x i8]* @.cst11, i64 0, i64 0), i8** %104, align 8
+  %105 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.13, i32 0, i32 0
+  %106 = getelementptr inbounds %struct.__st_parameter_common* %105, i32 0, i32 3
+  store i32 459, i32* %106, align 8
+  %107 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.13, i32 0, i32 0
+  %108 = getelementptr inbounds %struct.__st_parameter_common* %107, i32 0, i32 0
+  store i32 128, i32* %108, align 8
+  %109 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.13, i32 0, i32 0
+  %110 = getelementptr inbounds %struct.__st_parameter_common* %109, i32 0, i32 1
+  store i32 6, i32* %110, align 4
+  call void @_gfortran_st_write(%struct.__st_parameter_dt* %dt_parm.13) #1
+  call void @_gfortran_transfer_character_write(%struct.__st_parameter_dt* %dt_parm.13, i8* getelementptr inbounds ([29 x i8]* @.cst14, i64 0, i64 0), i32 29) #1
+  call void bitcast (void (%struct.__st_parameter_dt*, i8*, i32)* @_gfortran_transfer_character_write to void (%struct.__st_parameter_dt*, [0 x i8]*, i32)*)(%struct.__st_parameter_dt* %dt_parm.13, [0 x i8]* noalias %4, i32 %1) #1
+  call void @_gfortran_st_write_done(%struct.__st_parameter_dt* %dt_parm.13) #1
+  %111 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.14, i32 0, i32 0
+  %112 = getelementptr inbounds %struct.__st_parameter_common* %111, i32 0, i32 2
+  store i8* getelementptr inbounds ([57 x i8]* @.cst11, i64 0, i64 0), i8** %112, align 8
+  %113 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.14, i32 0, i32 0
+  %114 = getelementptr inbounds %struct.__st_parameter_common* %113, i32 0, i32 3
+  store i32 460, i32* %114, align 8
+  %115 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.14, i32 0, i32 0
+  %116 = getelementptr inbounds %struct.__st_parameter_common* %115, i32 0, i32 0
+  store i32 128, i32* %116, align 8
+  %117 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.14, i32 0, i32 0
+  %118 = getelementptr inbounds %struct.__st_parameter_common* %117, i32 0, i32 1
+  store i32 6, i32* %118, align 4
+  call void @_gfortran_st_write(%struct.__st_parameter_dt* %dt_parm.14) #1
+  call void @_gfortran_transfer_character_write(%struct.__st_parameter_dt* %dt_parm.14, i8* getelementptr inbounds ([1 x i8]* @.cst15, i64 0, i64 0), i32 1) #1
+  call void @_gfortran_st_write_done(%struct.__st_parameter_dt* %dt_parm.14) #1
+  %119 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.15, i32 0, i32 0
+  %120 = getelementptr inbounds %struct.__st_parameter_common* %119, i32 0, i32 2
+  store i8* getelementptr inbounds ([57 x i8]* @.cst11, i64 0, i64 0), i8** %120, align 8
+  %121 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.15, i32 0, i32 0
+  %122 = getelementptr inbounds %struct.__st_parameter_common* %121, i32 0, i32 3
+  store i32 461, i32* %122, align 8
+  %123 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.15, i32 0, i32 0
+  %124 = getelementptr inbounds %struct.__st_parameter_common* %123, i32 0, i32 0
+  store i32 128, i32* %124, align 8
+  %125 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.15, i32 0, i32 0
+  %126 = getelementptr inbounds %struct.__st_parameter_common* %125, i32 0, i32 1
+  store i32 6, i32* %126, align 4
+  call void @_gfortran_st_write(%struct.__st_parameter_dt* %dt_parm.15) #1
+  call void @_gfortran_transfer_character_write(%struct.__st_parameter_dt* %dt_parm.15, i8* getelementptr inbounds ([19 x i8]* @.cst16, i64 0, i64 0), i32 19) #1
+  call void bitcast (void (%struct.__st_parameter_dt*, i8*, i32)* @_gfortran_transfer_integer_write to void (%struct.__st_parameter_dt*, i32*, i32)*)(%struct.__st_parameter_dt* %dt_parm.15, i32* noalias %5, i32 4) #1
+  call void @_gfortran_st_write_done(%struct.__st_parameter_dt* %dt_parm.15) #1
+  %127 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.16, i32 0, i32 0
+  %128 = getelementptr inbounds %struct.__st_parameter_common* %127, i32 0, i32 2
+  store i8* getelementptr inbounds ([57 x i8]* @.cst11, i64 0, i64 0), i8** %128, align 8
+  %129 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.16, i32 0, i32 0
+  %130 = getelementptr inbounds %struct.__st_parameter_common* %129, i32 0, i32 3
+  store i32 462, i32* %130, align 8
+  %131 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.16, i32 0, i32 0
+  %132 = getelementptr inbounds %struct.__st_parameter_common* %131, i32 0, i32 0
+  store i32 128, i32* %132, align 8
+  %133 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.16, i32 0, i32 0
+  %134 = getelementptr inbounds %struct.__st_parameter_common* %133, i32 0, i32 1
+  store i32 6, i32* %134, align 4
+  call void @_gfortran_st_write(%struct.__st_parameter_dt* %dt_parm.16) #1
+  call void @_gfortran_transfer_character_write(%struct.__st_parameter_dt* %dt_parm.16, i8* getelementptr inbounds ([5 x i8]* @.cst22, i64 0, i64 0), i32 5) #1
+  %135 = call i32 bitcast (i32 (i32, i8*)* @_gfortran_string_len_trim to i32 (i32, [0 x i8]*)*)(i32 %0, [0 x i8]* noalias %6) #1
+  %136 = icmp sge i32 %135, 0
+  %137 = select i1 %136, i32 %135, i32 0
+  call void bitcast (void (%struct.__st_parameter_dt*, i8*, i32)* @_gfortran_transfer_character_write to void (%struct.__st_parameter_dt*, [0 x i8]*, i32)*)(%struct.__st_parameter_dt* %dt_parm.16, [0 x i8]* noalias %6, i32 %137) #1
+  call void @_gfortran_st_write_done(%struct.__st_parameter_dt* %dt_parm.16) #1
+  %138 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.17, i32 0, i32 0
+  %139 = getelementptr inbounds %struct.__st_parameter_common* %138, i32 0, i32 2
+  store i8* getelementptr inbounds ([57 x i8]* @.cst11, i64 0, i64 0), i8** %139, align 8
+  %140 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.17, i32 0, i32 0
+  %141 = getelementptr inbounds %struct.__st_parameter_common* %140, i32 0, i32 3
+  store i32 463, i32* %141, align 8
+  %142 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.17, i32 0, i32 0
+  %143 = getelementptr inbounds %struct.__st_parameter_common* %142, i32 0, i32 0
+  store i32 128, i32* %143, align 8
+  %144 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.17, i32 0, i32 0
+  %145 = getelementptr inbounds %struct.__st_parameter_common* %144, i32 0, i32 1
+  store i32 6, i32* %145, align 4
+  call void @_gfortran_st_write(%struct.__st_parameter_dt* %dt_parm.17) #1
+  call void @_gfortran_transfer_character_write(%struct.__st_parameter_dt* %dt_parm.17, i8* getelementptr inbounds ([62 x i8]* @.cst12, i64 0, i64 0), i32 62) #1
+  call void @_gfortran_st_write_done(%struct.__st_parameter_dt* %dt_parm.17) #1
+  br label %"6"
+
+"6":                                              ; preds = %"5", %"4"
+  %146 = load i32* @__environment_MOD_iunit_start, align 4
+  %147 = load i32* @__environment_MOD_iunit_end, align 4
+  %148 = icmp sle i32 %146, %147
+  br i1 %148, label %"7", label %"15"
+
+"7":                                              ; preds = %"11", %"6"
+  %149 = phi i32 [ %176, %"11" ], [ %146, %"6" ]
+  %150 = sext i32 %149 to i64
+  %151 = add i64 %150, -21
+  %152 = getelementptr i32* getelementptr inbounds ([80 x i32]* @__environment_MOD_iunit_table, i64 0, i64 0), i64 %151
+  %153 = load i32* %152, align 4
+  %154 = icmp eq i32 %153, 1
+  br i1 %154, label %"8", label %"10"
+
+"8":                                              ; preds = %"7"
+  store i32 0, i32* %lzopen, align 4
+  %155 = getelementptr inbounds %struct.__st_parameter_inquire* %inquire_parm.18, i32 0, i32 0
+  %156 = getelementptr inbounds %struct.__st_parameter_common* %155, i32 0, i32 2
+  store i8* getelementptr inbounds ([57 x i8]* @.cst11, i64 0, i64 0), i8** %156, align 8
+  %157 = getelementptr inbounds %struct.__st_parameter_inquire* %inquire_parm.18, i32 0, i32 0
+  %158 = getelementptr inbounds %struct.__st_parameter_common* %157, i32 0, i32 3
+  store i32 471, i32* %158, align 8
+  %159 = getelementptr inbounds %struct.__st_parameter_inquire* %inquire_parm.18, i32 0, i32 2
+  store i32* %lzopen, i32** %159, align 8
+  %160 = getelementptr inbounds %struct.__st_parameter_inquire* %inquire_parm.18, i32 0, i32 0
+  %161 = getelementptr inbounds %struct.__st_parameter_common* %160, i32 0, i32 0
+  store i32 256, i32* %161, align 8
+  %162 = getelementptr inbounds %struct.__st_parameter_inquire* %inquire_parm.18, i32 0, i32 0
+  %163 = getelementptr inbounds %struct.__st_parameter_common* %162, i32 0, i32 1
+  store i32 %149, i32* %163, align 4
+  call void @_gfortran_st_inquire(%struct.__st_parameter_inquire* %inquire_parm.18) #1
+  %164 = load i32* %lzopen, align 4, !range !0
+  %165 = trunc i32 %164 to i1
+  %166 = icmp ne i1 %165, false
+  br i1 %166, label %"9", label %"10"
+
+"9":                                              ; preds = %"8"
+  %167 = getelementptr inbounds %struct.__st_parameter_close* %close_parm.19, i32 0, i32 0
+  %168 = getelementptr inbounds %struct.__st_parameter_common* %167, i32 0, i32 2
+  store i8* getelementptr inbounds ([57 x i8]* @.cst11, i64 0, i64 0), i8** %168, align 8
+  %169 = getelementptr inbounds %struct.__st_parameter_close* %close_parm.19, i32 0, i32 0
+  %170 = getelementptr inbounds %struct.__st_parameter_common* %169, i32 0, i32 3
+  store i32 473, i32* %170, align 8
+  %171 = getelementptr inbounds %struct.__st_parameter_close* %close_parm.19, i32 0, i32 0
+  %172 = getelementptr inbounds %struct.__st_parameter_common* %171, i32 0, i32 0
+  store i32 0, i32* %172, align 8
+  %173 = getelementptr inbounds %struct.__st_parameter_close* %close_parm.19, i32 0, i32 0
+  %174 = getelementptr inbounds %struct.__st_parameter_common* %173, i32 0, i32 1
+  store i32 %149, i32* %174, align 4
+  call void @_gfortran_st_close(%struct.__st_parameter_close* %close_parm.19) #1
+  br label %"10"
+
+"10":                                             ; preds = %"9", %"8", %"7"
+  %175 = icmp eq i32 %149, %147
+  %176 = add i32 %149, 1
+  %177 = icmp ne i1 %175, false
+  br i1 %177, label %"15", label %"11"
+
+"11":                                             ; preds = %"10"
+  br label %"7"
+
+"12":                                             ; preds = %"2"
+  call void bitcast (void (...)* @_gfortran_sleep_i4_sub to void (i32*)*)(i32* @1) #1
+  %178 = icmp ne i32* %3, null
+  br i1 %178, label %"13", label %"14"
+
+"13":                                             ; preds = %"12"
+  call void bitcast (void (...)* @mpi_error_string_ to void (i32*, [100 x i8]*, i32*, i32*, i32)*)(i32* %3, [100 x i8]* %ymplmsg, i32* %nzlen, i32* %nzerrcode, i32 100) #1
+  %179 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.20, i32 0, i32 0
+  %180 = getelementptr inbounds %struct.__st_parameter_common* %179, i32 0, i32 2
+  store i8* getelementptr inbounds ([57 x i8]* @.cst11, i64 0, i64 0), i8** %180, align 8
+  %181 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.20, i32 0, i32 0
+  %182 = getelementptr inbounds %struct.__st_parameter_common* %181, i32 0, i32 3
+  store i32 491, i32* %182, align 8
+  %183 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.20, i32 0, i32 0
+  %184 = getelementptr inbounds %struct.__st_parameter_common* %183, i32 0, i32 0
+  store i32 128, i32* %184, align 8
+  %185 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.20, i32 0, i32 0
+  %186 = getelementptr inbounds %struct.__st_parameter_common* %185, i32 0, i32 1
+  store i32 6, i32* %186, align 4
+  call void @_gfortran_st_write(%struct.__st_parameter_dt* %dt_parm.20) #1
+  call void @_gfortran_transfer_character_write(%struct.__st_parameter_dt* %dt_parm.20, i8* getelementptr inbounds ([62 x i8]* @.cst12, i64 0, i64 0), i32 62) #1
+  call void @_gfortran_st_write_done(%struct.__st_parameter_dt* %dt_parm.20) #1
+  %187 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.21, i32 0, i32 0
+  %188 = getelementptr inbounds %struct.__st_parameter_common* %187, i32 0, i32 2
+  store i8* getelementptr inbounds ([57 x i8]* @.cst11, i64 0, i64 0), i8** %188, align 8
+  %189 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.21, i32 0, i32 0
+  %190 = getelementptr inbounds %struct.__st_parameter_common* %189, i32 0, i32 3
+  store i32 492, i32* %190, align 8
+  %191 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.21, i32 0, i32 0
+  %192 = getelementptr inbounds %struct.__st_parameter_common* %191, i32 0, i32 0
+  store i32 128, i32* %192, align 8
+  %193 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.21, i32 0, i32 0
+  %194 = getelementptr inbounds %struct.__st_parameter_common* %193, i32 0, i32 1
+  store i32 6, i32* %194, align 4
+  call void @_gfortran_st_write(%struct.__st_parameter_dt* %dt_parm.21) #1
+  call void @_gfortran_transfer_character_write(%struct.__st_parameter_dt* %dt_parm.21, i8* getelementptr inbounds ([54 x i8]* @.cst13, i64 0, i64 0), i32 54) #1
+  call void @_gfortran_st_write_done(%struct.__st_parameter_dt* %dt_parm.21) #1
+  %195 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.22, i32 0, i32 0
+  %196 = getelementptr inbounds %struct.__st_parameter_common* %195, i32 0, i32 2
+  store i8* getelementptr inbounds ([57 x i8]* @.cst11, i64 0, i64 0), i8** %196, align 8
+  %197 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.22, i32 0, i32 0
+  %198 = getelementptr inbounds %struct.__st_parameter_common* %197, i32 0, i32 3
+  store i32 493, i32* %198, align 8
+  %199 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.22, i32 0, i32 0
+  %200 = getelementptr inbounds %struct.__st_parameter_common* %199, i32 0, i32 0
+  store i32 128, i32* %200, align 8
+  %201 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.22, i32 0, i32 0
+  %202 = getelementptr inbounds %struct.__st_parameter_common* %201, i32 0, i32 1
+  store i32 6, i32* %202, align 4
+  call void @_gfortran_st_write(%struct.__st_parameter_dt* %dt_parm.22) #1
+  call void @_gfortran_transfer_character_write(%struct.__st_parameter_dt* %dt_parm.22, i8* getelementptr inbounds ([29 x i8]* @.cst14, i64 0, i64 0), i32 29) #1
+  call void bitcast (void (%struct.__st_parameter_dt*, i8*, i32)* @_gfortran_transfer_character_write to void (%struct.__st_parameter_dt*, [0 x i8]*, i32)*)(%struct.__st_parameter_dt* %dt_parm.22, [0 x i8]* noalias %4, i32 %1) #1
+  call void @_gfortran_st_write_done(%struct.__st_parameter_dt* %dt_parm.22) #1
+  %203 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.23, i32 0, i32 0
+  %204 = getelementptr inbounds %struct.__st_parameter_common* %203, i32 0, i32 2
+  store i8* getelementptr inbounds ([57 x i8]* @.cst11, i64 0, i64 0), i8** %204, align 8
+  %205 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.23, i32 0, i32 0
+  %206 = getelementptr inbounds %struct.__st_parameter_common* %205, i32 0, i32 3
+  store i32 494, i32* %206, align 8
+  %207 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.23, i32 0, i32 0
+  %208 = getelementptr inbounds %struct.__st_parameter_common* %207, i32 0, i32 0
+  store i32 128, i32* %208, align 8
+  %209 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.23, i32 0, i32 0
+  %210 = getelementptr inbounds %struct.__st_parameter_common* %209, i32 0, i32 1
+  store i32 6, i32* %210, align 4
+  call void @_gfortran_st_write(%struct.__st_parameter_dt* %dt_parm.23) #1
+  call void @_gfortran_transfer_character_write(%struct.__st_parameter_dt* %dt_parm.23, i8* getelementptr inbounds ([1 x i8]* @.cst15, i64 0, i64 0), i32 1) #1
+  call void @_gfortran_st_write_done(%struct.__st_parameter_dt* %dt_parm.23) #1
+  %211 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.24, i32 0, i32 0
+  %212 = getelementptr inbounds %struct.__st_parameter_common* %211, i32 0, i32 2
+  store i8* getelementptr inbounds ([57 x i8]* @.cst11, i64 0, i64 0), i8** %212, align 8
+  %213 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.24, i32 0, i32 0
+  %214 = getelementptr inbounds %struct.__st_parameter_common* %213, i32 0, i32 3
+  store i32 495, i32* %214, align 8
+  %215 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.24, i32 0, i32 0
+  %216 = getelementptr inbounds %struct.__st_parameter_common* %215, i32 0, i32 0
+  store i32 128, i32* %216, align 8
+  %217 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.24, i32 0, i32 0
+  %218 = getelementptr inbounds %struct.__st_parameter_common* %217, i32 0, i32 1
+  store i32 6, i32* %218, align 4
+  call void @_gfortran_st_write(%struct.__st_parameter_dt* %dt_parm.24) #1
+  call void @_gfortran_transfer_character_write(%struct.__st_parameter_dt* %dt_parm.24, i8* getelementptr inbounds ([19 x i8]* @.cst16, i64 0, i64 0), i32 19) #1
+  call void bitcast (void (%struct.__st_parameter_dt*, i8*, i32)* @_gfortran_transfer_integer_write to void (%struct.__st_parameter_dt*, i32*, i32)*)(%struct.__st_parameter_dt* %dt_parm.24, i32* noalias %5, i32 4) #1
+  call void @_gfortran_transfer_character_write(%struct.__st_parameter_dt* %dt_parm.24, i8* getelementptr inbounds ([2 x i8]* @.cst17, i64 0, i64 0), i32 2) #1
+  call void @_gfortran_st_write_done(%struct.__st_parameter_dt* %dt_parm.24) #1
+  %219 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.25, i32 0, i32 0
+  %220 = getelementptr inbounds %struct.__st_parameter_common* %219, i32 0, i32 2
+  store i8* getelementptr inbounds ([57 x i8]* @.cst11, i64 0, i64 0), i8** %220, align 8
+  %221 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.25, i32 0, i32 0
+  %222 = getelementptr inbounds %struct.__st_parameter_common* %221, i32 0, i32 3
+  store i32 496, i32* %222, align 8
+  %223 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.25, i32 0, i32 0
+  %224 = getelementptr inbounds %struct.__st_parameter_common* %223, i32 0, i32 0
+  store i32 128, i32* %224, align 8
+  %225 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.25, i32 0, i32 0
+  %226 = getelementptr inbounds %struct.__st_parameter_common* %225, i32 0, i32 1
+  store i32 6, i32* %226, align 4
+  call void @_gfortran_st_write(%struct.__st_parameter_dt* %dt_parm.25) #1
+  call void @_gfortran_transfer_character_write(%struct.__st_parameter_dt* %dt_parm.25, i8* getelementptr inbounds ([19 x i8]* @.cst18, i64 0, i64 0), i32 19) #1
+  %227 = call i32 bitcast (i32 (i32, i8*)* @_gfortran_string_len_trim to i32 (i32, [0 x i8]*)*)(i32 %0, [0 x i8]* noalias %6) #1
+  %228 = icmp sge i32 %227, 0
+  %229 = select i1 %228, i32 %227, i32 0
+  call void bitcast (void (%struct.__st_parameter_dt*, i8*, i32)* @_gfortran_transfer_character_write to void (%struct.__st_parameter_dt*, [0 x i8]*, i32)*)(%struct.__st_parameter_dt* %dt_parm.25, [0 x i8]* noalias %6, i32 %229) #1
+  call void @_gfortran_st_write_done(%struct.__st_parameter_dt* %dt_parm.25) #1
+  %230 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.26, i32 0, i32 0
+  %231 = getelementptr inbounds %struct.__st_parameter_common* %230, i32 0, i32 2
+  store i8* getelementptr inbounds ([57 x i8]* @.cst11, i64 0, i64 0), i8** %231, align 8
+  %232 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.26, i32 0, i32 0
+  %233 = getelementptr inbounds %struct.__st_parameter_common* %232, i32 0, i32 3
+  store i32 497, i32* %233, align 8
+  %234 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.26, i32 0, i32 0
+  %235 = getelementptr inbounds %struct.__st_parameter_common* %234, i32 0, i32 0
+  store i32 128, i32* %235, align 8
+  %236 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.26, i32 0, i32 0
+  %237 = getelementptr inbounds %struct.__st_parameter_common* %236, i32 0, i32 1
+  store i32 6, i32* %237, align 4
+  call void @_gfortran_st_write(%struct.__st_parameter_dt* %dt_parm.26) #1
+  call void @_gfortran_transfer_character_write(%struct.__st_parameter_dt* %dt_parm.26, i8* getelementptr inbounds ([23 x i8]* @.cst19, i64 0, i64 0), i32 23) #1
+  call void bitcast (void (%struct.__st_parameter_dt*, i8*, i32)* @_gfortran_transfer_integer_write to void (%struct.__st_parameter_dt*, i32*, i32)*)(%struct.__st_parameter_dt* %dt_parm.26, i32* %3, i32 4) #1
+  call void @_gfortran_transfer_character_write(%struct.__st_parameter_dt* %dt_parm.26, i8* getelementptr inbounds ([3 x i8]* @.cst20, i64 0, i64 0), i32 3) #1
+  call void bitcast (void (%struct.__st_parameter_dt*, i8*, i32)* @_gfortran_transfer_character_write to void (%struct.__st_parameter_dt*, [100 x i8]*, i32)*)(%struct.__st_parameter_dt* %dt_parm.26, [100 x i8]* %ymplmsg, i32 100) #1
+  call void @_gfortran_st_write_done(%struct.__st_parameter_dt* %dt_parm.26) #1
+  %238 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.27, i32 0, i32 0
+  %239 = getelementptr inbounds %struct.__st_parameter_common* %238, i32 0, i32 2
+  store i8* getelementptr inbounds ([57 x i8]* @.cst11, i64 0, i64 0), i8** %239, align 8
+  %240 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.27, i32 0, i32 0
+  %241 = getelementptr inbounds %struct.__st_parameter_common* %240, i32 0, i32 3
+  store i32 498, i32* %241, align 8
+  %242 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.27, i32 0, i32 0
+  %243 = getelementptr inbounds %struct.__st_parameter_common* %242, i32 0, i32 0
+  store i32 128, i32* %243, align 8
+  %244 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.27, i32 0, i32 0
+  %245 = getelementptr inbounds %struct.__st_parameter_common* %244, i32 0, i32 1
+  store i32 6, i32* %245, align 4
+  call void @_gfortran_st_write(%struct.__st_parameter_dt* %dt_parm.27) #1
+  call void @_gfortran_transfer_character_write(%struct.__st_parameter_dt* %dt_parm.27, i8* getelementptr inbounds ([62 x i8]* @.cst12, i64 0, i64 0), i32 62) #1
+  call void @_gfortran_st_write_done(%struct.__st_parameter_dt* %dt_parm.27) #1
+  br label %"15"
+
+"14":                                             ; preds = %"12"
+  %246 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.28, i32 0, i32 0
+  %247 = getelementptr inbounds %struct.__st_parameter_common* %246, i32 0, i32 2
+  store i8* getelementptr inbounds ([57 x i8]* @.cst11, i64 0, i64 0), i8** %247, align 8
+  %248 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.28, i32 0, i32 0
+  %249 = getelementptr inbounds %struct.__st_parameter_common* %248, i32 0, i32 3
+  store i32 500, i32* %249, align 8
+  %250 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.28, i32 0, i32 0
+  %251 = getelementptr inbounds %struct.__st_parameter_common* %250, i32 0, i32 0
+  store i32 128, i32* %251, align 8
+  %252 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.28, i32 0, i32 0
+  %253 = getelementptr inbounds %struct.__st_parameter_common* %252, i32 0, i32 1
+  store i32 6, i32* %253, align 4
+  call void @_gfortran_st_write(%struct.__st_parameter_dt* %dt_parm.28) #1
+  call void @_gfortran_transfer_character_write(%struct.__st_parameter_dt* %dt_parm.28, i8* getelementptr inbounds ([62 x i8]* @.cst12, i64 0, i64 0), i32 62) #1
+  call void @_gfortran_st_write_done(%struct.__st_parameter_dt* %dt_parm.28) #1
+  %254 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.29, i32 0, i32 0
+  %255 = getelementptr inbounds %struct.__st_parameter_common* %254, i32 0, i32 2
+  store i8* getelementptr inbounds ([57 x i8]* @.cst11, i64 0, i64 0), i8** %255, align 8
+  %256 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.29, i32 0, i32 0
+  %257 = getelementptr inbounds %struct.__st_parameter_common* %256, i32 0, i32 3
+  store i32 501, i32* %257, align 8
+  %258 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.29, i32 0, i32 0
+  %259 = getelementptr inbounds %struct.__st_parameter_common* %258, i32 0, i32 0
+  store i32 128, i32* %259, align 8
+  %260 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.29, i32 0, i32 0
+  %261 = getelementptr inbounds %struct.__st_parameter_common* %260, i32 0, i32 1
+  store i32 6, i32* %261, align 4
+  call void @_gfortran_st_write(%struct.__st_parameter_dt* %dt_parm.29) #1
+  call void @_gfortran_transfer_character_write(%struct.__st_parameter_dt* %dt_parm.29, i8* getelementptr inbounds ([50 x i8]* @.cst21, i64 0, i64 0), i32 50) #1
+  call void @_gfortran_st_write_done(%struct.__st_parameter_dt* %dt_parm.29) #1
+  %262 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.30, i32 0, i32 0
+  %263 = getelementptr inbounds %struct.__st_parameter_common* %262, i32 0, i32 2
+  store i8* getelementptr inbounds ([57 x i8]* @.cst11, i64 0, i64 0), i8** %263, align 8
+  %264 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.30, i32 0, i32 0
+  %265 = getelementptr inbounds %struct.__st_parameter_common* %264, i32 0, i32 3
+  store i32 502, i32* %265, align 8
+  %266 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.30, i32 0, i32 0
+  %267 = getelementptr inbounds %struct.__st_parameter_common* %266, i32 0, i32 0
+  store i32 128, i32* %267, align 8
+  %268 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.30, i32 0, i32 0
+  %269 = getelementptr inbounds %struct.__st_parameter_common* %268, i32 0, i32 1
+  store i32 6, i32* %269, align 4
+  call void @_gfortran_st_write(%struct.__st_parameter_dt* %dt_parm.30) #1
+  call void @_gfortran_transfer_character_write(%struct.__st_parameter_dt* %dt_parm.30, i8* getelementptr inbounds ([29 x i8]* @.cst14, i64 0, i64 0), i32 29) #1
+  call void bitcast (void (%struct.__st_parameter_dt*, i8*, i32)* @_gfortran_transfer_character_write to void (%struct.__st_parameter_dt*, [0 x i8]*, i32)*)(%struct.__st_parameter_dt* %dt_parm.30, [0 x i8]* noalias %4, i32 %1) #1
+  call void @_gfortran_st_write_done(%struct.__st_parameter_dt* %dt_parm.30) #1
+  %270 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.31, i32 0, i32 0
+  %271 = getelementptr inbounds %struct.__st_parameter_common* %270, i32 0, i32 2
+  store i8* getelementptr inbounds ([57 x i8]* @.cst11, i64 0, i64 0), i8** %271, align 8
+  %272 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.31, i32 0, i32 0
+  %273 = getelementptr inbounds %struct.__st_parameter_common* %272, i32 0, i32 3
+  store i32 503, i32* %273, align 8
+  %274 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.31, i32 0, i32 0
+  %275 = getelementptr inbounds %struct.__st_parameter_common* %274, i32 0, i32 0
+  store i32 128, i32* %275, align 8
+  %276 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.31, i32 0, i32 0
+  %277 = getelementptr inbounds %struct.__st_parameter_common* %276, i32 0, i32 1
+  store i32 6, i32* %277, align 4
+  call void @_gfortran_st_write(%struct.__st_parameter_dt* %dt_parm.31) #1
+  call void @_gfortran_transfer_character_write(%struct.__st_parameter_dt* %dt_parm.31, i8* getelementptr inbounds ([1 x i8]* @.cst15, i64 0, i64 0), i32 1) #1
+  call void @_gfortran_st_write_done(%struct.__st_parameter_dt* %dt_parm.31) #1
+  %278 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.32, i32 0, i32 0
+  %279 = getelementptr inbounds %struct.__st_parameter_common* %278, i32 0, i32 2
+  store i8* getelementptr inbounds ([57 x i8]* @.cst11, i64 0, i64 0), i8** %279, align 8
+  %280 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.32, i32 0, i32 0
+  %281 = getelementptr inbounds %struct.__st_parameter_common* %280, i32 0, i32 3
+  store i32 504, i32* %281, align 8
+  %282 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.32, i32 0, i32 0
+  %283 = getelementptr inbounds %struct.__st_parameter_common* %282, i32 0, i32 0
+  store i32 128, i32* %283, align 8
+  %284 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.32, i32 0, i32 0
+  %285 = getelementptr inbounds %struct.__st_parameter_common* %284, i32 0, i32 1
+  store i32 6, i32* %285, align 4
+  call void @_gfortran_st_write(%struct.__st_parameter_dt* %dt_parm.32) #1
+  call void @_gfortran_transfer_character_write(%struct.__st_parameter_dt* %dt_parm.32, i8* getelementptr inbounds ([19 x i8]* @.cst16, i64 0, i64 0), i32 19) #1
+  call void bitcast (void (%struct.__st_parameter_dt*, i8*, i32)* @_gfortran_transfer_integer_write to void (%struct.__st_parameter_dt*, i32*, i32)*)(%struct.__st_parameter_dt* %dt_parm.32, i32* noalias %5, i32 4) #1
+  call void @_gfortran_st_write_done(%struct.__st_parameter_dt* %dt_parm.32) #1
+  %286 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.33, i32 0, i32 0
+  %287 = getelementptr inbounds %struct.__st_parameter_common* %286, i32 0, i32 2
+  store i8* getelementptr inbounds ([57 x i8]* @.cst11, i64 0, i64 0), i8** %287, align 8
+  %288 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.33, i32 0, i32 0
+  %289 = getelementptr inbounds %struct.__st_parameter_common* %288, i32 0, i32 3
+  store i32 505, i32* %289, align 8
+  %290 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.33, i32 0, i32 0
+  %291 = getelementptr inbounds %struct.__st_parameter_common* %290, i32 0, i32 0
+  store i32 128, i32* %291, align 8
+  %292 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.33, i32 0, i32 0
+  %293 = getelementptr inbounds %struct.__st_parameter_common* %292, i32 0, i32 1
+  store i32 6, i32* %293, align 4
+  call void @_gfortran_st_write(%struct.__st_parameter_dt* %dt_parm.33) #1
+  call void @_gfortran_transfer_character_write(%struct.__st_parameter_dt* %dt_parm.33, i8* getelementptr inbounds ([5 x i8]* @.cst22, i64 0, i64 0), i32 5) #1
+  %294 = call i32 bitcast (i32 (i32, i8*)* @_gfortran_string_len_trim to i32 (i32, [0 x i8]*)*)(i32 %0, [0 x i8]* noalias %6) #1
+  %295 = icmp sge i32 %294, 0
+  %296 = select i1 %295, i32 %294, i32 0
+  call void bitcast (void (%struct.__st_parameter_dt*, i8*, i32)* @_gfortran_transfer_character_write to void (%struct.__st_parameter_dt*, [0 x i8]*, i32)*)(%struct.__st_parameter_dt* %dt_parm.33, [0 x i8]* noalias %6, i32 %296) #1
+  call void @_gfortran_st_write_done(%struct.__st_parameter_dt* %dt_parm.33) #1
+  %297 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.34, i32 0, i32 0
+  %298 = getelementptr inbounds %struct.__st_parameter_common* %297, i32 0, i32 2
+  store i8* getelementptr inbounds ([57 x i8]* @.cst11, i64 0, i64 0), i8** %298, align 8
+  %299 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.34, i32 0, i32 0
+  %300 = getelementptr inbounds %struct.__st_parameter_common* %299, i32 0, i32 3
+  store i32 506, i32* %300, align 8
+  %301 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.34, i32 0, i32 0
+  %302 = getelementptr inbounds %struct.__st_parameter_common* %301, i32 0, i32 0
+  store i32 128, i32* %302, align 8
+  %303 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.34, i32 0, i32 0
+  %304 = getelementptr inbounds %struct.__st_parameter_common* %303, i32 0, i32 1
+  store i32 6, i32* %304, align 4
+  call void @_gfortran_st_write(%struct.__st_parameter_dt* %dt_parm.34) #1
+  call void @_gfortran_transfer_character_write(%struct.__st_parameter_dt* %dt_parm.34, i8* getelementptr inbounds ([62 x i8]* @.cst12, i64 0, i64 0), i32 62) #1
+  call void @_gfortran_st_write_done(%struct.__st_parameter_dt* %dt_parm.34) #1
+  br label %"15"
+
+"15":                                             ; preds = %"14", %"13", %"10", %"6"
+  call void bitcast (void (...)* @mpi_abort_ to void (i32*, i32*, i32*)*)(i32* @2, i32* noalias %5, i32* %nzerrcode) #1
+  br label %return
+
+return:                                           ; preds = %"15"
+  ret void
+}
+
+declare void @mpi_error_string_(...)
+
+declare void @_gfortran_st_write(%struct.__st_parameter_dt*)
+
+declare void @_gfortran_transfer_character_write(%struct.__st_parameter_dt*, i8*, i32)
+
+declare void @_gfortran_st_write_done(%struct.__st_parameter_dt*)
+
+declare void @_gfortran_transfer_integer_write(%struct.__st_parameter_dt*, i8*, i32)
+
+; Function Attrs: nounwind readonly
+declare i32 @_gfortran_string_len_trim(i32, i8*) #2
+
+declare void @_gfortran_st_inquire(%struct.__st_parameter_inquire*)
+
+declare void @_gfortran_st_close(%struct.__st_parameter_close*)
+
+declare void @_gfortran_sleep_i4_sub(...)
+
+declare void @mpi_abort_(...)
+
+; Function Attrs: nounwind uwtable
+define void @__environment_MOD_release_unit(i32* noalias %iunit) unnamed_addr #0 {
+entry:
+  %iunit_addr = alloca i32*, align 8
+  %dt_parm.35 = alloca %struct.__st_parameter_dt
+  %"alloca point" = bitcast i32 0 to i32
+  store i32* %iunit, i32** %iunit_addr, align 1
+  %0 = load i32** %iunit_addr, align 8
+  %"ssa point" = bitcast i32 0 to i32
+  br label %"2"
+
+"2":                                              ; preds = %entry
+  %1 = load i32* %0, align 4
+  %2 = sext i32 %1 to i64
+  %3 = add i64 %2, -21
+  %4 = getelementptr i32* getelementptr inbounds ([80 x i32]* @__environment_MOD_iunit_table, i64 0, i64 0), i64 %3
+  %5 = load i32* %4, align 4
+  %6 = icmp eq i32 %5, 1
+  br i1 %6, label %"3", label %"4"
+
+"3":                                              ; preds = %"2"
+  %7 = load i32* %0, align 4
+  %8 = sext i32 %7 to i64
+  %9 = add i64 %8, -21
+  %10 = getelementptr i32* getelementptr inbounds ([80 x i32]* @__environment_MOD_iunit_table, i64 0, i64 0), i64 %9
+  store i32 0, i32* %10, align 4
+  br label %"5"
+
+"4":                                              ; preds = %"2"
+  %11 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.35, i32 0, i32 0
+  %12 = getelementptr inbounds %struct.__st_parameter_common* %11, i32 0, i32 2
+  store i8* getelementptr inbounds ([57 x i8]* @.cst11, i64 0, i64 0), i8** %12, align 8
+  %13 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.35, i32 0, i32 0
+  %14 = getelementptr inbounds %struct.__st_parameter_common* %13, i32 0, i32 3
+  store i32 396, i32* %14, align 8
+  %15 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.35, i32 0, i32 0
+  %16 = getelementptr inbounds %struct.__st_parameter_common* %15, i32 0, i32 0
+  store i32 128, i32* %16, align 8
+  %17 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.35, i32 0, i32 0
+  %18 = getelementptr inbounds %struct.__st_parameter_common* %17, i32 0, i32 1
+  store i32 6, i32* %18, align 4
+  call void @_gfortran_st_write(%struct.__st_parameter_dt* %dt_parm.35) #1
+  call void @_gfortran_transfer_character_write(%struct.__st_parameter_dt* %dt_parm.35, i8* getelementptr inbounds ([24 x i8]* @.cst23, i64 0, i64 0), i32 24) #1
+  call void bitcast (void (%struct.__st_parameter_dt*, i8*, i32)* @_gfortran_transfer_integer_write to void (%struct.__st_parameter_dt*, i32*, i32)*)(%struct.__st_parameter_dt* %dt_parm.35, i32* noalias %0, i32 4) #1
+  call void @_gfortran_transfer_character_write(%struct.__st_parameter_dt* %dt_parm.35, i8* getelementptr inbounds ([21 x i8]* @.cst24, i64 0, i64 0), i32 21) #1
+  call void @_gfortran_st_write_done(%struct.__st_parameter_dt* %dt_parm.35) #1
+  br label %"5"
+
+"5":                                              ; preds = %"4", %"3"
+  br label %return
+
+return:                                           ; preds = %"5"
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define void @__environment_MOD_get_free_unit(i32* noalias %iunit) unnamed_addr #0 {
+entry:
+  %iunit_addr = alloca i32*, align 8
+  %i = alloca i32
+  %D.2046 = alloca i32
+  %i.46 = alloca i32
+  %D.2050 = alloca i32
+  %dt_parm.36 = alloca %struct.__st_parameter_dt
+  %"alloca point" = bitcast i32 0 to i32
+  store i32* %iunit, i32** %iunit_addr, align 1
+  %0 = load i32** %iunit_addr, align 8
+  %"ssa point" = bitcast i32 0 to i32
+  br label %"2"
+
+"2":                                              ; preds = %entry
+  store i32 -1, i32* %0, align 4
+  %1 = load i32* @__environment_MOD_iunit_start, align 4
+  %2 = load i32* @__environment_MOD_iunit_end, align 4
+  %3 = icmp sle i32 %1, %2
+  br i1 %3, label %"3", label %"7"
+
+"3":                                              ; preds = %"6", %"2"
+  %4 = phi i32 [ %14, %"6" ], [ %1, %"2" ]
+  %5 = sext i32 %4 to i64
+  %6 = add i64 %5, -21
+  %7 = getelementptr i32* getelementptr inbounds ([80 x i32]* @__environment_MOD_iunit_table, i64 0, i64 0), i64 %6
+  %8 = load i32* %7, align 4
+  %9 = icmp eq i32 %8, 0
+  br i1 %9, label %"4", label %"5"
+
+"4":                                              ; preds = %"3"
+  %10 = sext i32 %4 to i64
+  %11 = add i64 %10, -21
+  %12 = getelementptr i32* getelementptr inbounds ([80 x i32]* @__environment_MOD_iunit_table, i64 0, i64 0), i64 %11
+  store i32 1, i32* %12, align 4
+  store i32 %4, i32* %0, align 4
+  br label %"7"
+
+"5":                                              ; preds = %"3"
+  %13 = icmp eq i32 %4, %2
+  %14 = add i32 %4, 1
+  %15 = icmp ne i1 %13, false
+  br i1 %15, label %"7", label %"6"
+
+"6":                                              ; preds = %"5"
+  br label %"3"
+
+"7":                                              ; preds = %"5", %"4", %"2"
+  %16 = load i32* %0, align 4
+  %17 = icmp eq i32 %16, -1
+  br i1 %17, label %"8", label %"9"
+
+"8":                                              ; preds = %"7"
+  %18 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.36, i32 0, i32 0
+  %19 = getelementptr inbounds %struct.__st_parameter_common* %18, i32 0, i32 2
+  store i8* getelementptr inbounds ([57 x i8]* @.cst11, i64 0, i64 0), i8** %19, align 8
+  %20 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.36, i32 0, i32 0
+  %21 = getelementptr inbounds %struct.__st_parameter_common* %20, i32 0, i32 3
+  store i32 367, i32* %21, align 8
+  %22 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.36, i32 0, i32 0
+  %23 = getelementptr inbounds %struct.__st_parameter_common* %22, i32 0, i32 0
+  store i32 128, i32* %23, align 8
+  %24 = getelementptr inbounds %struct.__st_parameter_dt* %dt_parm.36, i32 0, i32 0
+  %25 = getelementptr inbounds %struct.__st_parameter_common* %24, i32 0, i32 1
+  store i32 6, i32* %25, align 4
+  call void @_gfortran_st_write(%struct.__st_parameter_dt* %dt_parm.36) #1
+  call void @_gfortran_transfer_character_write(%struct.__st_parameter_dt* %dt_parm.36, i8* getelementptr inbounds ([55 x i8]* @.cst25, i64 0, i64 0), i32 55) #1
+  call void @_gfortran_st_write_done(%struct.__st_parameter_dt* %dt_parm.36) #1
+  br label %"9"
+
+"9":                                              ; preds = %"8", %"7"
+  br label %return
+
+return:                                           ; preds = %"9"
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define void @__environment_MOD_final_environment() unnamed_addr #0 {
+entry:
+  %izmplcode = alloca i32
+  %"alloca point" = bitcast i32 0 to i32
+  %"ssa point" = bitcast i32 0 to i32
+  br label %"2"
+
+"2":                                              ; preds = %entry
+  store i32 0, i32* %izmplcode, align 4
+  call void bitcast (void (...)* @mpi_finalize_ to void (i32*)*)(i32* %izmplcode) #1
+  br label %return
+
+return:                                           ; preds = %"2"
+  ret void
+}
+
+declare void @mpi_finalize_(...)
+
+; Function Attrs: nounwind uwtable
+define void @__environment_MOD_init_environment(i32* noalias %nproc, i32* noalias %my_world_id, i32* noalias %icomm_world, i32* noalias %igroup_world, i32* noalias %imp_int, i32* noalias %imp_real, i32* noalias %imp_single, i32* noalias %imp_double, i32* noalias %imp_byte, i32* noalias %imp_char, i32* noalias %imp_logical, [4 x i32]* noalias %iexch_req, [25 x i8]* noalias %yerrmsg, i32* noalias %ierror, i32 %_yerrmsg) unnamed_addr #0 {
+entry:
+  %nproc_addr = alloca i32*, align 8
+  %my_world_id_addr = alloca i32*, align 8
+  %icomm_world_addr = alloca i32*, align 8
+  %igroup_world_addr = alloca i32*, align 8
+  %imp_int_addr = alloca i32*, align 8
+  %imp_real_addr = alloca i32*, align 8
+  %imp_single_addr = alloca i32*, align 8
+  %imp_double_addr = alloca i32*, align 8
+  %imp_byte_addr = alloca i32*, align 8
+  %imp_char_addr = alloca i32*, align 8
+  %imp_logical_addr = alloca i32*, align 8
+  %iexch_req_addr = alloca [4 x i32]*, align 8
+  %yerrmsg_addr = alloca [25 x i8]*, align 8
+  %ierror_addr = alloca i32*, align 8
+  %_yerrmsg_addr = alloca i32, align 4
+  %izmplcode = alloca i32
+  %S.37 = alloca i64
+  %"alloca point" = bitcast i32 0 to i32
+  store i32* %nproc, i32** %nproc_addr, align 1
+  store i32* %my_world_id, i32** %my_world_id_addr, align 1
+  store i32* %icomm_world, i32** %icomm_world_addr, align 1
+  store i32* %igroup_world, i32** %igroup_world_addr, align 1
+  store i32* %imp_int, i32** %imp_int_addr, align 1
+  store i32* %imp_real, i32** %imp_real_addr, align 1
+  store i32* %imp_single, i32** %imp_single_addr, align 1
+  store i32* %imp_double, i32** %imp_double_addr, align 1
+  store i32* %imp_byte, i32** %imp_byte_addr, align 1
+  store i32* %imp_char, i32** %imp_char_addr, align 1
+  store i32* %imp_logical, i32** %imp_logical_addr, align 1
+  store [4 x i32]* %iexch_req, [4 x i32]** %iexch_req_addr, align 1
+  store [25 x i8]* %yerrmsg, [25 x i8]** %yerrmsg_addr, align 1
+  store i32* %ierror, i32** %ierror_addr, align 1
+  store i32 %_yerrmsg, i32* %_yerrmsg_addr, align 1
+  %0 = load i32** %ierror_addr, align 8
+  %1 = load [25 x i8]** %yerrmsg_addr, align 8
+  %2 = load i32** %icomm_world_addr, align 8
+  %3 = load i32** %nproc_addr, align 8
+  %4 = load i32** %my_world_id_addr, align 8
+  %5 = load i32** %igroup_world_addr, align 8
+  %6 = load i32** %imp_single_addr, align 8
+  %7 = load i32** %imp_double_addr, align 8
+  %8 = load i32** %imp_real_addr, align 8
+  %9 = load i32** %imp_int_addr, align 8
+  %10 = load i32** %imp_byte_addr, align 8
+  %11 = load i32** %imp_char_addr, align 8
+  %12 = load i32** %imp_logical_addr, align 8
+  %13 = load [4 x i32]** %iexch_req_addr, align 8
+  %"ssa point" = bitcast i32 0 to i32
+  br label %"2"
+
+"2":                                              ; preds = %entry
+  store i32 0, i32* %0, align 4
+  store i32 0, i32* %izmplcode, align 4
+  %14 = bitcast [25 x i8]* %1 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %14, i8* getelementptr inbounds ([4 x i8]* @.cst2, i64 0, i64 0), i64 4, i32 1, i1 false)
+  %15 = bitcast [25 x i8]* %1 to i8*
+  %16 = getelementptr i8* %15, i64 4
+  call void @llvm.memset.p0i8.i64(i8* %16, i8 32, i64 21, i32 1, i1 false)
+  call void bitcast (void (...)* @mpi_init_ to void (i32*)*)(i32* %izmplcode) #1
+  %17 = load i32* %izmplcode, align 4
+  %18 = icmp ne i32 %17, 0
+  br i1 %18, label %"3", label %"4"
+
+"3":                                              ; preds = %"2"
+  %19 = load i32* %izmplcode, align 4
+  store i32 %19, i32* %0, align 4
+  %20 = bitcast [25 x i8]* %1 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %20, i8* getelementptr inbounds ([8 x i8]* @.cst26, i64 0, i64 0), i64 8, i32 1, i1 false)
+  %21 = bitcast [25 x i8]* %1 to i8*
+  %22 = getelementptr i8* %21, i64 8
+  call void @llvm.memset.p0i8.i64(i8* %22, i8 32, i64 17, i32 1, i1 false)
+  br label %"13"
+
+"4":                                              ; preds = %"2"
+  store i32 1140850688, i32* %2, align 4
+  call void bitcast (void (...)* @mpi_comm_size_ to void (i32*, i32*, i32*)*)(i32* noalias %2, i32* noalias %3, i32* %izmplcode) #1
+  %23 = load i32* %izmplcode, align 4
+  %24 = icmp ne i32 %23, 0
+  br i1 %24, label %"5", label %"6"
+
+"5":                                              ; preds = %"4"
+  %25 = load i32* %izmplcode, align 4
+  store i32 %25, i32* %0, align 4
+  %26 = bitcast [25 x i8]* %1 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %26, i8* getelementptr inbounds ([13 x i8]* @.cst27, i64 0, i64 0), i64 13, i32 1, i1 false)
+  %27 = bitcast [25 x i8]* %1 to i8*
+  %28 = getelementptr i8* %27, i64 13
+  call void @llvm.memset.p0i8.i64(i8* %28, i8 32, i64 12, i32 1, i1 false)
+  br label %"13"
+
+"6":                                              ; preds = %"4"
+  call void bitcast (void (...)* @mpi_comm_rank_ to void (i32*, i32*, i32*)*)(i32* noalias %2, i32* noalias %4, i32* %izmplcode) #1
+  %29 = load i32* %izmplcode, align 4
+  %30 = icmp ne i32 %29, 0
+  br i1 %30, label %"7", label %"8"
+
+"7":                                              ; preds = %"6"
+  %31 = load i32* %izmplcode, align 4
+  store i32 %31, i32* %0, align 4
+  %32 = bitcast [25 x i8]* %1 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %32, i8* getelementptr inbounds ([13 x i8]* @.cst6, i64 0, i64 0), i64 13, i32 1, i1 false)
+  %33 = bitcast [25 x i8]* %1 to i8*
+  %34 = getelementptr i8* %33, i64 13
+  call void @llvm.memset.p0i8.i64(i8* %34, i8 32, i64 12, i32 1, i1 false)
+  br label %"13"
+
+"8":                                              ; preds = %"6"
+  call void bitcast (void (...)* @mpi_comm_group_ to void (i32*, i32*, i32*)*)(i32* noalias %2, i32* noalias %5, i32* %izmplcode) #1
+  %35 = load i32* %izmplcode, align 4
+  %36 = icmp ne i32 %35, 0
+  br i1 %36, label %"9", label %"10"
+
+"9":                                              ; preds = %"8"
+  %37 = load i32* %izmplcode, align 4
+  store i32 %37, i32* %0, align 4
+  %38 = bitcast [25 x i8]* %1 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %38, i8* getelementptr inbounds ([14 x i8]* @.cst5, i64 0, i64 0), i64 14, i32 1, i1 false)
+  %39 = bitcast [25 x i8]* %1 to i8*
+  %40 = getelementptr i8* %39, i64 14
+  call void @llvm.memset.p0i8.i64(i8* %40, i8 32, i64 11, i32 1, i1 false)
+  br label %"13"
+
+"10":                                             ; preds = %"8"
+  store i32 1275069468, i32* %6, align 4
+  store i32 1275070495, i32* %7, align 4
+  %41 = load i32* %7, align 4
+  store i32 %41, i32* %8, align 4
+  store i32 1275069467, i32* %9, align 4
+  store i32 1275068685, i32* %10, align 4
+  store i32 1275068698, i32* %11, align 4
+  store i32 1275069469, i32* %12, align 4
+  br label %"11"
+
+"11":                                             ; preds = %"12", %"10"
+  %42 = phi i64 [ %47, %"12" ], [ 1, %"10" ]
+  %43 = icmp sgt i64 %42, 4
+  br i1 %43, label %"13", label %"12"
+
+"12":                                             ; preds = %"11"
+  %44 = add i64 %42, -1
+  %45 = bitcast [4 x i32]* %13 to i32*
+  %46 = getelementptr i32* %45, i64 %44
+  store i32 738197504, i32* %46, align 4
+  %47 = add i64 %42, 1
+  br label %"11"
+
+"13":                                             ; preds = %"11", %"9", %"7", %"5", %"3"
+  br label %return
+
+return:                                           ; preds = %"13"
+  ret void
+}
+
+declare void @mpi_init_(...)
+
+declare void @mpi_comm_size_(...)
+
+attributes #0 = { nounwind uwtable }
+attributes #1 = { nounwind }
+attributes #2 = { nounwind readonly }
+
+!0 = metadata !{i32 0, i32 2}

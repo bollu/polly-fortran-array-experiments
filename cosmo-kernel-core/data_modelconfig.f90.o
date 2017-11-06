@@ -1,0 +1,113 @@
+; ModuleID = '/users/siddhart/playground/standalone/pp/data_modelconfig.f90'
+target datalayout = "e-p:64:64:64-S128-i1:8:8-i8:8:8-i16:16:16-i32:32:32-i64:64:64-f16:16:16-f32:32:32-f64:64:64-f128:128:128-v64:64:64-v128:128:128-a0:0:64-s0:64:64-f80:128:128-n8:16:32:64"
+target triple = "x86_64-unknown-linux-gnu"
+
+module asm "\09.ident\09\22GCC: (GNU) 4.6.4 LLVM: 3.3.1\22"
+
+%"struct.array1_integer(kind=4)" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%struct.descriptor_dimension = type { i64, i64, i64 }
+%"struct.array1_real(kind=8)" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+%"struct.array1_real(kind=8).0" = type { i8*, i64, i64, [1 x %struct.descriptor_dimension] }
+
+@__data_modelconfig_MOD_vhmx_vol = unnamed_addr global double 0.000000e+00
+@__data_modelconfig_MOD_vhmx_cfl = unnamed_addr global double 0.000000e+00
+@__data_modelconfig_MOD_startlon_tot = unnamed_addr global double 0.000000e+00
+@__data_modelconfig_MOD_startlon = unnamed_addr global double 0.000000e+00
+@__data_modelconfig_MOD_startlat_tot = unnamed_addr global double 0.000000e+00
+@__data_modelconfig_MOD_startlat = unnamed_addr global double 0.000000e+00
+@__data_modelconfig_MOD_raddeg = unnamed_addr global double 0.000000e+00
+@__data_modelconfig_MOD_pollon = unnamed_addr global double 0.000000e+00
+@__data_modelconfig_MOD_pollat = unnamed_addr global double 0.000000e+00
+@__data_modelconfig_MOD_polgam = unnamed_addr global double 0.000000e+00
+@__data_modelconfig_MOD_nlandpoints_tot = unnamed_addr global i32 0
+@__data_modelconfig_MOD_nlandpoints = unnamed_addr global i32 0
+@__data_modelconfig_MOD_nehddt = unnamed_addr global i32 0
+@__data_modelconfig_MOD_msoilgrib = unnamed_addr global %"struct.array1_integer(kind=4)" zeroinitializer, align 32
+@__data_modelconfig_MOD_lalloc_w_g3_bd = unnamed_addr global i32 0
+@__data_modelconfig_MOD_lalloc_w_g3 = unnamed_addr global i32 0
+@__data_modelconfig_MOD_lalloc_tke = unnamed_addr global i32 0
+@__data_modelconfig_MOD_lalloc_t_s_bd = unnamed_addr global i32 0
+@__data_modelconfig_MOD_lalloc_t_cl = unnamed_addr global i32 0
+@__data_modelconfig_MOD_lalloc_prs_gsp = unnamed_addr global i32 0
+@__data_modelconfig_MOD_lalloc_prs_con = unnamed_addr global i32 0
+@__data_modelconfig_MOD_lalloc_prr_gsp = unnamed_addr global i32 0
+@__data_modelconfig_MOD_lalloc_prr_con = unnamed_addr global i32 0
+@__data_modelconfig_MOD_lalloc_prg_gsp = unnamed_addr global i32 0
+@__data_modelconfig_MOD_lalloc_h_ice = unnamed_addr global i32 0
+@__data_modelconfig_MOD_klv950 = unnamed_addr global i32 0
+@__data_modelconfig_MOD_klv850 = unnamed_addr global i32 0
+@__data_modelconfig_MOD_klv800 = unnamed_addr global i32 0
+@__data_modelconfig_MOD_klv700 = unnamed_addr global i32 0
+@__data_modelconfig_MOD_klv500 = unnamed_addr global i32 0
+@__data_modelconfig_MOD_klv400 = unnamed_addr global i32 0
+@__data_modelconfig_MOD_klv300 = unnamed_addr global i32 0
+@__data_modelconfig_MOD_ke_tot = unnamed_addr global i32 0
+@__data_modelconfig_MOD_ke_soil = unnamed_addr global i32 0
+@__data_modelconfig_MOD_ke_snow = unnamed_addr global i32 0
+@__data_modelconfig_MOD_ke_rd = unnamed_addr global i32 0
+@__data_modelconfig_MOD_ke1 = unnamed_addr global i32 0
+@__data_modelconfig_MOD_ke = unnamed_addr global i32 0
+@__data_modelconfig_MOD_kcm = unnamed_addr global i32 0
+@__data_modelconfig_MOD_jstartv = unnamed_addr global i32 0
+@__data_modelconfig_MOD_jstartu = unnamed_addr global i32 0
+@__data_modelconfig_MOD_jstartpar = unnamed_addr global i32 0
+@__data_modelconfig_MOD_jstart = unnamed_addr global i32 0
+@__data_modelconfig_MOD_jendv = unnamed_addr global i32 0
+@__data_modelconfig_MOD_jendu = unnamed_addr global i32 0
+@__data_modelconfig_MOD_jendpar = unnamed_addr global i32 0
+@__data_modelconfig_MOD_jend = unnamed_addr global i32 0
+@__data_modelconfig_MOD_je_tot = unnamed_addr global i32 0
+@__data_modelconfig_MOD_je_max = unnamed_addr global i32 0
+@__data_modelconfig_MOD_je = unnamed_addr global i32 0
+@__data_modelconfig_MOD_istartv = unnamed_addr global i32 0
+@__data_modelconfig_MOD_istartu = unnamed_addr global i32 0
+@__data_modelconfig_MOD_istartpar = unnamed_addr global i32 0
+@__data_modelconfig_MOD_istart = unnamed_addr global i32 0
+@__data_modelconfig_MOD_iendv = unnamed_addr global i32 0
+@__data_modelconfig_MOD_iendu = unnamed_addr global i32 0
+@__data_modelconfig_MOD_iendpar = unnamed_addr global i32 0
+@__data_modelconfig_MOD_iend = unnamed_addr global i32 0
+@__data_modelconfig_MOD_ieke = unnamed_addr global i32 0
+@__data_modelconfig_MOD_iejeke = unnamed_addr global i32 0
+@__data_modelconfig_MOD_ieje = unnamed_addr global i32 0
+@__data_modelconfig_MOD_ie_tot = unnamed_addr global i32 0
+@__data_modelconfig_MOD_ie_max = unnamed_addr global i32 0
+@__data_modelconfig_MOD_ie = unnamed_addr global i32 0
+@__data_modelconfig_MOD_idt_qv = unnamed_addr global i32 -99
+@__data_modelconfig_MOD_idt_qs = unnamed_addr global i32 -99
+@__data_modelconfig_MOD_idt_qr = unnamed_addr global i32 -99
+@__data_modelconfig_MOD_idt_qns = unnamed_addr global i32 -99
+@__data_modelconfig_MOD_idt_qnr = unnamed_addr global i32 -99
+@__data_modelconfig_MOD_idt_qni = unnamed_addr global i32 -99
+@__data_modelconfig_MOD_idt_qnh = unnamed_addr global i32 -99
+@__data_modelconfig_MOD_idt_qng = unnamed_addr global i32 -99
+@__data_modelconfig_MOD_idt_qnc = unnamed_addr global i32 -99
+@__data_modelconfig_MOD_idt_qi = unnamed_addr global i32 -99
+@__data_modelconfig_MOD_idt_qh = unnamed_addr global i32 -99
+@__data_modelconfig_MOD_idt_qg = unnamed_addr global i32 -99
+@__data_modelconfig_MOD_idt_qc = unnamed_addr global i32 -99
+@__data_modelconfig_MOD_epsass = unnamed_addr global double 0.000000e+00
+@__data_modelconfig_MOD_endlon_tot = unnamed_addr global double 0.000000e+00
+@__data_modelconfig_MOD_endlat_tot = unnamed_addr global double 0.000000e+00
+@__data_modelconfig_MOD_eddlon = unnamed_addr global double 0.000000e+00
+@__data_modelconfig_MOD_eddlat = unnamed_addr global double 0.000000e+00
+@__data_modelconfig_MOD_edadlat = unnamed_addr global double 0.000000e+00
+@__data_modelconfig_MOD_ed2dt = unnamed_addr global double 0.000000e+00
+@__data_modelconfig_MOD_dz_min = unnamed_addr global double 0.000000e+00
+@__data_modelconfig_MOD_dy_min = unnamed_addr global double 0.000000e+00
+@__data_modelconfig_MOD_dx_min = unnamed_addr global double 0.000000e+00
+@__data_modelconfig_MOD_dtdeh = unnamed_addr global double 0.000000e+00
+@__data_modelconfig_MOD_dt2 = unnamed_addr global double 0.000000e+00
+@__data_modelconfig_MOD_dt = unnamed_addr global double 0.000000e+00
+@__data_modelconfig_MOD_dlonddlat = unnamed_addr global double 0.000000e+00
+@__data_modelconfig_MOD_dlon = unnamed_addr global double 0.000000e+00
+@__data_modelconfig_MOD_dlatddlon = unnamed_addr global double 0.000000e+00
+@__data_modelconfig_MOD_dlat = unnamed_addr global double 0.000000e+00
+@__data_modelconfig_MOD_degrad = unnamed_addr global double 0.000000e+00
+@__data_modelconfig_MOD_czmls = unnamed_addr global %"struct.array1_real(kind=8)" zeroinitializer, align 32
+@__data_modelconfig_MOD_czhls = unnamed_addr global %"struct.array1_real(kind=8).0" zeroinitializer, align 32
+@__data_modelconfig_MOD_betasw = unnamed_addr global double 0.000000e+00
+@__data_modelconfig_MOD_betagw = unnamed_addr global double 0.000000e+00
+@__data_modelconfig_MOD_beta2sw = unnamed_addr global double 0.000000e+00
+@__data_modelconfig_MOD_beta2gw = unnamed_addr global double 0.000000e+00
+@__data_modelconfig_MOD_alphaass = unnamed_addr global double 0.000000e+00

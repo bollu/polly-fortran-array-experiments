@@ -1,0 +1,50 @@
+digraph "Scop Graph for '__m_MOD_f' function" {
+	label="Scop Graph for '__m_MOD_f' function";
+
+	Node0xd91fb0 [shape=record,label="{entry:\l  br label %entry.split\l}"];
+	Node0xd91fb0 -> Node0xd61c20;
+	Node0xd61c20 [shape=record,label="{entry.split:                                      \l  %tmp = load i32, i32* %nproma, align 4\l  %tmp1 = sext i32 %tmp to i64\l  %tmp2 = icmp sgt i64 %tmp1, 0\l  %tmp3 = select i1 %tmp2, i64 %tmp1, i64 0\l  %tmp4 = load i32, i32* %ke, align 4\l  %not = xor i64 %tmp3, -1\l  %tmp5 = load i32, i32* %ipend, align 4\l  %tmp6 = icmp sgt i32 %tmp5, 0\l  br i1 %tmp6, label %\"3.preheader\", label %return\l}"];
+	Node0xd61c20 -> Node0xd63010;
+	Node0xd61c20 -> Node0xd5ffe0;
+	Node0xd63010 [shape=record,label="{\"3.preheader\":                                    \l  br label %\"3\"\l}"];
+	Node0xd63010 -> Node0xd6f7f0;
+	Node0xd6f7f0 [shape=record,label="{\"3\":                                              \l  %tmp7 = phi i32 [ %tmp22, %\"5\" ], [ 1, %\"3.preheader\" ]\l  %tmp8 = sext i32 %tmp7 to i64\l  %tmp9 = tail call i64 @_gfortran_polly_array_index_1(i64 -1, i64 1, i64\l... %tmp8) #2\l  %tmp10 = getelementptr [0 x float], [0 x float]* %zsmu0_flux, i64 0, i64\l... %tmp9\l  %tmp11 = load float, float* %tmp10, align 4\l  %tmp12 = fcmp ogt float %tmp11, 1.000000e+01\l  br i1 %tmp12, label %\"4\", label %\"5\"\l}"];
+	Node0xd6f7f0 -> Node0xd3d380;
+	Node0xd6f7f0 -> Node0xd8f090;
+	Node0xd3d380 [shape=record,label="{\"4\":                                              \l  %tmp13 = tail call i64 @_gfortran_polly_array_index_1(i64 -1, i64 1, i64\l... %tmp8) #2\l  %tmp14 = sext i32 %tmp4 to i64\l  %tmp15 = tail call i64 @_gfortran_polly_array_index_2(i64 %not, i64 %tmp3,\l... i64 1, i64 %tmp14, i64 1) #2\l  %tmp16 = getelementptr [0 x float], [0 x float]* %sotr, i64 0, i64 %tmp15\l  %tmp17 = bitcast float* %tmp16 to i32*\l  %tmp18 = load i32, i32* %tmp17, align 4\l  %tmp19 = getelementptr [0 x float], [0 x float]* %sobs, i64 0, i64 %tmp13\l  %tmp20 = bitcast float* %tmp19 to i32*\l  store i32 %tmp18, i32* %tmp20, align 4\l  br label %\"5\"\l}"];
+	Node0xd3d380 -> Node0xd8f090;
+	Node0xd8f090 [shape=record,label="{\"5\":                                              \l  %tmp21 = icmp eq i32 %tmp7, %tmp5\l  %tmp22 = add i32 %tmp7, 1\l  br i1 %tmp21, label %return.loopexit, label %\"3\"\l}"];
+	Node0xd8f090 -> Node0xd6f420;
+	Node0xd8f090 -> Node0xd6f7f0[constraint=false];
+	Node0xd6f420 [shape=record,label="{return.loopexit:                                  \l  br label %return\l}"];
+	Node0xd6f420 -> Node0xd5ffe0;
+	Node0xd5ffe0 [shape=record,label="{return:                                           \l  ret void\l}"];
+	colorscheme = "paired12"
+        subgraph cluster_0xd6f6f0 {
+          label = "";
+          style = solid;
+          color = 1
+          subgraph cluster_0xd6fbf0 {
+            label = "";
+            style = filled;
+            color = 3            subgraph cluster_0xd6fb50 {
+              label = "";
+              style = solid;
+              color = 5
+              subgraph cluster_0xd6f930 {
+                label = "";
+                style = solid;
+                color = 7
+                Node0xd6f7f0;
+                Node0xd3d380;
+              }
+              Node0xd8f090;
+            }
+            Node0xd61c20;
+            Node0xd63010;
+            Node0xd6f420;
+          }
+          Node0xd91fb0;
+          Node0xd5ffe0;
+        }
+}
